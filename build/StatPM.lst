@@ -1,0 +1,482 @@
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"StatPM.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.global	__aeabi_ui2f
+  16              		.global	__aeabi_fmul
+  17              		.global	__aeabi_f2uiz
+  18              		.section	.text.Stat_Init,"ax",%progbits
+  19              		.align	1
+  20              		.global	Stat_Init
+  21              		.arch armv7-m
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  25              		.fpu softvfp
+  27              	Stat_Init:
+  28              	.LVL0:
+  29              	.LFB3:
+  30              		.file 1 "Core/Src/Code/StatPM.c"
+   1:Core/Src/Code/StatPM.c **** #include "StatPM.h"
+   2:Core/Src/Code/StatPM.c **** #include "stat.h"
+   3:Core/Src/Code/StatPM.c **** #include "FindX.h"
+   4:Core/Src/Code/StatPM.c **** 
+   5:Core/Src/Code/StatPM.c **** ////////////////////////////////////////////////////////////////////////////////
+   6:Core/Src/Code/StatPM.c **** // Function                                                                   //
+   7:Core/Src/Code/StatPM.c **** ////////////////////////////////////////////////////////////////////////////////
+   8:Core/Src/Code/StatPM.c **** 
+   9:Core/Src/Code/StatPM.c **** static float  CPS;
+  10:Core/Src/Code/StatPM.c **** static int8_t Delta;
+  11:Core/Src/Code/StatPM.c **** uint16_t FindChange=0;
+  12:Core/Src/Code/StatPM.c **** 
+  13:Core/Src/Code/StatPM.c **** // Stat
+  14:Core/Src/Code/StatPM.c **** void Stat_Init(float nSigm, uint16_t tCall, float tau) {
+  31              		.loc 1 14 56 view -0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		.loc 1 14 56 is_stmt 0 view .LVU1
+  36 0000 38B5     		push	{r3, r4, r5, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 16
+  39              		.cfi_offset 3, -16
+  40              		.cfi_offset 4, -12
+  41              		.cfi_offset 5, -8
+  42              		.cfi_offset 14, -4
+  43 0002 0546     		mov	r5, r0
+  44 0004 1446     		mov	r4, r2
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 2
+
+
+  15:Core/Src/Code/StatPM.c ****   float timen = (float) tCall/TimeBase_Sec;
+  45              		.loc 1 15 3 is_stmt 1 view .LVU2
+  46              		.loc 1 15 17 is_stmt 0 view .LVU3
+  47 0006 0846     		mov	r0, r1
+  48              	.LVL1:
+  49              		.loc 1 15 17 view .LVU4
+  50 0008 FFF7FEFF 		bl	__aeabi_ui2f
+  51              	.LVL2:
+  52              		.loc 1 15 9 view .LVU5
+  53 000c 4FF08141 		mov	r1, #1082130432
+  54 0010 FFF7FEFF 		bl	__aeabi_fmul
+  55              	.LVL3:
+  16:Core/Src/Code/StatPM.c ****   uint16_t Time = (uint16_t)timen;
+  56              		.loc 1 16 3 is_stmt 1 view .LVU6
+  57              		.loc 1 16 12 is_stmt 0 view .LVU7
+  58 0014 FFF7FEFF 		bl	__aeabi_f2uiz
+  59              	.LVL4:
+  17:Core/Src/Code/StatPM.c ****   FW5_SetPorog(nSigm,Time);
+  60              		.loc 1 17 3 is_stmt 1 view .LVU8
+  61 0018 81B2     		uxth	r1, r0
+  62 001a 2846     		mov	r0, r5
+  63              	.LVL5:
+  64              		.loc 1 17 3 is_stmt 0 view .LVU9
+  65 001c FFF7FEFF 		bl	FW5_SetPorog
+  66              	.LVL6:
+  18:Core/Src/Code/StatPM.c ****   stat_SetDeatTime(tau);
+  67              		.loc 1 18 3 is_stmt 1 view .LVU10
+  68 0020 2046     		mov	r0, r4
+  69 0022 FFF7FEFF 		bl	stat_SetDeatTime
+  70              	.LVL7:
+  19:Core/Src/Code/StatPM.c ****   FW5_Calibration( );
+  71              		.loc 1 19 3 view .LVU11
+  72 0026 FFF7FEFF 		bl	FW5_Calibration
+  73              	.LVL8:
+  20:Core/Src/Code/StatPM.c **** }
+  74              		.loc 1 20 1 is_stmt 0 view .LVU12
+  75 002a 38BD     		pop	{r3, r4, r5, pc}
+  76              		.loc 1 20 1 view .LVU13
+  77              		.cfi_endproc
+  78              	.LFE3:
+  80              		.section	.text.Stat_Reset,"ax",%progbits
+  81              		.align	1
+  82              		.global	Stat_Reset
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  86              		.fpu softvfp
+  88              	Stat_Reset:
+  89              	.LFB4:
+  21:Core/Src/Code/StatPM.c **** 
+  22:Core/Src/Code/StatPM.c **** // Reset Stat
+  23:Core/Src/Code/StatPM.c **** void Stat_Reset(void) {
+  90              		.loc 1 23 23 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 3
+
+
+  95              	.LCFI1:
+  96              		.cfi_def_cfa_offset 8
+  97              		.cfi_offset 3, -8
+  98              		.cfi_offset 14, -4
+  24:Core/Src/Code/StatPM.c ****  stat_reset ( );
+  99              		.loc 1 24 2 view .LVU15
+ 100 0002 FFF7FEFF 		bl	stat_reset
+ 101              	.LVL9:
+  25:Core/Src/Code/StatPM.c **** }
+ 102              		.loc 1 25 1 is_stmt 0 view .LVU16
+ 103 0006 08BD     		pop	{r3, pc}
+ 104              		.cfi_endproc
+ 105              	.LFE4:
+ 107              		.section	.text.Stat_Start_Call,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	Stat_Start_Call
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 113              		.fpu softvfp
+ 115              	Stat_Start_Call:
+ 116              	.LFB5:
+  26:Core/Src/Code/StatPM.c **** 
+  27:Core/Src/Code/StatPM.c **** // Start Callibration
+  28:Core/Src/Code/StatPM.c **** void Stat_Start_Call(void) {
+ 117              		.loc 1 28 28 is_stmt 1 view -0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 08B5     		push	{r3, lr}
+ 122              	.LCFI2:
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 3, -8
+ 125              		.cfi_offset 14, -4
+  29:Core/Src/Code/StatPM.c ****  FW5_Calibration( );
+ 126              		.loc 1 29 2 view .LVU18
+ 127 0002 FFF7FEFF 		bl	FW5_Calibration
+ 128              	.LVL10:
+  30:Core/Src/Code/StatPM.c **** }
+ 129              		.loc 1 30 1 is_stmt 0 view .LVU19
+ 130 0006 08BD     		pop	{r3, pc}
+ 131              		.cfi_endproc
+ 132              	.LFE5:
+ 134              		.section	.text.Stat_AddData250ms,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	Stat_AddData250ms
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.fpu softvfp
+ 142              	Stat_AddData250ms:
+ 143              	.LVL11:
+ 144              	.LFB6:
+  31:Core/Src/Code/StatPM.c **** 
+  32:Core/Src/Code/StatPM.c **** // Add Data
+  33:Core/Src/Code/StatPM.c **** void Stat_AddData250ms(int32_t Ni) {
+ 145              		.loc 1 33 36 is_stmt 1 view -0
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 4
+
+
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		.loc 1 33 36 is_stmt 0 view .LVU21
+ 150 0000 10B5     		push	{r4, lr}
+ 151              	.LCFI3:
+ 152              		.cfi_def_cfa_offset 8
+ 153              		.cfi_offset 4, -8
+ 154              		.cfi_offset 14, -4
+ 155 0002 0446     		mov	r4, r0
+  34:Core/Src/Code/StatPM.c ****   //  Add Data
+  35:Core/Src/Code/StatPM.c ****   stat_add((stat_pulses_t)Ni,(stat_time_t)TimeBase);
+ 156              		.loc 1 35 3 is_stmt 1 view .LVU22
+ 157 0004 44F62062 		movw	r2, #20000
+ 158 0008 0023     		movs	r3, #0
+ 159 000a FFF7FEFF 		bl	stat_add
+ 160              	.LVL12:
+  36:Core/Src/Code/StatPM.c ****   stat_check(0x01);
+ 161              		.loc 1 36 3 view .LVU23
+ 162 000e 0120     		movs	r0, #1
+ 163 0010 FFF7FEFF 		bl	stat_check
+ 164              	.LVL13:
+  37:Core/Src/Code/StatPM.c ****   // Find
+  38:Core/Src/Code/StatPM.c ****   FW5_Write(Ni);
+ 165              		.loc 1 38 3 view .LVU24
+ 166 0014 2046     		mov	r0, r4
+ 167 0016 FFF7FEFF 		bl	FW5_Write
+ 168              	.LVL14:
+  39:Core/Src/Code/StatPM.c ****   FW5_Read( );
+ 169              		.loc 1 39 3 view .LVU25
+ 170 001a FFF7FEFF 		bl	FW5_Read
+ 171              	.LVL15:
+  40:Core/Src/Code/StatPM.c ****   FindChange = 1;
+ 172              		.loc 1 40 3 view .LVU26
+ 173              		.loc 1 40 14 is_stmt 0 view .LVU27
+ 174 001e 024B     		ldr	r3, .L9
+ 175 0020 0122     		movs	r2, #1
+ 176 0022 1A80     		strh	r2, [r3]	@ movhi
+  41:Core/Src/Code/StatPM.c **** }
+ 177              		.loc 1 41 1 view .LVU28
+ 178 0024 10BD     		pop	{r4, pc}
+ 179              	.LVL16:
+ 180              	.L10:
+ 181              		.loc 1 41 1 view .LVU29
+ 182 0026 00BF     		.align	2
+ 183              	.L9:
+ 184 0028 00000000 		.word	.LANCHOR0
+ 185              		.cfi_endproc
+ 186              	.LFE6:
+ 188              		.section	.text.Stat_GetStatus,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	Stat_GetStatus
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 194              		.fpu softvfp
+ 196              	Stat_GetStatus:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 5
+
+
+ 197              	.LVL17:
+ 198              	.LFB7:
+  42:Core/Src/Code/StatPM.c **** 
+  43:Core/Src/Code/StatPM.c **** // Get Status
+  44:Core/Src/Code/StatPM.c **** void Stat_GetStatus(TStatus_Stat *Status) {
+ 199              		.loc 1 44 43 is_stmt 1 view -0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 8
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		.loc 1 44 43 is_stmt 0 view .LVU31
+ 204 0000 70B5     		push	{r4, r5, r6, lr}
+ 205              	.LCFI4:
+ 206              		.cfi_def_cfa_offset 16
+ 207              		.cfi_offset 4, -16
+ 208              		.cfi_offset 5, -12
+ 209              		.cfi_offset 6, -8
+ 210              		.cfi_offset 14, -4
+ 211 0002 82B0     		sub	sp, sp, #8
+ 212              	.LCFI5:
+ 213              		.cfi_def_cfa_offset 24
+ 214 0004 0446     		mov	r4, r0
+  45:Core/Src/Code/StatPM.c **** 
+  46:Core/Src/Code/StatPM.c ****    float Kmax;
+ 215              		.loc 1 46 4 is_stmt 1 view .LVU32
+  47:Core/Src/Code/StatPM.c ****    uint16_t Temp=0;
+ 216              		.loc 1 47 4 view .LVU33
+ 217              		.loc 1 47 13 is_stmt 0 view .LVU34
+ 218 0006 0023     		movs	r3, #0
+ 219 0008 ADF80230 		strh	r3, [sp, #2]	@ movhi
+  48:Core/Src/Code/StatPM.c **** 
+  49:Core/Src/Code/StatPM.c ****    // Measure
+  50:Core/Src/Code/StatPM.c ****    stat_calc_cps(&CPS,&Delta);
+ 220              		.loc 1 50 4 is_stmt 1 view .LVU35
+ 221 000c 194D     		ldr	r5, .L17
+ 222 000e 1A4E     		ldr	r6, .L17+4
+ 223 0010 2946     		mov	r1, r5
+ 224 0012 3046     		mov	r0, r6
+ 225              	.LVL18:
+ 226              		.loc 1 50 4 is_stmt 0 view .LVU36
+ 227 0014 FFF7FEFF 		bl	stat_calc_cps
+ 228              	.LVL19:
+  51:Core/Src/Code/StatPM.c **** 
+  52:Core/Src/Code/StatPM.c ****    Status->CPS   = CPS;
+ 229              		.loc 1 52 4 is_stmt 1 view .LVU37
+ 230              		.loc 1 52 18 is_stmt 0 view .LVU38
+ 231 0018 3368     		ldr	r3, [r6]	@ float
+ 232 001a 6360     		str	r3, [r4, #4]	@ float
+  53:Core/Src/Code/StatPM.c ****    Status->Delta = Delta;
+ 233              		.loc 1 53 4 is_stmt 1 view .LVU39
+ 234              		.loc 1 53 18 is_stmt 0 view .LVU40
+ 235 001c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 236 001e 2372     		strb	r3, [r4, #8]
+  54:Core/Src/Code/StatPM.c **** 
+  55:Core/Src/Code/StatPM.c ****    // Find
+  56:Core/Src/Code/StatPM.c ****    if  (FindChange==1) {
+ 237              		.loc 1 56 4 is_stmt 1 view .LVU41
+ 238              		.loc 1 56 19 is_stmt 0 view .LVU42
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 6
+
+
+ 239 0020 164B     		ldr	r3, .L17+8
+ 240 0022 1B88     		ldrh	r3, [r3]
+ 241              		.loc 1 56 8 view .LVU43
+ 242 0024 012B     		cmp	r3, #1
+ 243 0026 01D0     		beq	.L16
+ 244              	.L11:
+  57:Core/Src/Code/StatPM.c ****           FindChange=0;
+  58:Core/Src/Code/StatPM.c ****           if (FW5_G5Find(&Temp,&Kmax)) {
+  59:Core/Src/Code/StatPM.c ****              Status->Status &=~St_Call;
+  60:Core/Src/Code/StatPM.c ****              if (Temp>0) {
+  61:Core/Src/Code/StatPM.c ****                   Status->Status |= St_Alarm;
+  62:Core/Src/Code/StatPM.c ****                   Status->nSigm   = Kmax;
+  63:Core/Src/Code/StatPM.c ****              } else {
+  64:Core/Src/Code/StatPM.c ****                  Status->Status &=  ~St_Alarm;
+  65:Core/Src/Code/StatPM.c ****                  Status->nSigm = 0;
+  66:Core/Src/Code/StatPM.c ****                }
+  67:Core/Src/Code/StatPM.c ****           } else Status->Status |=St_Call;;
+  68:Core/Src/Code/StatPM.c ****    }
+  69:Core/Src/Code/StatPM.c **** 
+  70:Core/Src/Code/StatPM.c **** }
+ 245              		.loc 1 70 1 view .LVU44
+ 246 0028 02B0     		add	sp, sp, #8
+ 247              	.LCFI6:
+ 248              		.cfi_remember_state
+ 249              		.cfi_def_cfa_offset 16
+ 250              		@ sp needed
+ 251 002a 70BD     		pop	{r4, r5, r6, pc}
+ 252              	.LVL20:
+ 253              	.L16:
+ 254              	.LCFI7:
+ 255              		.cfi_restore_state
+  57:Core/Src/Code/StatPM.c ****           FindChange=0;
+ 256              		.loc 1 57 11 is_stmt 1 view .LVU45
+  57:Core/Src/Code/StatPM.c ****           FindChange=0;
+ 257              		.loc 1 57 21 is_stmt 0 view .LVU46
+ 258 002c 134B     		ldr	r3, .L17+8
+ 259 002e 0022     		movs	r2, #0
+ 260 0030 1A80     		strh	r2, [r3]	@ movhi
+  58:Core/Src/Code/StatPM.c ****              Status->Status &=~St_Call;
+ 261              		.loc 1 58 11 is_stmt 1 view .LVU47
+  58:Core/Src/Code/StatPM.c ****              Status->Status &=~St_Call;
+ 262              		.loc 1 58 15 is_stmt 0 view .LVU48
+ 263 0032 01A9     		add	r1, sp, #4
+ 264 0034 0DF10200 		add	r0, sp, #2
+ 265 0038 FFF7FEFF 		bl	FW5_G5Find
+ 266              	.LVL21:
+  58:Core/Src/Code/StatPM.c ****              Status->Status &=~St_Call;
+ 267              		.loc 1 58 14 view .LVU49
+ 268 003c A0B1     		cbz	r0, .L13
+  59:Core/Src/Code/StatPM.c ****              if (Temp>0) {
+ 269              		.loc 1 59 14 is_stmt 1 view .LVU50
+  59:Core/Src/Code/StatPM.c ****              if (Temp>0) {
+ 270              		.loc 1 59 29 is_stmt 0 view .LVU51
+ 271 003e 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 272 0040 03F0FD03 		and	r3, r3, #253
+ 273 0044 2370     		strb	r3, [r4]
+  60:Core/Src/Code/StatPM.c ****                   Status->Status |= St_Alarm;
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 7
+
+
+ 274              		.loc 1 60 14 is_stmt 1 view .LVU52
+  60:Core/Src/Code/StatPM.c ****                   Status->Status |= St_Alarm;
+ 275              		.loc 1 60 22 is_stmt 0 view .LVU53
+ 276 0046 BDF80220 		ldrh	r2, [sp, #2]
+  60:Core/Src/Code/StatPM.c ****                   Status->Status |= St_Alarm;
+ 277              		.loc 1 60 17 view .LVU54
+ 278 004a 3AB1     		cbz	r2, .L14
+  61:Core/Src/Code/StatPM.c ****                   Status->nSigm   = Kmax;
+ 279              		.loc 1 61 19 is_stmt 1 view .LVU55
+  61:Core/Src/Code/StatPM.c ****                   Status->nSigm   = Kmax;
+ 280              		.loc 1 61 34 is_stmt 0 view .LVU56
+ 281 004c 43F00103 		orr	r3, r3, #1
+ 282 0050 2370     		strb	r3, [r4]
+  62:Core/Src/Code/StatPM.c ****              } else {
+ 283              		.loc 1 62 19 is_stmt 1 view .LVU57
+  62:Core/Src/Code/StatPM.c ****              } else {
+ 284              		.loc 1 62 35 is_stmt 0 view .LVU58
+ 285 0052 0198     		ldr	r0, [sp, #4]	@ float
+ 286 0054 FFF7FEFF 		bl	__aeabi_f2uiz
+ 287              	.LVL22:
+ 288 0058 6070     		strb	r0, [r4, #1]
+ 289 005a E5E7     		b	.L11
+ 290              	.L14:
+  64:Core/Src/Code/StatPM.c ****                  Status->nSigm = 0;
+ 291              		.loc 1 64 18 is_stmt 1 view .LVU59
+  64:Core/Src/Code/StatPM.c ****                  Status->nSigm = 0;
+ 292              		.loc 1 64 33 is_stmt 0 view .LVU60
+ 293 005c 23F00103 		bic	r3, r3, #1
+ 294 0060 2370     		strb	r3, [r4]
+  65:Core/Src/Code/StatPM.c ****                }
+ 295              		.loc 1 65 18 is_stmt 1 view .LVU61
+  65:Core/Src/Code/StatPM.c ****                }
+ 296              		.loc 1 65 32 is_stmt 0 view .LVU62
+ 297 0062 0023     		movs	r3, #0
+ 298 0064 6370     		strb	r3, [r4, #1]
+ 299 0066 DFE7     		b	.L11
+ 300              	.L13:
+  67:Core/Src/Code/StatPM.c ****    }
+ 301              		.loc 1 67 18 is_stmt 1 view .LVU63
+  67:Core/Src/Code/StatPM.c ****    }
+ 302              		.loc 1 67 33 is_stmt 0 view .LVU64
+ 303 0068 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 304 006a 43F00203 		orr	r3, r3, #2
+ 305 006e 2370     		strb	r3, [r4]
+  67:Core/Src/Code/StatPM.c ****    }
+ 306              		.loc 1 67 43 is_stmt 1 view .LVU65
+ 307              		.loc 1 70 1 is_stmt 0 view .LVU66
+ 308 0070 DAE7     		b	.L11
+ 309              	.L18:
+ 310 0072 00BF     		.align	2
+ 311              	.L17:
+ 312 0074 00000000 		.word	.LANCHOR1
+ 313 0078 00000000 		.word	.LANCHOR2
+ 314 007c 00000000 		.word	.LANCHOR0
+ 315              		.cfi_endproc
+ 316              	.LFE7:
+ 318              		.global	FindChange
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 8
+
+
+ 319              		.section	.bss.CPS,"aw",%nobits
+ 320              		.align	2
+ 321              		.set	.LANCHOR2,. + 0
+ 324              	CPS:
+ 325 0000 00000000 		.space	4
+ 326              		.section	.bss.Delta,"aw",%nobits
+ 327              		.set	.LANCHOR1,. + 0
+ 330              	Delta:
+ 331 0000 00       		.space	1
+ 332              		.section	.bss.FindChange,"aw",%nobits
+ 333              		.align	1
+ 334              		.set	.LANCHOR0,. + 0
+ 337              	FindChange:
+ 338 0000 0000     		.space	2
+ 339              		.text
+ 340              	.Letext0:
+ 341              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 342              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 343              		.file 4 "Core/Src/Code/StatPM.h"
+ 344              		.file 5 "Core/Src/Code/stat.h"
+ 345              		.file 6 "Core/Src/Code/FindX.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\cc1jkbv7.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 StatPM.c
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:19     .text.Stat_Init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:27     .text.Stat_Init:0000000000000000 Stat_Init
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:81     .text.Stat_Reset:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:88     .text.Stat_Reset:0000000000000000 Stat_Reset
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:108    .text.Stat_Start_Call:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:115    .text.Stat_Start_Call:0000000000000000 Stat_Start_Call
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:135    .text.Stat_AddData250ms:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:142    .text.Stat_AddData250ms:0000000000000000 Stat_AddData250ms
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:184    .text.Stat_AddData250ms:0000000000000028 $d
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:189    .text.Stat_GetStatus:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:196    .text.Stat_GetStatus:0000000000000000 Stat_GetStatus
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:312    .text.Stat_GetStatus:0000000000000074 $d
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:337    .bss.FindChange:0000000000000000 FindChange
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:320    .bss.CPS:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:324    .bss.CPS:0000000000000000 CPS
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:330    .bss.Delta:0000000000000000 Delta
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:331    .bss.Delta:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\cc1jkbv7.s:333    .bss.FindChange:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_ui2f
+__aeabi_fmul
+__aeabi_f2uiz
+FW5_SetPorog
+stat_SetDeatTime
+FW5_Calibration
+stat_reset
+stat_add
+stat_check
+FW5_Write
+FW5_Read
+stat_calc_cps
+FW5_G5Find
