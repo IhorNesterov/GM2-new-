@@ -84,6 +84,33 @@ typedef struct ModBus_Slave_Command_t
     NOS_Float FloatValue;
 } ModBus_Slave_Command;
 
+typedef struct Pin_T
+{
+    uint16_t* Port;
+    uint16_t Pin; 
+}Pin;
+
+
+typedef struct URE_GM_Detector_t
+{
+  /* ModBus Values */
+  float uSvValue;
+  float temperature;
+  float firstDangerValue;
+  float secondDangerValue;
+  uint16_t voltage;
+  uint8_t address;
+  /* ModBus Values */
+
+  /* System Info */
+  uint16_t tickCount1;
+  uint16_t tickCount2;
+  uint16_t systemCounter;
+  TStatus_Stat* status;
+  /* System Info */
+
+} URE_GM_Detector;
+
 
 /*ModBus*/
 

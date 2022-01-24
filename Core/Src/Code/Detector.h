@@ -5,20 +5,21 @@
 
 // Param Detector
 
-#define _default_KG    (float) (1.395E-3)       // Чувствительность [мкЗв/[ИМП/Сек]] по Cs137
-#define _default_BG    0.0                     //  Фон детектора [ИМП/Сек] (CPS)
+#define _default_KG    (float) (1.395E-3)       // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ [пїЅпїЅпїЅпїЅ/[пїЅпїЅпїЅ/пїЅпїЅпїЅ]] пїЅпїЅ Cs137
+#define _default_BG    0.0                     //  пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ [пїЅпїЅпїЅ/пїЅпїЅпїЅ] (CPS)
 
 void  Detector_Init_Param(float Set_Kg, float Set_Bg);    // Setting Param Detector
-float Detector_GetuZvValue(TStatus_Stat* Stat);           // Get Value [uS/h] ([мкЗв/ч])
+float Detector_GetuZvValue(TStatus_Stat* Stat);           // Get Value [uS/h] ([пїЅпїЅпїЅпїЅ/пїЅ])
+void  RelaysStateProc(URE_GM_Detector* detector); //Set Relays State
 
 
 /* Example Use */
 
-// Инициализация
-// Stat_Init(1.395E-3,0.0); // Kg = 1.395E-3 - Чувствительность детектора ; Bg=0.0 - Внутренний Фон детектора [CPS]
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// Stat_Init(1.395E-3,0.0); // Kg = 1.395E-3 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ; Bg=0.0 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ [CPS]
 
-// Вывод
-// DER = Detector_GetuZvValue(&Status); //   Вывод МЭД:  [uSv/h]
+// пїЅпїЅпїЅпїЅпїЅ
+// DER = Detector_GetuZvValue(&Status); //   пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ:  [uSv/h]
 
 /* End Example Use */
 
