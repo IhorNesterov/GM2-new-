@@ -10,4 +10,7 @@ void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint
 void NOS_ModBus_SetMasterCommand(ModBus_Master_Command* master,uint8_t addr,uint8_t command,uint16_t regAddr, uint16_t data);
 void NOS_ModBus_SetSlaveCommand(ModBus_Slave_Command* slave,uint8_t addr,uint8_t command,uint8_t byteCount,uint8_t typ,NOS_Short sVal,NOS_Float fVal);
 
+void NOS_ModBus_AddUint16ToBuff(uint8_t* buff,uint16_t value,uint16_t startpos);
+void NOS_ModBus_AddFloatToBuff(uint8_t* buff,float value,uint16_t startpos);
+
 #endif

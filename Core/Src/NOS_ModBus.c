@@ -143,3 +143,20 @@ void NOS_ModBus_SetSlaveCommand(ModBus_Slave_Command* slave,uint8_t addr,uint8_t
    slave->ShortValue = sVal;
 }
 
+void NOS_ModBus_AddUint16ToBuff(uint8_t* buff,uint16_t value,uint16_t startpos)
+{
+   NOS_Short curr;
+   curr.data = value;
+   buff[startpos] = curr.bytes[1];
+   buff[startpos + 1] = curr.bytes[0];
+}
+
+void NOS_ModBus_AddFloatToBuff(uint8_t* buff,float value,uint16_t startpos)
+{
+   NOS_Float curr;
+   curr.data = value;
+   buff[startpos] = curr.bytes[3];
+   buff[startpos + 1] = curr.bytes[2];
+   buff[startpos + 2] = curr.bytes[1];
+   buff[startpos + 3] = curr.bytes[0];
+}

@@ -73,12 +73,16 @@ uint8_t counter = 0;
  uint16_t tickcount1;
  NOS_Short tickcountBuff;
 NOS_Float uSvValue;
-uint32_t tickcount2 = 0;
+uint16_t tickcount2 = 0;
+uint16_t globalTickCount = 0;
 bool time250ms = false;
 NOS_Short time;
 TStatus_Stat stat;
 uint16_t voltage;
 uint8_t detector_Addr = 101;
+float coef = 0.1E-1f * 1.4f;
+
+URE_GM_Detector detector = {0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -145,7 +149,7 @@ else
 
 void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
 {
-  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,0);
+  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,0);
   //HAL_GPIO_WritePin(Led_Port,Transmit_LED,1);
   if(slave->type < 2)
   {
@@ -174,8 +178,27 @@ void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
       HAL_UART_Transmit_IT(&huart1,&tx_buff,9);
     }
   }
-  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,1);
+  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,1);
   //HAL_GPIO_WritePin(Led_Port,Transmit_LED,0);
+}
+
+void GM2_SendDebugData()
+{
+  uint8_t debugBuff[32];
+ debugBuff[0] = detector.address;
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount1,1);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount2,3);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,globalTickCount,5);
+ NOS_ModBus_AddFloatToBuff(&debugBuff,detector.uSvValue,7);
+ NOS_ModBus_AddFloatToBuff(&debugBuff,stat.CPS,11);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,stat.Delta,15);
+ NOS_ModBus_AddFloatToBuff(&debugBuff,detector.temperature,17);
+ NOS_ModBus_AddFloatToBuff(&debugBuff,coef,21);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,detector.voltage,25);
+
+ HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,1);
+ HAL_UART_Transmit_IT(&huart1,debugBuff,26);
+ HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,0);
 }
 
 void SysTick_Handler(void)
@@ -188,12 +211,12 @@ void SysTick_Handler(void)
 time.data++;
 
 if(time.data >= 250) {
-   Stat_AddData250ms(tickcount1);
-   tickcountBuff.data = tickcount1;
-   tickcount1 = 0;      
+  globalTickCount = tickcount1 + tickcount2;
+   Stat_AddData250ms(globalTickCount);
+   tickcount1 = 0;
+   tickcount2 = 0;      
    time250ms = true;
    time.data = 0;  
-
 }
   /* USER CODE END SysTick_IRQn 1 */
 }
@@ -202,7 +225,7 @@ void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
   tickcount1++;
-  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+ // HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
@@ -210,7 +233,18 @@ void EXTI0_IRQHandler(void)
   /* USER CODE END EXTI0_IRQn 1 */
 }
 /* USER CODE END 0 */
-
+void EXTI1_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI0_IRQn 0 */
+  tickcount2++;
+  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+  /* USER CODE END EXTI0_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
+  /* USER CODE BEGIN EXTI0_IRQn 1 */
+  //tickcount1++;
+  /* USER CODE END EXTI0_IRQn 1 */
+}
+/* USER CODE END 0 */
 /**
   * @brief  The application entry point.
   * @retval int
@@ -239,32 +273,31 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ADC1_Init();
+  //MX_ADC1_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   //MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
   Stat_Init(3.4,60,0);
-  Detector_Init_Param(0.6E-1f, 0);
+  Detector_Init_Param(coef, 0);
   HAL_UART_Receive_IT(&huart1,rx_buff,1);
+
+  //Detector_Init(&detector,0.25f,1.25f,(Pin){GPIOB,GPIO_PIN_12},(Pin){GPIOB,GPIO_PIN_13},(Pin){GPIOB,GPIO_PIN_14});
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-if(time250ms)
+    if(time250ms)
     {
-       //HAL_ADC_Start(&hadc1); 
-      // HAL_ADC_PollForConversion(&hadc1, 100); 
-      // voltage = HAL_ADC_GetValue(&hadc1); 
-     //  HAL_ADC_Stop(&hadc1);
-          Stat_GetStatus(&stat);
-         // uSvValue.data = Detector_GetuZvValue(&stat);
+       Stat_GetStatus(&stat);
+       uSvValue.data = Detector_GetuZvValue(&stat);
     }
 
     if(rx_flag)
     {
+      bool DebugData = false;
       NOS_ModBus_ParseMasterCommand(&master,&rx_buff,0);
       switch(master.Command)
       {
@@ -287,8 +320,7 @@ if(time250ms)
           break;
 
           case 0x0002:
-          Stat_GetStatus(&stat);
-          slave.FloatValue.data = Detector_GetuZvValue(&stat);
+          slave.FloatValue.data = uSvValue.data;
           slave.Byte_Count = 4;
           slave.type = 1;
           break;
@@ -309,12 +341,22 @@ if(time250ms)
           slave.FloatValue.data = 1.25f;
           slave.Byte_Count = 4;
           slave.type = 1;
-          break;         
-        }  
-      }
+          break;
+#ifdef DEBUG
+          case 0xFF00:
+          GM2_SendDebugData();
+          DebugData = true;
+          break;
+#endif
+        }
+        break;
 
-      NOS_ModBus_SendSlaveCommand(&slave);
-     // HAL_GPIO_WritePin(Led_Port,Receive_LED,0);
+      }
+      if(!DebugData)
+      {
+         NOS_ModBus_SendSlaveCommand(&slave);
+      }
+     //HAL_GPIO_WritePin(Led_Port,Receive_LED,0);
       rx_flag = false;
     }
     /* USER CODE END WHILE */
@@ -531,7 +573,7 @@ static void MX_GPIO_Init(void)
                           |LED_OK_Pin|LED_RX_Pin|LED_TX_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RS_CTR_Pin|Boot_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RS_CTR_Pin|Boot_Pin|GPIO_PIN_0, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
   /*Configure GPIO pin : Control_LED_Pin */
   GPIO_InitStruct.Pin = Control_LED_Pin;
@@ -556,7 +598,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RS_CTR_Pin Boot_Pin */
-  GPIO_InitStruct.Pin = RS_CTR_Pin|Boot_Pin;
+  GPIO_InitStruct.Pin = RS_CTR_Pin|Boot_Pin|GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
