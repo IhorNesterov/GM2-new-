@@ -2,6 +2,8 @@
 #define NOS_TYPEDEFS
 #include <stdint.h>
 #include <stdbool.h>
+#include "StatPM.h"
+#include "stm32f1xx.h"
 /* Unions begin */
 
 typedef union Short_t //uint16_t data wrap
@@ -108,6 +110,12 @@ typedef struct URE_GM_Detector_t
   uint16_t systemCounter;
   TStatus_Stat* status;
   /* System Info */
+
+  /* Pins Data */
+  Pin normalRelay;
+  Pin firstDangerRelay;
+  Pin secondDangerRelay;
+  /* Pins Data */
 
 } URE_GM_Detector;
 

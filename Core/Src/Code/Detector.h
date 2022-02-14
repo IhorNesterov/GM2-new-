@@ -2,7 +2,7 @@
 #define _DETECTOR_H_
 
 #include "StatPM.h"
-
+#include "NOS_Typedefs.h"
 // Param Detector
 
 #define _default_KG    (float) (1.395E-3)       // ���������������� [����/[���/���]] �� Cs137
@@ -10,6 +10,7 @@
 
 void  Detector_Init_Param(float Set_Kg, float Set_Bg);    // Setting Param Detector
 float Detector_GetuZvValue(TStatus_Stat* Stat);           // Get Value [uS/h] ([����/�])
+void  Detector_Init(URE_GM_Detector* detector,float firstDg,float secondDg,Pin norm,Pin firstRl,Pin secondRl);
 void  RelaysStateProc(URE_GM_Detector* detector); //Set Relays State
 
 

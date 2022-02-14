@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -25,10 +25,10 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 1
   22              		.fpu softvfp
   24              	Detector_Init_Param:
   25              	.LVL0:
-  26              	.LFB3:
+  26              	.LFB68:
   27              		.file 1 "Core/Src/Code/Detector.c"
    1:Core/Src/Code/Detector.c **** #include "Detector.h"
-   2:Core/Src/Code/Detector.c **** 
+   2:Core/Src/Code/Detector.c **** #
    3:Core/Src/Code/Detector.c **** static float Detector_Kg =_default_KG;
    4:Core/Src/Code/Detector.c **** static float Detector_Bg =_default_BG;
    5:Core/Src/Code/Detector.c **** 
@@ -58,10 +58,10 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 1
   46 000c 00000000 		.word	.LANCHOR0
   47 0010 00000000 		.word	.LANCHOR1
   48              		.cfi_endproc
-ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 2
 
 
-  49              	.LFE3:
+  49              	.LFE68:
   51              		.global	__aeabi_fcmpgt
   52              		.global	__aeabi_fsub
   53              		.global	__aeabi_fmul
@@ -74,7 +74,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 1
   60              		.fpu softvfp
   62              	Detector_GetuZvValue:
   63              	.LVL1:
-  64              	.LFB4:
+  64              	.LFB69:
   11:Core/Src/Code/Detector.c **** 
   12:Core/Src/Code/Detector.c **** // Get Value [uSv/h]
   13:Core/Src/Code/Detector.c **** float Detector_GetuZvValue(TStatus_Stat* Stat) {
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 1
   16:Core/Src/Code/Detector.c ****   DER *= Detector_Kg;
  100              		.loc 1 16 3 is_stmt 1 discriminator 4 view .LVU15
  101              		.loc 1 16 7 is_stmt 0 discriminator 4 view .LVU16
-ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 3
 
 
  102 001c 034B     		ldr	r3, .L9+4
@@ -137,39 +137,271 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 1
  113 0028 00000000 		.word	.LANCHOR1
  114 002c 00000000 		.word	.LANCHOR0
  115              		.cfi_endproc
- 116              	.LFE4:
- 118              		.section	.bss.Detector_Bg,"aw",%nobits
- 119              		.align	2
- 120              		.set	.LANCHOR1,. + 0
- 123              	Detector_Bg:
- 124 0000 00000000 		.space	4
- 125              		.section	.data.Detector_Kg,"aw"
- 126              		.align	2
- 127              		.set	.LANCHOR0,. + 0
- 130              	Detector_Kg:
- 131 0000 6FD8B63A 		.word	985061487
- 132              		.text
- 133              	.Letext0:
- 134              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 135              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 136              		.file 4 "Core/Src/Code/StatPM.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\cc5twiZg.s 			page 4
+ 116              	.LFE69:
+ 118              		.section	.text.Detector_Init,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	Detector_Init
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 124              		.fpu softvfp
+ 126              	Detector_Init:
+ 127              	.LVL7:
+ 128              	.LFB70:
+  19:Core/Src/Code/Detector.c **** 
+  20:Core/Src/Code/Detector.c **** void Detector_Init(URE_GM_Detector* detector,float firstDg,float secondDg,Pin norm,Pin firstRl,Pin 
+  21:Core/Src/Code/Detector.c **** {
+ 129              		.loc 1 21 1 is_stmt 1 view -0
+ 130              		.cfi_startproc
+ 131              		@ args = 28, pretend = 8, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 134              		.loc 1 21 1 is_stmt 0 view .LVU20
+ 135 0000 82B0     		sub	sp, sp, #8
+ 136              	.LCFI1:
+ 137              		.cfi_def_cfa_offset 8
+ 138 0002 8446     		mov	ip, r0
+ 139 0004 6846     		mov	r0, sp
+ 140 0006 40F8043F 		str	r3, [r0, #4]!
+  22:Core/Src/Code/Detector.c ****   detector->firstDangerValue = firstDg;
+ 141              		.loc 1 22 3 is_stmt 1 view .LVU21
+ 142              		.loc 1 22 30 is_stmt 0 view .LVU22
+ 143 000a CCF80810 		str	r1, [ip, #8]	@ float
+  23:Core/Src/Code/Detector.c ****   detector->secondDangerValue = secondDg;
+ 144              		.loc 1 23 3 is_stmt 1 view .LVU23
+ 145              		.loc 1 23 31 is_stmt 0 view .LVU24
+ 146 000e CCF80C20 		str	r2, [ip, #12]	@ float
+  24:Core/Src/Code/Detector.c ****   detector->normalRelay = norm;
+ 147              		.loc 1 24 3 is_stmt 1 view .LVU25
+ 148              		.loc 1 24 25 is_stmt 0 view .LVU26
+ 149 0012 0CF12003 		add	r3, ip, #32
+ 150 0016 03C8     		ldm	r0, {r0, r1}
+ 151              	.LVL8:
+ 152              		.loc 1 24 25 view .LVU27
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 4
+
+
+ 153 0018 83E80300 		stm	r3, {r0, r1}
+  25:Core/Src/Code/Detector.c ****   detector->firstDangerRelay = firstRl;
+ 154              		.loc 1 25 3 is_stmt 1 view .LVU28
+ 155              		.loc 1 25 30 is_stmt 0 view .LVU29
+ 156 001c 0CF12803 		add	r3, ip, #40
+ 157 0020 03AA     		add	r2, sp, #12
+ 158 0022 92E80300 		ldm	r2, {r0, r1}
+ 159 0026 83E80300 		stm	r3, {r0, r1}
+  26:Core/Src/Code/Detector.c ****   detector->secondDangerRelay = secondRl;
+ 160              		.loc 1 26 3 is_stmt 1 view .LVU30
+ 161              		.loc 1 26 31 is_stmt 0 view .LVU31
+ 162 002a 0CF1300C 		add	ip, ip, #48
+ 163              	.LVL9:
+ 164              		.loc 1 26 31 view .LVU32
+ 165 002e 05AB     		add	r3, sp, #20
+ 166 0030 93E80300 		ldm	r3, {r0, r1}
+ 167 0034 8CE80300 		stm	ip, {r0, r1}
+  27:Core/Src/Code/Detector.c **** }
+ 168              		.loc 1 27 1 view .LVU33
+ 169 0038 02B0     		add	sp, sp, #8
+ 170              	.LCFI2:
+ 171              		.cfi_def_cfa_offset 0
+ 172 003a 7047     		bx	lr
+ 173              		.cfi_endproc
+ 174              	.LFE70:
+ 176              		.global	__aeabi_fcmple
+ 177              		.global	__aeabi_fcmpge
+ 178              		.global	__aeabi_fcmplt
+ 179              		.section	.text.RelaysStateProc,"ax",%progbits
+ 180              		.align	1
+ 181              		.global	RelaysStateProc
+ 182              		.syntax unified
+ 183              		.thumb
+ 184              		.thumb_func
+ 185              		.fpu softvfp
+ 187              	RelaysStateProc:
+ 188              	.LVL10:
+ 189              	.LFB71:
+  28:Core/Src/Code/Detector.c **** 
+  29:Core/Src/Code/Detector.c **** void RelaysStateProc(URE_GM_Detector* detector)
+  30:Core/Src/Code/Detector.c **** {
+ 190              		.loc 1 30 1 is_stmt 1 view -0
+ 191              		.cfi_startproc
+ 192              		@ args = 0, pretend = 0, frame = 0
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194              		.loc 1 30 1 is_stmt 0 view .LVU35
+ 195 0000 70B5     		push	{r4, r5, r6, lr}
+ 196              	.LCFI3:
+ 197              		.cfi_def_cfa_offset 16
+ 198              		.cfi_offset 4, -16
+ 199              		.cfi_offset 5, -12
+ 200              		.cfi_offset 6, -8
+ 201              		.cfi_offset 14, -4
+ 202 0002 0446     		mov	r4, r0
+  31:Core/Src/Code/Detector.c ****   if(detector->uSvValue <= detector->firstDangerValue)
+ 203              		.loc 1 31 3 is_stmt 1 view .LVU36
+ 204              		.loc 1 31 14 is_stmt 0 view .LVU37
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 5
+
+
+ 205 0004 0568     		ldr	r5, [r0]	@ float
+ 206              		.loc 1 31 36 view .LVU38
+ 207 0006 8668     		ldr	r6, [r0, #8]	@ float
+ 208              		.loc 1 31 5 view .LVU39
+ 209 0008 3146     		mov	r1, r6
+ 210 000a 2846     		mov	r0, r5
+ 211              	.LVL11:
+ 212              		.loc 1 31 5 view .LVU40
+ 213 000c FFF7FEFF 		bl	__aeabi_fcmple
+ 214              	.LVL12:
+ 215 0010 C8B9     		cbnz	r0, .L25
+  32:Core/Src/Code/Detector.c ****   {
+  33:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->normalRelay.Port,detector->normalRelay.Pin,1);
+  34:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->firstDangerRelay.Port,detector->firstDangerRelay.Pin,0);
+  35:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->secondDangerRelay.Port,detector->secondDangerRelay.Pin,0);
+  36:Core/Src/Code/Detector.c ****   }
+  37:Core/Src/Code/Detector.c ****   else if(detector->uSvValue >= detector->firstDangerValue && detector->uSvValue < detector->second
+ 216              		.loc 1 37 8 is_stmt 1 view .LVU41
+ 217              		.loc 1 37 10 is_stmt 0 view .LVU42
+ 218 0012 3146     		mov	r1, r6
+ 219 0014 2846     		mov	r0, r5
+ 220 0016 FFF7FEFF 		bl	__aeabi_fcmpge
+ 221              	.LVL13:
+ 222 001a 20B1     		cbz	r0, .L17
+ 223              		.loc 1 37 60 discriminator 1 view .LVU43
+ 224 001c E168     		ldr	r1, [r4, #12]	@ float
+ 225 001e 2846     		mov	r0, r5
+ 226 0020 FFF7FEFF 		bl	__aeabi_fcmplt
+ 227              	.LVL14:
+ 228 0024 F8B9     		cbnz	r0, .L26
+ 229              	.L17:
+  38:Core/Src/Code/Detector.c ****   {
+  39:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->normalRelay.Port,detector->normalRelay.Pin,0);
+  40:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->firstDangerRelay.Port,detector->firstDangerRelay.Pin,1);
+  41:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->secondDangerRelay.Port,detector->secondDangerRelay.Pin,0);
+  42:Core/Src/Code/Detector.c ****   }
+  43:Core/Src/Code/Detector.c ****   else 
+  44:Core/Src/Code/Detector.c ****   {
+  45:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->normalRelay.Port,detector->normalRelay.Pin,0);
+ 230              		.loc 1 45 5 is_stmt 1 view .LVU44
+ 231 0026 0022     		movs	r2, #0
+ 232 0028 A18C     		ldrh	r1, [r4, #36]
+ 233 002a 206A     		ldr	r0, [r4, #32]
+ 234 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 235              	.LVL15:
+  46:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->firstDangerRelay.Port,detector->firstDangerRelay.Pin,0);
+ 236              		.loc 1 46 5 view .LVU45
+ 237 0030 0022     		movs	r2, #0
+ 238 0032 A18D     		ldrh	r1, [r4, #44]
+ 239 0034 A06A     		ldr	r0, [r4, #40]
+ 240 0036 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 241              	.LVL16:
+  47:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->secondDangerRelay.Port,detector->secondDangerRelay.Pin,1);
+ 242              		.loc 1 47 5 view .LVU46
+ 243 003a 0122     		movs	r2, #1
+ 244 003c A18E     		ldrh	r1, [r4, #52]
+ 245 003e 206B     		ldr	r0, [r4, #48]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 6
+
+
+ 246 0040 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 247              	.LVL17:
+ 248              	.L13:
+  48:Core/Src/Code/Detector.c ****   }
+  49:Core/Src/Code/Detector.c **** }
+ 249              		.loc 1 49 1 is_stmt 0 view .LVU47
+ 250 0044 70BD     		pop	{r4, r5, r6, pc}
+ 251              	.LVL18:
+ 252              	.L25:
+  33:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->firstDangerRelay.Port,detector->firstDangerRelay.Pin,0);
+ 253              		.loc 1 33 5 is_stmt 1 view .LVU48
+ 254 0046 0122     		movs	r2, #1
+ 255 0048 A18C     		ldrh	r1, [r4, #36]
+ 256 004a 206A     		ldr	r0, [r4, #32]
+ 257 004c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 258              	.LVL19:
+  34:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->secondDangerRelay.Port,detector->secondDangerRelay.Pin,0);
+ 259              		.loc 1 34 5 view .LVU49
+ 260 0050 0022     		movs	r2, #0
+ 261 0052 A18D     		ldrh	r1, [r4, #44]
+ 262 0054 A06A     		ldr	r0, [r4, #40]
+ 263 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 264              	.LVL20:
+  35:Core/Src/Code/Detector.c ****   }
+ 265              		.loc 1 35 5 view .LVU50
+ 266 005a 0022     		movs	r2, #0
+ 267 005c A18E     		ldrh	r1, [r4, #52]
+ 268 005e 206B     		ldr	r0, [r4, #48]
+ 269 0060 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 270              	.LVL21:
+ 271 0064 EEE7     		b	.L13
+ 272              	.L26:
+  39:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->firstDangerRelay.Port,detector->firstDangerRelay.Pin,1);
+ 273              		.loc 1 39 5 view .LVU51
+ 274 0066 0022     		movs	r2, #0
+ 275 0068 A18C     		ldrh	r1, [r4, #36]
+ 276 006a 206A     		ldr	r0, [r4, #32]
+ 277 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 278              	.LVL22:
+  40:Core/Src/Code/Detector.c ****     HAL_GPIO_WritePin(detector->secondDangerRelay.Port,detector->secondDangerRelay.Pin,0);
+ 279              		.loc 1 40 5 view .LVU52
+ 280 0070 0122     		movs	r2, #1
+ 281 0072 A18D     		ldrh	r1, [r4, #44]
+ 282 0074 A06A     		ldr	r0, [r4, #40]
+ 283 0076 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 284              	.LVL23:
+  41:Core/Src/Code/Detector.c ****   }
+ 285              		.loc 1 41 5 view .LVU53
+ 286 007a 0022     		movs	r2, #0
+ 287 007c A18E     		ldrh	r1, [r4, #52]
+ 288 007e 206B     		ldr	r0, [r4, #48]
+ 289 0080 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 290              	.LVL24:
+ 291 0084 DEE7     		b	.L13
+ 292              		.cfi_endproc
+ 293              	.LFE71:
+ 295              		.section	.bss.Detector_Bg,"aw",%nobits
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 7
+
+
+ 296              		.align	2
+ 297              		.set	.LANCHOR1,. + 0
+ 300              	Detector_Bg:
+ 301 0000 00000000 		.space	4
+ 302              		.section	.data.Detector_Kg,"aw"
+ 303              		.align	2
+ 304              		.set	.LANCHOR0,. + 0
+ 307              	Detector_Kg:
+ 308 0000 6FD8B63A 		.word	985061487
+ 309              		.text
+ 310              	.Letext0:
+ 311              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 312              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 313              		.file 4 "Core/Src/Code/StatPM.h"
+ 314              		.file 5 "Core/Src/NOS_Typedefs.h"
+ 315              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccfWKrRe.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Detector.c
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:16     .text.Detector_Init_Param:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:24     .text.Detector_Init_Param:0000000000000000 Detector_Init_Param
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:46     .text.Detector_Init_Param:000000000000000c $d
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:55     .text.Detector_GetuZvValue:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:62     .text.Detector_GetuZvValue:0000000000000000 Detector_GetuZvValue
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:113    .text.Detector_GetuZvValue:0000000000000028 $d
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:119    .bss.Detector_Bg:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:123    .bss.Detector_Bg:0000000000000000 Detector_Bg
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:126    .data.Detector_Kg:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\cc5twiZg.s:130    .data.Detector_Kg:0000000000000000 Detector_Kg
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:16     .text.Detector_Init_Param:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:24     .text.Detector_Init_Param:0000000000000000 Detector_Init_Param
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:46     .text.Detector_Init_Param:000000000000000c $d
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:55     .text.Detector_GetuZvValue:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:62     .text.Detector_GetuZvValue:0000000000000000 Detector_GetuZvValue
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:113    .text.Detector_GetuZvValue:0000000000000028 $d
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:119    .text.Detector_Init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:126    .text.Detector_Init:0000000000000000 Detector_Init
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:180    .text.RelaysStateProc:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:187    .text.RelaysStateProc:0000000000000000 RelaysStateProc
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:296    .bss.Detector_Bg:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:300    .bss.Detector_Bg:0000000000000000 Detector_Bg
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:303    .data.Detector_Kg:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccfWKrRe.s:307    .data.Detector_Kg:0000000000000000 Detector_Kg
 
 UNDEFINED SYMBOLS
 __aeabi_fcmpgt
 __aeabi_fsub
 __aeabi_fmul
+__aeabi_fcmple
+__aeabi_fcmpge
+__aeabi_fcmplt
+HAL_GPIO_WritePin
