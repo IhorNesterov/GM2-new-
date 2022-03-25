@@ -33,6 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define Debug
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -184,6 +185,7 @@ void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
 
 void GM2_SendDebugData()
 {
+   HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,0);
   uint8_t debugBuff[32];
  debugBuff[0] = detector.address;
  NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount1,1);
@@ -196,9 +198,9 @@ void GM2_SendDebugData()
  NOS_ModBus_AddFloatToBuff(&debugBuff,coef,21);
  NOS_ModBus_AddUint16ToBuff(&debugBuff,detector.voltage,25);
 
- HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,1);
  HAL_UART_Transmit_IT(&huart1,debugBuff,26);
- HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,0);
+ HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,1);
+ 
 }
 
 void SysTick_Handler(void)
@@ -211,7 +213,7 @@ void SysTick_Handler(void)
 time.data++;
 
 if(time.data >= 250) {
-  globalTickCount = tickcount1 + tickcount2;
+   globalTickCount = tickcount1 + tickcount2;
    Stat_AddData250ms(globalTickCount);
    tickcount1 = 0;
    tickcount2 = 0;      
@@ -225,7 +227,7 @@ void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
   tickcount1++;
- // HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
@@ -342,7 +344,7 @@ int main(void)
           slave.Byte_Count = 4;
           slave.type = 1;
           break;
-#ifdef DEBUG
+#ifdef Debug
           case 0xFF00:
           GM2_SendDebugData();
           DebugData = true;
