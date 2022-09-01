@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
   30:Core/Src/Code/stat.c **** typedef struct {
   31:Core/Src/Code/stat.c ****     uint8_t high[STAT_K_NUMBER];
   32:Core/Src/Code/stat.c ****     uint8_t low;
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 2
 
 
   33:Core/Src/Code/stat.c **** } stat_ksigm_t;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
   87:Core/Src/Code/stat.c **** void stat_add (stat_pulses_t n, stat_time_t t)
   88:Core/Src/Code/stat.c **** {
   89:Core/Src/Code/stat.c ****     stat_elem_t first_in_row = {n, t},
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 3
 
 
   90:Core/Src/Code/stat.c ****                 last_in_row = {0U, 0U};
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
  144:Core/Src/Code/stat.c **** static void sum (stat_elem_t *result, const stat_elem_t *begin, const stat_elem_t *end)
  145:Core/Src/Code/stat.c **** {
   27              		.loc 1 145 1 view -0
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 4
 
 
   28              		.cfi_startproc
@@ -187,760 +187,749 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
   31              		@ link register save eliminated.
   32              		.loc 1 145 1 is_stmt 0 view .LVU1
   33 0000 30B4     		push	{r4, r5}
-  34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 4, -8
-  37              		.cfi_offset 5, -4
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 5, -4
  146:Core/Src/Code/stat.c ****     const stat_elem_t *current = begin;
-  38              		.loc 1 146 5 is_stmt 1 view .LVU2
-  39              	.LVL1:
+  37              		.loc 1 146 5 is_stmt 1 view .LVU2
+  38              	.LVL1:
  147:Core/Src/Code/stat.c ****     result->n = 0U;
-  40              		.loc 1 147 5 view .LVU3
-  41              		.loc 1 147 15 is_stmt 0 view .LVU4
-  42 0002 0023     		movs	r3, #0
-  43 0004 0360     		str	r3, [r0]
+  39              		.loc 1 147 5 view .LVU3
+  40              		.loc 1 147 15 is_stmt 0 view .LVU4
+  41 0002 0023     		movs	r3, #0
+  42 0004 0360     		str	r3, [r0]
  148:Core/Src/Code/stat.c ****     result->t = 0U;
-  44              		.loc 1 148 5 is_stmt 1 view .LVU5
-  45              		.loc 1 148 15 is_stmt 0 view .LVU6
-  46 0006 0024     		movs	r4, #0
-  47 0008 0025     		movs	r5, #0
-  48 000a C0E90245 		strd	r4, [r0, #8]
+  43              		.loc 1 148 5 is_stmt 1 view .LVU5
+  44              		.loc 1 148 15 is_stmt 0 view .LVU6
+  45 0006 0024     		movs	r4, #0
+  46 0008 0025     		movs	r5, #0
+  47 000a C0E90245 		strd	r4, [r0, #8]
  149:Core/Src/Code/stat.c ****     while (current != end)
-  49              		.loc 1 149 5 is_stmt 1 view .LVU7
-  50              		.loc 1 149 11 is_stmt 0 view .LVU8
-  51 000e 0DE0     		b	.L2
-  52              	.LVL2:
-  53              	.L3:
+  48              		.loc 1 149 5 is_stmt 1 view .LVU7
+  49              		.loc 1 149 11 is_stmt 0 view .LVU8
+  50 000e 0DE0     		b	.L2
+  51              	.LVL2:
+  52              	.L3:
  150:Core/Src/Code/stat.c ****     {
  151:Core/Src/Code/stat.c ****         result->n += current->n;
-  54              		.loc 1 151 9 is_stmt 1 view .LVU9
-  55              		.loc 1 151 29 is_stmt 0 view .LVU10
-  56 0010 0C68     		ldr	r4, [r1]
-  57              		.loc 1 151 19 view .LVU11
-  58 0012 0368     		ldr	r3, [r0]
-  59 0014 2344     		add	r3, r3, r4
-  60 0016 0360     		str	r3, [r0]
+  53              		.loc 1 151 9 is_stmt 1 view .LVU9
+  54              		.loc 1 151 29 is_stmt 0 view .LVU10
+  55 0010 0C68     		ldr	r4, [r1]
+  56              		.loc 1 151 19 view .LVU11
+  57 0012 0368     		ldr	r3, [r0]
+  58 0014 2344     		add	r3, r3, r4
+  59 0016 0360     		str	r3, [r0]
  152:Core/Src/Code/stat.c ****         result->t += current->t;
-  61              		.loc 1 152 9 is_stmt 1 view .LVU12
-  62              		.loc 1 152 19 is_stmt 0 view .LVU13
-  63 0018 8368     		ldr	r3, [r0, #8]
-  64 001a C468     		ldr	r4, [r0, #12]
-  65 001c 8D68     		ldr	r5, [r1, #8]
-  66 001e 5B19     		adds	r3, r3, r5
-  67 0020 CD68     		ldr	r5, [r1, #12]
-  68 0022 45EB0404 		adc	r4, r5, r4
-  69 0026 8360     		str	r3, [r0, #8]
-  70 0028 C460     		str	r4, [r0, #12]
+  60              		.loc 1 152 9 is_stmt 1 view .LVU12
+  61              		.loc 1 152 19 is_stmt 0 view .LVU13
+  62 0018 8368     		ldr	r3, [r0, #8]
+  63 001a C468     		ldr	r4, [r0, #12]
+  64 001c 8D68     		ldr	r5, [r1, #8]
+  65 001e 5B19     		adds	r3, r3, r5
+  66 0020 CD68     		ldr	r5, [r1, #12]
+  67 0022 45EB0404 		adc	r4, r5, r4
+  68 0026 8360     		str	r3, [r0, #8]
+  69 0028 C460     		str	r4, [r0, #12]
  153:Core/Src/Code/stat.c ****         current += 1U;
-  71              		.loc 1 153 9 is_stmt 1 view .LVU14
-  72              		.loc 1 153 17 is_stmt 0 view .LVU15
-  73 002a 1031     		adds	r1, r1, #16
-  74              	.LVL3:
-  75              	.L2:
+  70              		.loc 1 153 9 is_stmt 1 view .LVU14
+  71              		.loc 1 153 17 is_stmt 0 view .LVU15
+  72 002a 1031     		adds	r1, r1, #16
+  73              	.LVL3:
+  74              	.L2:
  149:Core/Src/Code/stat.c ****     {
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 5
+  75              		.loc 1 149 11 is_stmt 1 view .LVU16
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 5
 
 
-  76              		.loc 1 149 11 is_stmt 1 view .LVU16
-  77 002c 9142     		cmp	r1, r2
-  78 002e EFD1     		bne	.L3
+  76 002c 9142     		cmp	r1, r2
+  77 002e EFD1     		bne	.L3
  154:Core/Src/Code/stat.c ****     }
  155:Core/Src/Code/stat.c **** }
-  79              		.loc 1 155 1 is_stmt 0 view .LVU17
-  80 0030 30BC     		pop	{r4, r5}
-  81              	.LCFI1:
-  82              		.cfi_restore 5
-  83              		.cfi_restore 4
-  84              		.cfi_def_cfa_offset 0
-  85 0032 7047     		bx	lr
-  86              		.cfi_endproc
-  87              	.LFE8:
-  89              		.global	__aeabi_fcmpeq
-  90              		.global	__aeabi_fdiv
-  91              		.section	.text.stat_SetDeatTime,"ax",%progbits
-  92              		.align	1
-  93              		.global	stat_SetDeatTime
-  94              		.syntax unified
-  95              		.thumb
-  96              		.thumb_func
-  97              		.fpu softvfp
-  99              	stat_SetDeatTime:
- 100              	.LVL4:
- 101              	.LFB3:
+  78              		.loc 1 155 1 is_stmt 0 view .LVU17
+  79 0030 30BC     		pop	{r4, r5}
+  80              		.cfi_restore 5
+  81              		.cfi_restore 4
+  82              		.cfi_def_cfa_offset 0
+  83 0032 7047     		bx	lr
+  84              		.cfi_endproc
+  85              	.LFE8:
+  87              		.global	__aeabi_fcmpeq
+  88              		.global	__aeabi_fdiv
+  89              		.section	.text.stat_SetDeatTime,"ax",%progbits
+  90              		.align	1
+  91              		.global	stat_SetDeatTime
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  95              		.fpu softvfp
+  97              	stat_SetDeatTime:
+  98              	.LVL4:
+  99              	.LFB3:
   45:Core/Src/Code/stat.c ****   tau = t;
- 102              		.loc 1 45 32 is_stmt 1 view -0
- 103              		.cfi_startproc
- 104              		@ args = 0, pretend = 0, frame = 0
- 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		.loc 1 45 32 is_stmt 1 view -0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
   45:Core/Src/Code/stat.c ****   tau = t;
- 106              		.loc 1 45 32 is_stmt 0 view .LVU19
- 107 0000 10B5     		push	{r4, lr}
- 108              	.LCFI2:
- 109              		.cfi_def_cfa_offset 8
- 110              		.cfi_offset 4, -8
- 111              		.cfi_offset 14, -4
- 112 0002 0446     		mov	r4, r0
+ 104              		.loc 1 45 32 is_stmt 0 view .LVU19
+ 105 0000 10B5     		push	{r4, lr}
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 4, -8
+ 108              		.cfi_offset 14, -4
+ 109 0002 0446     		mov	r4, r0
   46:Core/Src/Code/stat.c ****   if (tau==0) tau_1x=0;
- 113              		.loc 1 46 3 is_stmt 1 view .LVU20
+ 110              		.loc 1 46 3 is_stmt 1 view .LVU20
   46:Core/Src/Code/stat.c ****   if (tau==0) tau_1x=0;
- 114              		.loc 1 46 7 is_stmt 0 view .LVU21
- 115 0004 084B     		ldr	r3, .L12
- 116 0006 1860     		str	r0, [r3]	@ float
+ 111              		.loc 1 46 7 is_stmt 0 view .LVU21
+ 112 0004 084B     		ldr	r3, .L12
+ 113 0006 1860     		str	r0, [r3]	@ float
   47:Core/Src/Code/stat.c ****   else tau_1x = 1.0/tau;
- 117              		.loc 1 47 3 is_stmt 1 view .LVU22
+ 114              		.loc 1 47 3 is_stmt 1 view .LVU22
   47:Core/Src/Code/stat.c ****   else tau_1x = 1.0/tau;
- 118              		.loc 1 47 6 is_stmt 0 view .LVU23
- 119 0008 0021     		movs	r1, #0
- 120 000a FFF7FEFF 		bl	__aeabi_fcmpeq
- 121              	.LVL5:
+ 115              		.loc 1 47 6 is_stmt 0 view .LVU23
+ 116 0008 0021     		movs	r1, #0
+ 117 000a FFF7FEFF 		bl	__aeabi_fcmpeq
+ 118              	.LVL5:
   47:Core/Src/Code/stat.c ****   else tau_1x = 1.0/tau;
- 122              		.loc 1 47 6 view .LVU24
- 123 000e 18B1     		cbz	r0, .L10
+ 119              		.loc 1 47 6 view .LVU24
+ 120 000e 18B1     		cbz	r0, .L10
   47:Core/Src/Code/stat.c ****   else tau_1x = 1.0/tau;
- 124              		.loc 1 47 15 is_stmt 1 discriminator 1 view .LVU25
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 6
+ 121              		.loc 1 47 15 is_stmt 1 discriminator 1 view .LVU25
+  47:Core/Src/Code/stat.c ****   else tau_1x = 1.0/tau;
+ 122              		.loc 1 47 21 is_stmt 0 discriminator 1 view .LVU26
+ 123 0010 064B     		ldr	r3, .L12+4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 6
 
 
-  47:Core/Src/Code/stat.c ****   else tau_1x = 1.0/tau;
- 125              		.loc 1 47 21 is_stmt 0 discriminator 1 view .LVU26
- 126 0010 064B     		ldr	r3, .L12+4
- 127 0012 0022     		movs	r2, #0
- 128 0014 1A60     		str	r2, [r3]	@ float
- 129              	.L5:
+ 124 0012 0022     		movs	r2, #0
+ 125 0014 1A60     		str	r2, [r3]	@ float
+ 126              	.L5:
   49:Core/Src/Code/stat.c **** 
- 130              		.loc 1 49 1 view .LVU27
- 131 0016 10BD     		pop	{r4, pc}
- 132              	.LVL6:
- 133              	.L10:
+ 127              		.loc 1 49 1 view .LVU27
+ 128 0016 10BD     		pop	{r4, pc}
+ 129              	.LVL6:
+ 130              	.L10:
   48:Core/Src/Code/stat.c **** }
- 134              		.loc 1 48 8 is_stmt 1 view .LVU28
+ 131              		.loc 1 48 8 is_stmt 1 view .LVU28
   48:Core/Src/Code/stat.c **** }
- 135              		.loc 1 48 20 is_stmt 0 view .LVU29
- 136 0018 2146     		mov	r1, r4
- 137 001a 4FF07E50 		mov	r0, #1065353216
- 138 001e FFF7FEFF 		bl	__aeabi_fdiv
- 139              	.LVL7:
+ 132              		.loc 1 48 20 is_stmt 0 view .LVU29
+ 133 0018 2146     		mov	r1, r4
+ 134 001a 4FF07E50 		mov	r0, #1065353216
+ 135 001e FFF7FEFF 		bl	__aeabi_fdiv
+ 136              	.LVL7:
   48:Core/Src/Code/stat.c **** }
- 140              		.loc 1 48 15 view .LVU30
- 141 0022 024B     		ldr	r3, .L12+4
- 142 0024 1860     		str	r0, [r3]	@ float
+ 137              		.loc 1 48 15 view .LVU30
+ 138 0022 024B     		ldr	r3, .L12+4
+ 139 0024 1860     		str	r0, [r3]	@ float
   49:Core/Src/Code/stat.c **** 
- 143              		.loc 1 49 1 view .LVU31
- 144 0026 F6E7     		b	.L5
- 145              	.L13:
- 146              		.align	2
- 147              	.L12:
- 148 0028 00000000 		.word	.LANCHOR0
- 149 002c 00000000 		.word	.LANCHOR1
- 150              		.cfi_endproc
- 151              	.LFE3:
- 153              		.global	__aeabi_fcmplt
- 154              		.global	__aeabi_fmul
- 155              		.global	__aeabi_fsub
- 156              		.section	.text.Get_Tau_CPS,"ax",%progbits
- 157              		.align	1
- 158              		.global	Get_Tau_CPS
- 159              		.syntax unified
- 160              		.thumb
- 161              		.thumb_func
- 162              		.fpu softvfp
- 164              	Get_Tau_CPS:
- 165              	.LVL8:
- 166              	.LFB4:
+ 140              		.loc 1 49 1 view .LVU31
+ 141 0026 F6E7     		b	.L5
+ 142              	.L13:
+ 143              		.align	2
+ 144              	.L12:
+ 145 0028 00000000 		.word	.LANCHOR0
+ 146 002c 00000000 		.word	.LANCHOR1
+ 147              		.cfi_endproc
+ 148              	.LFE3:
+ 150              		.global	__aeabi_fcmplt
+ 151              		.global	__aeabi_fmul
+ 152              		.global	__aeabi_fsub
+ 153              		.section	.text.Get_Tau_CPS,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	Get_Tau_CPS
+ 156              		.syntax unified
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.fpu softvfp
+ 161              	Get_Tau_CPS:
+ 162              	.LVL8:
+ 163              	.LFB4:
   52:Core/Src/Code/stat.c ****   float k;
- 167              		.loc 1 52 31 is_stmt 1 view -0
- 168              		.cfi_startproc
- 169              		@ args = 0, pretend = 0, frame = 0
- 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		.loc 1 52 31 is_stmt 1 view -0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
   52:Core/Src/Code/stat.c ****   float k;
- 171              		.loc 1 52 31 is_stmt 0 view .LVU33
- 172 0000 38B5     		push	{r3, r4, r5, lr}
- 173              	.LCFI3:
- 174              		.cfi_def_cfa_offset 16
- 175              		.cfi_offset 3, -16
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 7
+ 168              		.loc 1 52 31 is_stmt 0 view .LVU33
+ 169 0000 38B5     		push	{r3, r4, r5, lr}
+ 170              		.cfi_def_cfa_offset 16
+ 171              		.cfi_offset 3, -16
+ 172              		.cfi_offset 4, -12
+ 173              		.cfi_offset 5, -8
+ 174              		.cfi_offset 14, -4
+ 175 0002 0446     		mov	r4, r0
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 7
 
 
- 176              		.cfi_offset 4, -12
- 177              		.cfi_offset 5, -8
- 178              		.cfi_offset 14, -4
- 179 0002 0446     		mov	r4, r0
   53:Core/Src/Code/stat.c ****   if (tau_1x!=0) {
- 180              		.loc 1 53 3 is_stmt 1 view .LVU34
+ 176              		.loc 1 53 3 is_stmt 1 view .LVU34
   54:Core/Src/Code/stat.c ****       if (CPS>tau_1x) {
- 181              		.loc 1 54 3 view .LVU35
+ 177              		.loc 1 54 3 view .LVU35
   54:Core/Src/Code/stat.c ****       if (CPS>tau_1x) {
- 182              		.loc 1 54 13 is_stmt 0 view .LVU36
- 183 0004 114B     		ldr	r3, .L23
- 184 0006 1D68     		ldr	r5, [r3]	@ float
+ 178              		.loc 1 54 13 is_stmt 0 view .LVU36
+ 179 0004 114B     		ldr	r3, .L23
+ 180 0006 1D68     		ldr	r5, [r3]	@ float
   54:Core/Src/Code/stat.c ****       if (CPS>tau_1x) {
- 185              		.loc 1 54 6 view .LVU37
- 186 0008 0021     		movs	r1, #0
- 187 000a 2846     		mov	r0, r5
- 188              	.LVL9:
+ 181              		.loc 1 54 6 view .LVU37
+ 182 0008 0021     		movs	r1, #0
+ 183 000a 2846     		mov	r0, r5
+ 184              	.LVL9:
   54:Core/Src/Code/stat.c ****       if (CPS>tau_1x) {
- 189              		.loc 1 54 6 view .LVU38
- 190 000c FFF7FEFF 		bl	__aeabi_fcmpeq
- 191              	.LVL10:
- 192 0010 48B9     		cbnz	r0, .L15
+ 185              		.loc 1 54 6 view .LVU38
+ 186 000c FFF7FEFF 		bl	__aeabi_fcmpeq
+ 187              	.LVL10:
+ 188 0010 48B9     		cbnz	r0, .L15
   55:Core/Src/Code/stat.c ****             CPS *= tau_1x;
- 193              		.loc 1 55 7 is_stmt 1 view .LVU39
+ 189              		.loc 1 55 7 is_stmt 1 view .LVU39
   55:Core/Src/Code/stat.c ****             CPS *= tau_1x;
- 194              		.loc 1 55 10 is_stmt 0 view .LVU40
- 195 0012 2146     		mov	r1, r4
- 196 0014 2846     		mov	r0, r5
- 197 0016 FFF7FEFF 		bl	__aeabi_fcmplt
- 198              	.LVL11:
- 199 001a 30B1     		cbz	r0, .L21
+ 190              		.loc 1 55 10 is_stmt 0 view .LVU40
+ 191 0012 2146     		mov	r1, r4
+ 192 0014 2846     		mov	r0, r5
+ 193 0016 FFF7FEFF 		bl	__aeabi_fcmplt
+ 194              	.LVL11:
+ 195 001a 30B1     		cbz	r0, .L21
   56:Core/Src/Code/stat.c ****       } else {
- 200              		.loc 1 56 13 is_stmt 1 view .LVU41
+ 196              		.loc 1 56 13 is_stmt 1 view .LVU41
   56:Core/Src/Code/stat.c ****       } else {
- 201              		.loc 1 56 17 is_stmt 0 view .LVU42
- 202 001c 2946     		mov	r1, r5
- 203 001e 2046     		mov	r0, r4
- 204 0020 FFF7FEFF 		bl	__aeabi_fmul
- 205              	.LVL12:
- 206 0024 0446     		mov	r4, r0
- 207              	.LVL13:
- 208              	.L15:
+ 197              		.loc 1 56 17 is_stmt 0 view .LVU42
+ 198 001c 2946     		mov	r1, r5
+ 199 001e 2046     		mov	r0, r4
+ 200 0020 FFF7FEFF 		bl	__aeabi_fmul
+ 201              	.LVL12:
+ 202 0024 0446     		mov	r4, r0
+ 203              	.LVL13:
+ 204              	.L15:
   64:Core/Src/Code/stat.c **** }
- 209              		.loc 1 64 3 is_stmt 1 view .LVU43
+ 205              		.loc 1 64 3 is_stmt 1 view .LVU43
   65:Core/Src/Code/stat.c **** 
- 210              		.loc 1 65 1 is_stmt 0 view .LVU44
- 211 0026 2046     		mov	r0, r4
- 212 0028 38BD     		pop	{r3, r4, r5, pc}
- 213              	.LVL14:
- 214              	.L21:
+ 206              		.loc 1 65 1 is_stmt 0 view .LVU44
+ 207 0026 2046     		mov	r0, r4
+ 208 0028 38BD     		pop	{r3, r4, r5, pc}
+ 209              	.LVL14:
+ 210              	.L21:
   58:Core/Src/Code/stat.c ****             k   *= tau;
- 215              		.loc 1 58 13 is_stmt 1 view .LVU45
+ 211              		.loc 1 58 13 is_stmt 1 view .LVU45
   59:Core/Src/Code/stat.c ****             k    = (1.0 - k);
- 216              		.loc 1 59 13 view .LVU46
+ 212              		.loc 1 59 13 view .LVU46
   59:Core/Src/Code/stat.c ****             k    = (1.0 - k);
- 217              		.loc 1 59 17 is_stmt 0 view .LVU47
- 218 002a 094B     		ldr	r3, .L23+4
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 8
+ 213              		.loc 1 59 17 is_stmt 0 view .LVU47
+ 214 002a 094B     		ldr	r3, .L23+4
+ 215 002c 1968     		ldr	r1, [r3]	@ float
+ 216 002e 2046     		mov	r0, r4
+ 217 0030 FFF7FEFF 		bl	__aeabi_fmul
+ 218              	.LVL15:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 8
 
 
- 219 002c 1968     		ldr	r1, [r3]	@ float
- 220 002e 2046     		mov	r0, r4
- 221 0030 FFF7FEFF 		bl	__aeabi_fmul
- 222              	.LVL15:
- 223 0034 0146     		mov	r1, r0
- 224              	.LVL16:
+ 219 0034 0146     		mov	r1, r0
+ 220              	.LVL16:
   60:Core/Src/Code/stat.c ****             CPS /= k;
- 225              		.loc 1 60 13 is_stmt 1 view .LVU48
+ 221              		.loc 1 60 13 is_stmt 1 view .LVU48
   60:Core/Src/Code/stat.c ****             CPS /= k;
- 226              		.loc 1 60 18 is_stmt 0 view .LVU49
- 227 0036 4FF07E50 		mov	r0, #1065353216
- 228              	.LVL17:
+ 222              		.loc 1 60 18 is_stmt 0 view .LVU49
+ 223 0036 4FF07E50 		mov	r0, #1065353216
+ 224              	.LVL17:
   60:Core/Src/Code/stat.c ****             CPS /= k;
- 229              		.loc 1 60 18 view .LVU50
- 230 003a FFF7FEFF 		bl	__aeabi_fsub
- 231              	.LVL18:
+ 225              		.loc 1 60 18 view .LVU50
+ 226 003a FFF7FEFF 		bl	__aeabi_fsub
+ 227              	.LVL18:
   60:Core/Src/Code/stat.c ****             CPS /= k;
- 232              		.loc 1 60 18 view .LVU51
- 233 003e 0146     		mov	r1, r0
- 234              	.LVL19:
+ 228              		.loc 1 60 18 view .LVU51
+ 229 003e 0146     		mov	r1, r0
+ 230              	.LVL19:
   61:Core/Src/Code/stat.c ****       }
- 235              		.loc 1 61 13 is_stmt 1 view .LVU52
+ 231              		.loc 1 61 13 is_stmt 1 view .LVU52
   61:Core/Src/Code/stat.c ****       }
- 236              		.loc 1 61 17 is_stmt 0 view .LVU53
- 237 0040 2046     		mov	r0, r4
- 238              	.LVL20:
+ 232              		.loc 1 61 17 is_stmt 0 view .LVU53
+ 233 0040 2046     		mov	r0, r4
+ 234              	.LVL20:
   61:Core/Src/Code/stat.c ****       }
- 239              		.loc 1 61 17 view .LVU54
- 240 0042 FFF7FEFF 		bl	__aeabi_fdiv
- 241              	.LVL21:
+ 235              		.loc 1 61 17 view .LVU54
+ 236 0042 FFF7FEFF 		bl	__aeabi_fdiv
+ 237              	.LVL21:
   61:Core/Src/Code/stat.c ****       }
- 242              		.loc 1 61 17 view .LVU55
- 243 0046 0446     		mov	r4, r0
- 244              	.LVL22:
+ 238              		.loc 1 61 17 view .LVU55
+ 239 0046 0446     		mov	r4, r0
+ 240              	.LVL22:
   61:Core/Src/Code/stat.c ****       }
- 245              		.loc 1 61 17 view .LVU56
- 246 0048 EDE7     		b	.L15
- 247              	.L24:
- 248 004a 00BF     		.align	2
- 249              	.L23:
- 250 004c 00000000 		.word	.LANCHOR1
- 251 0050 00000000 		.word	.LANCHOR0
- 252              		.cfi_endproc
- 253              	.LFE4:
- 255              		.section	.text.stat_reset,"ax",%progbits
- 256              		.align	1
- 257              		.global	stat_reset
- 258              		.syntax unified
- 259              		.thumb
- 260              		.thumb_func
- 261              		.fpu softvfp
- 263              	stat_reset:
- 264              	.LFB5:
+ 241              		.loc 1 61 17 view .LVU56
+ 242 0048 EDE7     		b	.L15
+ 243              	.L24:
+ 244 004a 00BF     		.align	2
+ 245              	.L23:
+ 246 004c 00000000 		.word	.LANCHOR1
+ 247 0050 00000000 		.word	.LANCHOR0
+ 248              		.cfi_endproc
+ 249              	.LFE4:
+ 251              		.section	.text.stat_reset,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	stat_reset
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 257              		.fpu softvfp
+ 259              	stat_reset:
+ 260              	.LFB5:
   67:Core/Src/Code/stat.c ****     stat_end = statistic;
- 265              		.loc 1 67 24 is_stmt 1 view -0
- 266              		.cfi_startproc
- 267              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 9
+ 261              		.loc 1 67 24 is_stmt 1 view -0
+ 262              		.cfi_startproc
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265              		@ link register save eliminated.
+  68:Core/Src/Code/stat.c ****     memset(stat_elem_n, 0U, sizeof stat_elem_n);
+ 266              		.loc 1 68 5 view .LVU58
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 9
 
 
- 268              		@ frame_needed = 0, uses_anonymous_args = 0
- 269              		@ link register save eliminated.
   68:Core/Src/Code/stat.c ****     memset(stat_elem_n, 0U, sizeof stat_elem_n);
- 270              		.loc 1 68 5 view .LVU58
-  68:Core/Src/Code/stat.c ****     memset(stat_elem_n, 0U, sizeof stat_elem_n);
- 271              		.loc 1 68 14 is_stmt 0 view .LVU59
- 272 0000 044B     		ldr	r3, .L26
- 273 0002 054A     		ldr	r2, .L26+4
- 274 0004 1A60     		str	r2, [r3]
+ 267              		.loc 1 68 14 is_stmt 0 view .LVU59
+ 268 0000 044B     		ldr	r3, .L26
+ 269 0002 054A     		ldr	r2, .L26+4
+ 270 0004 1A60     		str	r2, [r3]
   69:Core/Src/Code/stat.c **** }
- 275              		.loc 1 69 5 is_stmt 1 view .LVU60
- 276 0006 054B     		ldr	r3, .L26+8
- 277 0008 0022     		movs	r2, #0
- 278 000a 1A60     		str	r2, [r3]
- 279 000c 5A60     		str	r2, [r3, #4]
- 280 000e 1A72     		strb	r2, [r3, #8]
+ 271              		.loc 1 69 5 is_stmt 1 view .LVU60
+ 272 0006 054B     		ldr	r3, .L26+8
+ 273 0008 0022     		movs	r2, #0
+ 274 000a 1A60     		str	r2, [r3]
+ 275 000c 5A60     		str	r2, [r3, #4]
+ 276 000e 1A72     		strb	r2, [r3, #8]
   70:Core/Src/Code/stat.c **** 
- 281              		.loc 1 70 1 is_stmt 0 view .LVU61
- 282 0010 7047     		bx	lr
- 283              	.L27:
- 284 0012 00BF     		.align	2
- 285              	.L26:
- 286 0014 00000000 		.word	.LANCHOR2
- 287 0018 00000000 		.word	.LANCHOR3
- 288 001c 00000000 		.word	.LANCHOR4
- 289              		.cfi_endproc
- 290              	.LFE5:
- 292              		.section	.text.stat_accumulate,"ax",%progbits
- 293              		.align	1
- 294              		.global	stat_accumulate
- 295              		.syntax unified
- 296              		.thumb
- 297              		.thumb_func
- 298              		.fpu softvfp
- 300              	stat_accumulate:
- 301              	.LVL23:
- 302              	.LFB6:
+ 277              		.loc 1 70 1 is_stmt 0 view .LVU61
+ 278 0010 7047     		bx	lr
+ 279              	.L27:
+ 280 0012 00BF     		.align	2
+ 281              	.L26:
+ 282 0014 00000000 		.word	.LANCHOR2
+ 283 0018 00000000 		.word	.LANCHOR3
+ 284 001c 00000000 		.word	.LANCHOR4
+ 285              		.cfi_endproc
+ 286              	.LFE5:
+ 288              		.section	.text.stat_accumulate,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	stat_accumulate
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.fpu softvfp
+ 296              	stat_accumulate:
+ 297              	.LVL23:
+ 298              	.LFB6:
   73:Core/Src/Code/stat.c ****     if (stat_end == statistic)
- 303              		.loc 1 73 1 is_stmt 1 view -0
- 304              		.cfi_startproc
- 305              		@ args = 0, pretend = 0, frame = 0
- 306              		@ frame_needed = 0, uses_anonymous_args = 0
- 307              		@ link register save eliminated.
+ 299              		.loc 1 73 1 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		@ link register save eliminated.
   73:Core/Src/Code/stat.c ****     if (stat_end == statistic)
- 308              		.loc 1 73 1 is_stmt 0 view .LVU63
- 309 0000 10B4     		push	{r4}
- 310              	.LCFI4:
- 311              		.cfi_def_cfa_offset 4
- 312              		.cfi_offset 4, -4
+ 304              		.loc 1 73 1 is_stmt 0 view .LVU63
+ 305 0000 10B4     		push	{r4}
+ 306              		.cfi_def_cfa_offset 4
+ 307              		.cfi_offset 4, -4
   74:Core/Src/Code/stat.c ****     {
- 313              		.loc 1 74 5 is_stmt 1 view .LVU64
+ 308              		.loc 1 74 5 is_stmt 1 view .LVU64
   74:Core/Src/Code/stat.c ****     {
- 314              		.loc 1 74 18 is_stmt 0 view .LVU65
- 315 0002 0C49     		ldr	r1, .L33
- 316 0004 0968     		ldr	r1, [r1]
+ 309              		.loc 1 74 18 is_stmt 0 view .LVU65
+ 310 0002 0C49     		ldr	r1, .L33
+ 311 0004 0968     		ldr	r1, [r1]
   74:Core/Src/Code/stat.c ****     {
- 317              		.loc 1 74 8 view .LVU66
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 10
+ 312              		.loc 1 74 8 view .LVU66
+ 313 0006 0C4C     		ldr	r4, .L33+4
+ 314 0008 A142     		cmp	r1, r4
+ 315 000a 0CD0     		beq	.L32
+  82:Core/Src/Code/stat.c ****         statistic[0].t += t;
+ 316              		.loc 1 82 9 is_stmt 1 view .LVU67
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 10
 
 
- 318 0006 0C4C     		ldr	r4, .L33+4
- 319 0008 A142     		cmp	r1, r4
- 320 000a 0CD0     		beq	.L32
   82:Core/Src/Code/stat.c ****         statistic[0].t += t;
- 321              		.loc 1 82 9 is_stmt 1 view .LVU67
+ 317              		.loc 1 82 24 is_stmt 0 view .LVU68
+ 318 000c 0A49     		ldr	r1, .L33+4
+ 319 000e 0C68     		ldr	r4, [r1]
+ 320 0010 2044     		add	r0, r0, r4
+ 321              	.LVL24:
   82:Core/Src/Code/stat.c ****         statistic[0].t += t;
- 322              		.loc 1 82 24 is_stmt 0 view .LVU68
- 323 000c 0A49     		ldr	r1, .L33+4
- 324 000e 0C68     		ldr	r4, [r1]
- 325 0010 2044     		add	r0, r0, r4
- 326              	.LVL24:
-  82:Core/Src/Code/stat.c ****         statistic[0].t += t;
- 327              		.loc 1 82 24 view .LVU69
- 328 0012 0860     		str	r0, [r1]
+ 322              		.loc 1 82 24 view .LVU69
+ 323 0012 0860     		str	r0, [r1]
   83:Core/Src/Code/stat.c ****     }
- 329              		.loc 1 83 9 is_stmt 1 view .LVU70
+ 324              		.loc 1 83 9 is_stmt 1 view .LVU70
   83:Core/Src/Code/stat.c ****     }
- 330              		.loc 1 83 24 is_stmt 0 view .LVU71
- 331 0014 8868     		ldr	r0, [r1, #8]
- 332 0016 CC68     		ldr	r4, [r1, #12]
- 333 0018 8218     		adds	r2, r0, r2
- 334              	.LVL25:
+ 325              		.loc 1 83 24 is_stmt 0 view .LVU71
+ 326 0014 8868     		ldr	r0, [r1, #8]
+ 327 0016 CC68     		ldr	r4, [r1, #12]
+ 328 0018 8218     		adds	r2, r0, r2
+ 329              	.LVL25:
   83:Core/Src/Code/stat.c ****     }
- 335              		.loc 1 83 24 view .LVU72
- 336 001a 43EB0403 		adc	r3, r3, r4
- 337 001e 8A60     		str	r2, [r1, #8]
- 338 0020 CB60     		str	r3, [r1, #12]
- 339              	.L28:
+ 330              		.loc 1 83 24 view .LVU72
+ 331 001a 43EB0403 		adc	r3, r3, r4
+ 332 001e 8A60     		str	r2, [r1, #8]
+ 333 0020 CB60     		str	r3, [r1, #12]
+ 334              	.L28:
   85:Core/Src/Code/stat.c **** 
- 340              		.loc 1 85 1 view .LVU73
- 341 0022 10BC     		pop	{r4}
- 342              	.LCFI5:
- 343              		.cfi_remember_state
- 344              		.cfi_restore 4
- 345              		.cfi_def_cfa_offset 0
- 346 0024 7047     		bx	lr
- 347              	.LVL26:
- 348              	.L32:
- 349              	.LCFI6:
- 350              		.cfi_restore_state
+ 335              		.loc 1 85 1 view .LVU73
+ 336 0022 10BC     		pop	{r4}
+ 337              		.cfi_remember_state
+ 338              		.cfi_restore 4
+ 339              		.cfi_def_cfa_offset 0
+ 340 0024 7047     		bx	lr
+ 341              	.LVL26:
+ 342              	.L32:
+ 343              		.cfi_restore_state
   76:Core/Src/Code/stat.c ****         statistic[0].t = t;
- 351              		.loc 1 76 9 is_stmt 1 view .LVU74
+ 344              		.loc 1 76 9 is_stmt 1 view .LVU74
   76:Core/Src/Code/stat.c ****         statistic[0].t = t;
- 352              		.loc 1 76 24 is_stmt 0 view .LVU75
- 353 0026 2060     		str	r0, [r4]
+ 345              		.loc 1 76 24 is_stmt 0 view .LVU75
+ 346 0026 2060     		str	r0, [r4]
   77:Core/Src/Code/stat.c ****         ++stat_end;
- 354              		.loc 1 77 9 is_stmt 1 view .LVU76
+ 347              		.loc 1 77 9 is_stmt 1 view .LVU76
   77:Core/Src/Code/stat.c ****         ++stat_end;
- 355              		.loc 1 77 24 is_stmt 0 view .LVU77
- 356 0028 A260     		str	r2, [r4, #8]
- 357 002a E360     		str	r3, [r4, #12]
+ 348              		.loc 1 77 24 is_stmt 0 view .LVU77
+ 349 0028 A260     		str	r2, [r4, #8]
+ 350 002a E360     		str	r3, [r4, #12]
   78:Core/Src/Code/stat.c ****     }
- 358              		.loc 1 78 9 is_stmt 1 view .LVU78
- 359 002c 1031     		adds	r1, r1, #16
- 360 002e 014B     		ldr	r3, .L33
- 361 0030 1960     		str	r1, [r3]
- 362 0032 F6E7     		b	.L28
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 11
+ 351              		.loc 1 78 9 is_stmt 1 view .LVU78
+ 352 002c 1031     		adds	r1, r1, #16
+ 353 002e 014B     		ldr	r3, .L33
+ 354 0030 1960     		str	r1, [r3]
+ 355 0032 F6E7     		b	.L28
+ 356              	.L34:
+ 357              		.align	2
+ 358              	.L33:
+ 359 0034 00000000 		.word	.LANCHOR2
+ 360 0038 00000000 		.word	.LANCHOR3
+ 361              		.cfi_endproc
+ 362              	.LFE6:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 11
 
 
- 363              	.L34:
- 364              		.align	2
- 365              	.L33:
- 366 0034 00000000 		.word	.LANCHOR2
- 367 0038 00000000 		.word	.LANCHOR3
- 368              		.cfi_endproc
- 369              	.LFE6:
- 371              		.section	.text.stat_add,"ax",%progbits
- 372              		.align	1
- 373              		.global	stat_add
- 374              		.syntax unified
- 375              		.thumb
- 376              		.thumb_func
- 377              		.fpu softvfp
- 379              	stat_add:
- 380              	.LVL27:
- 381              	.LFB7:
+ 364              		.section	.text.stat_add,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	stat_add
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 370              		.fpu softvfp
+ 372              	stat_add:
+ 373              	.LVL27:
+ 374              	.LFB7:
   88:Core/Src/Code/stat.c ****     stat_elem_t first_in_row = {n, t},
- 382              		.loc 1 88 1 view -0
- 383              		.cfi_startproc
- 384              		@ args = 0, pretend = 0, frame = 32
- 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		.loc 1 88 1 view -0
+ 376              		.cfi_startproc
+ 377              		@ args = 0, pretend = 0, frame = 32
+ 378              		@ frame_needed = 0, uses_anonymous_args = 0
   88:Core/Src/Code/stat.c ****     stat_elem_t first_in_row = {n, t},
- 386              		.loc 1 88 1 is_stmt 0 view .LVU80
- 387 0000 70B5     		push	{r4, r5, r6, lr}
- 388              	.LCFI7:
- 389              		.cfi_def_cfa_offset 16
- 390              		.cfi_offset 4, -16
- 391              		.cfi_offset 5, -12
- 392              		.cfi_offset 6, -8
- 393              		.cfi_offset 14, -4
- 394 0002 88B0     		sub	sp, sp, #32
- 395              	.LCFI8:
- 396              		.cfi_def_cfa_offset 48
+ 379              		.loc 1 88 1 is_stmt 0 view .LVU80
+ 380 0000 70B5     		push	{r4, r5, r6, lr}
+ 381              		.cfi_def_cfa_offset 16
+ 382              		.cfi_offset 4, -16
+ 383              		.cfi_offset 5, -12
+ 384              		.cfi_offset 6, -8
+ 385              		.cfi_offset 14, -4
+ 386 0002 88B0     		sub	sp, sp, #32
+ 387              		.cfi_def_cfa_offset 48
   89:Core/Src/Code/stat.c ****                 last_in_row = {0U, 0U};
- 397              		.loc 1 89 5 is_stmt 1 view .LVU81
+ 388              		.loc 1 89 5 is_stmt 1 view .LVU81
   89:Core/Src/Code/stat.c ****                 last_in_row = {0U, 0U};
- 398              		.loc 1 89 17 is_stmt 0 view .LVU82
- 399 0004 0490     		str	r0, [sp, #16]
- 400 0006 CDE90623 		strd	r2, [sp, #24]
+ 389              		.loc 1 89 17 is_stmt 0 view .LVU82
+ 390 0004 0490     		str	r0, [sp, #16]
+ 391 0006 CDE90623 		strd	r2, [sp, #24]
   90:Core/Src/Code/stat.c ****     stat_elem_t *cur_row = statistic;
- 401              		.loc 1 90 17 view .LVU83
- 402 000a 0026     		movs	r6, #0
- 403 000c 0096     		str	r6, [sp]
- 404 000e 0022     		movs	r2, #0
- 405              	.LVL28:
+ 392              		.loc 1 90 17 view .LVU83
+ 393 000a 0026     		movs	r6, #0
+ 394 000c 0096     		str	r6, [sp]
+ 395 000e 0022     		movs	r2, #0
+ 396              	.LVL28:
   90:Core/Src/Code/stat.c ****     stat_elem_t *cur_row = statistic;
- 406              		.loc 1 90 17 view .LVU84
- 407 0010 0023     		movs	r3, #0
- 408 0012 CDE90223 		strd	r2, [sp, #8]
+ 397              		.loc 1 90 17 view .LVU84
+ 398 0010 0023     		movs	r3, #0
+ 399 0012 CDE90223 		strd	r2, [sp, #8]
   91:Core/Src/Code/stat.c ****     unsigned int cur_row_n = 0U;
- 409              		.loc 1 91 5 is_stmt 1 view .LVU85
- 410              	.LVL29:
+ 400              		.loc 1 91 5 is_stmt 1 view .LVU85
+ 401              	.LVL29:
   92:Core/Src/Code/stat.c **** 
- 411              		.loc 1 92 5 view .LVU86
+ 402              		.loc 1 92 5 view .LVU86
   91:Core/Src/Code/stat.c ****     unsigned int cur_row_n = 0U;
- 412              		.loc 1 91 18 is_stmt 0 view .LVU87
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 12
+ 403              		.loc 1 91 18 is_stmt 0 view .LVU87
+ 404 0016 3C4C     		ldr	r4, .L46
+ 405 0018 22E0     		b	.L39
+ 406              	.LVL30:
+ 407              	.L36:
+ 105:Core/Src/Code/stat.c **** 
+ 408              		.loc 1 105 9 is_stmt 1 view .LVU88
+ 105:Core/Src/Code/stat.c **** 
+ 409              		.loc 1 105 21 is_stmt 0 view .LVU89
+ 410 001a 6D46     		mov	r5, sp
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 12
 
 
- 413 0016 3C4C     		ldr	r4, .L46
- 414 0018 22E0     		b	.L39
- 415              	.LVL30:
- 416              	.L36:
- 105:Core/Src/Code/stat.c **** 
- 417              		.loc 1 105 9 is_stmt 1 view .LVU88
- 105:Core/Src/Code/stat.c **** 
- 418              		.loc 1 105 21 is_stmt 0 view .LVU89
- 419 001a 6D46     		mov	r5, sp
- 420 001c 04F13003 		add	r3, r4, #48
- 421 0020 0FCB     		ldm	r3, {r0, r1, r2, r3}
- 422 0022 85E80F00 		stm	r5, {r0, r1, r2, r3}
+ 411 001c 04F13003 		add	r3, r4, #48
+ 412 0020 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 413 0022 85E80F00 		stm	r5, {r0, r1, r2, r3}
  107:Core/Src/Code/stat.c **** 
- 423              		.loc 1 107 9 is_stmt 1 view .LVU90
- 424 0026 3022     		movs	r2, #48
- 425 0028 2146     		mov	r1, r4
- 426 002a 04F11000 		add	r0, r4, #16
- 427 002e FFF7FEFF 		bl	memmove
- 428              	.LVL31:
+ 414              		.loc 1 107 9 is_stmt 1 view .LVU90
+ 415 0026 3022     		movs	r2, #48
+ 416 0028 2146     		mov	r1, r4
+ 417 002a 04F11000 		add	r0, r4, #16
+ 418 002e FFF7FEFF 		bl	memmove
+ 419              	.LVL31:
  109:Core/Src/Code/stat.c ****         stat_elem_n[cur_row_n] = 1U;
- 429              		.loc 1 109 9 view .LVU91
+ 420              		.loc 1 109 9 view .LVU91
  109:Core/Src/Code/stat.c ****         stat_elem_n[cur_row_n] = 1U;
- 430              		.loc 1 109 21 is_stmt 0 view .LVU92
- 431 0032 0DF1100C 		add	ip, sp, #16
- 432 0036 9CE80F00 		ldm	ip, {r0, r1, r2, r3}
- 433 003a 84E80F00 		stm	r4, {r0, r1, r2, r3}
+ 421              		.loc 1 109 21 is_stmt 0 view .LVU92
+ 422 0032 0DF1100C 		add	ip, sp, #16
+ 423 0036 9CE80F00 		ldm	ip, {r0, r1, r2, r3}
+ 424 003a 84E80F00 		stm	r4, {r0, r1, r2, r3}
  110:Core/Src/Code/stat.c **** 
- 434              		.loc 1 110 9 is_stmt 1 view .LVU93
+ 425              		.loc 1 110 9 is_stmt 1 view .LVU93
  110:Core/Src/Code/stat.c **** 
- 435              		.loc 1 110 32 is_stmt 0 view .LVU94
- 436 003e 334B     		ldr	r3, .L46+4
- 437 0040 0122     		movs	r2, #1
- 438 0042 9A55     		strb	r2, [r3, r6]
+ 426              		.loc 1 110 32 is_stmt 0 view .LVU94
+ 427 003e 334B     		ldr	r3, .L46+4
+ 428 0040 0122     		movs	r2, #1
+ 429 0042 9A55     		strb	r2, [r3, r6]
  112:Core/Src/Code/stat.c **** 
- 439              		.loc 1 112 9 is_stmt 1 view .LVU95
+ 430              		.loc 1 112 9 is_stmt 1 view .LVU95
  112:Core/Src/Code/stat.c **** 
- 440              		.loc 1 112 22 is_stmt 0 view .LVU96
- 441 0044 95E80F00 		ldm	r5, {r0, r1, r2, r3}
- 442 0048 8CE80F00 		stm	ip, {r0, r1, r2, r3}
+ 431              		.loc 1 112 22 is_stmt 0 view .LVU96
+ 432 0044 95E80F00 		ldm	r5, {r0, r1, r2, r3}
+ 433 0048 8CE80F00 		stm	ip, {r0, r1, r2, r3}
  114:Core/Src/Code/stat.c ****         {
- 443              		.loc 1 114 9 is_stmt 1 view .LVU97
+ 434              		.loc 1 114 9 is_stmt 1 view .LVU97
  114:Core/Src/Code/stat.c ****         {
- 444              		.loc 1 114 22 is_stmt 0 view .LVU98
- 445 004c 04F14005 		add	r5, r4, #64
+ 435              		.loc 1 114 22 is_stmt 0 view .LVU98
+ 436 004c 04F14005 		add	r5, r4, #64
  114:Core/Src/Code/stat.c ****         {
- 446              		.loc 1 114 38 view .LVU99
- 447 0050 2F4B     		ldr	r3, .L46+8
- 448 0052 1B68     		ldr	r3, [r3]
+ 437              		.loc 1 114 38 view .LVU99
+ 438 0050 2F4B     		ldr	r3, .L46+8
+ 439 0052 1B68     		ldr	r3, [r3]
  114:Core/Src/Code/stat.c ****         {
- 449              		.loc 1 114 12 view .LVU100
- 450 0054 9D42     		cmp	r5, r3
- 451 0056 1ED8     		bhi	.L44
+ 440              		.loc 1 114 12 view .LVU100
+ 441 0054 9D42     		cmp	r5, r3
+ 442 0056 1ED8     		bhi	.L44
  120:Core/Src/Code/stat.c ****         cur_row += STAT_COLUMNS;
- 452              		.loc 1 120 9 is_stmt 1 view .LVU101
+ 443              		.loc 1 120 9 is_stmt 1 view .LVU101
  120:Core/Src/Code/stat.c ****         cur_row += STAT_COLUMNS;
- 453              		.loc 1 120 19 is_stmt 0 view .LVU102
- 454 0058 0136     		adds	r6, r6, #1
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 13
+ 444              		.loc 1 120 19 is_stmt 0 view .LVU102
+ 445 0058 0136     		adds	r6, r6, #1
+ 446              	.LVL32:
+ 121:Core/Src/Code/stat.c ****     }
+ 447              		.loc 1 121 9 is_stmt 1 view .LVU103
+ 123:Core/Src/Code/stat.c ****     if (cur_row <= stat_end && STAT_ROWS == cur_row_n) {
+ 448              		.loc 1 123 11 view .LVU104
+ 123:Core/Src/Code/stat.c ****     if (cur_row <= stat_end && STAT_ROWS == cur_row_n) {
+ 449              		.loc 1 123 5 is_stmt 0 view .LVU105
+ 450 005a 072E     		cmp	r6, #7
+ 451 005c 1FD8     		bhi	.L37
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 13
 
 
- 455              	.LVL32:
  121:Core/Src/Code/stat.c ****     }
- 456              		.loc 1 121 9 is_stmt 1 view .LVU103
- 123:Core/Src/Code/stat.c ****     if (cur_row <= stat_end && STAT_ROWS == cur_row_n) {
- 457              		.loc 1 123 11 view .LVU104
- 123:Core/Src/Code/stat.c ****     if (cur_row <= stat_end && STAT_ROWS == cur_row_n) {
- 458              		.loc 1 123 5 is_stmt 0 view .LVU105
- 459 005a 072E     		cmp	r6, #7
- 460 005c 1FD8     		bhi	.L37
- 121:Core/Src/Code/stat.c ****     }
- 461              		.loc 1 121 17 view .LVU106
- 462 005e 2C46     		mov	r4, r5
- 463              	.LVL33:
- 464              	.L39:
+ 452              		.loc 1 121 17 view .LVU106
+ 453 005e 2C46     		mov	r4, r5
+ 454              	.LVL33:
+ 455              	.L39:
   94:Core/Src/Code/stat.c **** 
- 465              		.loc 1 94 5 is_stmt 1 view .LVU107
+ 456              		.loc 1 94 5 is_stmt 1 view .LVU107
   96:Core/Src/Code/stat.c ****             && STAT_COLUMNS > stat_elem_n[cur_row_n]
- 466              		.loc 1 96 9 view .LVU108
+ 457              		.loc 1 96 9 view .LVU108
   96:Core/Src/Code/stat.c ****             && STAT_COLUMNS > stat_elem_n[cur_row_n]
- 467              		.loc 1 96 12 is_stmt 0 view .LVU109
- 468 0060 002E     		cmp	r6, #0
- 469 0062 DAD0     		beq	.L36
+ 458              		.loc 1 96 12 is_stmt 0 view .LVU109
+ 459 0060 002E     		cmp	r6, #0
+ 460 0062 DAD0     		beq	.L36
   97:Core/Src/Code/stat.c ****             && 0U < stat_elem_n[cur_row_n])
- 470              		.loc 1 97 42 view .LVU110
- 471 0064 294B     		ldr	r3, .L46+4
- 472 0066 9B5D     		ldrb	r3, [r3, r6]	@ zero_extendqisi2
+ 461              		.loc 1 97 42 view .LVU110
+ 462 0064 294B     		ldr	r3, .L46+4
+ 463 0066 9B5D     		ldrb	r3, [r3, r6]	@ zero_extendqisi2
   97:Core/Src/Code/stat.c ****             && 0U < stat_elem_n[cur_row_n])
- 473              		.loc 1 97 13 view .LVU111
- 474 0068 032B     		cmp	r3, #3
- 475 006a D6D8     		bhi	.L36
+ 464              		.loc 1 97 13 view .LVU111
+ 465 0068 032B     		cmp	r3, #3
+ 466 006a D6D8     		bhi	.L36
   98:Core/Src/Code/stat.c ****         {
- 476              		.loc 1 98 13 view .LVU112
- 477 006c 002B     		cmp	r3, #0
- 478 006e D4D0     		beq	.L36
+ 467              		.loc 1 98 13 view .LVU112
+ 468 006c 002B     		cmp	r3, #0
+ 469 006e D4D0     		beq	.L36
  100:Core/Src/Code/stat.c ****             cur_row[0U].t += first_in_row.t;
- 479              		.loc 1 100 13 is_stmt 1 view .LVU113
+ 470              		.loc 1 100 13 is_stmt 1 view .LVU113
  100:Core/Src/Code/stat.c ****             cur_row[0U].t += first_in_row.t;
- 480              		.loc 1 100 27 is_stmt 0 view .LVU114
- 481 0070 2368     		ldr	r3, [r4]
- 482 0072 049A     		ldr	r2, [sp, #16]
- 483 0074 1344     		add	r3, r3, r2
- 484 0076 2360     		str	r3, [r4]
+ 471              		.loc 1 100 27 is_stmt 0 view .LVU114
+ 472 0070 2368     		ldr	r3, [r4]
+ 473 0072 049A     		ldr	r2, [sp, #16]
+ 474 0074 1344     		add	r3, r3, r2
+ 475 0076 2360     		str	r3, [r4]
  101:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] += 1U;
- 485              		.loc 1 101 13 is_stmt 1 view .LVU115
+ 476              		.loc 1 101 13 is_stmt 1 view .LVU115
  101:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] += 1U;
- 486              		.loc 1 101 42 is_stmt 0 view .LVU116
- 487 0078 069A     		ldr	r2, [sp, #24]
+ 477              		.loc 1 101 42 is_stmt 0 view .LVU116
+ 478 0078 069A     		ldr	r2, [sp, #24]
  101:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] += 1U;
- 488              		.loc 1 101 27 view .LVU117
- 489 007a A368     		ldr	r3, [r4, #8]
- 490 007c E168     		ldr	r1, [r4, #12]
- 491 007e 9B18     		adds	r3, r3, r2
- 492 0080 079A     		ldr	r2, [sp, #28]
- 493 0082 42EB0102 		adc	r2, r2, r1
- 494 0086 A360     		str	r3, [r4, #8]
- 495 0088 E260     		str	r2, [r4, #12]
+ 479              		.loc 1 101 27 view .LVU117
+ 480 007a A368     		ldr	r3, [r4, #8]
+ 481 007c E168     		ldr	r1, [r4, #12]
+ 482 007e 9B18     		adds	r3, r3, r2
+ 483 0080 079A     		ldr	r2, [sp, #28]
+ 484 0082 42EB0102 		adc	r2, r2, r1
+ 485 0086 A360     		str	r3, [r4, #8]
+ 486 0088 E260     		str	r2, [r4, #12]
  102:Core/Src/Code/stat.c ****             break;
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 14
-
-
- 496              		.loc 1 102 13 is_stmt 1 view .LVU118
+ 487              		.loc 1 102 13 is_stmt 1 view .LVU118
  102:Core/Src/Code/stat.c ****             break;
- 497              		.loc 1 102 36 is_stmt 0 view .LVU119
- 498 008a 204A     		ldr	r2, .L46+4
- 499 008c 935D     		ldrb	r3, [r2, r6]	@ zero_extendqisi2
- 500 008e 0133     		adds	r3, r3, #1
- 501 0090 9355     		strb	r3, [r2, r6]
+ 488              		.loc 1 102 36 is_stmt 0 view .LVU119
+ 489 008a 204A     		ldr	r2, .L46+4
+ 490 008c 935D     		ldrb	r3, [r2, r6]	@ zero_extendqisi2
+ 491 008e 0133     		adds	r3, r3, #1
+ 492 0090 9355     		strb	r3, [r2, r6]
  103:Core/Src/Code/stat.c ****         }
- 502              		.loc 1 103 13 is_stmt 1 view .LVU120
- 503 0092 2546     		mov	r5, r4
- 504 0094 03E0     		b	.L37
- 505              	.L44:
+ 493              		.loc 1 103 13 is_stmt 1 view .LVU120
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 14
+
+
+ 494 0092 2546     		mov	r5, r4
+ 495 0094 03E0     		b	.L37
+ 496              	.L44:
  116:Core/Src/Code/stat.c ****             break;
- 506              		.loc 1 116 13 view .LVU121
+ 497              		.loc 1 116 13 view .LVU121
  116:Core/Src/Code/stat.c ****             break;
- 507              		.loc 1 116 22 is_stmt 0 view .LVU122
- 508 0096 1033     		adds	r3, r3, #16
- 509 0098 1D4A     		ldr	r2, .L46+8
- 510 009a 1360     		str	r3, [r2]
+ 498              		.loc 1 116 22 is_stmt 0 view .LVU122
+ 499 0096 1033     		adds	r3, r3, #16
+ 500 0098 1D4A     		ldr	r2, .L46+8
+ 501 009a 1360     		str	r3, [r2]
  117:Core/Src/Code/stat.c ****         }
- 511              		.loc 1 117 13 is_stmt 1 view .LVU123
- 512 009c 2546     		mov	r5, r4
- 513              	.LVL34:
- 514              	.L37:
+ 502              		.loc 1 117 13 is_stmt 1 view .LVU123
+ 503 009c 2546     		mov	r5, r4
+ 504              	.LVL34:
+ 505              	.L37:
  124:Core/Src/Code/stat.c ****         if (STAT_COLUMNS > stat_elem_n[cur_row_n]
- 515              		.loc 1 124 5 view .LVU124
+ 506              		.loc 1 124 5 view .LVU124
  124:Core/Src/Code/stat.c ****         if (STAT_COLUMNS > stat_elem_n[cur_row_n]
- 516              		.loc 1 124 17 is_stmt 0 view .LVU125
- 517 009e 1C4B     		ldr	r3, .L46+8
- 518 00a0 1C68     		ldr	r4, [r3]
+ 507              		.loc 1 124 17 is_stmt 0 view .LVU125
+ 508 009e 1C4B     		ldr	r3, .L46+8
+ 509 00a0 1C68     		ldr	r4, [r3]
  124:Core/Src/Code/stat.c ****         if (STAT_COLUMNS > stat_elem_n[cur_row_n]
- 519              		.loc 1 124 8 view .LVU126
- 520 00a2 AC42     		cmp	r4, r5
- 521 00a4 01D3     		bcc	.L35
+ 510              		.loc 1 124 8 view .LVU126
+ 511 00a2 AC42     		cmp	r4, r5
+ 512 00a4 01D3     		bcc	.L35
  124:Core/Src/Code/stat.c ****         if (STAT_COLUMNS > stat_elem_n[cur_row_n]
- 522              		.loc 1 124 29 discriminator 1 view .LVU127
- 523 00a6 082E     		cmp	r6, #8
- 524 00a8 01D0     		beq	.L45
- 525              	.L35:
+ 513              		.loc 1 124 29 discriminator 1 view .LVU127
+ 514 00a6 082E     		cmp	r6, #8
+ 515 00a8 01D0     		beq	.L45
+ 516              	.L35:
  142:Core/Src/Code/stat.c **** 
- 526              		.loc 1 142 1 view .LVU128
- 527 00aa 08B0     		add	sp, sp, #32
- 528              	.LCFI9:
- 529              		.cfi_remember_state
- 530              		.cfi_def_cfa_offset 16
- 531              		@ sp needed
- 532 00ac 70BD     		pop	{r4, r5, r6, pc}
- 533              	.LVL35:
- 534              	.L45:
- 535              	.LCFI10:
- 536              		.cfi_restore_state
+ 517              		.loc 1 142 1 view .LVU128
+ 518 00aa 08B0     		add	sp, sp, #32
+ 519              		.cfi_remember_state
+ 520              		.cfi_def_cfa_offset 16
+ 521              		@ sp needed
+ 522 00ac 70BD     		pop	{r4, r5, r6, pc}
+ 523              	.LVL35:
+ 524              	.L45:
+ 525              		.cfi_restore_state
  125:Core/Src/Code/stat.c ****             && 0U < stat_elem_n[cur_row_n])
- 537              		.loc 1 125 9 is_stmt 1 view .LVU129
+ 526              		.loc 1 125 9 is_stmt 1 view .LVU129
  125:Core/Src/Code/stat.c ****             && 0U < stat_elem_n[cur_row_n])
- 538              		.loc 1 125 39 is_stmt 0 view .LVU130
- 539 00ae 174B     		ldr	r3, .L46+4
- 540 00b0 9B5D     		ldrb	r3, [r3, r6]	@ zero_extendqisi2
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 15
-
-
+ 527              		.loc 1 125 39 is_stmt 0 view .LVU130
+ 528 00ae 174B     		ldr	r3, .L46+4
+ 529 00b0 9B5D     		ldrb	r3, [r3, r6]	@ zero_extendqisi2
  126:Core/Src/Code/stat.c ****         {
- 541              		.loc 1 126 13 view .LVU131
- 542 00b2 013B     		subs	r3, r3, #1
- 543 00b4 DBB2     		uxtb	r3, r3
+ 530              		.loc 1 126 13 view .LVU131
+ 531 00b2 013B     		subs	r3, r3, #1
+ 532 00b4 DBB2     		uxtb	r3, r3
  125:Core/Src/Code/stat.c ****             && 0U < stat_elem_n[cur_row_n])
- 544              		.loc 1 125 12 view .LVU132
- 545 00b6 022B     		cmp	r3, #2
- 546 00b8 11D8     		bhi	.L41
+ 533              		.loc 1 125 12 view .LVU132
+ 534 00b6 022B     		cmp	r3, #2
+ 535 00b8 11D8     		bhi	.L41
  128:Core/Src/Code/stat.c ****             cur_row[0U].t += first_in_row.t;
- 547              		.loc 1 128 13 is_stmt 1 view .LVU133
+ 536              		.loc 1 128 13 is_stmt 1 view .LVU133
  128:Core/Src/Code/stat.c ****             cur_row[0U].t += first_in_row.t;
- 548              		.loc 1 128 27 is_stmt 0 view .LVU134
- 549 00ba 2B68     		ldr	r3, [r5]
- 550 00bc 049A     		ldr	r2, [sp, #16]
- 551 00be 1344     		add	r3, r3, r2
- 552 00c0 2B60     		str	r3, [r5]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 15
+
+
+ 537              		.loc 1 128 27 is_stmt 0 view .LVU134
+ 538 00ba 2B68     		ldr	r3, [r5]
+ 539 00bc 049A     		ldr	r2, [sp, #16]
+ 540 00be 1344     		add	r3, r3, r2
+ 541 00c0 2B60     		str	r3, [r5]
  129:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] += 1U;
- 553              		.loc 1 129 13 is_stmt 1 view .LVU135
+ 542              		.loc 1 129 13 is_stmt 1 view .LVU135
  129:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] += 1U;
- 554              		.loc 1 129 42 is_stmt 0 view .LVU136
- 555 00c2 0699     		ldr	r1, [sp, #24]
+ 543              		.loc 1 129 42 is_stmt 0 view .LVU136
+ 544 00c2 0699     		ldr	r1, [sp, #24]
  129:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] += 1U;
- 556              		.loc 1 129 27 view .LVU137
- 557 00c4 AB68     		ldr	r3, [r5, #8]
- 558 00c6 E868     		ldr	r0, [r5, #12]
- 559 00c8 5B18     		adds	r3, r3, r1
- 560 00ca 079A     		ldr	r2, [sp, #28]
- 561 00cc 42EB0002 		adc	r2, r2, r0
- 562 00d0 AB60     		str	r3, [r5, #8]
- 563 00d2 EA60     		str	r2, [r5, #12]
+ 545              		.loc 1 129 27 view .LVU137
+ 546 00c4 AB68     		ldr	r3, [r5, #8]
+ 547 00c6 E868     		ldr	r0, [r5, #12]
+ 548 00c8 5B18     		adds	r3, r3, r1
+ 549 00ca 079A     		ldr	r2, [sp, #28]
+ 550 00cc 42EB0002 		adc	r2, r2, r0
+ 551 00d0 AB60     		str	r3, [r5, #8]
+ 552 00d2 EA60     		str	r2, [r5, #12]
  130:Core/Src/Code/stat.c ****         }
- 564              		.loc 1 130 13 is_stmt 1 view .LVU138
+ 553              		.loc 1 130 13 is_stmt 1 view .LVU138
  130:Core/Src/Code/stat.c ****         }
- 565              		.loc 1 130 36 is_stmt 0 view .LVU139
- 566 00d4 0D4A     		ldr	r2, .L46+4
- 567 00d6 935D     		ldrb	r3, [r2, r6]	@ zero_extendqisi2
- 568 00d8 0133     		adds	r3, r3, #1
- 569 00da 9355     		strb	r3, [r2, r6]
- 570 00dc E5E7     		b	.L35
- 571              	.L41:
+ 554              		.loc 1 130 36 is_stmt 0 view .LVU139
+ 555 00d4 0D4A     		ldr	r2, .L46+4
+ 556 00d6 935D     		ldrb	r3, [r2, r6]	@ zero_extendqisi2
+ 557 00d8 0133     		adds	r3, r3, #1
+ 558 00da 9355     		strb	r3, [r2, r6]
+ 559 00dc E5E7     		b	.L35
+ 560              	.L41:
  134:Core/Src/Code/stat.c ****             cur_row[0U] = first_in_row;
- 572              		.loc 1 134 13 is_stmt 1 view .LVU140
- 573 00de 7022     		movs	r2, #112
- 574 00e0 2946     		mov	r1, r5
- 575 00e2 05F11000 		add	r0, r5, #16
- 576 00e6 FFF7FEFF 		bl	memmove
- 577              	.LVL36:
+ 561              		.loc 1 134 13 is_stmt 1 view .LVU140
+ 562 00de 7022     		movs	r2, #112
+ 563 00e0 2946     		mov	r1, r5
+ 564 00e2 05F11000 		add	r0, r5, #16
+ 565 00e6 FFF7FEFF 		bl	memmove
+ 566              	.LVL36:
  135:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] = 1U;
- 578              		.loc 1 135 13 view .LVU141
+ 567              		.loc 1 135 13 view .LVU141
  135:Core/Src/Code/stat.c ****             stat_elem_n[cur_row_n] = 1U;
- 579              		.loc 1 135 25 is_stmt 0 view .LVU142
- 580 00ea 08AB     		add	r3, sp, #32
- 581 00ec 13E90F00 		ldmdb	r3, {r0, r1, r2, r3}
- 582 00f0 85E80F00 		stm	r5, {r0, r1, r2, r3}
+ 568              		.loc 1 135 25 is_stmt 0 view .LVU142
+ 569 00ea 08AB     		add	r3, sp, #32
+ 570 00ec 13E90F00 		ldmdb	r3, {r0, r1, r2, r3}
+ 571 00f0 85E80F00 		stm	r5, {r0, r1, r2, r3}
  136:Core/Src/Code/stat.c ****             if (&statistic[STAT_ELEMENTS] != stat_end) {
- 583              		.loc 1 136 13 is_stmt 1 view .LVU143
+ 572              		.loc 1 136 13 is_stmt 1 view .LVU143
  136:Core/Src/Code/stat.c ****             if (&statistic[STAT_ELEMENTS] != stat_end) {
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 16
+ 573              		.loc 1 136 36 is_stmt 0 view .LVU144
+ 574 00f4 054B     		ldr	r3, .L46+4
+ 575 00f6 0122     		movs	r2, #1
+ 576 00f8 9A55     		strb	r2, [r3, r6]
+ 137:Core/Src/Code/stat.c ****                 stat_end += 1U;
+ 577              		.loc 1 137 13 is_stmt 1 view .LVU145
+ 137:Core/Src/Code/stat.c ****                 stat_end += 1U;
+ 578              		.loc 1 137 16 is_stmt 0 view .LVU146
+ 579 00fa 064B     		ldr	r3, .L46+12
+ 580 00fc 9C42     		cmp	r4, r3
+ 581 00fe D4D0     		beq	.L35
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 16
 
 
- 584              		.loc 1 136 36 is_stmt 0 view .LVU144
- 585 00f4 054B     		ldr	r3, .L46+4
- 586 00f6 0122     		movs	r2, #1
- 587 00f8 9A55     		strb	r2, [r3, r6]
- 137:Core/Src/Code/stat.c ****                 stat_end += 1U;
- 588              		.loc 1 137 13 is_stmt 1 view .LVU145
- 137:Core/Src/Code/stat.c ****                 stat_end += 1U;
- 589              		.loc 1 137 16 is_stmt 0 view .LVU146
- 590 00fa 064B     		ldr	r3, .L46+12
- 591 00fc 9C42     		cmp	r4, r3
- 592 00fe D4D0     		beq	.L35
  138:Core/Src/Code/stat.c ****             }
- 593              		.loc 1 138 17 is_stmt 1 view .LVU147
+ 582              		.loc 1 138 17 is_stmt 1 view .LVU147
  138:Core/Src/Code/stat.c ****             }
- 594              		.loc 1 138 26 is_stmt 0 view .LVU148
- 595 0100 1034     		adds	r4, r4, #16
- 596 0102 034B     		ldr	r3, .L46+8
- 597 0104 1C60     		str	r4, [r3]
+ 583              		.loc 1 138 26 is_stmt 0 view .LVU148
+ 584 0100 1034     		adds	r4, r4, #16
+ 585 0102 034B     		ldr	r3, .L46+8
+ 586 0104 1C60     		str	r4, [r3]
  142:Core/Src/Code/stat.c **** 
- 598              		.loc 1 142 1 view .LVU149
- 599 0106 D0E7     		b	.L35
- 600              	.L47:
- 601              		.align	2
- 602              	.L46:
- 603 0108 00000000 		.word	.LANCHOR3
- 604 010c 00000000 		.word	.LANCHOR4
- 605 0110 00000000 		.word	.LANCHOR2
- 606 0114 80020000 		.word	.LANCHOR3+640
- 607              		.cfi_endproc
- 608              	.LFE7:
- 610              		.section	.text.fsqrt,"ax",%progbits
- 611              		.align	1
- 612              		.global	fsqrt
- 613              		.syntax unified
- 614              		.thumb
- 615              		.thumb_func
- 616              		.fpu softvfp
- 618              	fsqrt:
- 619              	.LVL37:
- 620              	.LFB9:
+ 587              		.loc 1 142 1 view .LVU149
+ 588 0106 D0E7     		b	.L35
+ 589              	.L47:
+ 590              		.align	2
+ 591              	.L46:
+ 592 0108 00000000 		.word	.LANCHOR3
+ 593 010c 00000000 		.word	.LANCHOR4
+ 594 0110 00000000 		.word	.LANCHOR2
+ 595 0114 80020000 		.word	.LANCHOR3+640
+ 596              		.cfi_endproc
+ 597              	.LFE7:
+ 599              		.section	.text.fsqrt,"ax",%progbits
+ 600              		.align	1
+ 601              		.global	fsqrt
+ 602              		.syntax unified
+ 603              		.thumb
+ 604              		.thumb_func
+ 605              		.fpu softvfp
+ 607              	fsqrt:
+ 608              	.LVL37:
+ 609              	.LFB9:
  156:Core/Src/Code/stat.c **** 
  157:Core/Src/Code/stat.c **** 
  158:Core/Src/Code/stat.c **** 
@@ -948,68 +937,67 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
  160:Core/Src/Code/stat.c **** 
  161:Core/Src/Code/stat.c **** 
  162:Core/Src/Code/stat.c **** float fsqrt(float z) {
- 621              		.loc 1 162 22 is_stmt 1 view -0
- 622              		.cfi_startproc
- 623              		@ args = 0, pretend = 0, frame = 0
- 624              		@ frame_needed = 0, uses_anonymous_args = 0
- 625              		.loc 1 162 22 is_stmt 0 view .LVU151
- 626 0000 10B5     		push	{r4, lr}
- 627              	.LCFI11:
- 628              		.cfi_def_cfa_offset 8
- 629              		.cfi_offset 4, -8
- 630              		.cfi_offset 14, -4
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 17
-
-
- 631 0002 0446     		mov	r4, r0
+ 610              		.loc 1 162 22 is_stmt 1 view -0
+ 611              		.cfi_startproc
+ 612              		@ args = 0, pretend = 0, frame = 0
+ 613              		@ frame_needed = 0, uses_anonymous_args = 0
+ 614              		.loc 1 162 22 is_stmt 0 view .LVU151
+ 615 0000 10B5     		push	{r4, lr}
+ 616              		.cfi_def_cfa_offset 8
+ 617              		.cfi_offset 4, -8
+ 618              		.cfi_offset 14, -4
+ 619 0002 0446     		mov	r4, r0
  163:Core/Src/Code/stat.c ****  if (z==0) return 0;
- 632              		.loc 1 163 2 is_stmt 1 view .LVU152
- 633              		.loc 1 163 5 is_stmt 0 view .LVU153
- 634 0004 0021     		movs	r1, #0
- 635 0006 FFF7FEFF 		bl	__aeabi_fcmpeq
- 636              	.LVL38:
- 637              		.loc 1 163 5 view .LVU154
- 638 000a 28B9     		cbnz	r0, .L50
+ 620              		.loc 1 163 2 is_stmt 1 view .LVU152
+ 621              		.loc 1 163 5 is_stmt 0 view .LVU153
+ 622 0004 0021     		movs	r1, #0
+ 623 0006 FFF7FEFF 		bl	__aeabi_fcmpeq
+ 624              	.LVL38:
+ 625              		.loc 1 163 5 view .LVU154
+ 626 000a 28B9     		cbnz	r0, .L50
  164:Core/Src/Code/stat.c ****  union {float f; uint32_t i; } val = {z};
- 639              		.loc 1 164 2 is_stmt 1 view .LVU155
+ 627              		.loc 1 164 2 is_stmt 1 view .LVU155
  165:Core/Src/Code/stat.c ****  val.i -= 8388608;
- 640              		.loc 1 165 2 view .LVU156
- 641              		.loc 1 165 8 is_stmt 0 view .LVU157
- 642 000c A4F50000 		sub	r0, r4, #8388608
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 17
+
+
+ 628              		.loc 1 165 2 view .LVU156
+ 629              		.loc 1 165 8 is_stmt 0 view .LVU157
+ 630 000c A4F50000 		sub	r0, r4, #8388608
  166:Core/Src/Code/stat.c ****  val.i >>= 1;
- 643              		.loc 1 166 2 is_stmt 1 view .LVU158
- 644              		.loc 1 166 8 is_stmt 0 view .LVU159
- 645 0010 4008     		lsrs	r0, r0, #1
+ 631              		.loc 1 166 2 is_stmt 1 view .LVU158
+ 632              		.loc 1 166 8 is_stmt 0 view .LVU159
+ 633 0010 4008     		lsrs	r0, r0, #1
  167:Core/Src/Code/stat.c ****  val.i += 536870912;
- 646              		.loc 1 167 2 is_stmt 1 view .LVU160
+ 634              		.loc 1 167 2 is_stmt 1 view .LVU160
  168:Core/Src/Code/stat.c ****  return val.f;
- 647              		.loc 1 168 2 view .LVU161
- 648 0012 00F10050 		add	r0, r0, #536870912
- 649              	.L48:
+ 635              		.loc 1 168 2 view .LVU161
+ 636 0012 00F10050 		add	r0, r0, #536870912
+ 637              	.L48:
  169:Core/Src/Code/stat.c **** }
- 650              		.loc 1 169 1 is_stmt 0 view .LVU162
- 651 0016 10BD     		pop	{r4, pc}
- 652              	.LVL39:
- 653              	.L50:
+ 638              		.loc 1 169 1 is_stmt 0 view .LVU162
+ 639 0016 10BD     		pop	{r4, pc}
+ 640              	.LVL39:
+ 641              	.L50:
  163:Core/Src/Code/stat.c ****  union {float f; uint32_t i; } val = {z};
- 654              		.loc 1 163 19 view .LVU163
- 655 0018 0020     		movs	r0, #0
- 656 001a FCE7     		b	.L48
- 657              		.cfi_endproc
- 658              	.LFE9:
- 660              		.global	__aeabi_i2f
- 661              		.global	__aeabi_ui2f
- 662              		.global	__aeabi_fcmple
- 663              		.global	__aeabi_ul2f
- 664              		.section	.text.border_low_tpc,"ax",%progbits
- 665              		.align	1
- 666              		.syntax unified
- 667              		.thumb
- 668              		.thumb_func
- 669              		.fpu softvfp
- 671              	border_low_tpc:
- 672              	.LVL40:
- 673              	.LFB11:
+ 642              		.loc 1 163 19 view .LVU163
+ 643 0018 0020     		movs	r0, #0
+ 644 001a FCE7     		b	.L48
+ 645              		.cfi_endproc
+ 646              	.LFE9:
+ 648              		.global	__aeabi_i2f
+ 649              		.global	__aeabi_ui2f
+ 650              		.global	__aeabi_fcmple
+ 651              		.global	__aeabi_ul2f
+ 652              		.section	.text.border_low_tpc,"ax",%progbits
+ 653              		.align	1
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 657              		.fpu softvfp
+ 659              	border_low_tpc:
+ 660              	.LVL40:
+ 661              	.LFB11:
  170:Core/Src/Code/stat.c **** 
  171:Core/Src/Code/stat.c **** inline static float border_high_tpc (const stat_elem_t *val, unsigned int k_num) {
  172:Core/Src/Code/stat.c **** 
@@ -1018,9 +1006,6 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
  175:Core/Src/Code/stat.c **** 
  176:Core/Src/Code/stat.c ****     float n_plus_k_mul_sqrt_n;
  177:Core/Src/Code/stat.c **** 
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 18
-
-
  178:Core/Src/Code/stat.c ****     if (0 == val->n) {
  179:Core/Src/Code/stat.c ****         n_plus_k_mul_sqrt_n = 1 + k_high;
  180:Core/Src/Code/stat.c ****     } else {
@@ -1031,552 +1016,551 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
  185:Core/Src/Code/stat.c **** 
  186:Core/Src/Code/stat.c **** 
  187:Core/Src/Code/stat.c **** static float border_low_tpc (const stat_elem_t *val, unsigned int k_num) {
- 674              		.loc 1 187 74 is_stmt 1 view -0
- 675              		.cfi_startproc
- 676              		@ args = 0, pretend = 0, frame = 0
- 677              		@ frame_needed = 0, uses_anonymous_args = 0
- 678              		.loc 1 187 74 is_stmt 0 view .LVU165
- 679 0000 70B5     		push	{r4, r5, r6, lr}
- 680              	.LCFI12:
- 681              		.cfi_def_cfa_offset 16
- 682              		.cfi_offset 4, -16
- 683              		.cfi_offset 5, -12
- 684              		.cfi_offset 6, -8
- 685              		.cfi_offset 14, -4
+ 662              		.loc 1 187 74 is_stmt 1 view -0
+ 663              		.cfi_startproc
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 18
+
+
+ 664              		@ args = 0, pretend = 0, frame = 0
+ 665              		@ frame_needed = 0, uses_anonymous_args = 0
+ 666              		.loc 1 187 74 is_stmt 0 view .LVU165
+ 667 0000 70B5     		push	{r4, r5, r6, lr}
+ 668              		.cfi_def_cfa_offset 16
+ 669              		.cfi_offset 4, -16
+ 670              		.cfi_offset 5, -12
+ 671              		.cfi_offset 6, -8
+ 672              		.cfi_offset 14, -4
  188:Core/Src/Code/stat.c **** 	float ret;
- 686              		.loc 1 188 2 is_stmt 1 view .LVU166
+ 673              		.loc 1 188 2 is_stmt 1 view .LVU166
  189:Core/Src/Code/stat.c **** 	if (0 == val->n) {
- 687              		.loc 1 189 2 view .LVU167
- 688              		.loc 1 189 14 is_stmt 0 view .LVU168
- 689 0002 0568     		ldr	r5, [r0]
- 690              		.loc 1 189 5 view .LVU169
- 691 0004 35B3     		cbz	r5, .L54
- 692 0006 0446     		mov	r4, r0
- 693              	.LBB2:
+ 674              		.loc 1 189 2 view .LVU167
+ 675              		.loc 1 189 14 is_stmt 0 view .LVU168
+ 676 0002 0568     		ldr	r5, [r0]
+ 677              		.loc 1 189 5 view .LVU169
+ 678 0004 35B3     		cbz	r5, .L54
+ 679 0006 0446     		mov	r4, r0
+ 680              	.LBB2:
  190:Core/Src/Code/stat.c **** 		ret = UINT64_MAX;
  191:Core/Src/Code/stat.c **** 	} else {
  192:Core/Src/Code/stat.c **** 		const float k_mul_sqrt_n = k[k_num].low * fsqrt(val->n);
- 694              		.loc 1 192 3 is_stmt 1 view .LVU170
- 695              		.loc 1 192 38 is_stmt 0 view .LVU171
- 696 0008 01EBC101 		add	r1, r1, r1, lsl #3
- 697              	.LVL41:
- 698              		.loc 1 192 38 view .LVU172
- 699 000c 144B     		ldr	r3, .L57
- 700 000e 1944     		add	r1, r1, r3
- 701              		.loc 1 192 43 view .LVU173
- 702 0010 087A     		ldrb	r0, [r1, #8]	@ zero_extendqisi2
- 703              	.LVL42:
- 704              		.loc 1 192 43 view .LVU174
- 705 0012 FFF7FEFF 		bl	__aeabi_i2f
- 706              	.LVL43:
- 707 0016 0646     		mov	r6, r0
- 708              		.loc 1 192 45 view .LVU175
- 709 0018 2846     		mov	r0, r5
- 710 001a FFF7FEFF 		bl	__aeabi_ui2f
- 711              	.LVL44:
- 712 001e 0546     		mov	r5, r0
- 713 0020 FFF7FEFF 		bl	fsqrt
- 714              	.LVL45:
- 715 0024 0146     		mov	r1, r0
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 19
-
-
- 716              		.loc 1 192 15 view .LVU176
- 717 0026 3046     		mov	r0, r6
- 718 0028 FFF7FEFF 		bl	__aeabi_fmul
- 719              	.LVL46:
- 720 002c 0646     		mov	r6, r0
- 721              	.LVL47:
+ 681              		.loc 1 192 3 is_stmt 1 view .LVU170
+ 682              		.loc 1 192 38 is_stmt 0 view .LVU171
+ 683 0008 01EBC101 		add	r1, r1, r1, lsl #3
+ 684              	.LVL41:
+ 685              		.loc 1 192 38 view .LVU172
+ 686 000c 144B     		ldr	r3, .L57
+ 687 000e 1944     		add	r1, r1, r3
+ 688              		.loc 1 192 43 view .LVU173
+ 689 0010 087A     		ldrb	r0, [r1, #8]	@ zero_extendqisi2
+ 690              	.LVL42:
+ 691              		.loc 1 192 43 view .LVU174
+ 692 0012 FFF7FEFF 		bl	__aeabi_i2f
+ 693              	.LVL43:
+ 694 0016 0646     		mov	r6, r0
+ 695              		.loc 1 192 45 view .LVU175
+ 696 0018 2846     		mov	r0, r5
+ 697 001a FFF7FEFF 		bl	__aeabi_ui2f
+ 698              	.LVL44:
+ 699 001e 0546     		mov	r5, r0
+ 700 0020 FFF7FEFF 		bl	fsqrt
+ 701              	.LVL45:
+ 702 0024 0146     		mov	r1, r0
+ 703              		.loc 1 192 15 view .LVU176
+ 704 0026 3046     		mov	r0, r6
+ 705 0028 FFF7FEFF 		bl	__aeabi_fmul
+ 706              	.LVL46:
+ 707 002c 0646     		mov	r6, r0
+ 708              	.LVL47:
  193:Core/Src/Code/stat.c **** 		if (k_mul_sqrt_n >= val->n) {
- 722              		.loc 1 193 3 is_stmt 1 view .LVU177
- 723              		.loc 1 193 6 is_stmt 0 view .LVU178
- 724 002e 0146     		mov	r1, r0
- 725 0030 2846     		mov	r0, r5
- 726              	.LVL48:
- 727              		.loc 1 193 6 view .LVU179
- 728 0032 FFF7FEFF 		bl	__aeabi_fcmple
- 729              	.LVL49:
- 730              		.loc 1 193 6 view .LVU180
- 731 0036 80B9     		cbnz	r0, .L55
+ 709              		.loc 1 193 3 is_stmt 1 view .LVU177
+ 710              		.loc 1 193 6 is_stmt 0 view .LVU178
+ 711 002e 0146     		mov	r1, r0
+ 712 0030 2846     		mov	r0, r5
+ 713              	.LVL48:
+ 714              		.loc 1 193 6 view .LVU179
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 19
+
+
+ 715 0032 FFF7FEFF 		bl	__aeabi_fcmple
+ 716              	.LVL49:
+ 717              		.loc 1 193 6 view .LVU180
+ 718 0036 80B9     		cbnz	r0, .L55
  194:Core/Src/Code/stat.c **** 			ret = UINT64_MAX;
  195:Core/Src/Code/stat.c **** 		} else {
  196:Core/Src/Code/stat.c **** 			ret = val->t / (val->n - k_mul_sqrt_n);
- 732              		.loc 1 196 4 is_stmt 1 view .LVU181
- 733              		.loc 1 196 17 is_stmt 0 view .LVU182
- 734 0038 D4E90201 		ldrd	r0, [r4, #8]
- 735 003c FFF7FEFF 		bl	__aeabi_ul2f
- 736              	.LVL50:
- 737 0040 0446     		mov	r4, r0
- 738              	.LVL51:
- 739              		.loc 1 196 27 view .LVU183
- 740 0042 3146     		mov	r1, r6
- 741 0044 2846     		mov	r0, r5
- 742 0046 FFF7FEFF 		bl	__aeabi_fsub
- 743              	.LVL52:
- 744 004a 0146     		mov	r1, r0
- 745              		.loc 1 196 8 view .LVU184
- 746 004c 2046     		mov	r0, r4
- 747 004e FFF7FEFF 		bl	__aeabi_fdiv
- 748              	.LVL53:
- 749              		.loc 1 196 8 view .LVU185
- 750 0052 01E0     		b	.L52
- 751              	.LVL54:
- 752              	.L54:
- 753              		.loc 1 196 8 view .LVU186
- 754              	.LBE2:
+ 719              		.loc 1 196 4 is_stmt 1 view .LVU181
+ 720              		.loc 1 196 17 is_stmt 0 view .LVU182
+ 721 0038 D4E90201 		ldrd	r0, [r4, #8]
+ 722 003c FFF7FEFF 		bl	__aeabi_ul2f
+ 723              	.LVL50:
+ 724 0040 0446     		mov	r4, r0
+ 725              	.LVL51:
+ 726              		.loc 1 196 27 view .LVU183
+ 727 0042 3146     		mov	r1, r6
+ 728 0044 2846     		mov	r0, r5
+ 729 0046 FFF7FEFF 		bl	__aeabi_fsub
+ 730              	.LVL52:
+ 731 004a 0146     		mov	r1, r0
+ 732              		.loc 1 196 8 view .LVU184
+ 733 004c 2046     		mov	r0, r4
+ 734 004e FFF7FEFF 		bl	__aeabi_fdiv
+ 735              	.LVL53:
+ 736              		.loc 1 196 8 view .LVU185
+ 737 0052 01E0     		b	.L52
+ 738              	.LVL54:
+ 739              	.L54:
+ 740              		.loc 1 196 8 view .LVU186
+ 741              	.LBE2:
  190:Core/Src/Code/stat.c **** 	} else {
- 755              		.loc 1 190 7 view .LVU187
- 756 0054 4FF0BF40 		mov	r0, #1602224128
- 757              	.LVL55:
- 758              	.L52:
+ 742              		.loc 1 190 7 view .LVU187
+ 743 0054 4FF0BF40 		mov	r0, #1602224128
+ 744              	.LVL55:
+ 745              	.L52:
  197:Core/Src/Code/stat.c **** 		}
  198:Core/Src/Code/stat.c **** 	}
  199:Core/Src/Code/stat.c **** 	return ret;
  200:Core/Src/Code/stat.c **** }
- 759              		.loc 1 200 1 view .LVU188
- 760 0058 70BD     		pop	{r4, r5, r6, pc}
- 761              	.LVL56:
- 762              	.L55:
- 763              	.LBB3:
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 20
+ 746              		.loc 1 200 1 view .LVU188
+ 747 0058 70BD     		pop	{r4, r5, r6, pc}
+ 748              	.LVL56:
+ 749              	.L55:
+ 750              	.LBB3:
+ 194:Core/Src/Code/stat.c **** 		} else {
+ 751              		.loc 1 194 8 view .LVU189
+ 752 005a 4FF0BF40 		mov	r0, #1602224128
+ 753              	.LVL57:
+ 194:Core/Src/Code/stat.c **** 		} else {
+ 754              		.loc 1 194 8 view .LVU190
+ 755              	.LBE3:
+ 199:Core/Src/Code/stat.c **** }
+ 756              		.loc 1 199 2 is_stmt 1 view .LVU191
+ 199:Core/Src/Code/stat.c **** }
+ 757              		.loc 1 199 9 is_stmt 0 view .LVU192
+ 758 005e FBE7     		b	.L52
+ 759              	.L58:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 20
 
 
- 194:Core/Src/Code/stat.c **** 		} else {
- 764              		.loc 1 194 8 view .LVU189
- 765 005a 4FF0BF40 		mov	r0, #1602224128
- 766              	.LVL57:
- 194:Core/Src/Code/stat.c **** 		} else {
- 767              		.loc 1 194 8 view .LVU190
- 768              	.LBE3:
- 199:Core/Src/Code/stat.c **** }
- 769              		.loc 1 199 2 is_stmt 1 view .LVU191
- 199:Core/Src/Code/stat.c **** }
- 770              		.loc 1 199 9 is_stmt 0 view .LVU192
- 771 005e FBE7     		b	.L52
- 772              	.L58:
- 773              		.align	2
- 774              	.L57:
- 775 0060 00000000 		.word	.LANCHOR5
- 776              		.cfi_endproc
- 777              	.LFE11:
- 779              		.global	__aeabi_fadd
- 780              		.section	.text.need_reject,"ax",%progbits
- 781              		.align	1
- 782              		.syntax unified
- 783              		.thumb
- 784              		.thumb_func
- 785              		.fpu softvfp
- 787              	need_reject:
- 788              	.LVL58:
- 789              	.LFB12:
+ 760              		.align	2
+ 761              	.L57:
+ 762 0060 00000000 		.word	.LANCHOR5
+ 763              		.cfi_endproc
+ 764              	.LFE11:
+ 766              		.global	__aeabi_fadd
+ 767              		.section	.text.need_reject,"ax",%progbits
+ 768              		.align	1
+ 769              		.syntax unified
+ 770              		.thumb
+ 771              		.thumb_func
+ 772              		.fpu softvfp
+ 774              	need_reject:
+ 775              	.LVL58:
+ 776              	.LFB12:
  201:Core/Src/Code/stat.c **** 
  202:Core/Src/Code/stat.c **** 
  203:Core/Src/Code/stat.c **** static unsigned int need_reject (const stat_elem_t *head, const stat_elem_t *tail, unsigned int k_n
- 790              		.loc 1 203 104 is_stmt 1 view -0
- 791              		.cfi_startproc
- 792              		@ args = 0, pretend = 0, frame = 0
- 793              		@ frame_needed = 0, uses_anonymous_args = 0
- 794              		.loc 1 203 104 is_stmt 0 view .LVU194
- 795 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
- 796              	.LCFI13:
- 797              		.cfi_def_cfa_offset 24
- 798              		.cfi_offset 4, -24
- 799              		.cfi_offset 5, -20
- 800              		.cfi_offset 6, -16
- 801              		.cfi_offset 7, -12
- 802              		.cfi_offset 8, -8
- 803              		.cfi_offset 14, -4
- 804 0004 0546     		mov	r5, r0
- 805 0006 0E46     		mov	r6, r1
- 806 0008 1446     		mov	r4, r2
+ 777              		.loc 1 203 104 is_stmt 1 view -0
+ 778              		.cfi_startproc
+ 779              		@ args = 0, pretend = 0, frame = 0
+ 780              		@ frame_needed = 0, uses_anonymous_args = 0
+ 781              		.loc 1 203 104 is_stmt 0 view .LVU194
+ 782 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 783              		.cfi_def_cfa_offset 24
+ 784              		.cfi_offset 4, -24
+ 785              		.cfi_offset 5, -20
+ 786              		.cfi_offset 6, -16
+ 787              		.cfi_offset 7, -12
+ 788              		.cfi_offset 8, -8
+ 789              		.cfi_offset 14, -4
+ 790 0004 0546     		mov	r5, r0
+ 791 0006 0E46     		mov	r6, r1
+ 792 0008 1446     		mov	r4, r2
  204:Core/Src/Code/stat.c ****     if (border_high_tpc(head, k_num) > border_low_tpc(tail, k_num) || border_high_tpc(tail, k_num) 
- 807              		.loc 1 204 5 is_stmt 1 view .LVU195
- 808              	.LVL59:
- 809              	.LBB8:
- 810              	.LBI8:
+ 793              		.loc 1 204 5 is_stmt 1 view .LVU195
+ 794              	.LVL59:
+ 795              	.LBB8:
+ 796              	.LBI8:
  171:Core/Src/Code/stat.c **** 
- 811              		.loc 1 171 21 view .LVU196
- 812              	.LBB9:
+ 797              		.loc 1 171 21 view .LVU196
+ 798              	.LBB9:
  173:Core/Src/Code/stat.c ****     const float k_high = k[k_num_high].high[(val->n >= STAT_K_NUMBER ? STAT_K_NUMBER - 1U : val->n)
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 21
+ 799              		.loc 1 173 5 view .LVU197
+ 173:Core/Src/Code/stat.c ****     const float k_high = k[k_num_high].high[(val->n >= STAT_K_NUMBER ? STAT_K_NUMBER - 1U : val->n)
+ 800              		.loc 1 173 24 is_stmt 0 view .LVU198
+ 801 000a C2F30313 		ubfx	r3, r2, #4, #4
+ 802              	.LVL60:
+ 174:Core/Src/Code/stat.c **** 
+ 803              		.loc 1 174 5 is_stmt 1 view .LVU199
+ 174:Core/Src/Code/stat.c **** 
+ 804              		.loc 1 174 49 is_stmt 0 view .LVU200
+ 805 000e D0F80080 		ldr	r8, [r0]
+ 174:Core/Src/Code/stat.c **** 
+ 806              		.loc 1 174 91 view .LVU201
+ 807 0012 4146     		mov	r1, r8
+ 808              	.LVL61:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 21
 
 
- 813              		.loc 1 173 5 view .LVU197
- 173:Core/Src/Code/stat.c ****     const float k_high = k[k_num_high].high[(val->n >= STAT_K_NUMBER ? STAT_K_NUMBER - 1U : val->n)
- 814              		.loc 1 173 24 is_stmt 0 view .LVU198
- 815 000a C2F30313 		ubfx	r3, r2, #4, #4
- 816              	.LVL60:
  174:Core/Src/Code/stat.c **** 
- 817              		.loc 1 174 5 is_stmt 1 view .LVU199
+ 809              		.loc 1 174 91 view .LVU202
+ 810 0014 0729     		cmp	r1, #7
+ 811 0016 28BF     		it	cs
+ 812 0018 0721     		movcs	r1, #7
  174:Core/Src/Code/stat.c **** 
- 818              		.loc 1 174 49 is_stmt 0 view .LVU200
- 819 000e D0F80080 		ldr	r8, [r0]
+ 813              		.loc 1 174 44 view .LVU203
+ 814 001a 03EBC303 		add	r3, r3, r3, lsl #3
+ 815              	.LVL62:
  174:Core/Src/Code/stat.c **** 
- 820              		.loc 1 174 91 view .LVU201
- 821 0012 4146     		mov	r1, r8
- 822              	.LVL61:
+ 816              		.loc 1 174 44 view .LVU204
+ 817 001e 374A     		ldr	r2, .L71
+ 818              	.LVL63:
  174:Core/Src/Code/stat.c **** 
- 823              		.loc 1 174 91 view .LVU202
- 824 0014 0729     		cmp	r1, #7
- 825 0016 28BF     		it	cs
- 826 0018 0721     		movcs	r1, #7
+ 819              		.loc 1 174 44 view .LVU205
+ 820 0020 1344     		add	r3, r3, r2
  174:Core/Src/Code/stat.c **** 
- 827              		.loc 1 174 44 view .LVU203
- 828 001a 03EBC303 		add	r3, r3, r3, lsl #3
- 829              	.LVL62:
+ 821              		.loc 1 174 17 view .LVU206
+ 822 0022 585C     		ldrb	r0, [r3, r1]	@ zero_extendqisi2
+ 823              	.LVL64:
  174:Core/Src/Code/stat.c **** 
- 830              		.loc 1 174 44 view .LVU204
- 831 001e 374A     		ldr	r2, .L71
- 832              	.LVL63:
- 174:Core/Src/Code/stat.c **** 
- 833              		.loc 1 174 44 view .LVU205
- 834 0020 1344     		add	r3, r3, r2
- 174:Core/Src/Code/stat.c **** 
- 835              		.loc 1 174 17 view .LVU206
- 836 0022 585C     		ldrb	r0, [r3, r1]	@ zero_extendqisi2
- 837              	.LVL64:
- 174:Core/Src/Code/stat.c **** 
- 838              		.loc 1 174 17 view .LVU207
- 839 0024 FFF7FEFF 		bl	__aeabi_ui2f
- 840              	.LVL65:
- 841 0028 0746     		mov	r7, r0
- 842              	.LVL66:
+ 824              		.loc 1 174 17 view .LVU207
+ 825 0024 FFF7FEFF 		bl	__aeabi_ui2f
+ 826              	.LVL65:
+ 827 0028 0746     		mov	r7, r0
+ 828              	.LVL66:
  176:Core/Src/Code/stat.c **** 
- 843              		.loc 1 176 5 is_stmt 1 view .LVU208
+ 829              		.loc 1 176 5 is_stmt 1 view .LVU208
  178:Core/Src/Code/stat.c ****         n_plus_k_mul_sqrt_n = 1 + k_high;
- 844              		.loc 1 178 5 view .LVU209
+ 830              		.loc 1 178 5 view .LVU209
  178:Core/Src/Code/stat.c ****         n_plus_k_mul_sqrt_n = 1 + k_high;
- 845              		.loc 1 178 8 is_stmt 0 view .LVU210
- 846 002a B8F1000F 		cmp	r8, #0
- 847 002e 3FD1     		bne	.L60
+ 831              		.loc 1 178 8 is_stmt 0 view .LVU210
+ 832 002a B8F1000F 		cmp	r8, #0
+ 833 002e 3FD1     		bne	.L60
  179:Core/Src/Code/stat.c ****     } else {
- 848              		.loc 1 179 9 is_stmt 1 view .LVU211
+ 834              		.loc 1 179 9 is_stmt 1 view .LVU211
  179:Core/Src/Code/stat.c ****     } else {
- 849              		.loc 1 179 29 is_stmt 0 view .LVU212
- 850 0030 4FF07E51 		mov	r1, #1065353216
- 851 0034 FFF7FEFF 		bl	__aeabi_fadd
- 852              	.LVL67:
+ 835              		.loc 1 179 29 is_stmt 0 view .LVU212
+ 836 0030 4FF07E51 		mov	r1, #1065353216
+ 837 0034 FFF7FEFF 		bl	__aeabi_fadd
+ 838              	.LVL67:
  179:Core/Src/Code/stat.c ****     } else {
- 853              		.loc 1 179 29 view .LVU213
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 22
+ 839              		.loc 1 179 29 view .LVU213
+ 840 0038 0746     		mov	r7, r0
+ 841              	.LVL68:
+ 842              	.L61:
+ 183:Core/Src/Code/stat.c **** }
+ 843              		.loc 1 183 5 is_stmt 1 view .LVU214
+ 183:Core/Src/Code/stat.c **** }
+ 844              		.loc 1 183 19 is_stmt 0 view .LVU215
+ 845 003a D5E90201 		ldrd	r0, [r5, #8]
+ 846              	.LVL69:
+ 183:Core/Src/Code/stat.c **** }
+ 847              		.loc 1 183 19 view .LVU216
+ 848 003e FFF7FEFF 		bl	__aeabi_ul2f
+ 849              	.LVL70:
+ 850 0042 3946     		mov	r1, r7
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 22
 
 
- 854 0038 0746     		mov	r7, r0
- 855              	.LVL68:
- 856              	.L61:
+ 851 0044 FFF7FEFF 		bl	__aeabi_fdiv
+ 852              	.LVL71:
+ 853 0048 0746     		mov	r7, r0
+ 854              	.LVL72:
  183:Core/Src/Code/stat.c **** }
- 857              		.loc 1 183 5 is_stmt 1 view .LVU214
- 183:Core/Src/Code/stat.c **** }
- 858              		.loc 1 183 19 is_stmt 0 view .LVU215
- 859 003a D5E90201 		ldrd	r0, [r5, #8]
- 860              	.LVL69:
- 183:Core/Src/Code/stat.c **** }
- 861              		.loc 1 183 19 view .LVU216
- 862 003e FFF7FEFF 		bl	__aeabi_ul2f
- 863              	.LVL70:
- 864 0042 3946     		mov	r1, r7
- 865 0044 FFF7FEFF 		bl	__aeabi_fdiv
- 866              	.LVL71:
- 867 0048 0746     		mov	r7, r0
- 868              	.LVL72:
- 183:Core/Src/Code/stat.c **** }
- 869              		.loc 1 183 19 view .LVU217
- 870              	.LBE9:
- 871              	.LBE8:
- 872              		.loc 1 204 40 view .LVU218
- 873 004a 2146     		mov	r1, r4
- 874 004c 3046     		mov	r0, r6
- 875 004e FFF7FEFF 		bl	border_low_tpc
- 876              	.LVL73:
- 877              		.loc 1 204 8 view .LVU219
- 878 0052 3946     		mov	r1, r7
- 879 0054 FFF7FEFF 		bl	__aeabi_fcmplt
- 880              	.LVL74:
- 881 0058 0028     		cmp	r0, #0
- 882 005a 49D1     		bne	.L66
- 883              	.LVL75:
- 884              	.LBB11:
- 885              	.LBI11:
+ 855              		.loc 1 183 19 view .LVU217
+ 856              	.LBE9:
+ 857              	.LBE8:
+ 858              		.loc 1 204 40 view .LVU218
+ 859 004a 2146     		mov	r1, r4
+ 860 004c 3046     		mov	r0, r6
+ 861 004e FFF7FEFF 		bl	border_low_tpc
+ 862              	.LVL73:
+ 863              		.loc 1 204 8 view .LVU219
+ 864 0052 3946     		mov	r1, r7
+ 865 0054 FFF7FEFF 		bl	__aeabi_fcmplt
+ 866              	.LVL74:
+ 867 0058 0028     		cmp	r0, #0
+ 868 005a 49D1     		bne	.L66
+ 869              	.LVL75:
+ 870              	.LBB11:
+ 871              	.LBI11:
  171:Core/Src/Code/stat.c **** 
- 886              		.loc 1 171 21 is_stmt 1 view .LVU220
- 887              	.LBB12:
+ 872              		.loc 1 171 21 is_stmt 1 view .LVU220
+ 873              	.LBB12:
  173:Core/Src/Code/stat.c ****     const float k_high = k[k_num_high].high[(val->n >= STAT_K_NUMBER ? STAT_K_NUMBER - 1U : val->n)
- 888              		.loc 1 173 5 view .LVU221
+ 874              		.loc 1 173 5 view .LVU221
  173:Core/Src/Code/stat.c ****     const float k_high = k[k_num_high].high[(val->n >= STAT_K_NUMBER ? STAT_K_NUMBER - 1U : val->n)
- 889              		.loc 1 173 24 is_stmt 0 view .LVU222
- 890 005c C4F30313 		ubfx	r3, r4, #4, #4
+ 875              		.loc 1 173 24 is_stmt 0 view .LVU222
+ 876 005c C4F30313 		ubfx	r3, r4, #4, #4
  174:Core/Src/Code/stat.c **** 
- 891              		.loc 1 174 5 is_stmt 1 view .LVU223
+ 877              		.loc 1 174 5 is_stmt 1 view .LVU223
  174:Core/Src/Code/stat.c **** 
- 892              		.loc 1 174 49 is_stmt 0 view .LVU224
- 893 0060 D6F80080 		ldr	r8, [r6]
+ 878              		.loc 1 174 49 is_stmt 0 view .LVU224
+ 879 0060 D6F80080 		ldr	r8, [r6]
  174:Core/Src/Code/stat.c **** 
- 894              		.loc 1 174 91 view .LVU225
- 895 0064 4146     		mov	r1, r8
- 896 0066 0729     		cmp	r1, #7
- 897 0068 28BF     		it	cs
- 898 006a 0721     		movcs	r1, #7
+ 880              		.loc 1 174 91 view .LVU225
+ 881 0064 4146     		mov	r1, r8
+ 882 0066 0729     		cmp	r1, #7
+ 883 0068 28BF     		it	cs
+ 884 006a 0721     		movcs	r1, #7
  174:Core/Src/Code/stat.c **** 
- 899              		.loc 1 174 44 view .LVU226
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 23
-
-
- 900 006c 03EBC303 		add	r3, r3, r3, lsl #3
- 901 0070 224A     		ldr	r2, .L71
- 902 0072 1344     		add	r3, r3, r2
+ 885              		.loc 1 174 44 view .LVU226
+ 886 006c 03EBC303 		add	r3, r3, r3, lsl #3
+ 887 0070 224A     		ldr	r2, .L71
+ 888 0072 1344     		add	r3, r3, r2
  174:Core/Src/Code/stat.c **** 
- 903              		.loc 1 174 17 view .LVU227
- 904 0074 585C     		ldrb	r0, [r3, r1]	@ zero_extendqisi2
- 905 0076 FFF7FEFF 		bl	__aeabi_ui2f
- 906              	.LVL76:
- 907 007a 0746     		mov	r7, r0
- 908              	.LVL77:
+ 889              		.loc 1 174 17 view .LVU227
+ 890 0074 585C     		ldrb	r0, [r3, r1]	@ zero_extendqisi2
+ 891 0076 FFF7FEFF 		bl	__aeabi_ui2f
+ 892              	.LVL76:
+ 893 007a 0746     		mov	r7, r0
+ 894              	.LVL77:
  176:Core/Src/Code/stat.c **** 
- 909              		.loc 1 176 5 is_stmt 1 view .LVU228
+ 895              		.loc 1 176 5 is_stmt 1 view .LVU228
  178:Core/Src/Code/stat.c ****         n_plus_k_mul_sqrt_n = 1 + k_high;
- 910              		.loc 1 178 5 view .LVU229
- 178:Core/Src/Code/stat.c ****         n_plus_k_mul_sqrt_n = 1 + k_high;
- 911              		.loc 1 178 8 is_stmt 0 view .LVU230
- 912 007c B8F1000F 		cmp	r8, #0
- 913 0080 26D1     		bne	.L63
- 179:Core/Src/Code/stat.c ****     } else {
- 914              		.loc 1 179 9 is_stmt 1 view .LVU231
- 179:Core/Src/Code/stat.c ****     } else {
- 915              		.loc 1 179 29 is_stmt 0 view .LVU232
- 916 0082 4FF07E51 		mov	r1, #1065353216
- 917 0086 FFF7FEFF 		bl	__aeabi_fadd
- 918              	.LVL78:
- 179:Core/Src/Code/stat.c ****     } else {
- 919              		.loc 1 179 29 view .LVU233
- 920 008a 0746     		mov	r7, r0
- 921              	.LVL79:
- 922              	.L64:
- 183:Core/Src/Code/stat.c **** }
- 923              		.loc 1 183 5 is_stmt 1 view .LVU234
- 183:Core/Src/Code/stat.c **** }
- 924              		.loc 1 183 19 is_stmt 0 view .LVU235
- 925 008c D6E90201 		ldrd	r0, [r6, #8]
- 926              	.LVL80:
- 183:Core/Src/Code/stat.c **** }
- 927              		.loc 1 183 19 view .LVU236
- 928 0090 FFF7FEFF 		bl	__aeabi_ul2f
- 929              	.LVL81:
- 930 0094 3946     		mov	r1, r7
- 931 0096 FFF7FEFF 		bl	__aeabi_fdiv
- 932              	.LVL82:
- 933 009a 0646     		mov	r6, r0
- 934              	.LVL83:
- 183:Core/Src/Code/stat.c **** }
- 935              		.loc 1 183 19 view .LVU237
- 936              	.LBE12:
- 937              	.LBE11:
- 938              		.loc 1 204 102 view .LVU238
- 939 009c 2146     		mov	r1, r4
- 940 009e 2846     		mov	r0, r5
- 941 00a0 FFF7FEFF 		bl	border_low_tpc
- 942              	.LVL84:
- 943              		.loc 1 204 68 view .LVU239
- 944 00a4 3146     		mov	r1, r6
- 945 00a6 FFF7FEFF 		bl	__aeabi_fcmplt
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 24
+ 896              		.loc 1 178 5 view .LVU229
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 23
 
 
- 946              	.LVL85:
- 947 00aa 20B3     		cbz	r0, .L69
+ 178:Core/Src/Code/stat.c ****         n_plus_k_mul_sqrt_n = 1 + k_high;
+ 897              		.loc 1 178 8 is_stmt 0 view .LVU230
+ 898 007c B8F1000F 		cmp	r8, #0
+ 899 0080 26D1     		bne	.L63
+ 179:Core/Src/Code/stat.c ****     } else {
+ 900              		.loc 1 179 9 is_stmt 1 view .LVU231
+ 179:Core/Src/Code/stat.c ****     } else {
+ 901              		.loc 1 179 29 is_stmt 0 view .LVU232
+ 902 0082 4FF07E51 		mov	r1, #1065353216
+ 903 0086 FFF7FEFF 		bl	__aeabi_fadd
+ 904              	.LVL78:
+ 179:Core/Src/Code/stat.c ****     } else {
+ 905              		.loc 1 179 29 view .LVU233
+ 906 008a 0746     		mov	r7, r0
+ 907              	.LVL79:
+ 908              	.L64:
+ 183:Core/Src/Code/stat.c **** }
+ 909              		.loc 1 183 5 is_stmt 1 view .LVU234
+ 183:Core/Src/Code/stat.c **** }
+ 910              		.loc 1 183 19 is_stmt 0 view .LVU235
+ 911 008c D6E90201 		ldrd	r0, [r6, #8]
+ 912              	.LVL80:
+ 183:Core/Src/Code/stat.c **** }
+ 913              		.loc 1 183 19 view .LVU236
+ 914 0090 FFF7FEFF 		bl	__aeabi_ul2f
+ 915              	.LVL81:
+ 916 0094 3946     		mov	r1, r7
+ 917 0096 FFF7FEFF 		bl	__aeabi_fdiv
+ 918              	.LVL82:
+ 919 009a 0646     		mov	r6, r0
+ 920              	.LVL83:
+ 183:Core/Src/Code/stat.c **** }
+ 921              		.loc 1 183 19 view .LVU237
+ 922              	.LBE12:
+ 923              	.LBE11:
+ 924              		.loc 1 204 102 view .LVU238
+ 925 009c 2146     		mov	r1, r4
+ 926 009e 2846     		mov	r0, r5
+ 927 00a0 FFF7FEFF 		bl	border_low_tpc
+ 928              	.LVL84:
+ 929              		.loc 1 204 68 view .LVU239
+ 930 00a4 3146     		mov	r1, r6
+ 931 00a6 FFF7FEFF 		bl	__aeabi_fcmplt
+ 932              	.LVL85:
+ 933 00aa 20B3     		cbz	r0, .L69
  205:Core/Src/Code/stat.c ****         return 1;
- 948              		.loc 1 205 16 view .LVU240
- 949 00ac 0120     		movs	r0, #1
- 950 00ae 20E0     		b	.L59
- 951              	.LVL86:
- 952              	.L60:
- 953              	.LBB14:
- 954              	.LBB10:
+ 934              		.loc 1 205 16 view .LVU240
+ 935 00ac 0120     		movs	r0, #1
+ 936 00ae 20E0     		b	.L59
+ 937              	.LVL86:
+ 938              	.L60:
+ 939              	.LBB14:
+ 940              	.LBB10:
  181:Core/Src/Code/stat.c ****     }
- 955              		.loc 1 181 9 is_stmt 1 view .LVU241
+ 941              		.loc 1 181 9 is_stmt 1 view .LVU241
  181:Core/Src/Code/stat.c ****     }
- 956              		.loc 1 181 38 is_stmt 0 view .LVU242
- 957 00b0 4046     		mov	r0, r8
- 958              	.LVL87:
- 181:Core/Src/Code/stat.c ****     }
- 959              		.loc 1 181 38 view .LVU243
- 960 00b2 FFF7FEFF 		bl	__aeabi_ui2f
- 961              	.LVL88:
- 962 00b6 8046     		mov	r8, r0
- 181:Core/Src/Code/stat.c ****     }
- 963              		.loc 1 181 49 view .LVU244
- 964 00b8 FFF7FEFF 		bl	fsqrt
- 965              	.LVL89:
- 966 00bc 0146     		mov	r1, r0
- 181:Core/Src/Code/stat.c ****     }
- 967              		.loc 1 181 47 view .LVU245
- 968 00be 3846     		mov	r0, r7
- 969 00c0 FFF7FEFF 		bl	__aeabi_fmul
- 970              	.LVL90:
- 971 00c4 0146     		mov	r1, r0
- 181:Core/Src/Code/stat.c ****     }
- 972              		.loc 1 181 29 view .LVU246
- 973 00c6 4046     		mov	r0, r8
- 974 00c8 FFF7FEFF 		bl	__aeabi_fadd
- 975              	.LVL91:
- 976 00cc 0746     		mov	r7, r0
- 977              	.LVL92:
- 181:Core/Src/Code/stat.c ****     }
- 978              		.loc 1 181 29 view .LVU247
- 979 00ce B4E7     		b	.L61
- 980              	.LVL93:
- 981              	.L63:
- 181:Core/Src/Code/stat.c ****     }
- 982              		.loc 1 181 29 view .LVU248
- 983              	.LBE10:
- 984              	.LBE14:
- 985              	.LBB15:
- 986              	.LBB13:
- 181:Core/Src/Code/stat.c ****     }
- 987              		.loc 1 181 9 is_stmt 1 view .LVU249
- 181:Core/Src/Code/stat.c ****     }
- 988              		.loc 1 181 38 is_stmt 0 view .LVU250
- 989 00d0 4046     		mov	r0, r8
- 990              	.LVL94:
- 181:Core/Src/Code/stat.c ****     }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 25
+ 942              		.loc 1 181 38 is_stmt 0 view .LVU242
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 24
 
 
- 991              		.loc 1 181 38 view .LVU251
- 992 00d2 FFF7FEFF 		bl	__aeabi_ui2f
- 993              	.LVL95:
- 994 00d6 8046     		mov	r8, r0
+ 943 00b0 4046     		mov	r0, r8
+ 944              	.LVL87:
  181:Core/Src/Code/stat.c ****     }
- 995              		.loc 1 181 49 view .LVU252
- 996 00d8 FFF7FEFF 		bl	fsqrt
- 997              	.LVL96:
- 998 00dc 0146     		mov	r1, r0
+ 945              		.loc 1 181 38 view .LVU243
+ 946 00b2 FFF7FEFF 		bl	__aeabi_ui2f
+ 947              	.LVL88:
+ 948 00b6 8046     		mov	r8, r0
  181:Core/Src/Code/stat.c ****     }
- 999              		.loc 1 181 47 view .LVU253
- 1000 00de 3846     		mov	r0, r7
- 1001 00e0 FFF7FEFF 		bl	__aeabi_fmul
- 1002              	.LVL97:
- 1003 00e4 0146     		mov	r1, r0
+ 949              		.loc 1 181 49 view .LVU244
+ 950 00b8 FFF7FEFF 		bl	fsqrt
+ 951              	.LVL89:
+ 952 00bc 0146     		mov	r1, r0
  181:Core/Src/Code/stat.c ****     }
- 1004              		.loc 1 181 29 view .LVU254
- 1005 00e6 4046     		mov	r0, r8
- 1006 00e8 FFF7FEFF 		bl	__aeabi_fadd
- 1007              	.LVL98:
- 1008 00ec 0746     		mov	r7, r0
- 1009              	.LVL99:
+ 953              		.loc 1 181 47 view .LVU245
+ 954 00be 3846     		mov	r0, r7
+ 955 00c0 FFF7FEFF 		bl	__aeabi_fmul
+ 956              	.LVL90:
+ 957 00c4 0146     		mov	r1, r0
  181:Core/Src/Code/stat.c ****     }
- 1010              		.loc 1 181 29 view .LVU255
- 1011 00ee CDE7     		b	.L64
- 1012              	.LVL100:
- 1013              	.L66:
+ 958              		.loc 1 181 29 view .LVU246
+ 959 00c6 4046     		mov	r0, r8
+ 960 00c8 FFF7FEFF 		bl	__aeabi_fadd
+ 961              	.LVL91:
+ 962 00cc 0746     		mov	r7, r0
+ 963              	.LVL92:
  181:Core/Src/Code/stat.c ****     }
- 1014              		.loc 1 181 29 view .LVU256
- 1015              	.LBE13:
- 1016              	.LBE15:
- 1017              		.loc 1 205 16 view .LVU257
- 1018 00f0 0120     		movs	r0, #1
- 1019              	.LVL101:
- 1020              	.L59:
+ 964              		.loc 1 181 29 view .LVU247
+ 965 00ce B4E7     		b	.L61
+ 966              	.LVL93:
+ 967              	.L63:
+ 181:Core/Src/Code/stat.c ****     }
+ 968              		.loc 1 181 29 view .LVU248
+ 969              	.LBE10:
+ 970              	.LBE14:
+ 971              	.LBB15:
+ 972              	.LBB13:
+ 181:Core/Src/Code/stat.c ****     }
+ 973              		.loc 1 181 9 is_stmt 1 view .LVU249
+ 181:Core/Src/Code/stat.c ****     }
+ 974              		.loc 1 181 38 is_stmt 0 view .LVU250
+ 975 00d0 4046     		mov	r0, r8
+ 976              	.LVL94:
+ 181:Core/Src/Code/stat.c ****     }
+ 977              		.loc 1 181 38 view .LVU251
+ 978 00d2 FFF7FEFF 		bl	__aeabi_ui2f
+ 979              	.LVL95:
+ 980 00d6 8046     		mov	r8, r0
+ 181:Core/Src/Code/stat.c ****     }
+ 981              		.loc 1 181 49 view .LVU252
+ 982 00d8 FFF7FEFF 		bl	fsqrt
+ 983              	.LVL96:
+ 984 00dc 0146     		mov	r1, r0
+ 181:Core/Src/Code/stat.c ****     }
+ 985              		.loc 1 181 47 view .LVU253
+ 986 00de 3846     		mov	r0, r7
+ 987 00e0 FFF7FEFF 		bl	__aeabi_fmul
+ 988              	.LVL97:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 25
+
+
+ 989 00e4 0146     		mov	r1, r0
+ 181:Core/Src/Code/stat.c ****     }
+ 990              		.loc 1 181 29 view .LVU254
+ 991 00e6 4046     		mov	r0, r8
+ 992 00e8 FFF7FEFF 		bl	__aeabi_fadd
+ 993              	.LVL98:
+ 994 00ec 0746     		mov	r7, r0
+ 995              	.LVL99:
+ 181:Core/Src/Code/stat.c ****     }
+ 996              		.loc 1 181 29 view .LVU255
+ 997 00ee CDE7     		b	.L64
+ 998              	.LVL100:
+ 999              	.L66:
+ 181:Core/Src/Code/stat.c ****     }
+ 1000              		.loc 1 181 29 view .LVU256
+ 1001              	.LBE13:
+ 1002              	.LBE15:
+ 1003              		.loc 1 205 16 view .LVU257
+ 1004 00f0 0120     		movs	r0, #1
+ 1005              	.LVL101:
+ 1006              	.L59:
  206:Core/Src/Code/stat.c ****     }  else {
  207:Core/Src/Code/stat.c ****         return 0;
  208:Core/Src/Code/stat.c ****     }
  209:Core/Src/Code/stat.c **** }
- 1021              		.loc 1 209 1 view .LVU258
- 1022 00f2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
- 1023              	.LVL102:
- 1024              	.L69:
+ 1007              		.loc 1 209 1 view .LVU258
+ 1008 00f2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1009              	.LVL102:
+ 1010              	.L69:
  207:Core/Src/Code/stat.c ****     }
- 1025              		.loc 1 207 16 view .LVU259
- 1026 00f6 0020     		movs	r0, #0
- 1027 00f8 FBE7     		b	.L59
- 1028              	.L72:
- 1029 00fa 00BF     		.align	2
- 1030              	.L71:
- 1031 00fc 00000000 		.word	.LANCHOR5
- 1032              		.cfi_endproc
- 1033              	.LFE12:
- 1035              		.section	.text.stat_check,"ax",%progbits
- 1036              		.align	1
- 1037              		.global	stat_check
- 1038              		.syntax unified
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 26
-
-
- 1039              		.thumb
- 1040              		.thumb_func
- 1041              		.fpu softvfp
- 1043              	stat_check:
- 1044              	.LVL103:
- 1045              	.LFB13:
+ 1011              		.loc 1 207 16 view .LVU259
+ 1012 00f6 0020     		movs	r0, #0
+ 1013 00f8 FBE7     		b	.L59
+ 1014              	.L72:
+ 1015 00fa 00BF     		.align	2
+ 1016              	.L71:
+ 1017 00fc 00000000 		.word	.LANCHOR5
+ 1018              		.cfi_endproc
+ 1019              	.LFE12:
+ 1021              		.section	.text.stat_check,"ax",%progbits
+ 1022              		.align	1
+ 1023              		.global	stat_check
+ 1024              		.syntax unified
+ 1025              		.thumb
+ 1026              		.thumb_func
+ 1027              		.fpu softvfp
+ 1029              	stat_check:
+ 1030              	.LVL103:
+ 1031              	.LFB13:
  210:Core/Src/Code/stat.c **** 
  211:Core/Src/Code/stat.c **** 
  212:Core/Src/Code/stat.c **** void stat_check (unsigned int k_num) {
- 1046              		.loc 1 212 38 is_stmt 1 view -0
- 1047              		.cfi_startproc
- 1048              		@ args = 0, pretend = 0, frame = 48
- 1049              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1032              		.loc 1 212 38 is_stmt 1 view -0
+ 1033              		.cfi_startproc
+ 1034              		@ args = 0, pretend = 0, frame = 48
+ 1035              		@ frame_needed = 0, uses_anonymous_args = 0
  213:Core/Src/Code/stat.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 26
+
+
  214:Core/Src/Code/stat.c ****     if (3 > (stat_end - statistic)) { return;}
- 1050              		.loc 1 214 5 view .LVU261
- 1051              		.loc 1 214 23 is_stmt 0 view .LVU262
- 1052 0000 4B4B     		ldr	r3, .L91
- 1053 0002 1A68     		ldr	r2, [r3]
- 1054 0004 4B4B     		ldr	r3, .L91+4
- 1055 0006 D31A     		subs	r3, r2, r3
- 1056              		.loc 1 214 8 view .LVU263
- 1057 0008 202B     		cmp	r3, #32
- 1058 000a 00DC     		bgt	.L88
- 1059 000c 7047     		bx	lr
- 1060              	.L88:
+ 1036              		.loc 1 214 5 view .LVU261
+ 1037              		.loc 1 214 23 is_stmt 0 view .LVU262
+ 1038 0000 4B4B     		ldr	r3, .L91
+ 1039 0002 1A68     		ldr	r2, [r3]
+ 1040 0004 4B4B     		ldr	r3, .L91+4
+ 1041 0006 D31A     		subs	r3, r2, r3
+ 1042              		.loc 1 214 8 view .LVU263
+ 1043 0008 202B     		cmp	r3, #32
+ 1044 000a 00DC     		bgt	.L88
+ 1045 000c 7047     		bx	lr
+ 1046              	.L88:
  212:Core/Src/Code/stat.c **** 
- 1061              		.loc 1 212 38 view .LVU264
- 1062 000e F0B5     		push	{r4, r5, r6, r7, lr}
- 1063              	.LCFI14:
- 1064              		.cfi_def_cfa_offset 20
- 1065              		.cfi_offset 4, -20
- 1066              		.cfi_offset 5, -16
- 1067              		.cfi_offset 6, -12
- 1068              		.cfi_offset 7, -8
- 1069              		.cfi_offset 14, -4
- 1070 0010 8DB0     		sub	sp, sp, #52
- 1071              	.LCFI15:
- 1072              		.cfi_def_cfa_offset 72
- 1073 0012 0646     		mov	r6, r0
+ 1047              		.loc 1 212 38 view .LVU264
+ 1048 000e F0B5     		push	{r4, r5, r6, r7, lr}
+ 1049              		.cfi_def_cfa_offset 20
+ 1050              		.cfi_offset 4, -20
+ 1051              		.cfi_offset 5, -16
+ 1052              		.cfi_offset 6, -12
+ 1053              		.cfi_offset 7, -8
+ 1054              		.cfi_offset 14, -4
+ 1055 0010 8DB0     		sub	sp, sp, #52
+ 1056              		.cfi_def_cfa_offset 72
+ 1057 0012 0646     		mov	r6, r0
  215:Core/Src/Code/stat.c **** 
  216:Core/Src/Code/stat.c ****     stat_elem_t tail;
- 1074              		.loc 1 216 5 is_stmt 1 view .LVU265
+ 1058              		.loc 1 216 5 is_stmt 1 view .LVU265
  217:Core/Src/Code/stat.c **** 
  218:Core/Src/Code/stat.c ****     sum(&tail, statistic + 2, stat_end);
- 1075              		.loc 1 218 5 view .LVU266
- 1076 0014 474C     		ldr	r4, .L91+4
- 1077 0016 04F12001 		add	r1, r4, #32
- 1078 001a 08A8     		add	r0, sp, #32
- 1079              	.LVL104:
- 1080              		.loc 1 218 5 is_stmt 0 view .LVU267
- 1081 001c FFF7FEFF 		bl	sum
- 1082              	.LVL105:
+ 1059              		.loc 1 218 5 view .LVU266
+ 1060 0014 474C     		ldr	r4, .L91+4
+ 1061 0016 04F12001 		add	r1, r4, #32
+ 1062 001a 08A8     		add	r0, sp, #32
+ 1063              	.LVL104:
+ 1064              		.loc 1 218 5 is_stmt 0 view .LVU267
+ 1065 001c FFF7FEFF 		bl	sum
+ 1066              	.LVL105:
  219:Core/Src/Code/stat.c **** 
  220:Core/Src/Code/stat.c **** 
  221:Core/Src/Code/stat.c ****     if (need_reject(statistic, &tail, k_num))
- 1083              		.loc 1 221 5 is_stmt 1 view .LVU268
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 27
-
-
- 1084              		.loc 1 221 9 is_stmt 0 view .LVU269
- 1085 0020 3246     		mov	r2, r6
- 1086 0022 08A9     		add	r1, sp, #32
- 1087 0024 2046     		mov	r0, r4
- 1088 0026 FFF7FEFF 		bl	need_reject
- 1089              	.LVL106:
- 1090              		.loc 1 221 8 view .LVU270
- 1091 002a 90B1     		cbz	r0, .L75
+ 1067              		.loc 1 221 5 is_stmt 1 view .LVU268
+ 1068              		.loc 1 221 9 is_stmt 0 view .LVU269
+ 1069 0020 3246     		mov	r2, r6
+ 1070 0022 08A9     		add	r1, sp, #32
+ 1071 0024 2046     		mov	r0, r4
+ 1072 0026 FFF7FEFF 		bl	need_reject
+ 1073              	.LVL106:
+ 1074              		.loc 1 221 8 view .LVU270
+ 1075 002a 90B1     		cbz	r0, .L75
  222:Core/Src/Code/stat.c ****     {
  223:Core/Src/Code/stat.c ****         if (reject_1_second)
- 1092              		.loc 1 223 9 is_stmt 1 view .LVU271
- 1093              		.loc 1 223 13 is_stmt 0 view .LVU272
- 1094 002c 424B     		ldr	r3, .L91+8
- 1095 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1096              		.loc 1 223 12 view .LVU273
- 1097 0030 1BB9     		cbnz	r3, .L89
+ 1076              		.loc 1 223 9 is_stmt 1 view .LVU271
+ 1077              		.loc 1 223 13 is_stmt 0 view .LVU272
+ 1078 002c 424B     		ldr	r3, .L91+8
+ 1079 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1080              		.loc 1 223 12 view .LVU273
+ 1081 0030 1BB9     		cbnz	r3, .L89
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 27
+
+
  224:Core/Src/Code/stat.c ****         {
  225:Core/Src/Code/stat.c ****             reject_1_second = 0;
  226:Core/Src/Code/stat.c ****             stat_end = statistic + 2U;
@@ -1586,222 +1570,219 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
  230:Core/Src/Code/stat.c ****         else
  231:Core/Src/Code/stat.c ****         {
  232:Core/Src/Code/stat.c ****             reject_1_second = 1;
- 1098              		.loc 1 232 13 is_stmt 1 view .LVU274
- 1099              		.loc 1 232 29 is_stmt 0 view .LVU275
- 1100 0032 414B     		ldr	r3, .L91+8
- 1101 0034 0122     		movs	r2, #1
- 1102 0036 1A70     		strb	r2, [r3]
- 1103 0038 18E0     		b	.L77
- 1104              	.L89:
+ 1082              		.loc 1 232 13 is_stmt 1 view .LVU274
+ 1083              		.loc 1 232 29 is_stmt 0 view .LVU275
+ 1084 0032 414B     		ldr	r3, .L91+8
+ 1085 0034 0122     		movs	r2, #1
+ 1086 0036 1A70     		strb	r2, [r3]
+ 1087 0038 18E0     		b	.L77
+ 1088              	.L89:
  225:Core/Src/Code/stat.c ****             stat_end = statistic + 2U;
- 1105              		.loc 1 225 13 is_stmt 1 view .LVU276
+ 1089              		.loc 1 225 13 is_stmt 1 view .LVU276
  225:Core/Src/Code/stat.c ****             stat_end = statistic + 2U;
- 1106              		.loc 1 225 29 is_stmt 0 view .LVU277
- 1107 003a 0023     		movs	r3, #0
- 1108 003c 3E4A     		ldr	r2, .L91+8
- 1109 003e 1370     		strb	r3, [r2]
+ 1090              		.loc 1 225 29 is_stmt 0 view .LVU277
+ 1091 003a 0023     		movs	r3, #0
+ 1092 003c 3E4A     		ldr	r2, .L91+8
+ 1093 003e 1370     		strb	r3, [r2]
  226:Core/Src/Code/stat.c ****             memset(stat_elem_n, 0U, sizeof stat_elem_n);
- 1110              		.loc 1 226 13 is_stmt 1 view .LVU278
+ 1094              		.loc 1 226 13 is_stmt 1 view .LVU278
  226:Core/Src/Code/stat.c ****             memset(stat_elem_n, 0U, sizeof stat_elem_n);
- 1111              		.loc 1 226 22 is_stmt 0 view .LVU279
- 1112 0040 3B4A     		ldr	r2, .L91
- 1113 0042 04F12001 		add	r1, r4, #32
- 1114 0046 1160     		str	r1, [r2]
+ 1095              		.loc 1 226 22 is_stmt 0 view .LVU279
+ 1096 0040 3B4A     		ldr	r2, .L91
+ 1097 0042 04F12001 		add	r1, r4, #32
+ 1098 0046 1160     		str	r1, [r2]
  227:Core/Src/Code/stat.c ****             return;
- 1115              		.loc 1 227 13 is_stmt 1 view .LVU280
- 1116 0048 3C4A     		ldr	r2, .L91+12
- 1117 004a 1360     		str	r3, [r2]
- 1118 004c 5360     		str	r3, [r2, #4]
- 1119 004e 1372     		strb	r3, [r2, #8]
+ 1099              		.loc 1 227 13 is_stmt 1 view .LVU280
+ 1100 0048 3C4A     		ldr	r2, .L91+12
+ 1101 004a 1360     		str	r3, [r2]
+ 1102 004c 5360     		str	r3, [r2, #4]
+ 1103 004e 1372     		strb	r3, [r2, #8]
  228:Core/Src/Code/stat.c ****         }
- 1120              		.loc 1 228 13 view .LVU281
- 1121 0050 6CE0     		b	.L73
- 1122              	.L75:
+ 1104              		.loc 1 228 13 view .LVU281
+ 1105 0050 6CE0     		b	.L73
+ 1106              	.L75:
  233:Core/Src/Code/stat.c ****         }
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 28
-
-
  234:Core/Src/Code/stat.c ****     }
  235:Core/Src/Code/stat.c ****     else
  236:Core/Src/Code/stat.c ****     {
  237:Core/Src/Code/stat.c ****         if (reject_1_second) {
- 1123              		.loc 1 237 9 view .LVU282
- 1124              		.loc 1 237 13 is_stmt 0 view .LVU283
- 1125 0052 394B     		ldr	r3, .L91+8
- 1126 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1127              		.loc 1 237 12 view .LVU284
- 1128 0056 33B1     		cbz	r3, .L78
+ 1107              		.loc 1 237 9 view .LVU282
+ 1108              		.loc 1 237 13 is_stmt 0 view .LVU283
+ 1109 0052 394B     		ldr	r3, .L91+8
+ 1110 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1111              		.loc 1 237 12 view .LVU284
+ 1112 0056 33B1     		cbz	r3, .L78
  238:Core/Src/Code/stat.c ****             statistic[1].n = 0;
- 1129              		.loc 1 238 13 is_stmt 1 view .LVU285
- 1130              		.loc 1 238 28 is_stmt 0 view .LVU286
- 1131 0058 364B     		ldr	r3, .L91+4
- 1132 005a 0022     		movs	r2, #0
- 1133 005c 1A61     		str	r2, [r3, #16]
+ 1113              		.loc 1 238 13 is_stmt 1 view .LVU285
+ 1114              		.loc 1 238 28 is_stmt 0 view .LVU286
+ 1115 0058 364B     		ldr	r3, .L91+4
+ 1116 005a 0022     		movs	r2, #0
+ 1117 005c 1A61     		str	r2, [r3, #16]
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 28
+
+
  239:Core/Src/Code/stat.c ****             statistic[1].t = 0;
- 1134              		.loc 1 239 13 is_stmt 1 view .LVU287
- 1135              		.loc 1 239 28 is_stmt 0 view .LVU288
- 1136 005e 0020     		movs	r0, #0
- 1137 0060 0021     		movs	r1, #0
- 1138 0062 C3E90601 		strd	r0, [r3, #24]
- 1139              	.L78:
+ 1118              		.loc 1 239 13 is_stmt 1 view .LVU287
+ 1119              		.loc 1 239 28 is_stmt 0 view .LVU288
+ 1120 005e 0020     		movs	r0, #0
+ 1121 0060 0021     		movs	r1, #0
+ 1122 0062 C3E90601 		strd	r0, [r3, #24]
+ 1123              	.L78:
  240:Core/Src/Code/stat.c ****         }
  241:Core/Src/Code/stat.c ****         reject_1_second = 0;
- 1140              		.loc 1 241 9 is_stmt 1 view .LVU289
- 1141              		.loc 1 241 25 is_stmt 0 view .LVU290
- 1142 0066 344B     		ldr	r3, .L91+8
- 1143 0068 0022     		movs	r2, #0
- 1144 006a 1A70     		strb	r2, [r3]
- 1145              	.L77:
+ 1124              		.loc 1 241 9 is_stmt 1 view .LVU289
+ 1125              		.loc 1 241 25 is_stmt 0 view .LVU290
+ 1126 0066 344B     		ldr	r3, .L91+8
+ 1127 0068 0022     		movs	r2, #0
+ 1128 006a 1A70     		strb	r2, [r3]
+ 1129              	.L77:
  242:Core/Src/Code/stat.c ****     }
  243:Core/Src/Code/stat.c **** 
  244:Core/Src/Code/stat.c ****     tail.n += statistic[1].n;;
- 1146              		.loc 1 244 5 is_stmt 1 view .LVU291
- 1147              		.loc 1 244 27 is_stmt 0 view .LVU292
- 1148 006c 314C     		ldr	r4, .L91+4
- 1149 006e 2269     		ldr	r2, [r4, #16]
- 1150              		.loc 1 244 12 view .LVU293
- 1151 0070 089B     		ldr	r3, [sp, #32]
- 1152 0072 1344     		add	r3, r3, r2
- 1153 0074 0893     		str	r3, [sp, #32]
- 1154              		.loc 1 244 30 is_stmt 1 view .LVU294
+ 1130              		.loc 1 244 5 is_stmt 1 view .LVU291
+ 1131              		.loc 1 244 27 is_stmt 0 view .LVU292
+ 1132 006c 314C     		ldr	r4, .L91+4
+ 1133 006e 2269     		ldr	r2, [r4, #16]
+ 1134              		.loc 1 244 12 view .LVU293
+ 1135 0070 089B     		ldr	r3, [sp, #32]
+ 1136 0072 1344     		add	r3, r3, r2
+ 1137 0074 0893     		str	r3, [sp, #32]
+ 1138              		.loc 1 244 30 is_stmt 1 view .LVU294
  245:Core/Src/Code/stat.c ****     tail.t += statistic[1].t;
- 1155              		.loc 1 245 5 view .LVU295
- 1156              		.loc 1 245 27 is_stmt 0 view .LVU296
- 1157 0076 A169     		ldr	r1, [r4, #24]
- 1158 0078 E269     		ldr	r2, [r4, #28]
- 1159              		.loc 1 245 12 view .LVU297
- 1160 007a 0A9B     		ldr	r3, [sp, #40]
- 1161 007c 5B18     		adds	r3, r3, r1
- 1162 007e 0B99     		ldr	r1, [sp, #44]
- 1163 0080 42EB0102 		adc	r2, r2, r1
- 1164 0084 0A93     		str	r3, [sp, #40]
- 1165 0086 0B92     		str	r2, [sp, #44]
+ 1139              		.loc 1 245 5 view .LVU295
+ 1140              		.loc 1 245 27 is_stmt 0 view .LVU296
+ 1141 0076 A169     		ldr	r1, [r4, #24]
+ 1142 0078 E269     		ldr	r2, [r4, #28]
+ 1143              		.loc 1 245 12 view .LVU297
+ 1144 007a 0A9B     		ldr	r3, [sp, #40]
+ 1145 007c 5B18     		adds	r3, r3, r1
+ 1146 007e 0B99     		ldr	r1, [sp, #44]
+ 1147 0080 42EB0102 		adc	r2, r2, r1
+ 1148 0084 0A93     		str	r3, [sp, #40]
+ 1149 0086 0B92     		str	r2, [sp, #44]
  246:Core/Src/Code/stat.c **** 
  247:Core/Src/Code/stat.c ****     const stat_elem_t *div_dot = statistic + STAT_COLUMNS;
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 29
-
-
- 1166              		.loc 1 247 5 is_stmt 1 view .LVU298
- 1167              	.LVL107:
+ 1150              		.loc 1 247 5 is_stmt 1 view .LVU298
+ 1151              	.LVL107:
  248:Core/Src/Code/stat.c ****     stat_elem_t head = {0U, 0U};
- 1168              		.loc 1 248 5 view .LVU299
- 1169              		.loc 1 248 17 is_stmt 0 view .LVU300
- 1170 0088 0023     		movs	r3, #0
- 1171 008a 0493     		str	r3, [sp, #16]
- 1172 008c 0022     		movs	r2, #0
- 1173 008e 0023     		movs	r3, #0
- 1174 0090 CDE90623 		strd	r2, [sp, #24]
+ 1152              		.loc 1 248 5 view .LVU299
+ 1153              		.loc 1 248 17 is_stmt 0 view .LVU300
+ 1154 0088 0023     		movs	r3, #0
+ 1155 008a 0493     		str	r3, [sp, #16]
+ 1156 008c 0022     		movs	r2, #0
+ 1157 008e 0023     		movs	r3, #0
+ 1158 0090 CDE90623 		strd	r2, [sp, #24]
  249:Core/Src/Code/stat.c ****     unsigned int row = 1U;
- 1175              		.loc 1 249 5 is_stmt 1 view .LVU301
- 1176              	.LVL108:
+ 1159              		.loc 1 249 5 is_stmt 1 view .LVU301
+ 1160              	.LVL108:
  250:Core/Src/Code/stat.c ****     stat_elem_t tmp;
- 1177              		.loc 1 250 5 view .LVU302
+ 1161              		.loc 1 250 5 view .LVU302
  251:Core/Src/Code/stat.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 29
+
+
  252:Core/Src/Code/stat.c ****     while (1 < (stat_end - div_dot) && row <= STAT_ROWS)
- 1178              		.loc 1 252 5 view .LVU303
+ 1162              		.loc 1 252 5 view .LVU303
  249:Core/Src/Code/stat.c ****     stat_elem_t tmp;
- 1179              		.loc 1 249 18 is_stmt 0 view .LVU304
- 1180 0094 0125     		movs	r5, #1
+ 1163              		.loc 1 249 18 is_stmt 0 view .LVU304
+ 1164 0094 0125     		movs	r5, #1
  247:Core/Src/Code/stat.c ****     stat_elem_t head = {0U, 0U};
- 1181              		.loc 1 247 24 view .LVU305
- 1182 0096 4034     		adds	r4, r4, #64
- 1183              	.LVL109:
- 1184              	.L79:
- 1185              		.loc 1 252 11 is_stmt 1 view .LVU306
- 1186              		.loc 1 252 26 is_stmt 0 view .LVU307
- 1187 0098 254B     		ldr	r3, .L91
- 1188 009a 1B68     		ldr	r3, [r3]
- 1189 009c 1B1B     		subs	r3, r3, r4
- 1190              		.loc 1 252 11 view .LVU308
- 1191 009e 102B     		cmp	r3, #16
- 1192 00a0 44DD     		ble	.L73
- 1193              		.loc 1 252 37 discriminator 1 view .LVU309
- 1194 00a2 082D     		cmp	r5, #8
- 1195 00a4 42D8     		bhi	.L73
+ 1165              		.loc 1 247 24 view .LVU305
+ 1166 0096 4034     		adds	r4, r4, #64
+ 1167              	.LVL109:
+ 1168              	.L79:
+ 1169              		.loc 1 252 11 is_stmt 1 view .LVU306
+ 1170              		.loc 1 252 26 is_stmt 0 view .LVU307
+ 1171 0098 254B     		ldr	r3, .L91
+ 1172 009a 1B68     		ldr	r3, [r3]
+ 1173 009c 1B1B     		subs	r3, r3, r4
+ 1174              		.loc 1 252 11 view .LVU308
+ 1175 009e 102B     		cmp	r3, #16
+ 1176 00a0 44DD     		ble	.L73
+ 1177              		.loc 1 252 37 discriminator 1 view .LVU309
+ 1178 00a2 082D     		cmp	r5, #8
+ 1179 00a4 42D8     		bhi	.L73
  253:Core/Src/Code/stat.c ****     {
  254:Core/Src/Code/stat.c **** 
  255:Core/Src/Code/stat.c ****         sum(&tmp, div_dot - (STAT_COLUMNS - 1U), div_dot);
- 1196              		.loc 1 255 9 is_stmt 1 view .LVU310
- 1197 00a6 2246     		mov	r2, r4
- 1198 00a8 A4F13001 		sub	r1, r4, #48
- 1199 00ac 6846     		mov	r0, sp
- 1200 00ae FFF7FEFF 		bl	sum
- 1201              	.LVL110:
+ 1180              		.loc 1 255 9 is_stmt 1 view .LVU310
+ 1181 00a6 2246     		mov	r2, r4
+ 1182 00a8 A4F13001 		sub	r1, r4, #48
+ 1183 00ac 6846     		mov	r0, sp
+ 1184 00ae FFF7FEFF 		bl	sum
+ 1185              	.LVL110:
  256:Core/Src/Code/stat.c **** 
  257:Core/Src/Code/stat.c ****         tail.n -= tmp.n + div_dot->n;
- 1202              		.loc 1 257 9 view .LVU311
- 1203              		.loc 1 257 22 is_stmt 0 view .LVU312
- 1204 00b2 009F     		ldr	r7, [sp]
- 1205              		.loc 1 257 34 view .LVU313
- 1206 00b4 2368     		ldr	r3, [r4]
- 1207              		.loc 1 257 25 view .LVU314
- 1208 00b6 FA18     		adds	r2, r7, r3
- 1209              		.loc 1 257 16 view .LVU315
- 1210 00b8 089B     		ldr	r3, [sp, #32]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 30
-
-
- 1211 00ba 9B1A     		subs	r3, r3, r2
- 1212 00bc 0893     		str	r3, [sp, #32]
+ 1186              		.loc 1 257 9 view .LVU311
+ 1187              		.loc 1 257 22 is_stmt 0 view .LVU312
+ 1188 00b2 009F     		ldr	r7, [sp]
+ 1189              		.loc 1 257 34 view .LVU313
+ 1190 00b4 2368     		ldr	r3, [r4]
+ 1191              		.loc 1 257 25 view .LVU314
+ 1192 00b6 FA18     		adds	r2, r7, r3
+ 1193              		.loc 1 257 16 view .LVU315
+ 1194 00b8 089B     		ldr	r3, [sp, #32]
+ 1195 00ba 9B1A     		subs	r3, r3, r2
+ 1196 00bc 0893     		str	r3, [sp, #32]
  258:Core/Src/Code/stat.c ****         tail.t -= tmp.t + div_dot->t;
- 1213              		.loc 1 258 9 is_stmt 1 view .LVU316
- 1214              		.loc 1 258 22 is_stmt 0 view .LVU317
- 1215 00be 029B     		ldr	r3, [sp, #8]
- 1216 00c0 0399     		ldr	r1, [sp, #12]
- 1217              		.loc 1 258 34 view .LVU318
- 1218 00c2 A268     		ldr	r2, [r4, #8]
- 1219 00c4 E068     		ldr	r0, [r4, #12]
- 1220              		.loc 1 258 25 view .LVU319
- 1221 00c6 9A18     		adds	r2, r3, r2
- 1222 00c8 41EB0000 		adc	r0, r1, r0
- 1223              		.loc 1 258 16 view .LVU320
- 1224 00cc DDF828C0 		ldr	ip, [sp, #40]
- 1225 00d0 BCEB0202 		subs	r2, ip, r2
- 1226 00d4 DDF82CC0 		ldr	ip, [sp, #44]
- 1227 00d8 6CEB0000 		sbc	r0, ip, r0
- 1228 00dc 0A92     		str	r2, [sp, #40]
- 1229 00de 0B90     		str	r0, [sp, #44]
+ 1197              		.loc 1 258 9 is_stmt 1 view .LVU316
+ 1198              		.loc 1 258 22 is_stmt 0 view .LVU317
+ 1199 00be 029B     		ldr	r3, [sp, #8]
+ 1200 00c0 0399     		ldr	r1, [sp, #12]
+ 1201              		.loc 1 258 34 view .LVU318
+ 1202 00c2 A268     		ldr	r2, [r4, #8]
+ 1203 00c4 E068     		ldr	r0, [r4, #12]
+ 1204              		.loc 1 258 25 view .LVU319
+ 1205 00c6 9A18     		adds	r2, r3, r2
+ 1206 00c8 41EB0000 		adc	r0, r1, r0
+ 1207              		.loc 1 258 16 view .LVU320
+ 1208 00cc DDF828C0 		ldr	ip, [sp, #40]
+ 1209 00d0 BCEB0202 		subs	r2, ip, r2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 30
+
+
+ 1210 00d4 DDF82CC0 		ldr	ip, [sp, #44]
+ 1211 00d8 6CEB0000 		sbc	r0, ip, r0
+ 1212 00dc 0A92     		str	r2, [sp, #40]
+ 1213 00de 0B90     		str	r0, [sp, #44]
  259:Core/Src/Code/stat.c **** 
  260:Core/Src/Code/stat.c ****         head.n += tmp.n + (div_dot - STAT_COLUMNS)->n;
- 1230              		.loc 1 260 9 is_stmt 1 view .LVU321
- 1231              		.loc 1 260 51 is_stmt 0 view .LVU322
- 1232 00e0 54F8402C 		ldr	r2, [r4, #-64]
- 1233              		.loc 1 260 25 view .LVU323
- 1234 00e4 1744     		add	r7, r7, r2
- 1235              		.loc 1 260 16 view .LVU324
- 1236 00e6 049A     		ldr	r2, [sp, #16]
- 1237 00e8 1744     		add	r7, r7, r2
- 1238 00ea 0497     		str	r7, [sp, #16]
+ 1214              		.loc 1 260 9 is_stmt 1 view .LVU321
+ 1215              		.loc 1 260 51 is_stmt 0 view .LVU322
+ 1216 00e0 54F8402C 		ldr	r2, [r4, #-64]
+ 1217              		.loc 1 260 25 view .LVU323
+ 1218 00e4 1744     		add	r7, r7, r2
+ 1219              		.loc 1 260 16 view .LVU324
+ 1220 00e6 049A     		ldr	r2, [sp, #16]
+ 1221 00e8 1744     		add	r7, r7, r2
+ 1222 00ea 0497     		str	r7, [sp, #16]
  261:Core/Src/Code/stat.c ****         head.t += tmp.t + (div_dot - STAT_COLUMNS)->t;
- 1239              		.loc 1 261 9 is_stmt 1 view .LVU325
- 1240              		.loc 1 261 51 is_stmt 0 view .LVU326
- 1241 00ec 54F8382C 		ldr	r2, [r4, #-56]
- 1242 00f0 54F8340C 		ldr	r0, [r4, #-52]
- 1243              		.loc 1 261 25 view .LVU327
- 1244 00f4 9B18     		adds	r3, r3, r2
- 1245 00f6 41EB0001 		adc	r1, r1, r0
- 1246              		.loc 1 261 16 view .LVU328
- 1247 00fa 069A     		ldr	r2, [sp, #24]
- 1248 00fc D318     		adds	r3, r2, r3
- 1249 00fe 079A     		ldr	r2, [sp, #28]
- 1250 0100 41EB0201 		adc	r1, r1, r2
- 1251 0104 0693     		str	r3, [sp, #24]
- 1252 0106 0791     		str	r1, [sp, #28]
+ 1223              		.loc 1 261 9 is_stmt 1 view .LVU325
+ 1224              		.loc 1 261 51 is_stmt 0 view .LVU326
+ 1225 00ec 54F8382C 		ldr	r2, [r4, #-56]
+ 1226 00f0 54F8340C 		ldr	r0, [r4, #-52]
+ 1227              		.loc 1 261 25 view .LVU327
+ 1228 00f4 9B18     		adds	r3, r3, r2
+ 1229 00f6 41EB0001 		adc	r1, r1, r0
+ 1230              		.loc 1 261 16 view .LVU328
+ 1231 00fa 069A     		ldr	r2, [sp, #24]
+ 1232 00fc D318     		adds	r3, r2, r3
+ 1233 00fe 079A     		ldr	r2, [sp, #28]
+ 1234 0100 41EB0201 		adc	r1, r1, r2
+ 1235 0104 0693     		str	r3, [sp, #24]
+ 1236 0106 0791     		str	r1, [sp, #28]
  262:Core/Src/Code/stat.c **** 
  263:Core/Src/Code/stat.c **** 
  264:Core/Src/Code/stat.c ****         if (need_reject(&head, &tail, k_num)) {
- 1253              		.loc 1 264 9 is_stmt 1 view .LVU329
- 1254              		.loc 1 264 13 is_stmt 0 view .LVU330
- 1255 0108 3246     		mov	r2, r6
- 1256 010a 08A9     		add	r1, sp, #32
- 1257 010c 04A8     		add	r0, sp, #16
- 1258 010e FFF7FEFF 		bl	need_reject
- 1259              	.LVL111:
- 1260              		.loc 1 264 12 view .LVU331
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 31
-
-
- 1261 0112 10B9     		cbnz	r0, .L90
+ 1237              		.loc 1 264 9 is_stmt 1 view .LVU329
+ 1238              		.loc 1 264 13 is_stmt 0 view .LVU330
+ 1239 0108 3246     		mov	r2, r6
+ 1240 010a 08A9     		add	r1, sp, #32
+ 1241 010c 04A8     		add	r0, sp, #16
+ 1242 010e FFF7FEFF 		bl	need_reject
+ 1243              	.LVL111:
+ 1244              		.loc 1 264 12 view .LVU331
+ 1245 0112 10B9     		cbnz	r0, .L90
  265:Core/Src/Code/stat.c ****             stat_end = div_dot;
  266:Core/Src/Code/stat.c **** 
  267:Core/Src/Code/stat.c ****             memset(stat_elem_n + row, 0U, sizeof stat_elem_n - row);
@@ -1809,462 +1790,461 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 1
  269:Core/Src/Code/stat.c ****         }
  270:Core/Src/Code/stat.c **** 
  271:Core/Src/Code/stat.c ****         div_dot += STAT_COLUMNS;
- 1262              		.loc 1 271 9 is_stmt 1 view .LVU332
- 1263              		.loc 1 271 17 is_stmt 0 view .LVU333
- 1264 0114 4034     		adds	r4, r4, #64
- 1265              	.LVL112:
+ 1246              		.loc 1 271 9 is_stmt 1 view .LVU332
+ 1247              		.loc 1 271 17 is_stmt 0 view .LVU333
+ 1248 0114 4034     		adds	r4, r4, #64
+ 1249              	.LVL112:
  272:Core/Src/Code/stat.c ****         row += 1U;
- 1266              		.loc 1 272 9 is_stmt 1 view .LVU334
- 1267              		.loc 1 272 13 is_stmt 0 view .LVU335
- 1268 0116 0135     		adds	r5, r5, #1
- 1269              	.LVL113:
- 1270              		.loc 1 272 13 view .LVU336
- 1271 0118 BEE7     		b	.L79
- 1272              	.L90:
+ 1250              		.loc 1 272 9 is_stmt 1 view .LVU334
+ 1251              		.loc 1 272 13 is_stmt 0 view .LVU335
+ 1252 0116 0135     		adds	r5, r5, #1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 31
+
+
+ 1253              	.LVL113:
+ 1254              		.loc 1 272 13 view .LVU336
+ 1255 0118 BEE7     		b	.L79
+ 1256              	.L90:
  265:Core/Src/Code/stat.c ****             stat_end = div_dot;
- 1273              		.loc 1 265 13 is_stmt 1 view .LVU337
+ 1257              		.loc 1 265 13 is_stmt 1 view .LVU337
  265:Core/Src/Code/stat.c ****             stat_end = div_dot;
- 1274              		.loc 1 265 22 is_stmt 0 view .LVU338
- 1275 011a 054B     		ldr	r3, .L91
- 1276 011c 1C60     		str	r4, [r3]
+ 1258              		.loc 1 265 22 is_stmt 0 view .LVU338
+ 1259 011a 054B     		ldr	r3, .L91
+ 1260 011c 1C60     		str	r4, [r3]
  267:Core/Src/Code/stat.c ****             break;
- 1277              		.loc 1 267 13 is_stmt 1 view .LVU339
- 1278 011e C5F10902 		rsb	r2, r5, #9
- 1279 0122 0021     		movs	r1, #0
- 1280 0124 0548     		ldr	r0, .L91+12
- 1281 0126 2844     		add	r0, r0, r5
- 1282 0128 FFF7FEFF 		bl	memset
- 1283              	.LVL114:
+ 1261              		.loc 1 267 13 is_stmt 1 view .LVU339
+ 1262 011e C5F10902 		rsb	r2, r5, #9
+ 1263 0122 0021     		movs	r1, #0
+ 1264 0124 0548     		ldr	r0, .L91+12
+ 1265 0126 2844     		add	r0, r0, r5
+ 1266 0128 FFF7FEFF 		bl	memset
+ 1267              	.LVL114:
  268:Core/Src/Code/stat.c ****         }
- 1284              		.loc 1 268 13 view .LVU340
- 1285              	.L73:
+ 1268              		.loc 1 268 13 view .LVU340
+ 1269              	.L73:
  273:Core/Src/Code/stat.c ****     }
  274:Core/Src/Code/stat.c **** 
  275:Core/Src/Code/stat.c ****     
  276:Core/Src/Code/stat.c **** 
  277:Core/Src/Code/stat.c **** }
- 1286              		.loc 1 277 1 is_stmt 0 view .LVU341
- 1287 012c 0DB0     		add	sp, sp, #52
- 1288              	.LCFI16:
- 1289              		.cfi_def_cfa_offset 20
- 1290              		@ sp needed
- 1291 012e F0BD     		pop	{r4, r5, r6, r7, pc}
- 1292              	.LVL115:
- 1293              	.L92:
- 1294              		.loc 1 277 1 view .LVU342
- 1295              		.align	2
- 1296              	.L91:
- 1297 0130 00000000 		.word	.LANCHOR2
- 1298 0134 00000000 		.word	.LANCHOR3
- 1299 0138 00000000 		.word	.LANCHOR6
- 1300 013c 00000000 		.word	.LANCHOR4
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 32
+ 1270              		.loc 1 277 1 is_stmt 0 view .LVU341
+ 1271 012c 0DB0     		add	sp, sp, #52
+ 1272              		.cfi_def_cfa_offset 20
+ 1273              		@ sp needed
+ 1274 012e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1275              	.LVL115:
+ 1276              	.L92:
+ 1277              		.loc 1 277 1 view .LVU342
+ 1278              		.align	2
+ 1279              	.L91:
+ 1280 0130 00000000 		.word	.LANCHOR2
+ 1281 0134 00000000 		.word	.LANCHOR3
+ 1282 0138 00000000 		.word	.LANCHOR6
+ 1283 013c 00000000 		.word	.LANCHOR4
+ 1284              		.cfi_endproc
+ 1285              	.LFE13:
+ 1287              		.global	__aeabi_ul2d
+ 1288              		.global	__aeabi_dmul
+ 1289              		.global	__aeabi_dcmpgt
+ 1290              		.global	__aeabi_ui2d
+ 1291              		.global	__aeabi_ddiv
+ 1292              		.global	__aeabi_f2uiz
+ 1293              		.global	__aeabi_d2f
+ 1294              		.global	__aeabi_f2d
+ 1295              		.section	.text.stat_calc_cps,"ax",%progbits
+ 1296              		.align	1
+ 1297              		.global	stat_calc_cps
+ 1298              		.syntax unified
+ 1299              		.thumb
+ 1300              		.thumb_func
+ 1301              		.fpu softvfp
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 32
 
 
- 1301              		.cfi_endproc
- 1302              	.LFE13:
- 1304              		.global	__aeabi_ul2d
- 1305              		.global	__aeabi_dmul
- 1306              		.global	__aeabi_dcmpgt
- 1307              		.global	__aeabi_ui2d
- 1308              		.global	__aeabi_ddiv
- 1309              		.global	__aeabi_f2uiz
- 1310              		.global	__aeabi_d2f
- 1311              		.global	__aeabi_f2d
- 1312              		.section	.text.stat_calc_cps,"ax",%progbits
- 1313              		.align	1
- 1314              		.global	stat_calc_cps
- 1315              		.syntax unified
- 1316              		.thumb
- 1317              		.thumb_func
- 1318              		.fpu softvfp
- 1320              	stat_calc_cps:
- 1321              	.LVL116:
- 1322              	.LFB14:
+ 1303              	stat_calc_cps:
+ 1304              	.LVL116:
+ 1305              	.LFB14:
  278:Core/Src/Code/stat.c **** 
  279:Core/Src/Code/stat.c **** 
  280:Core/Src/Code/stat.c **** void stat_calc_cps (float *cps, uint8_t* delta) {
- 1323              		.loc 1 280 49 is_stmt 1 view -0
- 1324              		.cfi_startproc
- 1325              		@ args = 0, pretend = 0, frame = 16
- 1326              		@ frame_needed = 0, uses_anonymous_args = 0
- 1327              		.loc 1 280 49 is_stmt 0 view .LVU344
- 1328 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
- 1329              	.LCFI17:
- 1330              		.cfi_def_cfa_offset 28
- 1331              		.cfi_offset 4, -28
- 1332              		.cfi_offset 5, -24
- 1333              		.cfi_offset 6, -20
- 1334              		.cfi_offset 7, -16
- 1335              		.cfi_offset 8, -12
- 1336              		.cfi_offset 9, -8
- 1337              		.cfi_offset 14, -4
- 1338 0004 85B0     		sub	sp, sp, #20
- 1339              	.LCFI18:
- 1340              		.cfi_def_cfa_offset 48
- 1341 0006 0746     		mov	r7, r0
- 1342 0008 0E46     		mov	r6, r1
+ 1306              		.loc 1 280 49 is_stmt 1 view -0
+ 1307              		.cfi_startproc
+ 1308              		@ args = 0, pretend = 0, frame = 16
+ 1309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1310              		.loc 1 280 49 is_stmt 0 view .LVU344
+ 1311 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 1312              		.cfi_def_cfa_offset 28
+ 1313              		.cfi_offset 4, -28
+ 1314              		.cfi_offset 5, -24
+ 1315              		.cfi_offset 6, -20
+ 1316              		.cfi_offset 7, -16
+ 1317              		.cfi_offset 8, -12
+ 1318              		.cfi_offset 9, -8
+ 1319              		.cfi_offset 14, -4
+ 1320 0004 85B0     		sub	sp, sp, #20
+ 1321              		.cfi_def_cfa_offset 48
+ 1322 0006 0746     		mov	r7, r0
+ 1323 0008 0E46     		mov	r6, r1
  281:Core/Src/Code/stat.c **** 
  282:Core/Src/Code/stat.c ****     stat_elem_t all;
- 1343              		.loc 1 282 5 is_stmt 1 view .LVU345
+ 1324              		.loc 1 282 5 is_stmt 1 view .LVU345
  283:Core/Src/Code/stat.c ****     static double Time,CPS;
- 1344              		.loc 1 283 5 view .LVU346
+ 1325              		.loc 1 283 5 view .LVU346
  284:Core/Src/Code/stat.c ****     static uint8_t Delta;
- 1345              		.loc 1 284 5 view .LVU347
+ 1326              		.loc 1 284 5 view .LVU347
  285:Core/Src/Code/stat.c **** 
  286:Core/Src/Code/stat.c **** 
  287:Core/Src/Code/stat.c ****     if (statistic[0].n < 60) {
- 1346              		.loc 1 287 5 view .LVU348
- 1347              		.loc 1 287 21 is_stmt 0 view .LVU349
- 1348 000a 394B     		ldr	r3, .L102+8
- 1349 000c 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 33
-
-
- 1350              		.loc 1 287 8 view .LVU350
- 1351 000e 3B2B     		cmp	r3, #59
- 1352 0010 48D8     		bhi	.L94
+ 1327              		.loc 1 287 5 view .LVU348
+ 1328              		.loc 1 287 21 is_stmt 0 view .LVU349
+ 1329 000a 394B     		ldr	r3, .L102+8
+ 1330 000c 1B68     		ldr	r3, [r3]
+ 1331              		.loc 1 287 8 view .LVU350
+ 1332 000e 3B2B     		cmp	r3, #59
+ 1333 0010 48D8     		bhi	.L94
  288:Core/Src/Code/stat.c ****         sum(&all, statistic, stat_end);
- 1353              		.loc 1 288 9 is_stmt 1 view .LVU351
- 1354 0012 384B     		ldr	r3, .L102+12
- 1355 0014 1A68     		ldr	r2, [r3]
- 1356 0016 3649     		ldr	r1, .L102+8
- 1357              	.LVL117:
- 1358              		.loc 1 288 9 is_stmt 0 view .LVU352
- 1359 0018 6846     		mov	r0, sp
- 1360              	.LVL118:
- 1361              		.loc 1 288 9 view .LVU353
- 1362 001a FFF7FEFF 		bl	sum
- 1363              	.LVL119:
- 1364              	.L95:
+ 1334              		.loc 1 288 9 is_stmt 1 view .LVU351
+ 1335 0012 384B     		ldr	r3, .L102+12
+ 1336 0014 1A68     		ldr	r2, [r3]
+ 1337 0016 3649     		ldr	r1, .L102+8
+ 1338              	.LVL117:
+ 1339              		.loc 1 288 9 is_stmt 0 view .LVU352
+ 1340 0018 6846     		mov	r0, sp
+ 1341              	.LVL118:
+ 1342              		.loc 1 288 9 view .LVU353
+ 1343 001a FFF7FEFF 		bl	sum
+ 1344              	.LVL119:
+ 1345              	.L95:
  289:Core/Src/Code/stat.c ****     } else {
  290:Core/Src/Code/stat.c ****         const stat_elem_t *last = statistic + STAT_COLUMNS * 4;
  291:Core/Src/Code/stat.c ****         sum(&all, statistic, (stat_end > last ? last : stat_end));
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 33
+
+
  292:Core/Src/Code/stat.c ****     }
  293:Core/Src/Code/stat.c **** 
  294:Core/Src/Code/stat.c **** 
  295:Core/Src/Code/stat.c ****     Time = (double)all.t;
- 1365              		.loc 1 295 5 is_stmt 1 view .LVU354
- 1366              		.loc 1 295 12 is_stmt 0 view .LVU355
- 1367 001e DDE90201 		ldrd	r0, [sp, #8]
- 1368 0022 FFF7FEFF 		bl	__aeabi_ul2d
- 1369              	.LVL120:
- 1370 0026 0246     		mov	r2, r0
- 1371 0028 0B46     		mov	r3, r1
- 1372              		.loc 1 295 10 view .LVU356
- 1373 002a DFF8CC80 		ldr	r8, .L102+16
- 1374 002e C8E90023 		strd	r2, [r8]
+ 1346              		.loc 1 295 5 is_stmt 1 view .LVU354
+ 1347              		.loc 1 295 12 is_stmt 0 view .LVU355
+ 1348 001e DDE90201 		ldrd	r0, [sp, #8]
+ 1349 0022 FFF7FEFF 		bl	__aeabi_ul2d
+ 1350              	.LVL120:
+ 1351 0026 0246     		mov	r2, r0
+ 1352 0028 0B46     		mov	r3, r1
+ 1353              		.loc 1 295 10 view .LVU356
+ 1354 002a DFF8CC80 		ldr	r8, .L102+16
+ 1355 002e C8E90023 		strd	r2, [r8]
  296:Core/Src/Code/stat.c ****     Time*= kTime;
- 1375              		.loc 1 296 5 is_stmt 1 view .LVU357
- 1376              		.loc 1 296 9 is_stmt 0 view .LVU358
- 1377 0032 2DA3     		adr	r3, .L102
- 1378 0034 D3E90023 		ldrd	r2, [r3]
- 1379 0038 FFF7FEFF 		bl	__aeabi_dmul
- 1380              	.LVL121:
- 1381 003c 0446     		mov	r4, r0
- 1382 003e 0D46     		mov	r5, r1
- 1383 0040 C8E90045 		strd	r4, [r8]
+ 1356              		.loc 1 296 5 is_stmt 1 view .LVU357
+ 1357              		.loc 1 296 9 is_stmt 0 view .LVU358
+ 1358 0032 2DA3     		adr	r3, .L102
+ 1359 0034 D3E90023 		ldrd	r2, [r3]
+ 1360 0038 FFF7FEFF 		bl	__aeabi_dmul
+ 1361              	.LVL121:
+ 1362 003c 0446     		mov	r4, r0
+ 1363 003e 0D46     		mov	r5, r1
+ 1364 0040 C8E90045 		strd	r4, [r8]
  297:Core/Src/Code/stat.c **** 
  298:Core/Src/Code/stat.c ****     CPS = 0; Delta=99;
- 1384              		.loc 1 298 5 is_stmt 1 view .LVU359
- 1385              		.loc 1 298 9 is_stmt 0 view .LVU360
- 1386 0044 0022     		movs	r2, #0
- 1387 0046 0023     		movs	r3, #0
- 1388 0048 DFF8B0C0 		ldr	ip, .L102+20
- 1389 004c CCE90023 		strd	r2, [ip]
- 1390              		.loc 1 298 14 is_stmt 1 view .LVU361
- 1391              		.loc 1 298 19 is_stmt 0 view .LVU362
- 1392 0050 DFF8ACC0 		ldr	ip, .L102+24
- 1393 0054 4FF0630E 		mov	lr, #99
- 1394 0058 8CF800E0 		strb	lr, [ip]
+ 1365              		.loc 1 298 5 is_stmt 1 view .LVU359
+ 1366              		.loc 1 298 9 is_stmt 0 view .LVU360
+ 1367 0044 0022     		movs	r2, #0
+ 1368 0046 0023     		movs	r3, #0
+ 1369 0048 DFF8B0C0 		ldr	ip, .L102+20
+ 1370 004c CCE90023 		strd	r2, [ip]
+ 1371              		.loc 1 298 14 is_stmt 1 view .LVU361
+ 1372              		.loc 1 298 19 is_stmt 0 view .LVU362
+ 1373 0050 DFF8ACC0 		ldr	ip, .L102+24
+ 1374 0054 4FF0630E 		mov	lr, #99
+ 1375 0058 8CF800E0 		strb	lr, [ip]
  299:Core/Src/Code/stat.c **** 
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 34
-
-
  300:Core/Src/Code/stat.c **** 
  301:Core/Src/Code/stat.c ****     if (Time>0) {
- 1395              		.loc 1 301 5 is_stmt 1 view .LVU363
- 1396              		.loc 1 301 8 is_stmt 0 view .LVU364
- 1397 005c FFF7FEFF 		bl	__aeabi_dcmpgt
- 1398              	.LVL122:
- 1399 0060 78B3     		cbz	r0, .L96
+ 1376              		.loc 1 301 5 is_stmt 1 view .LVU363
+ 1377              		.loc 1 301 8 is_stmt 0 view .LVU364
+ 1378 005c FFF7FEFF 		bl	__aeabi_dcmpgt
+ 1379              	.LVL122:
+ 1380 0060 78B3     		cbz	r0, .L96
  302:Core/Src/Code/stat.c ****         CPS   = (double)all.n;
- 1400              		.loc 1 302 9 is_stmt 1 view .LVU365
- 1401              		.loc 1 302 28 is_stmt 0 view .LVU366
- 1402 0062 DDF80080 		ldr	r8, [sp]
- 1403              		.loc 1 302 17 view .LVU367
- 1404 0066 4046     		mov	r0, r8
- 1405 0068 FFF7FEFF 		bl	__aeabi_ui2d
- 1406              	.LVL123:
- 1407 006c 0246     		mov	r2, r0
- 1408 006e 0B46     		mov	r3, r1
- 1409              		.loc 1 302 15 view .LVU368
- 1410 0070 DFF88890 		ldr	r9, .L102+20
- 1411 0074 C9E90023 		strd	r2, [r9]
+ 1381              		.loc 1 302 9 is_stmt 1 view .LVU365
+ 1382              		.loc 1 302 28 is_stmt 0 view .LVU366
+ 1383 0062 DDF80080 		ldr	r8, [sp]
+ 1384              		.loc 1 302 17 view .LVU367
+ 1385 0066 4046     		mov	r0, r8
+ 1386 0068 FFF7FEFF 		bl	__aeabi_ui2d
+ 1387              	.LVL123:
+ 1388 006c 0246     		mov	r2, r0
+ 1389 006e 0B46     		mov	r3, r1
+ 1390              		.loc 1 302 15 view .LVU368
+ 1391 0070 DFF88890 		ldr	r9, .L102+20
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 34
+
+
+ 1392 0074 C9E90023 		strd	r2, [r9]
  303:Core/Src/Code/stat.c ****         CPS  /= Time;
- 1412              		.loc 1 303 9 is_stmt 1 view .LVU369
- 1413              		.loc 1 303 14 is_stmt 0 view .LVU370
- 1414 0078 2246     		mov	r2, r4
- 1415 007a 2B46     		mov	r3, r5
- 1416 007c FFF7FEFF 		bl	__aeabi_ddiv
- 1417              	.LVL124:
- 1418 0080 C9E90001 		strd	r0, [r9]
+ 1393              		.loc 1 303 9 is_stmt 1 view .LVU369
+ 1394              		.loc 1 303 14 is_stmt 0 view .LVU370
+ 1395 0078 2246     		mov	r2, r4
+ 1396 007a 2B46     		mov	r3, r5
+ 1397 007c FFF7FEFF 		bl	__aeabi_ddiv
+ 1398              	.LVL124:
+ 1399 0080 C9E90001 		strd	r0, [r9]
  304:Core/Src/Code/stat.c ****         Delta = (all.n>4) ? (200/fsqrt(all.n)) : 99;
- 1419              		.loc 1 304 9 is_stmt 1 view .LVU371
- 1420              		.loc 1 304 15 is_stmt 0 view .LVU372
- 1421 0084 B8F1040F 		cmp	r8, #4
- 1422 0088 18D9     		bls	.L99
- 1423              		.loc 1 304 34 discriminator 1 view .LVU373
- 1424 008a 4046     		mov	r0, r8
- 1425 008c FFF7FEFF 		bl	__aeabi_ui2f
- 1426              	.LVL125:
- 1427 0090 FFF7FEFF 		bl	fsqrt
- 1428              	.LVL126:
- 1429 0094 0146     		mov	r1, r0
- 1430              		.loc 1 304 33 discriminator 1 view .LVU374
- 1431 0096 1B48     		ldr	r0, .L102+28
- 1432 0098 FFF7FEFF 		bl	__aeabi_fdiv
- 1433              	.LVL127:
- 1434              		.loc 1 304 15 discriminator 1 view .LVU375
- 1435 009c FFF7FEFF 		bl	__aeabi_f2uiz
- 1436              	.LVL128:
- 1437 00a0 C0B2     		uxtb	r0, r0
- 1438 00a2 0CE0     		b	.L98
- 1439              	.LVL129:
- 1440              	.L94:
- 1441              	.LBB16:
+ 1400              		.loc 1 304 9 is_stmt 1 view .LVU371
+ 1401              		.loc 1 304 15 is_stmt 0 view .LVU372
+ 1402 0084 B8F1040F 		cmp	r8, #4
+ 1403 0088 18D9     		bls	.L99
+ 1404              		.loc 1 304 34 discriminator 1 view .LVU373
+ 1405 008a 4046     		mov	r0, r8
+ 1406 008c FFF7FEFF 		bl	__aeabi_ui2f
+ 1407              	.LVL125:
+ 1408 0090 FFF7FEFF 		bl	fsqrt
+ 1409              	.LVL126:
+ 1410 0094 0146     		mov	r1, r0
+ 1411              		.loc 1 304 33 discriminator 1 view .LVU374
+ 1412 0096 1B48     		ldr	r0, .L102+28
+ 1413 0098 FFF7FEFF 		bl	__aeabi_fdiv
+ 1414              	.LVL127:
+ 1415              		.loc 1 304 15 discriminator 1 view .LVU375
+ 1416 009c FFF7FEFF 		bl	__aeabi_f2uiz
+ 1417              	.LVL128:
+ 1418 00a0 C0B2     		uxtb	r0, r0
+ 1419 00a2 0CE0     		b	.L98
+ 1420              	.LVL129:
+ 1421              	.L94:
+ 1422              	.LBB16:
  290:Core/Src/Code/stat.c ****         sum(&all, statistic, (stat_end > last ? last : stat_end));
- 1442              		.loc 1 290 9 is_stmt 1 view .LVU376
+ 1423              		.loc 1 290 9 is_stmt 1 view .LVU376
  291:Core/Src/Code/stat.c ****     }
- 1443              		.loc 1 291 9 view .LVU377
- 1444 00a4 1249     		ldr	r1, .L102+8
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 35
+ 1424              		.loc 1 291 9 view .LVU377
+ 1425 00a4 1249     		ldr	r1, .L102+8
+ 1426              	.LVL130:
+ 291:Core/Src/Code/stat.c ****     }
+ 1427              		.loc 1 291 9 is_stmt 0 view .LVU378
+ 1428 00a6 01F58073 		add	r3, r1, #256
+ 1429 00aa 124A     		ldr	r2, .L102+12
+ 1430 00ac 1268     		ldr	r2, [r2]
+ 1431 00ae 9A42     		cmp	r2, r3
+ 1432 00b0 28BF     		it	cs
+ 1433 00b2 1A46     		movcs	r2, r3
+ 1434 00b4 6846     		mov	r0, sp
+ 1435              	.LVL131:
+ 291:Core/Src/Code/stat.c ****     }
+ 1436              		.loc 1 291 9 view .LVU379
+ 1437 00b6 FFF7FEFF 		bl	sum
+ 1438              	.LVL132:
+ 1439 00ba B0E7     		b	.L95
+ 1440              	.LVL133:
+ 1441              	.L99:
+ 291:Core/Src/Code/stat.c ****     }
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 35
 
 
- 1445              	.LVL130:
- 291:Core/Src/Code/stat.c ****     }
- 1446              		.loc 1 291 9 is_stmt 0 view .LVU378
- 1447 00a6 01F58073 		add	r3, r1, #256
- 1448 00aa 124A     		ldr	r2, .L102+12
- 1449 00ac 1268     		ldr	r2, [r2]
- 1450 00ae 9A42     		cmp	r2, r3
- 1451 00b0 28BF     		it	cs
- 1452 00b2 1A46     		movcs	r2, r3
- 1453 00b4 6846     		mov	r0, sp
- 1454              	.LVL131:
- 291:Core/Src/Code/stat.c ****     }
- 1455              		.loc 1 291 9 view .LVU379
- 1456 00b6 FFF7FEFF 		bl	sum
- 1457              	.LVL132:
- 1458 00ba B0E7     		b	.L95
- 1459              	.LVL133:
- 1460              	.L99:
- 291:Core/Src/Code/stat.c ****     }
- 1461              		.loc 1 291 9 view .LVU380
- 1462              	.LBE16:
- 1463              		.loc 1 304 15 view .LVU381
- 1464 00bc 6320     		movs	r0, #99
- 1465              	.L98:
- 1466              		.loc 1 304 15 discriminator 4 view .LVU382
- 1467 00be 104B     		ldr	r3, .L102+24
- 1468 00c0 1870     		strb	r0, [r3]
- 1469              	.L96:
+ 1442              		.loc 1 291 9 view .LVU380
+ 1443              	.LBE16:
+ 1444              		.loc 1 304 15 view .LVU381
+ 1445 00bc 6320     		movs	r0, #99
+ 1446              	.L98:
+ 1447              		.loc 1 304 15 discriminator 4 view .LVU382
+ 1448 00be 104B     		ldr	r3, .L102+24
+ 1449 00c0 1870     		strb	r0, [r3]
+ 1450              	.L96:
  305:Core/Src/Code/stat.c ****     }
  306:Core/Src/Code/stat.c **** 
  307:Core/Src/Code/stat.c ****     // OUT
  308:Core/Src/Code/stat.c ****      CPS=Get_Tau_CPS(CPS);
- 1470              		.loc 1 308 6 is_stmt 1 view .LVU383
- 1471              		.loc 1 308 10 is_stmt 0 view .LVU384
- 1472 00c2 0E4D     		ldr	r5, .L102+20
- 1473 00c4 D5E90001 		ldrd	r0, [r5]
- 1474 00c8 FFF7FEFF 		bl	__aeabi_d2f
- 1475              	.LVL134:
- 1476 00cc FFF7FEFF 		bl	Get_Tau_CPS
- 1477              	.LVL135:
- 1478 00d0 0446     		mov	r4, r0
- 1479 00d2 FFF7FEFF 		bl	__aeabi_f2d
- 1480              	.LVL136:
- 1481              		.loc 1 308 9 view .LVU385
- 1482 00d6 C5E90001 		strd	r0, [r5]
+ 1451              		.loc 1 308 6 is_stmt 1 view .LVU383
+ 1452              		.loc 1 308 10 is_stmt 0 view .LVU384
+ 1453 00c2 0E4D     		ldr	r5, .L102+20
+ 1454 00c4 D5E90001 		ldrd	r0, [r5]
+ 1455 00c8 FFF7FEFF 		bl	__aeabi_d2f
+ 1456              	.LVL134:
+ 1457 00cc FFF7FEFF 		bl	Get_Tau_CPS
+ 1458              	.LVL135:
+ 1459 00d0 0446     		mov	r4, r0
+ 1460 00d2 FFF7FEFF 		bl	__aeabi_f2d
+ 1461              	.LVL136:
+ 1462              		.loc 1 308 9 view .LVU385
+ 1463 00d6 C5E90001 		strd	r0, [r5]
  309:Core/Src/Code/stat.c ****     *cps  = (float)CPS;
- 1483              		.loc 1 309 5 is_stmt 1 view .LVU386
- 1484              		.loc 1 309 11 is_stmt 0 view .LVU387
- 1485 00da 3C60     		str	r4, [r7]	@ float
+ 1464              		.loc 1 309 5 is_stmt 1 view .LVU386
+ 1465              		.loc 1 309 11 is_stmt 0 view .LVU387
+ 1466 00da 3C60     		str	r4, [r7]	@ float
  310:Core/Src/Code/stat.c ****     *delta= Delta;
- 1486              		.loc 1 310 5 is_stmt 1 view .LVU388
- 1487              		.loc 1 310 11 is_stmt 0 view .LVU389
- 1488 00dc 084B     		ldr	r3, .L102+24
- 1489 00de 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1490 00e0 3370     		strb	r3, [r6]
+ 1467              		.loc 1 310 5 is_stmt 1 view .LVU388
+ 1468              		.loc 1 310 11 is_stmt 0 view .LVU389
+ 1469 00dc 084B     		ldr	r3, .L102+24
+ 1470 00de 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1471 00e0 3370     		strb	r3, [r6]
  311:Core/Src/Code/stat.c **** }
- 1491              		.loc 1 311 1 view .LVU390
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 36
+ 1472              		.loc 1 311 1 view .LVU390
+ 1473 00e2 05B0     		add	sp, sp, #20
+ 1474              		.cfi_def_cfa_offset 28
+ 1475              		@ sp needed
+ 1476 00e4 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 1477              	.LVL137:
+ 1478              	.L103:
+ 1479              		.loc 1 311 1 view .LVU391
+ 1480              		.align	3
+ 1481              	.L102:
+ 1482 00e8 000000E0 		.word	-536870912
+ 1483 00ec E236EA3E 		.word	1055536866
+ 1484 00f0 00000000 		.word	.LANCHOR3
+ 1485 00f4 00000000 		.word	.LANCHOR2
+ 1486 00f8 00000000 		.word	.LANCHOR7
+ 1487 00fc 00000000 		.word	.LANCHOR8
+ 1488 0100 00000000 		.word	.LANCHOR9
+ 1489 0104 00004843 		.word	1128792064
+ 1490              		.cfi_endproc
+ 1491              	.LFE14:
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 36
 
 
- 1492 00e2 05B0     		add	sp, sp, #20
- 1493              	.LCFI19:
- 1494              		.cfi_def_cfa_offset 28
- 1495              		@ sp needed
- 1496 00e4 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
- 1497              	.LVL137:
- 1498              	.L103:
- 1499              		.loc 1 311 1 view .LVU391
- 1500              		.align	3
- 1501              	.L102:
- 1502 00e8 000000E0 		.word	-536870912
- 1503 00ec E236EA3E 		.word	1055536866
- 1504 00f0 00000000 		.word	.LANCHOR3
- 1505 00f4 00000000 		.word	.LANCHOR2
- 1506 00f8 00000000 		.word	.LANCHOR7
- 1507 00fc 00000000 		.word	.LANCHOR8
- 1508 0100 00000000 		.word	.LANCHOR9
- 1509 0104 00004843 		.word	1128792064
- 1510              		.cfi_endproc
- 1511              	.LFE14:
- 1513              		.section	.bss.CPS.1,"aw",%nobits
- 1514              		.align	3
- 1515              		.set	.LANCHOR8,. + 0
- 1518              	CPS.1:
- 1519 0000 00000000 		.space	8
- 1519      00000000 
- 1520              		.section	.bss.Delta.0,"aw",%nobits
- 1521              		.set	.LANCHOR9,. + 0
- 1524              	Delta.0:
- 1525 0000 00       		.space	1
- 1526              		.section	.bss.Time.2,"aw",%nobits
+ 1493              		.section	.bss.CPS.1,"aw",%nobits
+ 1494              		.align	3
+ 1495              		.set	.LANCHOR8,. + 0
+ 1498              	CPS.1:
+ 1499 0000 00000000 		.space	8
+ 1499      00000000 
+ 1500              		.section	.bss.Delta.0,"aw",%nobits
+ 1501              		.set	.LANCHOR9,. + 0
+ 1504              	Delta.0:
+ 1505 0000 00       		.space	1
+ 1506              		.section	.bss.Time.2,"aw",%nobits
+ 1507              		.align	3
+ 1508              		.set	.LANCHOR7,. + 0
+ 1511              	Time.2:
+ 1512 0000 00000000 		.space	8
+ 1512      00000000 
+ 1513              		.section	.bss.reject_1_second,"aw",%nobits
+ 1514              		.set	.LANCHOR6,. + 0
+ 1517              	reject_1_second:
+ 1518 0000 00       		.space	1
+ 1519              		.section	.bss.stat_elem_n,"aw",%nobits
+ 1520              		.align	2
+ 1521              		.set	.LANCHOR4,. + 0
+ 1524              	stat_elem_n:
+ 1525 0000 00000000 		.space	9
+ 1525      00000000 
+ 1525      00
+ 1526              		.section	.bss.statistic,"aw",%nobits
  1527              		.align	3
- 1528              		.set	.LANCHOR7,. + 0
- 1531              	Time.2:
- 1532 0000 00000000 		.space	8
+ 1528              		.set	.LANCHOR3,. + 0
+ 1531              	statistic:
+ 1532 0000 00000000 		.space	640
  1532      00000000 
- 1533              		.section	.bss.reject_1_second,"aw",%nobits
- 1534              		.set	.LANCHOR6,. + 0
- 1537              	reject_1_second:
- 1538 0000 00       		.space	1
- 1539              		.section	.bss.stat_elem_n,"aw",%nobits
- 1540              		.align	2
- 1541              		.set	.LANCHOR4,. + 0
- 1544              	stat_elem_n:
- 1545 0000 00000000 		.space	9
- 1545      00000000 
- 1545      00
- 1546              		.section	.bss.statistic,"aw",%nobits
- 1547              		.align	3
- 1548              		.set	.LANCHOR3,. + 0
- 1551              	statistic:
- 1552 0000 00000000 		.space	640
- 1552      00000000 
- 1552      00000000 
- 1552      00000000 
- 1552      00000000 
- 1553              		.section	.bss.tau,"aw",%nobits
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 37
+ 1532      00000000 
+ 1532      00000000 
+ 1532      00000000 
+ 1533              		.section	.bss.tau,"aw",%nobits
+ 1534              		.align	2
+ 1535              		.set	.LANCHOR0,. + 0
+ 1538              	tau:
+ 1539 0000 00000000 		.space	4
+ 1540              		.section	.bss.tau_1x,"aw",%nobits
+ 1541              		.align	2
+ 1542              		.set	.LANCHOR1,. + 0
+ 1545              	tau_1x:
+ 1546 0000 00000000 		.space	4
+ 1547              		.section	.data.stat_end,"aw"
+ 1548              		.align	2
+ 1549              		.set	.LANCHOR2,. + 0
+ 1552              	stat_end:
+ 1553 0000 00000000 		.word	statistic
+ 1554              		.section	.rodata.k,"a"
+ 1555              		.align	2
+ 1556              		.set	.LANCHOR5,. + 0
+ 1559              	k:
+ 1560 0000 06050504 		.ascii	"\006\005\005\004\004\004\004\004"
+ 1560      04040404 
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 37
 
 
- 1554              		.align	2
- 1555              		.set	.LANCHOR0,. + 0
- 1558              	tau:
- 1559 0000 00000000 		.space	4
- 1560              		.section	.bss.tau_1x,"aw",%nobits
- 1561              		.align	2
- 1562              		.set	.LANCHOR1,. + 0
- 1565              	tau_1x:
- 1566 0000 00000000 		.space	4
- 1567              		.section	.data.stat_end,"aw"
- 1568              		.align	2
- 1569              		.set	.LANCHOR2,. + 0
- 1572              	stat_end:
- 1573 0000 00000000 		.word	statistic
- 1574              		.section	.rodata.k,"a"
- 1575              		.align	2
- 1576              		.set	.LANCHOR5,. + 0
- 1579              	k:
- 1580 0000 06050504 		.ascii	"\006\005\005\004\004\004\004\004"
- 1580      04040404 
- 1581 0008 02       		.byte	2
- 1582 0009 07060505 		.ascii	"\007\006\005\005\004\004\004\004"
- 1582      04040404 
- 1583 0011 03       		.byte	3
- 1584 0012 08070605 		.ascii	"\010\007\006\005\004\004\004\004"
- 1584      04040404 
- 1585 001a 03       		.byte	3
- 1586 001b 09080706 		.ascii	"\011\010\007\006\005\004\004\004"
- 1586      05040404 
- 1587 0023 04       		.byte	4
- 1588 0024 09080706 		.ascii	"\011\010\007\006\005\004\004\004"
- 1588      05040404 
- 1589 002c 04       		.byte	4
- 1590 002d 0A090807 		.ascii	"\012\011\010\007\006\005\005\005"
- 1590      06050505 
- 1591 0035 05       		.byte	5
- 1592              		.text
- 1593              	.Letext0:
- 1594              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 1595              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 1596              		.file 4 "Core/Src/Code/stat.h"
- 1597              		.file 5 "<built-in>"
- 1598              		.file 6 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 38
+ 1561 0008 02       		.byte	2
+ 1562 0009 07060505 		.ascii	"\007\006\005\005\004\004\004\004"
+ 1562      04040404 
+ 1563 0011 03       		.byte	3
+ 1564 0012 08070605 		.ascii	"\010\007\006\005\004\004\004\004"
+ 1564      04040404 
+ 1565 001a 03       		.byte	3
+ 1566 001b 09080706 		.ascii	"\011\010\007\006\005\004\004\004"
+ 1566      05040404 
+ 1567 0023 04       		.byte	4
+ 1568 0024 09080706 		.ascii	"\011\010\007\006\005\004\004\004"
+ 1568      05040404 
+ 1569 002c 04       		.byte	4
+ 1570 002d 0A090807 		.ascii	"\012\011\010\007\006\005\005\005"
+ 1570      06050505 
+ 1571 0035 05       		.byte	5
+ 1572              		.text
+ 1573              	.Letext0:
+ 1574              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1575              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1576              		.file 4 "Core/Src/Code/stat.h"
+ 1577              		.file 5 "<built-in>"
+ 1578              		.file 6 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 38
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stat.c
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:16     .text.sum:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:23     .text.sum:0000000000000000 sum
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:92     .text.stat_SetDeatTime:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:99     .text.stat_SetDeatTime:0000000000000000 stat_SetDeatTime
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:148    .text.stat_SetDeatTime:0000000000000028 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:157    .text.Get_Tau_CPS:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:164    .text.Get_Tau_CPS:0000000000000000 Get_Tau_CPS
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:250    .text.Get_Tau_CPS:000000000000004c $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:256    .text.stat_reset:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:263    .text.stat_reset:0000000000000000 stat_reset
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:286    .text.stat_reset:0000000000000014 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:293    .text.stat_accumulate:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:300    .text.stat_accumulate:0000000000000000 stat_accumulate
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:366    .text.stat_accumulate:0000000000000034 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:372    .text.stat_add:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:379    .text.stat_add:0000000000000000 stat_add
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:603    .text.stat_add:0000000000000108 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:611    .text.fsqrt:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:618    .text.fsqrt:0000000000000000 fsqrt
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:665    .text.border_low_tpc:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:671    .text.border_low_tpc:0000000000000000 border_low_tpc
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:775    .text.border_low_tpc:0000000000000060 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:781    .text.need_reject:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:787    .text.need_reject:0000000000000000 need_reject
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1031   .text.need_reject:00000000000000fc $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1036   .text.stat_check:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1043   .text.stat_check:0000000000000000 stat_check
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1297   .text.stat_check:0000000000000130 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1313   .text.stat_calc_cps:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1320   .text.stat_calc_cps:0000000000000000 stat_calc_cps
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1502   .text.stat_calc_cps:00000000000000e8 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1514   .bss.CPS.1:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1518   .bss.CPS.1:0000000000000000 CPS.1
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1524   .bss.Delta.0:0000000000000000 Delta.0
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1525   .bss.Delta.0:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1527   .bss.Time.2:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1531   .bss.Time.2:0000000000000000 Time.2
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1537   .bss.reject_1_second:0000000000000000 reject_1_second
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1538   .bss.reject_1_second:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1540   .bss.stat_elem_n:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1544   .bss.stat_elem_n:0000000000000000 stat_elem_n
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1547   .bss.statistic:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1551   .bss.statistic:0000000000000000 statistic
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1554   .bss.tau:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1558   .bss.tau:0000000000000000 tau
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1561   .bss.tau_1x:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1565   .bss.tau_1x:0000000000000000 tau_1x
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1568   .data.stat_end:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1572   .data.stat_end:0000000000000000 stat_end
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1575   .rodata.k:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccz2rmfr.s:1579   .rodata.k:0000000000000000 k
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:16     .text.sum:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:23     .text.sum:0000000000000000 sum
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:90     .text.stat_SetDeatTime:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:97     .text.stat_SetDeatTime:0000000000000000 stat_SetDeatTime
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:145    .text.stat_SetDeatTime:0000000000000028 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:154    .text.Get_Tau_CPS:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:161    .text.Get_Tau_CPS:0000000000000000 Get_Tau_CPS
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:246    .text.Get_Tau_CPS:000000000000004c $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:252    .text.stat_reset:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:259    .text.stat_reset:0000000000000000 stat_reset
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:282    .text.stat_reset:0000000000000014 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:289    .text.stat_accumulate:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:296    .text.stat_accumulate:0000000000000000 stat_accumulate
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:359    .text.stat_accumulate:0000000000000034 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:365    .text.stat_add:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:372    .text.stat_add:0000000000000000 stat_add
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:592    .text.stat_add:0000000000000108 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:600    .text.fsqrt:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:607    .text.fsqrt:0000000000000000 fsqrt
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:653    .text.border_low_tpc:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:659    .text.border_low_tpc:0000000000000000 border_low_tpc
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:762    .text.border_low_tpc:0000000000000060 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:768    .text.need_reject:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:774    .text.need_reject:0000000000000000 need_reject
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1017   .text.need_reject:00000000000000fc $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1022   .text.stat_check:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1029   .text.stat_check:0000000000000000 stat_check
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1280   .text.stat_check:0000000000000130 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1296   .text.stat_calc_cps:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1303   .text.stat_calc_cps:0000000000000000 stat_calc_cps
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1482   .text.stat_calc_cps:00000000000000e8 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1494   .bss.CPS.1:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1498   .bss.CPS.1:0000000000000000 CPS.1
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1504   .bss.Delta.0:0000000000000000 Delta.0
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1505   .bss.Delta.0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1507   .bss.Time.2:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1511   .bss.Time.2:0000000000000000 Time.2
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1517   .bss.reject_1_second:0000000000000000 reject_1_second
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1518   .bss.reject_1_second:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1520   .bss.stat_elem_n:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1524   .bss.stat_elem_n:0000000000000000 stat_elem_n
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1527   .bss.statistic:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1531   .bss.statistic:0000000000000000 statistic
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1534   .bss.tau:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1538   .bss.tau:0000000000000000 tau
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1541   .bss.tau_1x:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1545   .bss.tau_1x:0000000000000000 tau_1x
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1548   .data.stat_end:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1552   .data.stat_end:0000000000000000 stat_end
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1555   .rodata.k:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccYID4tV.s:1559   .rodata.k:0000000000000000 k
 
 UNDEFINED SYMBOLS
 __aeabi_fcmpeq
 __aeabi_fdiv
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccz2rmfr.s 			page 39
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccYID4tV.s 			page 39
 
 
 __aeabi_fcmplt

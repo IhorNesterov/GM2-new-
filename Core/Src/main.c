@@ -24,6 +24,9 @@
 /* USER CODE BEGIN Includes */
 #include "NOS_ModBus.h"
 #include "../Src/Code/Detector.h"
+#include "OneWire.h"
+#include "DallasTemperature.h"
+//#include "DeviceIndication.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,12 +36,34 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define Debug
+//#define Debug
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+/*
+Pin ledTX_Pin = {GPIOB,GPIO_PIN_3};
+Pin ledRX_Pin = {GPIOB,GPIO_PIN_4};
+Pin ledNormal_Pin = {GPIOB,GPIO_PIN_5};
+Pin ledProblem_Pin = {GPIOB,GPIO_PIN_6};
+Pin ledTick_Pin = {GPIOB,GPIO_PIN_7};
+Pin ledControl_Pin = {GPIOC,GPIO_PIN_13};
 
+Pin normalRelay_Pin = {GPIOA,GPIO_PIN_12};
+Pin firstRelay_Pin = {GPIOA,GPIO_PIN_12};
+Pin secondRelay_Pin = {GPIOA,GPIO_PIN_12};
+
+Led TX_Led = {&ledTX_Pin,false};
+Led RX_Led = {&ledRX_Pin,false};
+Led Normal_Led = {&ledNormal_Pin,false};
+Led Problem_Led = {&ledProblem_Pin,false};
+Led Tick_Led = {&ledTick_Pin,false};
+Led Control_Led = {&ledControl_Pin,false};
+
+Led normalRelay = {&normalRelay_Pin,false};
+Led firstRelay = {&firstRelay_Pin,false};
+Led secondRelay = {&secondRelay_Pin,false};
+*/
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -81,9 +106,16 @@ NOS_Short time;
 TStatus_Stat stat;
 uint16_t voltage;
 uint8_t detector_Addr = 101;
-float coef = 0.1E-1f * 1.4f;
+float coef = 0.1E-1f * 1.2f;
+//float coef = 1.395E-3f;
+uint16_t temperature = 25;
 
 URE_GM_Detector detector = {0};
+
+OneWire_HandleTypeDef ow;
+DallasTemperature_HandleTypeDef dt;
+
+int debugCount = 0; 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -150,7 +182,6 @@ else
 
 void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
 {
-  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,0);
   //HAL_GPIO_WritePin(Led_Port,Transmit_LED,1);
   if(slave->type < 2)
   {
@@ -165,7 +196,7 @@ void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
       crc.data = GetCRC16(&tx_buff,5);
       tx_buff[5] = crc.bytes[1];
       tx_buff[6] = crc.bytes[0];
-      HAL_UART_Transmit_IT(&huart1,&tx_buff,7);
+      HAL_UART_Transmit(&huart1,&tx_buff,7,1000);
     }
     else
     {
@@ -176,31 +207,27 @@ void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
       crc.data = GetCRC16(&tx_buff,7);
       tx_buff[8] = crc.bytes[1];
       tx_buff[9] = crc.bytes[0];
-      HAL_UART_Transmit_IT(&huart1,&tx_buff,9);
+      HAL_UART_Transmit(&huart1,&tx_buff,9,1000);
     }
   }
-  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,1);
-  //HAL_GPIO_WritePin(Led_Port,Transmit_LED,0);
 }
 
 void GM2_SendDebugData()
 {
-   HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,0);
+
   uint8_t debugBuff[32];
- debugBuff[0] = detector.address;
+ debugBuff[0] = 0x65;
  NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount1,1);
  NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount2,3);
  NOS_ModBus_AddUint16ToBuff(&debugBuff,globalTickCount,5);
- NOS_ModBus_AddFloatToBuff(&debugBuff,detector.uSvValue,7);
+ NOS_ModBus_AddFloatToBuff(&debugBuff,uSvValue.data,7);
  NOS_ModBus_AddFloatToBuff(&debugBuff,stat.CPS,11);
  NOS_ModBus_AddUint16ToBuff(&debugBuff,stat.Delta,15);
- NOS_ModBus_AddFloatToBuff(&debugBuff,detector.temperature,17);
- NOS_ModBus_AddFloatToBuff(&debugBuff,coef,21);
- NOS_ModBus_AddUint16ToBuff(&debugBuff,detector.voltage,25);
-
- HAL_UART_Transmit_IT(&huart1,debugBuff,26);
- HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,1);
- 
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,temperature,17);
+ NOS_ModBus_AddFloatToBuff(&debugBuff,coef,19);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,voltage,23);
+ debugBuff[25] = '\n';
+ HAL_UART_Transmit(&huart1,debugBuff,26,1000);
 }
 
 void SysTick_Handler(void)
@@ -247,6 +274,31 @@ void EXTI1_IRQHandler(void)
   /* USER CODE END EXTI0_IRQn 1 */
 }
 /* USER CODE END 0 */
+
+void DS18B20_LibInit(void)
+{
+  OW_Begin(&ow, &huart2);
+
+  if(OW_Reset(&ow) == OW_OK)
+  {
+	  //printf("[%8lu] OneWire devices are present :)\r\n", HAL_GetTick());
+  }
+  else
+  {
+	  //printf("[%8lu] OneWire no devices :(\r\n", HAL_GetTick());
+  }
+
+  DT_SetOneWire(&dt, &ow);
+
+  // arrays to hold device address
+  CurrentDeviceAddress insideThermometer;
+
+  // locate devices on the bus
+  DT_Begin(&dt);
+
+  // set the resolution to 12 bit (Each Dallas/Maxim device is capable of several different resolutions)
+  DT_SetResolution(&dt, insideThermometer, 12, true);
+}
 /**
   * @brief  The application entry point.
   * @retval int
@@ -275,15 +327,18 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_ADC1_Init();
+  MX_ADC1_Init();
   MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
+  //MX_USART2_UART_Init();
   //MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  Stat_Init(3.4,60,0);
+
+
+  Stat_Init(3.7,60,0);
   Detector_Init_Param(coef, 0);
   HAL_UART_Receive_IT(&huart1,rx_buff,1);
-
+  HAL_ADC_Start(&hadc1);
+  //DS18B20_LibInit();
   //Detector_Init(&detector,0.25f,1.25f,(Pin){GPIOB,GPIO_PIN_12},(Pin){GPIOB,GPIO_PIN_13},(Pin){GPIOB,GPIO_PIN_14});
   /* USER CODE END 2 */
 
@@ -293,12 +348,24 @@ int main(void)
   {
     if(time250ms)
     {
+      debugCount++;
+      if(debugCount > 1000)
+      {
+        debugCount = 0;
+      }
        Stat_GetStatus(&stat);
        uSvValue.data = Detector_GetuZvValue(&stat);
+       HAL_ADC_PollForConversion(&hadc1, 10);
+       voltage = (uint16_t)((float)HAL_ADC_GetValue(&hadc1)/3.1f);
+       
     }
+
+
 
     if(rx_flag)
     {
+      bool trueCommand = false;
+      HAL_GPIO_WritePin(GPIOB,LED_RX_Pin,1);
       bool DebugData = false;
       NOS_ModBus_ParseMasterCommand(&master,&rx_buff,0);
       switch(master.Command)
@@ -313,52 +380,77 @@ int main(void)
           slave.ShortValue.data = 1000;
           slave.Byte_Count = 2;
           slave.type = 0;
+          trueCommand = true;
           break;
 
           case 0x0001:
           slave.ShortValue.data = 25;
           slave.Byte_Count = 2;
           slave.type = 0;
+          trueCommand = true;
           break;
 
           case 0x0002:
           slave.FloatValue.data = uSvValue.data;
           slave.Byte_Count = 4;
           slave.type = 1;
+          trueCommand = true;
           break;
 
           case 0x0004:
           slave.ShortValue.data = voltage;
           slave.Byte_Count = 2;
           slave.type = 0;
+          trueCommand = true;
           break;
          
           case 0x0005:
           slave.FloatValue.data = 0.25f;
           slave.Byte_Count = 4;
           slave.type = 1;
+          trueCommand = true;
           break;
 
           case 0x0007:
           slave.FloatValue.data = 1.25f;
           slave.Byte_Count = 4;
           slave.type = 1;
+          trueCommand = true;
           break;
-#ifdef Debug
+
           case 0xFF00:
-          GM2_SendDebugData();
           DebugData = true;
+          trueCommand = true;
           break;
-#endif
+
+          default:
+          trueCommand = false;
+          break;
         }
         break;
 
       }
-      if(!DebugData)
+      HAL_GPIO_WritePin(GPIOB,LED_RX_Pin,0);
+
+      if(!DebugData && trueCommand)
       {
-         NOS_ModBus_SendSlaveCommand(&slave);
+            HAL_GPIO_WritePin(GPIOB,LED_TX_Pin,1);
+            HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,1);
+            NOS_ModBus_SendSlaveCommand(&slave);
+            HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,0);
+            HAL_GPIO_WritePin(GPIOB,LED_TX_Pin,0);
       }
-     //HAL_GPIO_WritePin(Led_Port,Receive_LED,0);
+      
+      if(DebugData && trueCommand)
+      {
+            HAL_GPIO_WritePin(GPIOB,LED_TX_Pin,1);
+            HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,1);
+            GM2_SendDebugData();
+            HAL_GPIO_WritePin(GPIOA,GPIO_PIN_8,0);
+            HAL_GPIO_WritePin(GPIOB,LED_TX_Pin,0);
+            DebugData = false;
+      }  
+
       rx_flag = false;
     }
     /* USER CODE END WHILE */
@@ -575,7 +667,7 @@ static void MX_GPIO_Init(void)
                           |LED_OK_Pin|LED_RX_Pin|LED_TX_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RS_CTR_Pin|Boot_Pin|GPIO_PIN_0, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RS_CTR_Pin|Boot_Pin|GPIO_PIN_8, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
   /*Configure GPIO pin : Control_LED_Pin */
   GPIO_InitStruct.Pin = Control_LED_Pin;
@@ -600,7 +692,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RS_CTR_Pin Boot_Pin */
-  GPIO_InitStruct.Pin = RS_CTR_Pin|Boot_Pin|GPIO_PIN_0;
+  GPIO_InitStruct.Pin = RS_CTR_Pin|Boot_Pin|GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

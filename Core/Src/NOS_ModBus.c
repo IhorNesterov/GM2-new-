@@ -155,8 +155,8 @@ void NOS_ModBus_AddFloatToBuff(uint8_t* buff,float value,uint16_t startpos)
 {
    NOS_Float curr;
    curr.data = value;
-   buff[startpos] = curr.bytes[3];
-   buff[startpos + 1] = curr.bytes[2];
-   buff[startpos + 2] = curr.bytes[1];
-   buff[startpos + 3] = curr.bytes[0];
+   buff[startpos] = curr.bytes[0];
+   buff[startpos + 1] = curr.bytes[1];
+   buff[startpos + 2] = curr.bytes[2];
+   buff[startpos + 3] = curr.bytes[3];
 }

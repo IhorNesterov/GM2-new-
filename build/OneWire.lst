@@ -1,0 +1,2038 @@
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"OneWire.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.OW_ToBits,"ax",%progbits
+  16              		.align	1
+  17              		.arch armv7-m
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu softvfp
+  23              	OW_ToBits:
+  24              	.LVL0:
+  25              	.LFB66:
+  26              		.file 1 "Core/Src/OneWire.c"
+   1:Core/Src/OneWire.c **** #include "OneWire.h"
+   2:Core/Src/OneWire.c **** 
+   3:Core/Src/OneWire.c **** static HAL_StatusTypeDef OW_UART_Init(OneWire_HandleTypeDef* ow, uint32_t baudRate);
+   4:Core/Src/OneWire.c **** static void OW_ToBits(uint8_t owByte, uint8_t *owBits);
+   5:Core/Src/OneWire.c **** static uint8_t OW_ToByte(uint8_t *owBits);
+   6:Core/Src/OneWire.c **** 
+   7:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+   8:Core/Src/OneWire.c **** static void OW_SendBits(OneWire_HandleTypeDef* ow, uint8_t num_bits);
+   9:Core/Src/OneWire.c **** #endif
+  10:Core/Src/OneWire.c **** 
+  11:Core/Src/OneWire.c **** static HAL_StatusTypeDef OW_UART_Init(OneWire_HandleTypeDef* ow, uint32_t baudRate)
+  12:Core/Src/OneWire.c **** {
+  13:Core/Src/OneWire.c **** 	UART_HandleTypeDef* HUARTx = ow->huart;
+  14:Core/Src/OneWire.c **** 
+  15:Core/Src/OneWire.c **** 	/*Configure GPIO pin : ONE_WIRE_Pin */
+  16:Core/Src/OneWire.c **** 	GPIO_InitTypeDef GPIO_InitStruct = {0};
+  17:Core/Src/OneWire.c **** 	GPIO_InitStruct.Pin = GPIO_PIN_2;
+  18:Core/Src/OneWire.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+  19:Core/Src/OneWire.c **** 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  20:Core/Src/OneWire.c **** 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  21:Core/Src/OneWire.c **** 
+  22:Core/Src/OneWire.c ****     HUARTx->Init.BaudRate = baudRate;
+  23:Core/Src/OneWire.c ****     HUARTx->Init.WordLength = UART_WORDLENGTH_8B;
+  24:Core/Src/OneWire.c ****     HUARTx->Init.StopBits = UART_STOPBITS_1;
+  25:Core/Src/OneWire.c ****     HUARTx->Init.Parity = UART_PARITY_NONE;
+  26:Core/Src/OneWire.c ****     HUARTx->Init.Mode = UART_MODE_TX_RX;
+  27:Core/Src/OneWire.c ****     HUARTx->Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  28:Core/Src/OneWire.c ****     HUARTx->Init.OverSampling = UART_OVERSAMPLING_16;
+  29:Core/Src/OneWire.c **** 	return HAL_HalfDuplex_Init(HUARTx);
+  30:Core/Src/OneWire.c **** }
+  31:Core/Src/OneWire.c **** 
+  32:Core/Src/OneWire.c **** static void OW_ToBits(uint8_t owByte, uint8_t *owBits)
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 2
+
+
+  33:Core/Src/OneWire.c **** {
+  27              		.loc 1 33 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  34:Core/Src/OneWire.c **** 	uint8_t i;
+  32              		.loc 1 34 2 view .LVU1
+  35:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+  33              		.loc 1 35 2 view .LVU2
+  34              		.loc 1 35 9 is_stmt 0 view .LVU3
+  35 0000 0023     		movs	r3, #0
+  36              		.loc 1 35 2 view .LVU4
+  37 0002 05E0     		b	.L2
+  38              	.LVL1:
+  39              	.L3:
+  36:Core/Src/OneWire.c **** 	{
+  37:Core/Src/OneWire.c **** 		if (owByte & 0x01)
+  38:Core/Src/OneWire.c **** 		{
+  39:Core/Src/OneWire.c **** 			*owBits = OW_1;
+  40:Core/Src/OneWire.c **** 		}
+  41:Core/Src/OneWire.c **** 		else
+  42:Core/Src/OneWire.c **** 		{
+  43:Core/Src/OneWire.c **** 			*owBits = OW_0;
+  40              		.loc 1 43 4 is_stmt 1 view .LVU5
+  41              		.loc 1 43 12 is_stmt 0 view .LVU6
+  42 0004 0022     		movs	r2, #0
+  43 0006 0A70     		strb	r2, [r1]
+  44              	.L4:
+  44:Core/Src/OneWire.c **** 		}
+  45:Core/Src/OneWire.c **** 		owBits++;
+  45              		.loc 1 45 3 is_stmt 1 discriminator 2 view .LVU7
+  46              		.loc 1 45 9 is_stmt 0 discriminator 2 view .LVU8
+  47 0008 0131     		adds	r1, r1, #1
+  48              	.LVL2:
+  46:Core/Src/OneWire.c **** 		owByte = owByte >> 1;
+  49              		.loc 1 46 3 is_stmt 1 discriminator 2 view .LVU9
+  50              		.loc 1 46 10 is_stmt 0 discriminator 2 view .LVU10
+  51 000a 4008     		lsrs	r0, r0, #1
+  52              	.LVL3:
+  35:Core/Src/OneWire.c **** 	{
+  53              		.loc 1 35 21 is_stmt 1 discriminator 2 view .LVU11
+  35:Core/Src/OneWire.c **** 	{
+  54              		.loc 1 35 22 is_stmt 0 discriminator 2 view .LVU12
+  55 000c 0133     		adds	r3, r3, #1
+  56              	.LVL4:
+  35:Core/Src/OneWire.c **** 	{
+  57              		.loc 1 35 22 discriminator 2 view .LVU13
+  58 000e DBB2     		uxtb	r3, r3
+  59              	.LVL5:
+  60              	.L2:
+  35:Core/Src/OneWire.c **** 	{
+  61              		.loc 1 35 14 is_stmt 1 discriminator 1 view .LVU14
+  35:Core/Src/OneWire.c **** 	{
+  62              		.loc 1 35 2 is_stmt 0 discriminator 1 view .LVU15
+  63 0010 072B     		cmp	r3, #7
+  64 0012 05D8     		bhi	.L6
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 3
+
+
+  37:Core/Src/OneWire.c **** 		{
+  65              		.loc 1 37 3 is_stmt 1 view .LVU16
+  37:Core/Src/OneWire.c **** 		{
+  66              		.loc 1 37 6 is_stmt 0 view .LVU17
+  67 0014 10F0010F 		tst	r0, #1
+  68 0018 F4D0     		beq	.L3
+  39:Core/Src/OneWire.c **** 		}
+  69              		.loc 1 39 4 is_stmt 1 view .LVU18
+  39:Core/Src/OneWire.c **** 		}
+  70              		.loc 1 39 12 is_stmt 0 view .LVU19
+  71 001a FF22     		movs	r2, #255
+  72 001c 0A70     		strb	r2, [r1]
+  73 001e F3E7     		b	.L4
+  74              	.L6:
+  47:Core/Src/OneWire.c **** 	}
+  48:Core/Src/OneWire.c **** }
+  75              		.loc 1 48 1 view .LVU20
+  76 0020 7047     		bx	lr
+  77              		.cfi_endproc
+  78              	.LFE66:
+  80              		.section	.text.OW_ToByte,"ax",%progbits
+  81              		.align	1
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.fpu softvfp
+  87              	OW_ToByte:
+  88              	.LVL6:
+  89              	.LFB67:
+  49:Core/Src/OneWire.c **** 
+  50:Core/Src/OneWire.c **** static uint8_t OW_ToByte(uint8_t *owBits)
+  51:Core/Src/OneWire.c **** {
+  90              		.loc 1 51 1 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  95              		.loc 1 51 1 is_stmt 0 view .LVU22
+  96 0000 0246     		mov	r2, r0
+  52:Core/Src/OneWire.c **** 	uint8_t owByte, i;
+  97              		.loc 1 52 2 is_stmt 1 view .LVU23
+  53:Core/Src/OneWire.c **** 	owByte = 0;
+  98              		.loc 1 53 2 view .LVU24
+  99              	.LVL7:
+  54:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+ 100              		.loc 1 54 2 view .LVU25
+ 101              		.loc 1 54 9 is_stmt 0 view .LVU26
+ 102 0002 0023     		movs	r3, #0
+  53:Core/Src/OneWire.c **** 	owByte = 0;
+ 103              		.loc 1 53 9 view .LVU27
+ 104 0004 1846     		mov	r0, r3
+ 105              	.LVL8:
+ 106              		.loc 1 54 2 view .LVU28
+ 107 0006 02E0     		b	.L8
+ 108              	.LVL9:
+ 109              	.L9:
+  55:Core/Src/OneWire.c **** 	{
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 4
+
+
+  56:Core/Src/OneWire.c **** 		owByte = owByte >> 1;
+  57:Core/Src/OneWire.c **** 		if (*owBits == OW_R_1)
+  58:Core/Src/OneWire.c **** 		{
+  59:Core/Src/OneWire.c **** 			owByte |= 0x80;
+  60:Core/Src/OneWire.c **** 		}
+  61:Core/Src/OneWire.c **** 		owBits++;
+ 110              		.loc 1 61 3 is_stmt 1 discriminator 2 view .LVU29
+ 111              		.loc 1 61 9 is_stmt 0 discriminator 2 view .LVU30
+ 112 0008 0132     		adds	r2, r2, #1
+ 113              	.LVL10:
+  54:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+ 114              		.loc 1 54 21 is_stmt 1 discriminator 2 view .LVU31
+  54:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+ 115              		.loc 1 54 22 is_stmt 0 discriminator 2 view .LVU32
+ 116 000a 0133     		adds	r3, r3, #1
+ 117              	.LVL11:
+  54:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+ 118              		.loc 1 54 22 discriminator 2 view .LVU33
+ 119 000c DBB2     		uxtb	r3, r3
+ 120              	.LVL12:
+ 121              	.L8:
+  54:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+ 122              		.loc 1 54 14 is_stmt 1 discriminator 1 view .LVU34
+  54:Core/Src/OneWire.c **** 	for (i = 0; i < 8; i++)
+ 123              		.loc 1 54 2 is_stmt 0 discriminator 1 view .LVU35
+ 124 000e 072B     		cmp	r3, #7
+ 125 0010 07D8     		bhi	.L11
+  56:Core/Src/OneWire.c **** 		if (*owBits == OW_R_1)
+ 126              		.loc 1 56 3 is_stmt 1 view .LVU36
+  56:Core/Src/OneWire.c **** 		if (*owBits == OW_R_1)
+ 127              		.loc 1 56 10 is_stmt 0 view .LVU37
+ 128 0012 4008     		lsrs	r0, r0, #1
+ 129              	.LVL13:
+  57:Core/Src/OneWire.c **** 		{
+ 130              		.loc 1 57 3 is_stmt 1 view .LVU38
+  57:Core/Src/OneWire.c **** 		{
+ 131              		.loc 1 57 7 is_stmt 0 view .LVU39
+ 132 0014 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+  57:Core/Src/OneWire.c **** 		{
+ 133              		.loc 1 57 6 view .LVU40
+ 134 0016 FF29     		cmp	r1, #255
+ 135 0018 F6D1     		bne	.L9
+  59:Core/Src/OneWire.c **** 		}
+ 136              		.loc 1 59 4 is_stmt 1 view .LVU41
+  59:Core/Src/OneWire.c **** 		}
+ 137              		.loc 1 59 11 is_stmt 0 view .LVU42
+ 138 001a 60F07F00 		orn	r0, r0, #127
+ 139              	.LVL14:
+  59:Core/Src/OneWire.c **** 		}
+ 140              		.loc 1 59 11 view .LVU43
+ 141 001e C0B2     		uxtb	r0, r0
+ 142              	.LVL15:
+  59:Core/Src/OneWire.c **** 		}
+ 143              		.loc 1 59 11 view .LVU44
+ 144 0020 F2E7     		b	.L9
+ 145              	.L11:
+  62:Core/Src/OneWire.c **** 	}
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 5
+
+
+  63:Core/Src/OneWire.c **** 
+  64:Core/Src/OneWire.c **** 	return owByte;
+ 146              		.loc 1 64 2 is_stmt 1 view .LVU45
+  65:Core/Src/OneWire.c **** }
+ 147              		.loc 1 65 1 is_stmt 0 view .LVU46
+ 148 0022 7047     		bx	lr
+ 149              		.cfi_endproc
+ 150              	.LFE67:
+ 152              		.section	.text.OW_UART_Init,"ax",%progbits
+ 153              		.align	1
+ 154              		.syntax unified
+ 155              		.thumb
+ 156              		.thumb_func
+ 157              		.fpu softvfp
+ 159              	OW_UART_Init:
+ 160              	.LVL16:
+ 161              	.LFB65:
+  12:Core/Src/OneWire.c **** 	UART_HandleTypeDef* HUARTx = ow->huart;
+ 162              		.loc 1 12 1 is_stmt 1 view -0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 16
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+  12:Core/Src/OneWire.c **** 	UART_HandleTypeDef* HUARTx = ow->huart;
+ 166              		.loc 1 12 1 is_stmt 0 view .LVU48
+ 167 0000 70B5     		push	{r4, r5, r6, lr}
+ 168              		.cfi_def_cfa_offset 16
+ 169              		.cfi_offset 4, -16
+ 170              		.cfi_offset 5, -12
+ 171              		.cfi_offset 6, -8
+ 172              		.cfi_offset 14, -4
+ 173 0002 84B0     		sub	sp, sp, #16
+ 174              		.cfi_def_cfa_offset 32
+ 175 0004 0E46     		mov	r6, r1
+  13:Core/Src/OneWire.c **** 
+ 176              		.loc 1 13 2 is_stmt 1 view .LVU49
+  13:Core/Src/OneWire.c **** 
+ 177              		.loc 1 13 22 is_stmt 0 view .LVU50
+ 178 0006 0568     		ldr	r5, [r0]
+ 179              	.LVL17:
+  16:Core/Src/OneWire.c **** 	GPIO_InitStruct.Pin = GPIO_PIN_2;
+ 180              		.loc 1 16 2 is_stmt 1 view .LVU51
+  16:Core/Src/OneWire.c **** 	GPIO_InitStruct.Pin = GPIO_PIN_2;
+ 181              		.loc 1 16 19 is_stmt 0 view .LVU52
+ 182 0008 0024     		movs	r4, #0
+ 183 000a 0094     		str	r4, [sp]
+ 184 000c 0194     		str	r4, [sp, #4]
+ 185 000e 0294     		str	r4, [sp, #8]
+ 186 0010 0394     		str	r4, [sp, #12]
+  17:Core/Src/OneWire.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 187              		.loc 1 17 2 is_stmt 1 view .LVU53
+  17:Core/Src/OneWire.c **** 	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 188              		.loc 1 17 22 is_stmt 0 view .LVU54
+ 189 0012 0423     		movs	r3, #4
+ 190 0014 0093     		str	r3, [sp]
+  18:Core/Src/OneWire.c **** 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 191              		.loc 1 18 2 is_stmt 1 view .LVU55
+  18:Core/Src/OneWire.c **** 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 6
+
+
+ 192              		.loc 1 18 23 is_stmt 0 view .LVU56
+ 193 0016 1223     		movs	r3, #18
+ 194 0018 0193     		str	r3, [sp, #4]
+  19:Core/Src/OneWire.c **** 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 195              		.loc 1 19 2 is_stmt 1 view .LVU57
+  19:Core/Src/OneWire.c **** 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 196              		.loc 1 19 24 is_stmt 0 view .LVU58
+ 197 001a 0323     		movs	r3, #3
+ 198 001c 0393     		str	r3, [sp, #12]
+  20:Core/Src/OneWire.c **** 
+ 199              		.loc 1 20 2 is_stmt 1 view .LVU59
+ 200 001e 6946     		mov	r1, sp
+ 201              	.LVL18:
+  20:Core/Src/OneWire.c **** 
+ 202              		.loc 1 20 2 is_stmt 0 view .LVU60
+ 203 0020 0748     		ldr	r0, .L14
+ 204              	.LVL19:
+  20:Core/Src/OneWire.c **** 
+ 205              		.loc 1 20 2 view .LVU61
+ 206 0022 FFF7FEFF 		bl	HAL_GPIO_Init
+ 207              	.LVL20:
+  22:Core/Src/OneWire.c ****     HUARTx->Init.WordLength = UART_WORDLENGTH_8B;
+ 208              		.loc 1 22 5 is_stmt 1 view .LVU62
+  22:Core/Src/OneWire.c ****     HUARTx->Init.WordLength = UART_WORDLENGTH_8B;
+ 209              		.loc 1 22 27 is_stmt 0 view .LVU63
+ 210 0026 6E60     		str	r6, [r5, #4]
+  23:Core/Src/OneWire.c ****     HUARTx->Init.StopBits = UART_STOPBITS_1;
+ 211              		.loc 1 23 5 is_stmt 1 view .LVU64
+  23:Core/Src/OneWire.c ****     HUARTx->Init.StopBits = UART_STOPBITS_1;
+ 212              		.loc 1 23 29 is_stmt 0 view .LVU65
+ 213 0028 AC60     		str	r4, [r5, #8]
+  24:Core/Src/OneWire.c ****     HUARTx->Init.Parity = UART_PARITY_NONE;
+ 214              		.loc 1 24 5 is_stmt 1 view .LVU66
+  24:Core/Src/OneWire.c ****     HUARTx->Init.Parity = UART_PARITY_NONE;
+ 215              		.loc 1 24 27 is_stmt 0 view .LVU67
+ 216 002a EC60     		str	r4, [r5, #12]
+  25:Core/Src/OneWire.c ****     HUARTx->Init.Mode = UART_MODE_TX_RX;
+ 217              		.loc 1 25 5 is_stmt 1 view .LVU68
+  25:Core/Src/OneWire.c ****     HUARTx->Init.Mode = UART_MODE_TX_RX;
+ 218              		.loc 1 25 25 is_stmt 0 view .LVU69
+ 219 002c 2C61     		str	r4, [r5, #16]
+  26:Core/Src/OneWire.c ****     HUARTx->Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 220              		.loc 1 26 5 is_stmt 1 view .LVU70
+  26:Core/Src/OneWire.c ****     HUARTx->Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 221              		.loc 1 26 23 is_stmt 0 view .LVU71
+ 222 002e 0C23     		movs	r3, #12
+ 223 0030 6B61     		str	r3, [r5, #20]
+  27:Core/Src/OneWire.c ****     HUARTx->Init.OverSampling = UART_OVERSAMPLING_16;
+ 224              		.loc 1 27 5 is_stmt 1 view .LVU72
+  27:Core/Src/OneWire.c ****     HUARTx->Init.OverSampling = UART_OVERSAMPLING_16;
+ 225              		.loc 1 27 28 is_stmt 0 view .LVU73
+ 226 0032 AC61     		str	r4, [r5, #24]
+  28:Core/Src/OneWire.c **** 	return HAL_HalfDuplex_Init(HUARTx);
+ 227              		.loc 1 28 5 is_stmt 1 view .LVU74
+  28:Core/Src/OneWire.c **** 	return HAL_HalfDuplex_Init(HUARTx);
+ 228              		.loc 1 28 31 is_stmt 0 view .LVU75
+ 229 0034 EC61     		str	r4, [r5, #28]
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 7
+
+
+  29:Core/Src/OneWire.c **** }
+ 230              		.loc 1 29 2 is_stmt 1 view .LVU76
+  29:Core/Src/OneWire.c **** }
+ 231              		.loc 1 29 9 is_stmt 0 view .LVU77
+ 232 0036 2846     		mov	r0, r5
+ 233 0038 FFF7FEFF 		bl	HAL_HalfDuplex_Init
+ 234              	.LVL21:
+  30:Core/Src/OneWire.c **** 
+ 235              		.loc 1 30 1 view .LVU78
+ 236 003c 04B0     		add	sp, sp, #16
+ 237              		.cfi_def_cfa_offset 16
+ 238              		@ sp needed
+ 239 003e 70BD     		pop	{r4, r5, r6, pc}
+ 240              	.LVL22:
+ 241              	.L15:
+  30:Core/Src/OneWire.c **** 
+ 242              		.loc 1 30 1 view .LVU79
+ 243              		.align	2
+ 244              	.L14:
+ 245 0040 00080140 		.word	1073809408
+ 246              		.cfi_endproc
+ 247              	.LFE65:
+ 249              		.section	.text.OW_SendBits,"ax",%progbits
+ 250              		.align	1
+ 251              		.syntax unified
+ 252              		.thumb
+ 253              		.thumb_func
+ 254              		.fpu softvfp
+ 256              	OW_SendBits:
+ 257              	.LVL23:
+ 258              	.LFB72:
+  66:Core/Src/OneWire.c **** 
+  67:Core/Src/OneWire.c **** HAL_StatusTypeDef OneWire(OneWire_HandleTypeDef* ow, UART_HandleTypeDef* huart)
+  68:Core/Src/OneWire.c **** {
+  69:Core/Src/OneWire.c **** 	return OW_Begin(ow, huart);
+  70:Core/Src/OneWire.c **** }
+  71:Core/Src/OneWire.c **** 
+  72:Core/Src/OneWire.c **** HAL_StatusTypeDef OW_Begin(OneWire_HandleTypeDef* ow, UART_HandleTypeDef* huart)
+  73:Core/Src/OneWire.c **** {
+  74:Core/Src/OneWire.c **** 	ow->huart = huart;
+  75:Core/Src/OneWire.c **** 	HAL_StatusTypeDef status = OW_UART_Init(ow, 9600);
+  76:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+  77:Core/Src/OneWire.c **** 	OW_ResetSearch(ow);
+  78:Core/Src/OneWire.c **** #endif
+  79:Core/Src/OneWire.c **** 	return status;
+  80:Core/Src/OneWire.c **** }
+  81:Core/Src/OneWire.c **** 
+  82:Core/Src/OneWire.c **** // Perform the onewire reset function.  We will wait up to 250uS for
+  83:Core/Src/OneWire.c **** // the bus to come high, if it doesn't then it is broken or shorted
+  84:Core/Src/OneWire.c **** // and we return a 0;
+  85:Core/Src/OneWire.c **** //
+  86:Core/Src/OneWire.c **** // Returns 1 if a device asserted a presence pulse, 0 otherwise.
+  87:Core/Src/OneWire.c **** //
+  88:Core/Src/OneWire.c **** uint8_t OW_Reset(OneWire_HandleTypeDef* ow)
+  89:Core/Src/OneWire.c **** {
+  90:Core/Src/OneWire.c **** 	uint8_t owPresence = 0xf0;
+  91:Core/Src/OneWire.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 8
+
+
+  92:Core/Src/OneWire.c **** 	OW_UART_Init(ow, 9600);
+  93:Core/Src/OneWire.c **** 
+  94:Core/Src/OneWire.c **** 	HAL_UART_Receive_DMA(ow->huart, &owPresence, 1);
+  95:Core/Src/OneWire.c **** 	//HAL_UART_Transmit(ow->huart, &owPresence, 1, HAL_MAX_DELAY);
+  96:Core/Src/OneWire.c **** 	HAL_UART_Transmit_DMA(ow->huart, &owPresence, 1);
+  97:Core/Src/OneWire.c **** 
+  98:Core/Src/OneWire.c **** 	/*## Wait for the end of the transfer ###################################*/
+  99:Core/Src/OneWire.c **** 	while (HAL_UART_GetState(ow->huart) != HAL_UART_STATE_READY)
+ 100:Core/Src/OneWire.c **** 	{
+ 101:Core/Src/OneWire.c **** 		__NOP();
+ 102:Core/Src/OneWire.c **** 	}
+ 103:Core/Src/OneWire.c **** 
+ 104:Core/Src/OneWire.c **** 	OW_UART_Init(ow, 115200);
+ 105:Core/Src/OneWire.c **** 
+ 106:Core/Src/OneWire.c **** 	if (owPresence != 0xf0)
+ 107:Core/Src/OneWire.c **** 	{
+ 108:Core/Src/OneWire.c **** 		return OW_OK;
+ 109:Core/Src/OneWire.c **** 	}
+ 110:Core/Src/OneWire.c **** 
+ 111:Core/Src/OneWire.c **** 	return OW_NO_DEVICE;
+ 112:Core/Src/OneWire.c **** }
+ 113:Core/Src/OneWire.c **** 
+ 114:Core/Src/OneWire.c **** //-----------------------------------------------------------------------------
+ 115:Core/Src/OneWire.c **** // procedure bus communication 1-wire
+ 116:Core/Src/OneWire.c **** // command - an array of bytes sent to the bus. If you need reading, we send OW_READ_SLOT
+ 117:Core/Src/OneWire.c **** // cLen - the length of the command buffer, as many bytes will be sent to the bus
+ 118:Core/Src/OneWire.c **** // data - if reading is required, then a reference to the buffer for reading
+ 119:Core/Src/OneWire.c **** // dLen - the length of the read buffer. Read no more than this length
+ 120:Core/Src/OneWire.c **** // readStart - which transmission character to start reading from (numbered from 0)
+ 121:Core/Src/OneWire.c **** // you can specify OW_NO_READ, then you don't need to specify data and dLen
+ 122:Core/Src/OneWire.c **** //-----------------------------------------------------------------------------
+ 123:Core/Src/OneWire.c **** uint8_t OW_Send(OneWire_HandleTypeDef* ow, uint8_t *command, uint8_t cLen, uint8_t *data, uint8_t d
+ 124:Core/Src/OneWire.c **** {
+ 125:Core/Src/OneWire.c **** 	if (OW_Reset(ow) == OW_NO_DEVICE)
+ 126:Core/Src/OneWire.c **** 	{
+ 127:Core/Src/OneWire.c **** 		return OW_NO_DEVICE;
+ 128:Core/Src/OneWire.c **** 	}
+ 129:Core/Src/OneWire.c **** 
+ 130:Core/Src/OneWire.c **** 	while (cLen > 0)
+ 131:Core/Src/OneWire.c **** 	{
+ 132:Core/Src/OneWire.c **** 
+ 133:Core/Src/OneWire.c **** 		OW_ToBits(*command, ow->ROM_NO);
+ 134:Core/Src/OneWire.c **** 		command++;
+ 135:Core/Src/OneWire.c **** 		cLen--;
+ 136:Core/Src/OneWire.c **** 
+ 137:Core/Src/OneWire.c **** 		HAL_UART_Receive_DMA(ow->huart, ow->ROM_NO, sizeof(ow->ROM_NO) / sizeof(ow->ROM_NO[0]));
+ 138:Core/Src/OneWire.c **** 		HAL_UART_Transmit_DMA(ow->huart, ow->ROM_NO, sizeof(ow->ROM_NO) / sizeof(ow->ROM_NO[0]));
+ 139:Core/Src/OneWire.c **** 
+ 140:Core/Src/OneWire.c **** 		while (HAL_UART_GetState(ow->huart) != HAL_UART_STATE_READY)
+ 141:Core/Src/OneWire.c **** 		{
+ 142:Core/Src/OneWire.c **** 			__NOP();
+ 143:Core/Src/OneWire.c **** 		}
+ 144:Core/Src/OneWire.c **** 
+ 145:Core/Src/OneWire.c **** 		if (readStart == 0 && dLen > 0)
+ 146:Core/Src/OneWire.c **** 		{
+ 147:Core/Src/OneWire.c **** 			*data = OW_ToByte(ow->ROM_NO);
+ 148:Core/Src/OneWire.c **** 			data++;
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 9
+
+
+ 149:Core/Src/OneWire.c **** 			dLen--;
+ 150:Core/Src/OneWire.c **** 		}
+ 151:Core/Src/OneWire.c **** 		else
+ 152:Core/Src/OneWire.c **** 		{
+ 153:Core/Src/OneWire.c **** 			if (readStart != OW_NO_READ)
+ 154:Core/Src/OneWire.c **** 			{
+ 155:Core/Src/OneWire.c **** 				readStart--;
+ 156:Core/Src/OneWire.c **** 			}
+ 157:Core/Src/OneWire.c **** 		}
+ 158:Core/Src/OneWire.c **** 	}
+ 159:Core/Src/OneWire.c **** 
+ 160:Core/Src/OneWire.c **** 	return OW_OK;
+ 161:Core/Src/OneWire.c **** }
+ 162:Core/Src/OneWire.c **** 
+ 163:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+ 164:Core/Src/OneWire.c **** static void OW_SendBits(OneWire_HandleTypeDef* ow, uint8_t numBits)
+ 165:Core/Src/OneWire.c **** {
+ 259              		.loc 1 165 1 is_stmt 1 view -0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		.loc 1 165 1 is_stmt 0 view .LVU81
+ 264 0000 70B5     		push	{r4, r5, r6, lr}
+ 265              		.cfi_def_cfa_offset 16
+ 266              		.cfi_offset 4, -16
+ 267              		.cfi_offset 5, -12
+ 268              		.cfi_offset 6, -8
+ 269              		.cfi_offset 14, -4
+ 270 0002 0446     		mov	r4, r0
+ 166:Core/Src/OneWire.c **** 	HAL_UART_Receive_DMA(ow->huart, ow->ROM_NO, numBits);
+ 271              		.loc 1 166 2 is_stmt 1 view .LVU82
+ 272              		.loc 1 166 36 is_stmt 0 view .LVU83
+ 273 0004 0546     		mov	r5, r0
+ 274              		.loc 1 166 2 view .LVU84
+ 275 0006 0E46     		mov	r6, r1
+ 276 0008 55F8040B 		ldr	r0, [r5], #4
+ 277              	.LVL24:
+ 278              		.loc 1 166 2 view .LVU85
+ 279 000c 0A46     		mov	r2, r1
+ 280 000e 2946     		mov	r1, r5
+ 281              	.LVL25:
+ 282              		.loc 1 166 2 view .LVU86
+ 283 0010 FFF7FEFF 		bl	HAL_UART_Receive_DMA
+ 284              	.LVL26:
+ 167:Core/Src/OneWire.c **** 	HAL_UART_Transmit_DMA(ow->huart, ow->ROM_NO, numBits);
+ 285              		.loc 1 167 2 is_stmt 1 view .LVU87
+ 286 0014 3246     		mov	r2, r6
+ 287 0016 2946     		mov	r1, r5
+ 288 0018 2068     		ldr	r0, [r4]
+ 289 001a FFF7FEFF 		bl	HAL_UART_Transmit_DMA
+ 290              	.LVL27:
+ 168:Core/Src/OneWire.c **** 
+ 169:Core/Src/OneWire.c **** 	while (HAL_UART_GetState(ow->huart) != HAL_UART_STATE_READY)
+ 291              		.loc 1 169 2 view .LVU88
+ 292              		.loc 1 169 8 is_stmt 0 view .LVU89
+ 293 001e 00E0     		b	.L17
+ 294              	.L18:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 10
+
+
+ 170:Core/Src/OneWire.c **** 	{
+ 171:Core/Src/OneWire.c **** 		__NOP();
+ 295              		.loc 1 171 3 is_stmt 1 view .LVU90
+ 296              		.syntax unified
+ 297              	@ 171 "Core/Src/OneWire.c" 1
+ 298 0020 00BF     		nop
+ 299              	@ 0 "" 2
+ 300              		.thumb
+ 301              		.syntax unified
+ 302              	.L17:
+ 169:Core/Src/OneWire.c **** 	{
+ 303              		.loc 1 169 8 view .LVU91
+ 169:Core/Src/OneWire.c **** 	{
+ 304              		.loc 1 169 9 is_stmt 0 view .LVU92
+ 305 0022 2068     		ldr	r0, [r4]
+ 306 0024 FFF7FEFF 		bl	HAL_UART_GetState
+ 307              	.LVL28:
+ 169:Core/Src/OneWire.c **** 	{
+ 308              		.loc 1 169 8 view .LVU93
+ 309 0028 2028     		cmp	r0, #32
+ 310 002a F9D1     		bne	.L18
+ 172:Core/Src/OneWire.c **** 	}
+ 173:Core/Src/OneWire.c **** }
+ 311              		.loc 1 173 1 view .LVU94
+ 312 002c 70BD     		pop	{r4, r5, r6, pc}
+ 313              		.loc 1 173 1 view .LVU95
+ 314              		.cfi_endproc
+ 315              	.LFE72:
+ 317              		.section	.text.OW_Reset,"ax",%progbits
+ 318              		.align	1
+ 319              		.global	OW_Reset
+ 320              		.syntax unified
+ 321              		.thumb
+ 322              		.thumb_func
+ 323              		.fpu softvfp
+ 325              	OW_Reset:
+ 326              	.LVL29:
+ 327              	.LFB70:
+  89:Core/Src/OneWire.c **** 	uint8_t owPresence = 0xf0;
+ 328              		.loc 1 89 1 is_stmt 1 view -0
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 8
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+  89:Core/Src/OneWire.c **** 	uint8_t owPresence = 0xf0;
+ 332              		.loc 1 89 1 is_stmt 0 view .LVU97
+ 333 0000 10B5     		push	{r4, lr}
+ 334              		.cfi_def_cfa_offset 8
+ 335              		.cfi_offset 4, -8
+ 336              		.cfi_offset 14, -4
+ 337 0002 82B0     		sub	sp, sp, #8
+ 338              		.cfi_def_cfa_offset 16
+ 339 0004 0446     		mov	r4, r0
+  90:Core/Src/OneWire.c **** 
+ 340              		.loc 1 90 2 is_stmt 1 view .LVU98
+  90:Core/Src/OneWire.c **** 
+ 341              		.loc 1 90 10 is_stmt 0 view .LVU99
+ 342 0006 F023     		movs	r3, #240
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 11
+
+
+ 343 0008 8DF80730 		strb	r3, [sp, #7]
+  92:Core/Src/OneWire.c **** 
+ 344              		.loc 1 92 2 is_stmt 1 view .LVU100
+ 345 000c 4FF41651 		mov	r1, #9600
+ 346 0010 FFF7FEFF 		bl	OW_UART_Init
+ 347              	.LVL30:
+  94:Core/Src/OneWire.c **** 	//HAL_UART_Transmit(ow->huart, &owPresence, 1, HAL_MAX_DELAY);
+ 348              		.loc 1 94 2 view .LVU101
+ 349 0014 0122     		movs	r2, #1
+ 350 0016 0DF10701 		add	r1, sp, #7
+ 351 001a 2068     		ldr	r0, [r4]
+ 352 001c FFF7FEFF 		bl	HAL_UART_Receive_DMA
+ 353              	.LVL31:
+  96:Core/Src/OneWire.c **** 
+ 354              		.loc 1 96 2 view .LVU102
+ 355 0020 0122     		movs	r2, #1
+ 356 0022 0DF10701 		add	r1, sp, #7
+ 357 0026 2068     		ldr	r0, [r4]
+ 358 0028 FFF7FEFF 		bl	HAL_UART_Transmit_DMA
+ 359              	.LVL32:
+  99:Core/Src/OneWire.c **** 	{
+ 360              		.loc 1 99 2 view .LVU103
+  99:Core/Src/OneWire.c **** 	{
+ 361              		.loc 1 99 8 is_stmt 0 view .LVU104
+ 362 002c 00E0     		b	.L21
+ 363              	.L22:
+ 101:Core/Src/OneWire.c **** 	}
+ 364              		.loc 1 101 3 is_stmt 1 view .LVU105
+ 365              		.syntax unified
+ 366              	@ 101 "Core/Src/OneWire.c" 1
+ 367 002e 00BF     		nop
+ 368              	@ 0 "" 2
+ 369              		.thumb
+ 370              		.syntax unified
+ 371              	.L21:
+  99:Core/Src/OneWire.c **** 	{
+ 372              		.loc 1 99 8 view .LVU106
+  99:Core/Src/OneWire.c **** 	{
+ 373              		.loc 1 99 9 is_stmt 0 view .LVU107
+ 374 0030 2068     		ldr	r0, [r4]
+ 375 0032 FFF7FEFF 		bl	HAL_UART_GetState
+ 376              	.LVL33:
+  99:Core/Src/OneWire.c **** 	{
+ 377              		.loc 1 99 8 view .LVU108
+ 378 0036 2028     		cmp	r0, #32
+ 379 0038 F9D1     		bne	.L22
+ 104:Core/Src/OneWire.c **** 
+ 380              		.loc 1 104 2 is_stmt 1 view .LVU109
+ 381 003a 4FF4E131 		mov	r1, #115200
+ 382 003e 2046     		mov	r0, r4
+ 383 0040 FFF7FEFF 		bl	OW_UART_Init
+ 384              	.LVL34:
+ 106:Core/Src/OneWire.c **** 	{
+ 385              		.loc 1 106 2 view .LVU110
+ 106:Core/Src/OneWire.c **** 	{
+ 386              		.loc 1 106 17 is_stmt 0 view .LVU111
+ 387 0044 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 12
+
+
+ 106:Core/Src/OneWire.c **** 	{
+ 388              		.loc 1 106 5 view .LVU112
+ 389 0048 F02B     		cmp	r3, #240
+ 390 004a 02D0     		beq	.L26
+ 108:Core/Src/OneWire.c **** 	}
+ 391              		.loc 1 108 10 view .LVU113
+ 392 004c 0120     		movs	r0, #1
+ 393              	.L23:
+ 112:Core/Src/OneWire.c **** 
+ 394              		.loc 1 112 1 view .LVU114
+ 395 004e 02B0     		add	sp, sp, #8
+ 396              		.cfi_remember_state
+ 397              		.cfi_def_cfa_offset 8
+ 398              		@ sp needed
+ 399 0050 10BD     		pop	{r4, pc}
+ 400              	.LVL35:
+ 401              	.L26:
+ 402              		.cfi_restore_state
+ 111:Core/Src/OneWire.c **** }
+ 403              		.loc 1 111 9 view .LVU115
+ 404 0052 0320     		movs	r0, #3
+ 405 0054 FBE7     		b	.L23
+ 406              		.cfi_endproc
+ 407              	.LFE70:
+ 409              		.section	.text.OW_Send,"ax",%progbits
+ 410              		.align	1
+ 411              		.global	OW_Send
+ 412              		.syntax unified
+ 413              		.thumb
+ 414              		.thumb_func
+ 415              		.fpu softvfp
+ 417              	OW_Send:
+ 418              	.LVL36:
+ 419              	.LFB71:
+ 124:Core/Src/OneWire.c **** 	if (OW_Reset(ow) == OW_NO_DEVICE)
+ 420              		.loc 1 124 1 is_stmt 1 view -0
+ 421              		.cfi_startproc
+ 422              		@ args = 8, pretend = 0, frame = 0
+ 423              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124:Core/Src/OneWire.c **** 	if (OW_Reset(ow) == OW_NO_DEVICE)
+ 424              		.loc 1 124 1 is_stmt 0 view .LVU117
+ 425 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 426              		.cfi_def_cfa_offset 32
+ 427              		.cfi_offset 4, -32
+ 428              		.cfi_offset 5, -28
+ 429              		.cfi_offset 6, -24
+ 430              		.cfi_offset 7, -20
+ 431              		.cfi_offset 8, -16
+ 432              		.cfi_offset 9, -12
+ 433              		.cfi_offset 10, -8
+ 434              		.cfi_offset 14, -4
+ 435 0004 0446     		mov	r4, r0
+ 436 0006 8846     		mov	r8, r1
+ 437 0008 1546     		mov	r5, r2
+ 438 000a 9A46     		mov	r10, r3
+ 439 000c 9DF82090 		ldrb	r9, [sp, #32]	@ zero_extendqisi2
+ 440 0010 9DF82470 		ldrb	r7, [sp, #36]	@ zero_extendqisi2
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 13
+
+
+ 125:Core/Src/OneWire.c **** 	{
+ 441              		.loc 1 125 2 is_stmt 1 view .LVU118
+ 125:Core/Src/OneWire.c **** 	{
+ 442              		.loc 1 125 6 is_stmt 0 view .LVU119
+ 443 0014 FFF7FEFF 		bl	OW_Reset
+ 444              	.LVL37:
+ 125:Core/Src/OneWire.c **** 	{
+ 445              		.loc 1 125 5 view .LVU120
+ 446 0018 0328     		cmp	r0, #3
+ 447 001a 18D1     		bne	.L29
+ 448 001c 2CE0     		b	.L28
+ 449              	.LVL38:
+ 450              	.L31:
+ 142:Core/Src/OneWire.c **** 		}
+ 451              		.loc 1 142 4 is_stmt 1 view .LVU121
+ 452              		.syntax unified
+ 453              	@ 142 "Core/Src/OneWire.c" 1
+ 454 001e 00BF     		nop
+ 455              	@ 0 "" 2
+ 456              		.thumb
+ 457              		.syntax unified
+ 458              	.L30:
+ 140:Core/Src/OneWire.c **** 		{
+ 459              		.loc 1 140 9 view .LVU122
+ 140:Core/Src/OneWire.c **** 		{
+ 460              		.loc 1 140 10 is_stmt 0 view .LVU123
+ 461 0020 2068     		ldr	r0, [r4]
+ 462 0022 FFF7FEFF 		bl	HAL_UART_GetState
+ 463              	.LVL39:
+ 140:Core/Src/OneWire.c **** 		{
+ 464              		.loc 1 140 9 view .LVU124
+ 465 0026 2028     		cmp	r0, #32
+ 466 0028 F9D1     		bne	.L31
+ 145:Core/Src/OneWire.c **** 		{
+ 467              		.loc 1 145 3 is_stmt 1 view .LVU125
+ 145:Core/Src/OneWire.c **** 		{
+ 468              		.loc 1 145 6 is_stmt 0 view .LVU126
+ 469 002a 67B9     		cbnz	r7, .L32
+ 145:Core/Src/OneWire.c **** 		{
+ 470              		.loc 1 145 22 discriminator 1 view .LVU127
+ 471 002c B9F1000F 		cmp	r9, #0
+ 472 0030 09D0     		beq	.L32
+ 147:Core/Src/OneWire.c **** 			data++;
+ 473              		.loc 1 147 4 is_stmt 1 view .LVU128
+ 147:Core/Src/OneWire.c **** 			data++;
+ 474              		.loc 1 147 12 is_stmt 0 view .LVU129
+ 475 0032 3046     		mov	r0, r6
+ 476 0034 FFF7FEFF 		bl	OW_ToByte
+ 477              	.LVL40:
+ 147:Core/Src/OneWire.c **** 			data++;
+ 478              		.loc 1 147 10 view .LVU130
+ 479 0038 0AF8010B 		strb	r0, [r10], #1
+ 480              	.LVL41:
+ 148:Core/Src/OneWire.c **** 			dLen--;
+ 481              		.loc 1 148 4 is_stmt 1 view .LVU131
+ 149:Core/Src/OneWire.c **** 		}
+ 482              		.loc 1 149 4 view .LVU132
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 14
+
+
+ 149:Core/Src/OneWire.c **** 		}
+ 483              		.loc 1 149 8 is_stmt 0 view .LVU133
+ 484 003c 09F1FF39 		add	r9, r9, #-1
+ 485              	.LVL42:
+ 149:Core/Src/OneWire.c **** 		}
+ 486              		.loc 1 149 8 view .LVU134
+ 487 0040 5FFA89F9 		uxtb	r9, r9
+ 488              	.LVL43:
+ 149:Core/Src/OneWire.c **** 		}
+ 489              		.loc 1 149 8 view .LVU135
+ 490 0044 03E0     		b	.L29
+ 491              	.L32:
+ 153:Core/Src/OneWire.c **** 			{
+ 492              		.loc 1 153 4 is_stmt 1 view .LVU136
+ 153:Core/Src/OneWire.c **** 			{
+ 493              		.loc 1 153 7 is_stmt 0 view .LVU137
+ 494 0046 FF2F     		cmp	r7, #255
+ 495 0048 01D0     		beq	.L29
+ 155:Core/Src/OneWire.c **** 			}
+ 496              		.loc 1 155 5 is_stmt 1 view .LVU138
+ 155:Core/Src/OneWire.c **** 			}
+ 497              		.loc 1 155 14 is_stmt 0 view .LVU139
+ 498 004a 013F     		subs	r7, r7, #1
+ 499              	.LVL44:
+ 155:Core/Src/OneWire.c **** 			}
+ 500              		.loc 1 155 14 view .LVU140
+ 501 004c FFB2     		uxtb	r7, r7
+ 502              	.LVL45:
+ 503              	.L29:
+ 130:Core/Src/OneWire.c **** 	{
+ 504              		.loc 1 130 8 is_stmt 1 view .LVU141
+ 505 004e 95B1     		cbz	r5, .L36
+ 133:Core/Src/OneWire.c **** 		command++;
+ 506              		.loc 1 133 3 view .LVU142
+ 133:Core/Src/OneWire.c **** 		command++;
+ 507              		.loc 1 133 25 is_stmt 0 view .LVU143
+ 508 0050 261D     		adds	r6, r4, #4
+ 133:Core/Src/OneWire.c **** 		command++;
+ 509              		.loc 1 133 3 view .LVU144
+ 510 0052 3146     		mov	r1, r6
+ 511 0054 18F8010B 		ldrb	r0, [r8], #1	@ zero_extendqisi2
+ 512              	.LVL46:
+ 133:Core/Src/OneWire.c **** 		command++;
+ 513              		.loc 1 133 3 view .LVU145
+ 514 0058 FFF7FEFF 		bl	OW_ToBits
+ 515              	.LVL47:
+ 134:Core/Src/OneWire.c **** 		cLen--;
+ 516              		.loc 1 134 3 is_stmt 1 view .LVU146
+ 135:Core/Src/OneWire.c **** 
+ 517              		.loc 1 135 3 view .LVU147
+ 135:Core/Src/OneWire.c **** 
+ 518              		.loc 1 135 7 is_stmt 0 view .LVU148
+ 519 005c 013D     		subs	r5, r5, #1
+ 520              	.LVL48:
+ 135:Core/Src/OneWire.c **** 
+ 521              		.loc 1 135 7 view .LVU149
+ 522 005e EDB2     		uxtb	r5, r5
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 15
+
+
+ 523              	.LVL49:
+ 137:Core/Src/OneWire.c **** 		HAL_UART_Transmit_DMA(ow->huart, ow->ROM_NO, sizeof(ow->ROM_NO) / sizeof(ow->ROM_NO[0]));
+ 524              		.loc 1 137 3 is_stmt 1 view .LVU150
+ 525 0060 0822     		movs	r2, #8
+ 526 0062 3146     		mov	r1, r6
+ 527 0064 2068     		ldr	r0, [r4]
+ 528 0066 FFF7FEFF 		bl	HAL_UART_Receive_DMA
+ 529              	.LVL50:
+ 138:Core/Src/OneWire.c **** 
+ 530              		.loc 1 138 3 view .LVU151
+ 531 006a 0822     		movs	r2, #8
+ 532 006c 3146     		mov	r1, r6
+ 533 006e 2068     		ldr	r0, [r4]
+ 534 0070 FFF7FEFF 		bl	HAL_UART_Transmit_DMA
+ 535              	.LVL51:
+ 140:Core/Src/OneWire.c **** 		{
+ 536              		.loc 1 140 3 view .LVU152
+ 140:Core/Src/OneWire.c **** 		{
+ 537              		.loc 1 140 9 is_stmt 0 view .LVU153
+ 538 0074 D4E7     		b	.L30
+ 539              	.L36:
+ 160:Core/Src/OneWire.c **** }
+ 540              		.loc 1 160 9 view .LVU154
+ 541 0076 0120     		movs	r0, #1
+ 542              	.LVL52:
+ 543              	.L28:
+ 161:Core/Src/OneWire.c **** 
+ 544              		.loc 1 161 1 view .LVU155
+ 545 0078 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 161:Core/Src/OneWire.c **** 
+ 546              		.loc 1 161 1 view .LVU156
+ 547              		.cfi_endproc
+ 548              	.LFE71:
+ 550              		.section	.text.OW_ResetSearch,"ax",%progbits
+ 551              		.align	1
+ 552              		.global	OW_ResetSearch
+ 553              		.syntax unified
+ 554              		.thumb
+ 555              		.thumb_func
+ 556              		.fpu softvfp
+ 558              	OW_ResetSearch:
+ 559              	.LVL53:
+ 560              	.LFB73:
+ 174:Core/Src/OneWire.c **** 
+ 175:Core/Src/OneWire.c **** //
+ 176:Core/Src/OneWire.c **** // You need to use this function to start a search again from the beginning.
+ 177:Core/Src/OneWire.c **** // You do not need to do it for the first search, though you could.
+ 178:Core/Src/OneWire.c **** //
+ 179:Core/Src/OneWire.c **** void OW_ResetSearch(OneWire_HandleTypeDef* ow)
+ 180:Core/Src/OneWire.c **** {
+ 561              		.loc 1 180 1 is_stmt 1 view -0
+ 562              		.cfi_startproc
+ 563              		@ args = 0, pretend = 0, frame = 0
+ 564              		@ frame_needed = 0, uses_anonymous_args = 0
+ 565              		@ link register save eliminated.
+ 181:Core/Src/OneWire.c ****   // reset the search state
+ 182:Core/Src/OneWire.c ****   ow->LastDiscrepancy = 0;
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 16
+
+
+ 566              		.loc 1 182 3 view .LVU158
+ 567              		.loc 1 182 23 is_stmt 0 view .LVU159
+ 568 0000 0023     		movs	r3, #0
+ 569 0002 0373     		strb	r3, [r0, #12]
+ 183:Core/Src/OneWire.c ****   ow->LastDeviceFlag = false;
+ 570              		.loc 1 183 3 is_stmt 1 view .LVU160
+ 571              		.loc 1 183 22 is_stmt 0 view .LVU161
+ 572 0004 8373     		strb	r3, [r0, #14]
+ 184:Core/Src/OneWire.c ****   ow->LastFamilyDiscrepancy = 0;
+ 573              		.loc 1 184 3 is_stmt 1 view .LVU162
+ 574              		.loc 1 184 29 is_stmt 0 view .LVU163
+ 575 0006 4373     		strb	r3, [r0, #13]
+ 185:Core/Src/OneWire.c ****   for(int i = 7; ; i--)
+ 576              		.loc 1 185 3 is_stmt 1 view .LVU164
+ 577              	.LBB2:
+ 578              		.loc 1 185 7 view .LVU165
+ 579              	.LVL54:
+ 580              		.loc 1 185 11 is_stmt 0 view .LVU166
+ 581 0008 0722     		movs	r2, #7
+ 582 000a 00E0     		b	.L39
+ 583              	.LVL55:
+ 584              	.L40:
+ 585              		.loc 1 185 20 is_stmt 1 view .LVU167
+ 586              		.loc 1 185 21 is_stmt 0 view .LVU168
+ 587 000c 013A     		subs	r2, r2, #1
+ 588              	.LVL56:
+ 589              		.loc 1 185 18 is_stmt 1 view .LVU169
+ 590              	.L39:
+ 186:Core/Src/OneWire.c ****   {
+ 187:Core/Src/OneWire.c ****     ow->ROM_NO[i] = 0;
+ 591              		.loc 1 187 5 view .LVU170
+ 592              		.loc 1 187 19 is_stmt 0 view .LVU171
+ 593 000e 8318     		adds	r3, r0, r2
+ 594 0010 0021     		movs	r1, #0
+ 595 0012 1971     		strb	r1, [r3, #4]
+ 188:Core/Src/OneWire.c ****     if ( i == 0) break;
+ 596              		.loc 1 188 5 is_stmt 1 view .LVU172
+ 597              		.loc 1 188 8 is_stmt 0 view .LVU173
+ 598 0014 002A     		cmp	r2, #0
+ 599 0016 F9D1     		bne	.L40
+ 600              	.LBE2:
+ 189:Core/Src/OneWire.c ****   }
+ 190:Core/Src/OneWire.c **** }
+ 601              		.loc 1 190 1 view .LVU174
+ 602 0018 7047     		bx	lr
+ 603              		.cfi_endproc
+ 604              	.LFE73:
+ 606              		.section	.text.OW_Begin,"ax",%progbits
+ 607              		.align	1
+ 608              		.global	OW_Begin
+ 609              		.syntax unified
+ 610              		.thumb
+ 611              		.thumb_func
+ 612              		.fpu softvfp
+ 614              	OW_Begin:
+ 615              	.LVL57:
+ 616              	.LFB69:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 17
+
+
+  73:Core/Src/OneWire.c **** 	ow->huart = huart;
+ 617              		.loc 1 73 1 is_stmt 1 view -0
+ 618              		.cfi_startproc
+ 619              		@ args = 0, pretend = 0, frame = 0
+ 620              		@ frame_needed = 0, uses_anonymous_args = 0
+  73:Core/Src/OneWire.c **** 	ow->huart = huart;
+ 621              		.loc 1 73 1 is_stmt 0 view .LVU176
+ 622 0000 38B5     		push	{r3, r4, r5, lr}
+ 623              		.cfi_def_cfa_offset 16
+ 624              		.cfi_offset 3, -16
+ 625              		.cfi_offset 4, -12
+ 626              		.cfi_offset 5, -8
+ 627              		.cfi_offset 14, -4
+ 628 0002 0446     		mov	r4, r0
+  74:Core/Src/OneWire.c **** 	HAL_StatusTypeDef status = OW_UART_Init(ow, 9600);
+ 629              		.loc 1 74 2 is_stmt 1 view .LVU177
+  74:Core/Src/OneWire.c **** 	HAL_StatusTypeDef status = OW_UART_Init(ow, 9600);
+ 630              		.loc 1 74 12 is_stmt 0 view .LVU178
+ 631 0004 0160     		str	r1, [r0]
+  75:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+ 632              		.loc 1 75 2 is_stmt 1 view .LVU179
+  75:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+ 633              		.loc 1 75 29 is_stmt 0 view .LVU180
+ 634 0006 4FF41651 		mov	r1, #9600
+ 635              	.LVL58:
+  75:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+ 636              		.loc 1 75 29 view .LVU181
+ 637 000a FFF7FEFF 		bl	OW_UART_Init
+ 638              	.LVL59:
+  75:Core/Src/OneWire.c **** #if ONEWIRE_SEARCH
+ 639              		.loc 1 75 29 view .LVU182
+ 640 000e 0546     		mov	r5, r0
+ 641              	.LVL60:
+  77:Core/Src/OneWire.c **** #endif
+ 642              		.loc 1 77 2 is_stmt 1 view .LVU183
+ 643 0010 2046     		mov	r0, r4
+ 644 0012 FFF7FEFF 		bl	OW_ResetSearch
+ 645              	.LVL61:
+  79:Core/Src/OneWire.c **** }
+ 646              		.loc 1 79 2 view .LVU184
+  80:Core/Src/OneWire.c **** 
+ 647              		.loc 1 80 1 is_stmt 0 view .LVU185
+ 648 0016 2846     		mov	r0, r5
+ 649 0018 38BD     		pop	{r3, r4, r5, pc}
+  80:Core/Src/OneWire.c **** 
+ 650              		.loc 1 80 1 view .LVU186
+ 651              		.cfi_endproc
+ 652              	.LFE69:
+ 654              		.section	.text.OneWire,"ax",%progbits
+ 655              		.align	1
+ 656              		.global	OneWire
+ 657              		.syntax unified
+ 658              		.thumb
+ 659              		.thumb_func
+ 660              		.fpu softvfp
+ 662              	OneWire:
+ 663              	.LVL62:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 18
+
+
+ 664              	.LFB68:
+  68:Core/Src/OneWire.c **** 	return OW_Begin(ow, huart);
+ 665              		.loc 1 68 1 is_stmt 1 view -0
+ 666              		.cfi_startproc
+ 667              		@ args = 0, pretend = 0, frame = 0
+ 668              		@ frame_needed = 0, uses_anonymous_args = 0
+  68:Core/Src/OneWire.c **** 	return OW_Begin(ow, huart);
+ 669              		.loc 1 68 1 is_stmt 0 view .LVU188
+ 670 0000 08B5     		push	{r3, lr}
+ 671              		.cfi_def_cfa_offset 8
+ 672              		.cfi_offset 3, -8
+ 673              		.cfi_offset 14, -4
+  69:Core/Src/OneWire.c **** }
+ 674              		.loc 1 69 2 is_stmt 1 view .LVU189
+  69:Core/Src/OneWire.c **** }
+ 675              		.loc 1 69 9 is_stmt 0 view .LVU190
+ 676 0002 FFF7FEFF 		bl	OW_Begin
+ 677              	.LVL63:
+  70:Core/Src/OneWire.c **** 
+ 678              		.loc 1 70 1 view .LVU191
+ 679 0006 08BD     		pop	{r3, pc}
+ 680              		.cfi_endproc
+ 681              	.LFE68:
+ 683              		.section	.text.OW_TargetSearch,"ax",%progbits
+ 684              		.align	1
+ 685              		.global	OW_TargetSearch
+ 686              		.syntax unified
+ 687              		.thumb
+ 688              		.thumb_func
+ 689              		.fpu softvfp
+ 691              	OW_TargetSearch:
+ 692              	.LVL64:
+ 693              	.LFB74:
+ 191:Core/Src/OneWire.c **** 
+ 192:Core/Src/OneWire.c **** // Setup the search to find the device type 'family_code' on the next call
+ 193:Core/Src/OneWire.c **** // to search(*newAddr) if it is present.
+ 194:Core/Src/OneWire.c **** //
+ 195:Core/Src/OneWire.c **** void OW_TargetSearch(OneWire_HandleTypeDef* ow, uint8_t family_code)
+ 196:Core/Src/OneWire.c **** {
+ 694              		.loc 1 196 1 is_stmt 1 view -0
+ 695              		.cfi_startproc
+ 696              		@ args = 0, pretend = 0, frame = 0
+ 697              		@ frame_needed = 0, uses_anonymous_args = 0
+ 698              		@ link register save eliminated.
+ 197:Core/Src/OneWire.c ****    // set the search state to find SearchFamily type devices
+ 198:Core/Src/OneWire.c ****    ow->ROM_NO[0] = family_code;
+ 699              		.loc 1 198 4 view .LVU193
+ 700              		.loc 1 198 18 is_stmt 0 view .LVU194
+ 701 0000 0171     		strb	r1, [r0, #4]
+ 199:Core/Src/OneWire.c ****    for (uint8_t i = 1; i < 8; i++)
+ 702              		.loc 1 199 4 is_stmt 1 view .LVU195
+ 703              	.LBB3:
+ 704              		.loc 1 199 9 view .LVU196
+ 705              	.LVL65:
+ 706              		.loc 1 199 17 is_stmt 0 view .LVU197
+ 707 0002 0123     		movs	r3, #1
+ 708              		.loc 1 199 4 view .LVU198
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 19
+
+
+ 709 0004 04E0     		b	.L46
+ 710              	.LVL66:
+ 711              	.L47:
+ 200:Core/Src/OneWire.c ****       ow->ROM_NO[i] = 0;
+ 712              		.loc 1 200 7 is_stmt 1 discriminator 3 view .LVU199
+ 713              		.loc 1 200 21 is_stmt 0 discriminator 3 view .LVU200
+ 714 0006 C218     		adds	r2, r0, r3
+ 715 0008 0021     		movs	r1, #0
+ 716 000a 1171     		strb	r1, [r2, #4]
+ 199:Core/Src/OneWire.c ****    for (uint8_t i = 1; i < 8; i++)
+ 717              		.loc 1 199 31 is_stmt 1 discriminator 3 view .LVU201
+ 199:Core/Src/OneWire.c ****    for (uint8_t i = 1; i < 8; i++)
+ 718              		.loc 1 199 32 is_stmt 0 discriminator 3 view .LVU202
+ 719 000c 0133     		adds	r3, r3, #1
+ 720              	.LVL67:
+ 199:Core/Src/OneWire.c ****    for (uint8_t i = 1; i < 8; i++)
+ 721              		.loc 1 199 32 discriminator 3 view .LVU203
+ 722 000e DBB2     		uxtb	r3, r3
+ 723              	.LVL68:
+ 724              	.L46:
+ 199:Core/Src/OneWire.c ****    for (uint8_t i = 1; i < 8; i++)
+ 725              		.loc 1 199 24 is_stmt 1 discriminator 1 view .LVU204
+ 199:Core/Src/OneWire.c ****    for (uint8_t i = 1; i < 8; i++)
+ 726              		.loc 1 199 4 is_stmt 0 discriminator 1 view .LVU205
+ 727 0010 072B     		cmp	r3, #7
+ 728 0012 F8D9     		bls	.L47
+ 729              	.LBE3:
+ 201:Core/Src/OneWire.c ****    ow->LastDiscrepancy = 64;
+ 730              		.loc 1 201 4 is_stmt 1 view .LVU206
+ 731              		.loc 1 201 24 is_stmt 0 view .LVU207
+ 732 0014 4023     		movs	r3, #64
+ 733              	.LVL69:
+ 734              		.loc 1 201 24 view .LVU208
+ 735 0016 0373     		strb	r3, [r0, #12]
+ 202:Core/Src/OneWire.c ****    ow->LastFamilyDiscrepancy = 0;
+ 736              		.loc 1 202 4 is_stmt 1 view .LVU209
+ 737              		.loc 1 202 30 is_stmt 0 view .LVU210
+ 738 0018 0023     		movs	r3, #0
+ 739 001a 4373     		strb	r3, [r0, #13]
+ 203:Core/Src/OneWire.c ****    ow->LastDeviceFlag = false;
+ 740              		.loc 1 203 4 is_stmt 1 view .LVU211
+ 741              		.loc 1 203 23 is_stmt 0 view .LVU212
+ 742 001c 8373     		strb	r3, [r0, #14]
+ 204:Core/Src/OneWire.c **** }
+ 743              		.loc 1 204 1 view .LVU213
+ 744 001e 7047     		bx	lr
+ 745              		.cfi_endproc
+ 746              	.LFE74:
+ 748              		.section	.rodata.OW_Search.str1.4,"aMS",%progbits,1
+ 749              		.align	2
+ 750              	.LC0:
+ 751 0000 F000     		.ascii	"\360\000"
+ 752              		.section	.text.OW_Search,"ax",%progbits
+ 753              		.align	1
+ 754              		.global	OW_Search
+ 755              		.syntax unified
+ 756              		.thumb
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 20
+
+
+ 757              		.thumb_func
+ 758              		.fpu softvfp
+ 760              	OW_Search:
+ 761              	.LVL70:
+ 762              	.LFB75:
+ 205:Core/Src/OneWire.c **** 
+ 206:Core/Src/OneWire.c **** uint8_t OW_Search(OneWire_HandleTypeDef* ow, uint8_t *buf, uint8_t num)
+ 207:Core/Src/OneWire.c **** {
+ 763              		.loc 1 207 1 is_stmt 1 view -0
+ 764              		.cfi_startproc
+ 765              		@ args = 0, pretend = 0, frame = 8
+ 766              		@ frame_needed = 0, uses_anonymous_args = 0
+ 767              		.loc 1 207 1 is_stmt 0 view .LVU215
+ 768 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 769              		.cfi_def_cfa_offset 36
+ 770              		.cfi_offset 4, -36
+ 771              		.cfi_offset 5, -32
+ 772              		.cfi_offset 6, -28
+ 773              		.cfi_offset 7, -24
+ 774              		.cfi_offset 8, -20
+ 775              		.cfi_offset 9, -16
+ 776              		.cfi_offset 10, -12
+ 777              		.cfi_offset 11, -8
+ 778              		.cfi_offset 14, -4
+ 779 0004 85B0     		sub	sp, sp, #20
+ 780              		.cfi_def_cfa_offset 56
+ 781 0006 0546     		mov	r5, r0
+ 782 0008 0F46     		mov	r7, r1
+ 783 000a 0392     		str	r2, [sp, #12]
+ 208:Core/Src/OneWire.c **** 
+ 209:Core/Src/OneWire.c **** 	uint8_t found = 0;
+ 784              		.loc 1 209 2 is_stmt 1 view .LVU216
+ 785              	.LVL71:
+ 210:Core/Src/OneWire.c **** 	uint8_t *lastDevice = NULL;
+ 786              		.loc 1 210 2 view .LVU217
+ 211:Core/Src/OneWire.c **** 	uint8_t *curDevice = buf;
+ 787              		.loc 1 211 2 view .LVU218
+ 212:Core/Src/OneWire.c **** 	uint8_t numBit, lastCollision, currentCollision, currentSelection;
+ 788              		.loc 1 212 2 view .LVU219
+ 213:Core/Src/OneWire.c **** 
+ 214:Core/Src/OneWire.c **** 	lastCollision = 0;
+ 789              		.loc 1 214 2 view .LVU220
+ 215:Core/Src/OneWire.c **** 
+ 216:Core/Src/OneWire.c **** 	while (found < num)
+ 790              		.loc 1 216 2 view .LVU221
+ 214:Core/Src/OneWire.c **** 
+ 791              		.loc 1 214 16 is_stmt 0 view .LVU222
+ 792 000c 4FF00008 		mov	r8, #0
+ 210:Core/Src/OneWire.c **** 	uint8_t *curDevice = buf;
+ 793              		.loc 1 210 11 view .LVU223
+ 794 0010 C246     		mov	r10, r8
+ 209:Core/Src/OneWire.c **** 	uint8_t *lastDevice = NULL;
+ 795              		.loc 1 209 10 view .LVU224
+ 796 0012 C346     		mov	fp, r8
+ 797              	.LVL72:
+ 798              	.L49:
+ 799              		.loc 1 216 8 is_stmt 1 view .LVU225
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 21
+
+
+ 800 0014 039B     		ldr	r3, [sp, #12]
+ 801 0016 9B45     		cmp	fp, r3
+ 802 0018 62D2     		bcs	.L52
+ 217:Core/Src/OneWire.c **** 	{
+ 218:Core/Src/OneWire.c **** 		numBit = 1;
+ 803              		.loc 1 218 3 view .LVU226
+ 804              	.LVL73:
+ 219:Core/Src/OneWire.c **** 		currentCollision = 0;
+ 805              		.loc 1 219 3 view .LVU227
+ 220:Core/Src/OneWire.c **** 
+ 221:Core/Src/OneWire.c **** 		OW_Send(ow, (uint8_t*)"\xf0", 1, NULL, 0, OW_NO_READ);
+ 806              		.loc 1 221 3 view .LVU228
+ 807 001a FF23     		movs	r3, #255
+ 808 001c 0193     		str	r3, [sp, #4]
+ 809 001e 0024     		movs	r4, #0
+ 810 0020 0094     		str	r4, [sp]
+ 811 0022 2346     		mov	r3, r4
+ 812 0024 0122     		movs	r2, #1
+ 813 0026 3249     		ldr	r1, .L64
+ 814 0028 2846     		mov	r0, r5
+ 815 002a FFF7FEFF 		bl	OW_Send
+ 816              	.LVL74:
+ 222:Core/Src/OneWire.c **** 
+ 223:Core/Src/OneWire.c **** 		for (numBit = 1; numBit <= 64; numBit++)
+ 817              		.loc 1 223 3 view .LVU229
+ 219:Core/Src/OneWire.c **** 
+ 818              		.loc 1 219 20 is_stmt 0 view .LVU230
+ 819 002e A146     		mov	r9, r4
+ 820              		.loc 1 223 15 view .LVU231
+ 821 0030 0124     		movs	r4, #1
+ 822              		.loc 1 223 3 view .LVU232
+ 823 0032 15E0     		b	.L50
+ 824              	.LVL75:
+ 825              	.L62:
+ 224:Core/Src/OneWire.c **** 		{
+ 225:Core/Src/OneWire.c **** 			OW_ToBits(OW_READ_SLOT, ow->ROM_NO);
+ 226:Core/Src/OneWire.c **** 			OW_SendBits(ow, 2);
+ 227:Core/Src/OneWire.c **** 
+ 228:Core/Src/OneWire.c **** 			if (ow->ROM_NO[0] == OW_R_1)
+ 229:Core/Src/OneWire.c **** 			{
+ 230:Core/Src/OneWire.c **** 				if (ow->ROM_NO[1] == OW_R_1)
+ 826              		.loc 1 230 5 is_stmt 1 view .LVU233
+ 827              		.loc 1 230 19 is_stmt 0 view .LVU234
+ 828 0034 6B79     		ldrb	r3, [r5, #5]	@ zero_extendqisi2
+ 829              		.loc 1 230 8 view .LVU235
+ 830 0036 FF2B     		cmp	r3, #255
+ 831 0038 52D0     		beq	.L52
+ 832              	.LVL76:
+ 833              	.L53:
+ 231:Core/Src/OneWire.c **** 				{
+ 232:Core/Src/OneWire.c **** 					return found;
+ 233:Core/Src/OneWire.c **** 				}
+ 234:Core/Src/OneWire.c **** 				else
+ 235:Core/Src/OneWire.c **** 				{
+ 236:Core/Src/OneWire.c **** 					currentSelection = 1;
+ 237:Core/Src/OneWire.c **** 				}
+ 238:Core/Src/OneWire.c **** 			}
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 22
+
+
+ 239:Core/Src/OneWire.c **** 			else
+ 240:Core/Src/OneWire.c **** 			{
+ 241:Core/Src/OneWire.c **** 				if (ow->ROM_NO[1] == OW_R_1)
+ 242:Core/Src/OneWire.c **** 				{
+ 243:Core/Src/OneWire.c **** 					currentSelection = 0;
+ 244:Core/Src/OneWire.c **** 				}
+ 245:Core/Src/OneWire.c **** 				else
+ 246:Core/Src/OneWire.c **** 				{
+ 247:Core/Src/OneWire.c **** 					if (numBit < lastCollision)
+ 248:Core/Src/OneWire.c **** 					{
+ 249:Core/Src/OneWire.c **** 							if (lastDevice[(numBit - 1) >> 3] & 1 << ((numBit - 1) & 0x07))
+ 250:Core/Src/OneWire.c **** 							{
+ 251:Core/Src/OneWire.c **** 							currentSelection = 1;
+ 252:Core/Src/OneWire.c **** 
+ 253:Core/Src/OneWire.c **** 								if (currentCollision < numBit)
+ 254:Core/Src/OneWire.c **** 								{
+ 255:Core/Src/OneWire.c **** 										currentCollision = numBit;
+ 256:Core/Src/OneWire.c **** 								}
+ 257:Core/Src/OneWire.c **** 							}
+ 258:Core/Src/OneWire.c **** 							else
+ 259:Core/Src/OneWire.c **** 							{
+ 260:Core/Src/OneWire.c **** 								currentSelection = 0;
+ 261:Core/Src/OneWire.c **** 							}
+ 262:Core/Src/OneWire.c **** 					}
+ 263:Core/Src/OneWire.c **** 					else
+ 264:Core/Src/OneWire.c **** 					{
+ 265:Core/Src/OneWire.c **** 						if (numBit == lastCollision)
+ 266:Core/Src/OneWire.c **** 						{
+ 267:Core/Src/OneWire.c **** 								currentSelection = 0;
+ 268:Core/Src/OneWire.c **** 						}
+ 269:Core/Src/OneWire.c **** 						else
+ 270:Core/Src/OneWire.c **** 						{
+ 271:Core/Src/OneWire.c **** 							currentSelection = 1;
+ 272:Core/Src/OneWire.c **** 
+ 273:Core/Src/OneWire.c **** 							if (currentCollision < numBit)
+ 274:Core/Src/OneWire.c **** 							{
+ 275:Core/Src/OneWire.c **** 									currentCollision = numBit;
+ 276:Core/Src/OneWire.c **** 							}
+ 277:Core/Src/OneWire.c **** 						}
+ 278:Core/Src/OneWire.c **** 					}
+ 279:Core/Src/OneWire.c **** 				}
+ 280:Core/Src/OneWire.c **** 			}
+ 281:Core/Src/OneWire.c **** 
+ 282:Core/Src/OneWire.c **** 			if (currentSelection == 1)
+ 283:Core/Src/OneWire.c **** 			{
+ 284:Core/Src/OneWire.c **** 				curDevice[(numBit - 1) >> 3] |= 1 << ((numBit - 1) & 0x07);
+ 834              		.loc 1 284 5 is_stmt 1 view .LVU236
+ 835              		.loc 1 284 34 is_stmt 0 view .LVU237
+ 836 003a 631E     		subs	r3, r4, #1
+ 837 003c DA10     		asrs	r2, r3, #3
+ 838              		.loc 1 284 56 view .LVU238
+ 839 003e 03F00703 		and	r3, r3, #7
+ 840              		.loc 1 284 39 view .LVU239
+ 841 0042 0120     		movs	r0, #1
+ 842 0044 00FA03F3 		lsl	r3, r0, r3
+ 843              		.loc 1 284 34 view .LVU240
+ 844 0048 B95C     		ldrb	r1, [r7, r2]	@ zero_extendqisi2
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 23
+
+
+ 845 004a 0B43     		orrs	r3, r3, r1
+ 846 004c BB54     		strb	r3, [r7, r2]
+ 285:Core/Src/OneWire.c **** 				OW_ToBits(0x01, ow->ROM_NO);
+ 847              		.loc 1 285 5 is_stmt 1 view .LVU241
+ 848 004e 3146     		mov	r1, r6
+ 849 0050 FFF7FEFF 		bl	OW_ToBits
+ 850              	.LVL77:
+ 851              	.L56:
+ 286:Core/Src/OneWire.c **** 			}
+ 287:Core/Src/OneWire.c **** 			else
+ 288:Core/Src/OneWire.c **** 			{
+ 289:Core/Src/OneWire.c **** 				curDevice[(numBit - 1) >> 3] &= ~(1 << ((numBit - 1) & 0x07));
+ 290:Core/Src/OneWire.c **** 				OW_ToBits(0x00, ow->ROM_NO);
+ 291:Core/Src/OneWire.c **** 			}
+ 292:Core/Src/OneWire.c **** 
+ 293:Core/Src/OneWire.c **** 			OW_SendBits(ow, 1);
+ 852              		.loc 1 293 4 discriminator 2 view .LVU242
+ 853 0054 0121     		movs	r1, #1
+ 854 0056 2846     		mov	r0, r5
+ 855 0058 FFF7FEFF 		bl	OW_SendBits
+ 856              	.LVL78:
+ 223:Core/Src/OneWire.c **** 		{
+ 857              		.loc 1 223 34 discriminator 2 view .LVU243
+ 223:Core/Src/OneWire.c **** 		{
+ 858              		.loc 1 223 40 is_stmt 0 discriminator 2 view .LVU244
+ 859 005c 0134     		adds	r4, r4, #1
+ 860              	.LVL79:
+ 223:Core/Src/OneWire.c **** 		{
+ 861              		.loc 1 223 40 discriminator 2 view .LVU245
+ 862 005e E4B2     		uxtb	r4, r4
+ 863              	.LVL80:
+ 864              	.L50:
+ 223:Core/Src/OneWire.c **** 		{
+ 865              		.loc 1 223 20 is_stmt 1 discriminator 1 view .LVU246
+ 223:Core/Src/OneWire.c **** 		{
+ 866              		.loc 1 223 3 is_stmt 0 discriminator 1 view .LVU247
+ 867 0060 402C     		cmp	r4, #64
+ 868 0062 34D8     		bhi	.L61
+ 225:Core/Src/OneWire.c **** 			OW_SendBits(ow, 2);
+ 869              		.loc 1 225 4 is_stmt 1 view .LVU248
+ 225:Core/Src/OneWire.c **** 			OW_SendBits(ow, 2);
+ 870              		.loc 1 225 30 is_stmt 0 view .LVU249
+ 871 0064 2E1D     		adds	r6, r5, #4
+ 225:Core/Src/OneWire.c **** 			OW_SendBits(ow, 2);
+ 872              		.loc 1 225 4 view .LVU250
+ 873 0066 3146     		mov	r1, r6
+ 874 0068 FF20     		movs	r0, #255
+ 875 006a FFF7FEFF 		bl	OW_ToBits
+ 876              	.LVL81:
+ 226:Core/Src/OneWire.c **** 
+ 877              		.loc 1 226 4 is_stmt 1 view .LVU251
+ 878 006e 0221     		movs	r1, #2
+ 879 0070 2846     		mov	r0, r5
+ 880 0072 FFF7FEFF 		bl	OW_SendBits
+ 881              	.LVL82:
+ 228:Core/Src/OneWire.c **** 			{
+ 882              		.loc 1 228 4 view .LVU252
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 24
+
+
+ 228:Core/Src/OneWire.c **** 			{
+ 883              		.loc 1 228 18 is_stmt 0 view .LVU253
+ 884 0076 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
+ 228:Core/Src/OneWire.c **** 			{
+ 885              		.loc 1 228 7 view .LVU254
+ 886 0078 FF2B     		cmp	r3, #255
+ 887 007a DBD0     		beq	.L62
+ 241:Core/Src/OneWire.c **** 				{
+ 888              		.loc 1 241 5 is_stmt 1 view .LVU255
+ 241:Core/Src/OneWire.c **** 				{
+ 889              		.loc 1 241 19 is_stmt 0 view .LVU256
+ 890 007c 6B79     		ldrb	r3, [r5, #5]	@ zero_extendqisi2
+ 241:Core/Src/OneWire.c **** 				{
+ 891              		.loc 1 241 8 view .LVU257
+ 892 007e FF2B     		cmp	r3, #255
+ 893 0080 16D0     		beq	.L54
+ 247:Core/Src/OneWire.c **** 					{
+ 894              		.loc 1 247 6 is_stmt 1 view .LVU258
+ 247:Core/Src/OneWire.c **** 					{
+ 895              		.loc 1 247 9 is_stmt 0 view .LVU259
+ 896 0082 4445     		cmp	r4, r8
+ 897 0084 0ED2     		bcs	.L55
+ 249:Core/Src/OneWire.c **** 							{
+ 898              		.loc 1 249 8 is_stmt 1 view .LVU260
+ 249:Core/Src/OneWire.c **** 							{
+ 899              		.loc 1 249 31 is_stmt 0 view .LVU261
+ 900 0086 631E     		subs	r3, r4, #1
+ 249:Core/Src/OneWire.c **** 							{
+ 901              		.loc 1 249 36 view .LVU262
+ 902 0088 DA10     		asrs	r2, r3, #3
+ 249:Core/Src/OneWire.c **** 							{
+ 903              		.loc 1 249 22 view .LVU263
+ 904 008a 1AF80220 		ldrb	r2, [r10, r2]	@ zero_extendqisi2
+ 249:Core/Src/OneWire.c **** 							{
+ 905              		.loc 1 249 63 view .LVU264
+ 906 008e 03F00703 		and	r3, r3, #7
+ 249:Core/Src/OneWire.c **** 							{
+ 907              		.loc 1 249 12 view .LVU265
+ 908 0092 42FA03F3 		asr	r3, r2, r3
+ 249:Core/Src/OneWire.c **** 							{
+ 909              		.loc 1 249 11 view .LVU266
+ 910 0096 13F0010F 		tst	r3, #1
+ 911 009a 09D0     		beq	.L54
+ 251:Core/Src/OneWire.c **** 
+ 912              		.loc 1 251 8 is_stmt 1 view .LVU267
+ 913              	.LVL83:
+ 253:Core/Src/OneWire.c **** 								{
+ 914              		.loc 1 253 9 view .LVU268
+ 253:Core/Src/OneWire.c **** 								{
+ 915              		.loc 1 253 12 is_stmt 0 view .LVU269
+ 916 009c 4C45     		cmp	r4, r9
+ 917 009e CCD9     		bls	.L53
+ 255:Core/Src/OneWire.c **** 								}
+ 918              		.loc 1 255 28 view .LVU270
+ 919 00a0 A146     		mov	r9, r4
+ 920              	.LVL84:
+ 255:Core/Src/OneWire.c **** 								}
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 25
+
+
+ 921              		.loc 1 255 28 view .LVU271
+ 922 00a2 CAE7     		b	.L53
+ 923              	.LVL85:
+ 924              	.L55:
+ 265:Core/Src/OneWire.c **** 						{
+ 925              		.loc 1 265 7 is_stmt 1 view .LVU272
+ 265:Core/Src/OneWire.c **** 						{
+ 926              		.loc 1 265 10 is_stmt 0 view .LVU273
+ 927 00a4 4445     		cmp	r4, r8
+ 928 00a6 03D0     		beq	.L54
+ 271:Core/Src/OneWire.c **** 
+ 929              		.loc 1 271 8 is_stmt 1 view .LVU274
+ 930              	.LVL86:
+ 273:Core/Src/OneWire.c **** 							{
+ 931              		.loc 1 273 8 view .LVU275
+ 273:Core/Src/OneWire.c **** 							{
+ 932              		.loc 1 273 11 is_stmt 0 view .LVU276
+ 933 00a8 4C45     		cmp	r4, r9
+ 934 00aa C6D9     		bls	.L53
+ 275:Core/Src/OneWire.c **** 							}
+ 935              		.loc 1 275 27 view .LVU277
+ 936 00ac A146     		mov	r9, r4
+ 937              	.LVL87:
+ 275:Core/Src/OneWire.c **** 							}
+ 938              		.loc 1 275 27 view .LVU278
+ 939 00ae C4E7     		b	.L53
+ 940              	.LVL88:
+ 941              	.L54:
+ 289:Core/Src/OneWire.c **** 				OW_ToBits(0x00, ow->ROM_NO);
+ 942              		.loc 1 289 5 is_stmt 1 view .LVU279
+ 289:Core/Src/OneWire.c **** 				OW_ToBits(0x00, ow->ROM_NO);
+ 943              		.loc 1 289 34 is_stmt 0 view .LVU280
+ 944 00b0 631E     		subs	r3, r4, #1
+ 945 00b2 D910     		asrs	r1, r3, #3
+ 289:Core/Src/OneWire.c **** 				OW_ToBits(0x00, ow->ROM_NO);
+ 946              		.loc 1 289 58 view .LVU281
+ 947 00b4 03F00703 		and	r3, r3, #7
+ 289:Core/Src/OneWire.c **** 				OW_ToBits(0x00, ow->ROM_NO);
+ 948              		.loc 1 289 41 view .LVU282
+ 949 00b8 0122     		movs	r2, #1
+ 950 00ba 9A40     		lsls	r2, r2, r3
+ 289:Core/Src/OneWire.c **** 				OW_ToBits(0x00, ow->ROM_NO);
+ 951              		.loc 1 289 34 view .LVU283
+ 952 00bc 7B5C     		ldrb	r3, [r7, r1]	@ zero_extendqisi2
+ 953 00be 23EA0203 		bic	r3, r3, r2
+ 954 00c2 7B54     		strb	r3, [r7, r1]
+ 290:Core/Src/OneWire.c **** 			}
+ 955              		.loc 1 290 5 is_stmt 1 view .LVU284
+ 956 00c4 3146     		mov	r1, r6
+ 957 00c6 0020     		movs	r0, #0
+ 958 00c8 FFF7FEFF 		bl	OW_ToBits
+ 959              	.LVL89:
+ 960 00cc C2E7     		b	.L56
+ 961              	.LVL90:
+ 962              	.L61:
+ 294:Core/Src/OneWire.c **** 		}
+ 295:Core/Src/OneWire.c **** 
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 26
+
+
+ 296:Core/Src/OneWire.c **** 		found++;
+ 963              		.loc 1 296 3 view .LVU285
+ 964              		.loc 1 296 8 is_stmt 0 view .LVU286
+ 965 00ce 0BF1010B 		add	fp, fp, #1
+ 966              	.LVL91:
+ 967              		.loc 1 296 8 view .LVU287
+ 968 00d2 5FFA8BFB 		uxtb	fp, fp
+ 969              	.LVL92:
+ 297:Core/Src/OneWire.c **** 		lastDevice = curDevice;
+ 970              		.loc 1 297 3 is_stmt 1 view .LVU288
+ 298:Core/Src/OneWire.c **** 		curDevice += 8;
+ 971              		.loc 1 298 3 view .LVU289
+ 972              		.loc 1 298 13 is_stmt 0 view .LVU290
+ 973 00d6 07F10803 		add	r3, r7, #8
+ 974              	.LVL93:
+ 299:Core/Src/OneWire.c **** 		if (currentCollision == 0)
+ 975              		.loc 1 299 3 is_stmt 1 view .LVU291
+ 976              		.loc 1 299 6 is_stmt 0 view .LVU292
+ 977 00da B9F1000F 		cmp	r9, #0
+ 978 00de 03D1     		bne	.L63
+ 979              	.LVL94:
+ 980              	.L52:
+ 300:Core/Src/OneWire.c **** 		{
+ 301:Core/Src/OneWire.c **** 			return found;
+ 302:Core/Src/OneWire.c **** 		}
+ 303:Core/Src/OneWire.c **** 
+ 304:Core/Src/OneWire.c **** 		lastCollision = currentCollision;
+ 305:Core/Src/OneWire.c **** 	}
+ 306:Core/Src/OneWire.c **** 
+ 307:Core/Src/OneWire.c ****         return found;
+ 308:Core/Src/OneWire.c **** }
+ 981              		.loc 1 308 1 view .LVU293
+ 982 00e0 5846     		mov	r0, fp
+ 983 00e2 05B0     		add	sp, sp, #20
+ 984              		.cfi_remember_state
+ 985              		.cfi_def_cfa_offset 36
+ 986              		@ sp needed
+ 987 00e4 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 988              	.LVL95:
+ 989              	.L63:
+ 990              		.cfi_restore_state
+ 304:Core/Src/OneWire.c **** 	}
+ 991              		.loc 1 304 17 view .LVU294
+ 992 00e8 C846     		mov	r8, r9
+ 993              	.LVL96:
+ 297:Core/Src/OneWire.c **** 		curDevice += 8;
+ 994              		.loc 1 297 14 view .LVU295
+ 995 00ea BA46     		mov	r10, r7
+ 298:Core/Src/OneWire.c **** 		if (currentCollision == 0)
+ 996              		.loc 1 298 13 view .LVU296
+ 997 00ec 1F46     		mov	r7, r3
+ 998              	.LVL97:
+ 298:Core/Src/OneWire.c **** 		if (currentCollision == 0)
+ 999              		.loc 1 298 13 view .LVU297
+ 1000 00ee 91E7     		b	.L49
+ 1001              	.L65:
+ 1002              		.align	2
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 27
+
+
+ 1003              	.L64:
+ 1004 00f0 00000000 		.word	.LC0
+ 1005              		.cfi_endproc
+ 1006              	.LFE75:
+ 1008              		.section	.text.OW_Crc8,"ax",%progbits
+ 1009              		.align	1
+ 1010              		.global	OW_Crc8
+ 1011              		.syntax unified
+ 1012              		.thumb
+ 1013              		.thumb_func
+ 1014              		.fpu softvfp
+ 1016              	OW_Crc8:
+ 1017              	.LVL98:
+ 1018              	.LFB76:
+ 309:Core/Src/OneWire.c **** 
+ 310:Core/Src/OneWire.c **** #endif
+ 311:Core/Src/OneWire.c **** 
+ 312:Core/Src/OneWire.c **** #if ONEWIRE_CRC
+ 313:Core/Src/OneWire.c **** // The 1-Wire CRC scheme is described in Maxim Application Note 27:
+ 314:Core/Src/OneWire.c **** // "Understanding and Using Cyclic Redundancy Checks with Maxim iButton Products"
+ 315:Core/Src/OneWire.c **** //
+ 316:Core/Src/OneWire.c **** 
+ 317:Core/Src/OneWire.c **** #if ONEWIRE_CRC8_TABLE
+ 318:Core/Src/OneWire.c **** // Dow-CRC using polynomial X^8 + X^5 + X^4 + X^0
+ 319:Core/Src/OneWire.c **** // Tiny 2x16 entry CRC table created by Arjen Lentz
+ 320:Core/Src/OneWire.c **** // See http://lentz.com.au/blog/calculating-crc-with-a-tiny-32-entry-lookup-table
+ 321:Core/Src/OneWire.c **** static const uint8_t dscrc2x16_table[] = {
+ 322:Core/Src/OneWire.c **** 	0x00, 0x5E, 0xBC, 0xE2, 0x61, 0x3F, 0xDD, 0x83,
+ 323:Core/Src/OneWire.c **** 	0xC2, 0x9C, 0x7E, 0x20, 0xA3, 0xFD, 0x1F, 0x41,
+ 324:Core/Src/OneWire.c **** 	0x00, 0x9D, 0x23, 0xBE, 0x46, 0xDB, 0x65, 0xF8,
+ 325:Core/Src/OneWire.c **** 	0x8C, 0x11, 0xAF, 0x32, 0xCA, 0x57, 0xE9, 0x74
+ 326:Core/Src/OneWire.c **** };
+ 327:Core/Src/OneWire.c **** 
+ 328:Core/Src/OneWire.c **** // Compute a Dallas Semiconductor 8 bit CRC. These show up in the ROM
+ 329:Core/Src/OneWire.c **** // and the registers.  (Use tiny 2x16 entry CRC table)
+ 330:Core/Src/OneWire.c **** uint8_t OW_Crc8(const uint8_t *addr, uint8_t len)
+ 331:Core/Src/OneWire.c **** {
+ 1019              		.loc 1 331 1 is_stmt 1 view -0
+ 1020              		.cfi_startproc
+ 1021              		@ args = 0, pretend = 0, frame = 0
+ 1022              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1023              		@ link register save eliminated.
+ 1024              		.loc 1 331 1 is_stmt 0 view .LVU299
+ 1025 0000 0246     		mov	r2, r0
+ 332:Core/Src/OneWire.c **** 	uint8_t crc = 0;
+ 1026              		.loc 1 332 2 is_stmt 1 view .LVU300
+ 1027              	.LVL99:
+ 333:Core/Src/OneWire.c **** 
+ 334:Core/Src/OneWire.c **** 	while (len--)
+ 1028              		.loc 1 334 2 view .LVU301
+ 332:Core/Src/OneWire.c **** 	uint8_t crc = 0;
+ 1029              		.loc 1 332 10 is_stmt 0 view .LVU302
+ 1030 0002 0020     		movs	r0, #0
+ 1031              	.LVL100:
+ 1032              		.loc 1 334 8 view .LVU303
+ 1033 0004 0BE0     		b	.L67
+ 1034              	.LVL101:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 28
+
+
+ 1035              	.L68:
+ 335:Core/Src/OneWire.c **** 	{
+ 336:Core/Src/OneWire.c **** 		crc = *addr++ ^ crc;  // just re-using crc as intermediate
+ 1036              		.loc 1 336 3 is_stmt 1 view .LVU304
+ 1037              		.loc 1 336 9 is_stmt 0 view .LVU305
+ 1038 0006 12F8013B 		ldrb	r3, [r2], #1	@ zero_extendqisi2
+ 1039              	.LVL102:
+ 1040              		.loc 1 336 7 view .LVU306
+ 1041 000a 5840     		eors	r0, r0, r3
+ 1042              	.LVL103:
+ 337:Core/Src/OneWire.c **** 		crc = dscrc2x16_table[crc & 0x0f] ^ dscrc2x16_table[16 + ((crc >> 4) & 0x0f)];
+ 1043              		.loc 1 337 3 is_stmt 1 view .LVU307
+ 1044              		.loc 1 337 29 is_stmt 0 view .LVU308
+ 1045 000c 00F00F03 		and	r3, r0, #15
+ 1046              		.loc 1 337 24 view .LVU309
+ 1047 0010 0649     		ldr	r1, .L69
+ 1048 0012 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 1049              		.loc 1 337 72 view .LVU310
+ 1050 0014 0009     		lsrs	r0, r0, #4
+ 1051              	.LVL104:
+ 1052              		.loc 1 337 58 view .LVU311
+ 1053 0016 1030     		adds	r0, r0, #16
+ 1054              		.loc 1 337 54 view .LVU312
+ 1055 0018 085C     		ldrb	r0, [r1, r0]	@ zero_extendqisi2
+ 1056              		.loc 1 337 7 view .LVU313
+ 1057 001a 5840     		eors	r0, r0, r3
+ 1058              	.LVL105:
+ 334:Core/Src/OneWire.c **** 	{
+ 1059              		.loc 1 334 12 view .LVU314
+ 1060 001c 6146     		mov	r1, ip
+ 1061              	.LVL106:
+ 1062              	.L67:
+ 334:Core/Src/OneWire.c **** 	{
+ 1063              		.loc 1 334 8 is_stmt 1 view .LVU315
+ 334:Core/Src/OneWire.c **** 	{
+ 1064              		.loc 1 334 12 is_stmt 0 view .LVU316
+ 1065 001e 4B1E     		subs	r3, r1, #1
+ 1066 0020 5FFA83FC 		uxtb	ip, r3
+ 1067              	.LVL107:
+ 334:Core/Src/OneWire.c **** 	{
+ 1068              		.loc 1 334 8 view .LVU317
+ 1069 0024 0029     		cmp	r1, #0
+ 1070 0026 EED1     		bne	.L68
+ 338:Core/Src/OneWire.c **** 	}
+ 339:Core/Src/OneWire.c **** 
+ 340:Core/Src/OneWire.c **** 	return crc;
+ 1071              		.loc 1 340 2 is_stmt 1 view .LVU318
+ 341:Core/Src/OneWire.c **** }
+ 1072              		.loc 1 341 1 is_stmt 0 view .LVU319
+ 1073 0028 7047     		bx	lr
+ 1074              	.L70:
+ 1075 002a 00BF     		.align	2
+ 1076              	.L69:
+ 1077 002c 00000000 		.word	.LANCHOR0
+ 1078              		.cfi_endproc
+ 1079              	.LFE76:
+ 1081              		.section	.text.OW_Crc16,"ax",%progbits
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 29
+
+
+ 1082              		.align	1
+ 1083              		.global	OW_Crc16
+ 1084              		.syntax unified
+ 1085              		.thumb
+ 1086              		.thumb_func
+ 1087              		.fpu softvfp
+ 1089              	OW_Crc16:
+ 1090              	.LVL108:
+ 1091              	.LFB78:
+ 342:Core/Src/OneWire.c **** #else
+ 343:Core/Src/OneWire.c **** //
+ 344:Core/Src/OneWire.c **** // Compute a Dallas Semiconductor 8 bit CRC directly.
+ 345:Core/Src/OneWire.c **** // this is much slower, but a little smaller, than the lookup table.
+ 346:Core/Src/OneWire.c **** //
+ 347:Core/Src/OneWire.c **** uint8_t OW_Crc8(const uint8_t *addr, uint8_t len)
+ 348:Core/Src/OneWire.c **** {
+ 349:Core/Src/OneWire.c **** 	uint8_t crc = 0;
+ 350:Core/Src/OneWire.c **** 
+ 351:Core/Src/OneWire.c **** 	while (len--)
+ 352:Core/Src/OneWire.c **** 	{
+ 353:Core/Src/OneWire.c **** 		uint8_t inbyte = *addr++;
+ 354:Core/Src/OneWire.c **** 		for (uint8_t i = 8; i; i--)
+ 355:Core/Src/OneWire.c **** 		{
+ 356:Core/Src/OneWire.c **** 			uint8_t mix = (crc ^ inbyte) & 0x01;
+ 357:Core/Src/OneWire.c **** 			crc >>= 1;
+ 358:Core/Src/OneWire.c **** 			if (mix) crc ^= 0x8C;
+ 359:Core/Src/OneWire.c **** 			inbyte >>= 1;
+ 360:Core/Src/OneWire.c **** 		}
+ 361:Core/Src/OneWire.c **** 	}
+ 362:Core/Src/OneWire.c **** 	return crc;
+ 363:Core/Src/OneWire.c **** }
+ 364:Core/Src/OneWire.c **** #endif
+ 365:Core/Src/OneWire.c **** 
+ 366:Core/Src/OneWire.c **** #if ONEWIRE_CRC16
+ 367:Core/Src/OneWire.c **** bool OW_CheckCrc16(const uint8_t* input, uint16_t len, const uint8_t* inverted_crc, uint16_t crc)
+ 368:Core/Src/OneWire.c **** {
+ 369:Core/Src/OneWire.c ****     crc = ~OW_Crc16(input, len, crc);
+ 370:Core/Src/OneWire.c ****     return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
+ 371:Core/Src/OneWire.c **** }
+ 372:Core/Src/OneWire.c **** 
+ 373:Core/Src/OneWire.c **** uint16_t OW_Crc16(const uint8_t* input, uint16_t len, uint16_t crc)
+ 374:Core/Src/OneWire.c **** {
+ 1092              		.loc 1 374 1 is_stmt 1 view -0
+ 1093              		.cfi_startproc
+ 1094              		@ args = 0, pretend = 0, frame = 0
+ 1095              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1096              		.loc 1 374 1 is_stmt 0 view .LVU321
+ 1097 0000 30B5     		push	{r4, r5, lr}
+ 1098              		.cfi_def_cfa_offset 12
+ 1099              		.cfi_offset 4, -12
+ 1100              		.cfi_offset 5, -8
+ 1101              		.cfi_offset 14, -4
+ 1102 0002 0546     		mov	r5, r0
+ 375:Core/Src/OneWire.c ****     static const uint8_t oddparity[16] = { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 };
+ 1103              		.loc 1 375 5 is_stmt 1 view .LVU322
+ 376:Core/Src/OneWire.c **** 
+ 377:Core/Src/OneWire.c ****     for (uint16_t i = 0 ; i < len ; i++)
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 30
+
+
+ 1104              		.loc 1 377 5 view .LVU323
+ 1105              	.LBB4:
+ 1106              		.loc 1 377 10 view .LVU324
+ 1107              	.LVL109:
+ 1108              		.loc 1 377 19 is_stmt 0 view .LVU325
+ 1109 0004 4FF0000C 		mov	ip, #0
+ 1110              		.loc 1 377 5 view .LVU326
+ 1111 0008 08E0     		b	.L72
+ 1112              	.LVL110:
+ 1113              	.L73:
+ 1114              	.LBB5:
+ 378:Core/Src/OneWire.c ****     {
+ 379:Core/Src/OneWire.c ****       // Even though we're just copying a byte from the input,
+ 380:Core/Src/OneWire.c ****       // we'll be doing 16-bit computation with it.
+ 381:Core/Src/OneWire.c ****       uint16_t cdata = input[i];
+ 382:Core/Src/OneWire.c ****       cdata = (cdata ^ crc) & 0xff;
+ 383:Core/Src/OneWire.c ****       crc >>= 8;
+ 384:Core/Src/OneWire.c **** 
+ 385:Core/Src/OneWire.c ****       if (oddparity[cdata & 0x0F] ^ oddparity[cdata >> 4])
+ 386:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 387:Core/Src/OneWire.c **** 
+ 388:Core/Src/OneWire.c ****       cdata <<= 6;
+ 1115              		.loc 1 388 7 is_stmt 1 discriminator 2 view .LVU327
+ 389:Core/Src/OneWire.c ****       crc ^= cdata;
+ 1116              		.loc 1 389 7 discriminator 2 view .LVU328
+ 1117              		.loc 1 389 11 is_stmt 0 discriminator 2 view .LVU329
+ 1118 000a 82EA8E12 		eor	r2, r2, lr, lsl #6
+ 1119              	.LVL111:
+ 390:Core/Src/OneWire.c ****       cdata <<= 1;
+ 1120              		.loc 1 390 7 is_stmt 1 discriminator 2 view .LVU330
+ 391:Core/Src/OneWire.c ****       crc ^= cdata;
+ 1121              		.loc 1 391 7 discriminator 2 view .LVU331
+ 1122              		.loc 1 391 11 is_stmt 0 discriminator 2 view .LVU332
+ 1123 000e 82EACE12 		eor	r2, r2, lr, lsl #7
+ 1124              	.LVL112:
+ 1125              		.loc 1 391 11 discriminator 2 view .LVU333
+ 1126 0012 92B2     		uxth	r2, r2
+ 1127              	.LVL113:
+ 1128              		.loc 1 391 11 discriminator 2 view .LVU334
+ 1129              	.LBE5:
+ 377:Core/Src/OneWire.c ****     {
+ 1130              		.loc 1 377 37 is_stmt 1 discriminator 2 view .LVU335
+ 377:Core/Src/OneWire.c ****     {
+ 1131              		.loc 1 377 38 is_stmt 0 discriminator 2 view .LVU336
+ 1132 0014 0CF1010C 		add	ip, ip, #1
+ 1133              	.LVL114:
+ 377:Core/Src/OneWire.c ****     {
+ 1134              		.loc 1 377 38 discriminator 2 view .LVU337
+ 1135 0018 1FFA8CFC 		uxth	ip, ip
+ 1136              	.LVL115:
+ 1137              	.L72:
+ 377:Core/Src/OneWire.c ****     {
+ 1138              		.loc 1 377 27 is_stmt 1 discriminator 1 view .LVU338
+ 377:Core/Src/OneWire.c ****     {
+ 1139              		.loc 1 377 5 is_stmt 0 discriminator 1 view .LVU339
+ 1140 001c 8C45     		cmp	ip, r1
+ 1141 001e 13D2     		bcs	.L76
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 31
+
+
+ 1142              	.LBB6:
+ 381:Core/Src/OneWire.c ****       cdata = (cdata ^ crc) & 0xff;
+ 1143              		.loc 1 381 7 is_stmt 1 view .LVU340
+ 381:Core/Src/OneWire.c ****       cdata = (cdata ^ crc) & 0xff;
+ 1144              		.loc 1 381 16 is_stmt 0 view .LVU341
+ 1145 0020 15F80C30 		ldrb	r3, [r5, ip]	@ zero_extendqisi2
+ 1146              	.LVL116:
+ 382:Core/Src/OneWire.c ****       crc >>= 8;
+ 1147              		.loc 1 382 7 is_stmt 1 view .LVU342
+ 382:Core/Src/OneWire.c ****       crc >>= 8;
+ 1148              		.loc 1 382 29 is_stmt 0 view .LVU343
+ 1149 0024 5340     		eors	r3, r3, r2
+ 1150              	.LVL117:
+ 382:Core/Src/OneWire.c ****       crc >>= 8;
+ 1151              		.loc 1 382 13 view .LVU344
+ 1152 0026 5FFA83FE 		uxtb	lr, r3
+ 1153              	.LVL118:
+ 383:Core/Src/OneWire.c **** 
+ 1154              		.loc 1 383 7 is_stmt 1 view .LVU345
+ 383:Core/Src/OneWire.c **** 
+ 1155              		.loc 1 383 11 is_stmt 0 view .LVU346
+ 1156 002a 120A     		lsrs	r2, r2, #8
+ 1157              	.LVL119:
+ 385:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 1158              		.loc 1 385 7 is_stmt 1 view .LVU347
+ 385:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 1159              		.loc 1 385 27 is_stmt 0 view .LVU348
+ 1160 002c 03F00F00 		and	r0, r3, #15
+ 385:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 1161              		.loc 1 385 20 view .LVU349
+ 1162 0030 064C     		ldr	r4, .L77
+ 1163 0032 205C     		ldrb	r0, [r4, r0]	@ zero_extendqisi2
+ 385:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 1164              		.loc 1 385 53 view .LVU350
+ 1165 0034 C3F30313 		ubfx	r3, r3, #4, #4
+ 385:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 1166              		.loc 1 385 46 view .LVU351
+ 1167 0038 E35C     		ldrb	r3, [r4, r3]	@ zero_extendqisi2
+ 385:Core/Src/OneWire.c ****           crc ^= 0xC001;
+ 1168              		.loc 1 385 10 view .LVU352
+ 1169 003a 9842     		cmp	r0, r3
+ 1170 003c E5D0     		beq	.L73
+ 386:Core/Src/OneWire.c **** 
+ 1171              		.loc 1 386 11 is_stmt 1 view .LVU353
+ 386:Core/Src/OneWire.c **** 
+ 1172              		.loc 1 386 15 is_stmt 0 view .LVU354
+ 1173 003e 82F44042 		eor	r2, r2, #49152
+ 1174              	.LVL120:
+ 386:Core/Src/OneWire.c **** 
+ 1175              		.loc 1 386 15 view .LVU355
+ 1176 0042 82F00102 		eor	r2, r2, #1
+ 1177              	.LVL121:
+ 386:Core/Src/OneWire.c **** 
+ 1178              		.loc 1 386 15 view .LVU356
+ 1179 0046 E0E7     		b	.L73
+ 1180              	.LVL122:
+ 1181              	.L76:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 32
+
+
+ 386:Core/Src/OneWire.c **** 
+ 1182              		.loc 1 386 15 view .LVU357
+ 1183              	.LBE6:
+ 1184              	.LBE4:
+ 392:Core/Src/OneWire.c ****     }
+ 393:Core/Src/OneWire.c **** 
+ 394:Core/Src/OneWire.c ****     return crc;
+ 1185              		.loc 1 394 5 is_stmt 1 view .LVU358
+ 395:Core/Src/OneWire.c **** }
+ 1186              		.loc 1 395 1 is_stmt 0 view .LVU359
+ 1187 0048 1046     		mov	r0, r2
+ 1188 004a 30BD     		pop	{r4, r5, pc}
+ 1189              	.LVL123:
+ 1190              	.L78:
+ 1191              		.loc 1 395 1 view .LVU360
+ 1192              		.align	2
+ 1193              	.L77:
+ 1194 004c 00000000 		.word	.LANCHOR1
+ 1195              		.cfi_endproc
+ 1196              	.LFE78:
+ 1198              		.section	.text.OW_CheckCrc16,"ax",%progbits
+ 1199              		.align	1
+ 1200              		.global	OW_CheckCrc16
+ 1201              		.syntax unified
+ 1202              		.thumb
+ 1203              		.thumb_func
+ 1204              		.fpu softvfp
+ 1206              	OW_CheckCrc16:
+ 1207              	.LVL124:
+ 1208              	.LFB77:
+ 368:Core/Src/OneWire.c ****     crc = ~OW_Crc16(input, len, crc);
+ 1209              		.loc 1 368 1 is_stmt 1 view -0
+ 1210              		.cfi_startproc
+ 1211              		@ args = 0, pretend = 0, frame = 0
+ 1212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368:Core/Src/OneWire.c ****     crc = ~OW_Crc16(input, len, crc);
+ 1213              		.loc 1 368 1 is_stmt 0 view .LVU362
+ 1214 0000 10B5     		push	{r4, lr}
+ 1215              		.cfi_def_cfa_offset 8
+ 1216              		.cfi_offset 4, -8
+ 1217              		.cfi_offset 14, -4
+ 1218 0002 1446     		mov	r4, r2
+ 369:Core/Src/OneWire.c ****     return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
+ 1219              		.loc 1 369 5 is_stmt 1 view .LVU363
+ 369:Core/Src/OneWire.c ****     return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
+ 1220              		.loc 1 369 12 is_stmt 0 view .LVU364
+ 1221 0004 1A46     		mov	r2, r3
+ 1222              	.LVL125:
+ 369:Core/Src/OneWire.c ****     return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
+ 1223              		.loc 1 369 12 view .LVU365
+ 1224 0006 FFF7FEFF 		bl	OW_Crc16
+ 1225              	.LVL126:
+ 369:Core/Src/OneWire.c ****     return (crc & 0xFF) == inverted_crc[0] && (crc >> 8) == inverted_crc[1];
+ 1226              		.loc 1 369 9 view .LVU366
+ 1227 000a C043     		mvns	r0, r0
+ 1228 000c 82B2     		uxth	r2, r0
+ 1229              	.LVL127:
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 33
+
+
+ 370:Core/Src/OneWire.c **** }
+ 1230              		.loc 1 370 5 is_stmt 1 view .LVU367
+ 370:Core/Src/OneWire.c **** }
+ 1231              		.loc 1 370 44 is_stmt 0 view .LVU368
+ 1232 000e C0B2     		uxtb	r0, r0
+ 1233 0010 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 1234 0012 9842     		cmp	r0, r3
+ 1235 0014 01D0     		beq	.L84
+ 1236 0016 0020     		movs	r0, #0
+ 1237              	.L80:
+ 371:Core/Src/OneWire.c **** 
+ 1238              		.loc 1 371 1 discriminator 6 view .LVU369
+ 1239 0018 10BD     		pop	{r4, pc}
+ 1240              	.LVL128:
+ 1241              	.L84:
+ 370:Core/Src/OneWire.c **** }
+ 1242              		.loc 1 370 73 discriminator 1 view .LVU370
+ 1243 001a 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 370:Core/Src/OneWire.c **** }
+ 1244              		.loc 1 370 44 discriminator 1 view .LVU371
+ 1245 001c B3EB122F 		cmp	r3, r2, lsr #8
+ 1246 0020 01D0     		beq	.L82
+ 370:Core/Src/OneWire.c **** }
+ 1247              		.loc 1 370 44 view .LVU372
+ 1248 0022 0020     		movs	r0, #0
+ 1249 0024 F8E7     		b	.L80
+ 1250              	.L82:
+ 1251 0026 0120     		movs	r0, #1
+ 1252 0028 F6E7     		b	.L80
+ 1253              		.cfi_endproc
+ 1254              	.LFE77:
+ 1256              		.section	.rodata.dscrc2x16_table,"a"
+ 1257              		.align	2
+ 1258              		.set	.LANCHOR0,. + 0
+ 1261              	dscrc2x16_table:
+ 1262 0000 005EBCE2 		.ascii	"\000^\274\342a?\335\203\302\234~ \243\375\037A\000\235"
+ 1262      613FDD83 
+ 1262      C29C7E20 
+ 1262      A3FD1F41 
+ 1262      009D
+ 1263 0012 23BE46DB 		.ascii	"#\276F\333e\370\214\021\2572\312W\351t"
+ 1263      65F88C11 
+ 1263      AF32CA57 
+ 1263      E974
+ 1264              		.section	.rodata.oddparity.0,"a"
+ 1265              		.align	2
+ 1266              		.set	.LANCHOR1,. + 0
+ 1269              	oddparity.0:
+ 1270 0000 00010100 		.ascii	"\000\001\001\000\001\000\000\001\001\000\000\001\000"
+ 1270      01000001 
+ 1270      01000001 
+ 1270      00
+ 1271 000d 010100   		.ascii	"\001\001\000"
+ 1272              		.text
+ 1273              	.Letext0:
+ 1274              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 1275              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 34
+
+
+ 1276              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 1277              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1278              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 1279              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1280              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 1281              		.file 9 "Core/Inc/OneWire.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\cckKbd68.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 OneWire.c
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:16     .text.OW_ToBits:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:23     .text.OW_ToBits:0000000000000000 OW_ToBits
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:81     .text.OW_ToByte:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:87     .text.OW_ToByte:0000000000000000 OW_ToByte
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:153    .text.OW_UART_Init:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:159    .text.OW_UART_Init:0000000000000000 OW_UART_Init
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:245    .text.OW_UART_Init:0000000000000040 $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:250    .text.OW_SendBits:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:256    .text.OW_SendBits:0000000000000000 OW_SendBits
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:318    .text.OW_Reset:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:325    .text.OW_Reset:0000000000000000 OW_Reset
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:410    .text.OW_Send:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:417    .text.OW_Send:0000000000000000 OW_Send
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:551    .text.OW_ResetSearch:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:558    .text.OW_ResetSearch:0000000000000000 OW_ResetSearch
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:607    .text.OW_Begin:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:614    .text.OW_Begin:0000000000000000 OW_Begin
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:655    .text.OneWire:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:662    .text.OneWire:0000000000000000 OneWire
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:684    .text.OW_TargetSearch:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:691    .text.OW_TargetSearch:0000000000000000 OW_TargetSearch
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:749    .rodata.OW_Search.str1.4:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:753    .text.OW_Search:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:760    .text.OW_Search:0000000000000000 OW_Search
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1004   .text.OW_Search:00000000000000f0 $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1009   .text.OW_Crc8:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1016   .text.OW_Crc8:0000000000000000 OW_Crc8
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1077   .text.OW_Crc8:000000000000002c $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1082   .text.OW_Crc16:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1089   .text.OW_Crc16:0000000000000000 OW_Crc16
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1194   .text.OW_Crc16:000000000000004c $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1199   .text.OW_CheckCrc16:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1206   .text.OW_CheckCrc16:0000000000000000 OW_CheckCrc16
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1257   .rodata.dscrc2x16_table:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1261   .rodata.dscrc2x16_table:0000000000000000 dscrc2x16_table
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1265   .rodata.oddparity.0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\cckKbd68.s:1269   .rodata.oddparity.0:0000000000000000 oddparity.0
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_HalfDuplex_Init
+HAL_UART_Receive_DMA
+HAL_UART_Transmit_DMA
+HAL_UART_GetState
