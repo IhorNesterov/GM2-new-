@@ -96,7 +96,7 @@ bool rx_flag = false;
 bool tx_flag = false;
 uint8_t tx_buff[16];
 uint8_t counter = 0;
- uint16_t tickcount1;
+ uint16_t tickcount1 = 5;
  NOS_Short tickcountBuff;
 NOS_Float uSvValue;
 uint16_t tickcount2 = 0;
@@ -109,13 +109,21 @@ uint8_t detector_Addr = 101;
 float coef = 0.1E-1f * 1.2f;
 //float coef = 1.395E-3f;
 uint16_t temperature = 25;
-
+bool tubeIsIn = false;
+bool rise = true;
+bool fall = false;
 URE_GM_Detector detector = {0};
+
+
 
 OneWire_HandleTypeDef ow;
 DallasTemperature_HandleTypeDef dt;
 
-int debugCount = 0; 
+int debugCount = 0;
+
+uint16_t show_tickcount1 = 0;
+uint16_t show_tickcount2 = 0;
+uint16_t show_globaltickcount = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -191,8 +199,8 @@ void NOS_ModBus_SendSlaveCommand(ModBus_Slave_Command* slave)
     NOS_Short crc;
     if(slave->type == 0)
     {
-      tx_buff[3] = slave->ShortValue.bytes[1];
-      tx_buff[4] = slave->ShortValue.bytes[0];
+      tx_buff[3] = slave->ShortValue.bytes[0];
+      tx_buff[4] = slave->ShortValue.bytes[1];
       crc.data = GetCRC16(&tx_buff,5);
       tx_buff[5] = crc.bytes[1];
       tx_buff[6] = crc.bytes[0];
@@ -217,9 +225,9 @@ void GM2_SendDebugData()
 
   uint8_t debugBuff[32];
  debugBuff[0] = 0x65;
- NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount1,1);
- NOS_ModBus_AddUint16ToBuff(&debugBuff,tickcount2,3);
- NOS_ModBus_AddUint16ToBuff(&debugBuff,globalTickCount,5);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,show_tickcount1,1);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,show_tickcount2,3);
+ NOS_ModBus_AddUint16ToBuff(&debugBuff,show_globaltickcount,5);
  NOS_ModBus_AddFloatToBuff(&debugBuff,uSvValue.data,7);
  NOS_ModBus_AddFloatToBuff(&debugBuff,stat.CPS,11);
  NOS_ModBus_AddUint16ToBuff(&debugBuff,stat.Delta,15);
@@ -241,9 +249,16 @@ time.data++;
 
 if(time.data >= 250) {
    globalTickCount = tickcount1 + tickcount2;
+   show_globaltickcount = globalTickCount;
+   show_tickcount1 = tickcount1;
+   show_tickcount2 = tickcount2;
+
    Stat_AddData250ms(globalTickCount);
-   tickcount1 = 0;
-   tickcount2 = 0;      
+   if(tubeIsIn)
+   {
+      tickcount1 = 0;
+      tickcount2 = 0;
+   }      
    time250ms = true;
    time.data = 0;  
 }
@@ -255,6 +270,7 @@ void EXTI0_IRQHandler(void)
   /* USER CODE BEGIN EXTI0_IRQn 0 */
   tickcount1++;
   HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+  tubeIsIn = true;
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
@@ -267,6 +283,7 @@ void EXTI1_IRQHandler(void)
   /* USER CODE BEGIN EXTI0_IRQn 0 */
   tickcount2++;
   HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
+  tubeIsIn = true;
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
@@ -415,6 +432,44 @@ int main(void)
           slave.FloatValue.data = 1.25f;
           slave.Byte_Count = 4;
           slave.type = 1;
+          trueCommand = true;
+          break;
+
+          case 0x0068:
+          if(!tubeIsIn)
+          {
+              if(tickcount1 > 10)
+              {
+                rise = false;
+                fall = true;
+              }
+
+              if(tickcount1 < 5)
+              {
+                rise = true;
+                fall = false;
+              }
+
+              if(rise)
+              {
+                tickcount1++;
+              }
+              else
+              {
+                tickcount1--;
+              }
+          }
+
+          slave.ShortValue.data = tickcount1;
+          slave.Byte_Count = 2;
+          slave.type = 0;
+          trueCommand = true;
+          break;
+
+          case 0x006F:
+          slave.ShortValue.data = 0;
+          slave.Byte_Count = 2;
+          slave.type = 0;
           trueCommand = true;
           break;
 
@@ -594,9 +649,9 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 9600;
+  huart1.Init.BaudRate = 57600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.StopBits = UART_STOPBITS_2;
   huart1.Init.Parity = UART_PARITY_NONE;
   huart1.Init.Mode = UART_MODE_TX_RX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;

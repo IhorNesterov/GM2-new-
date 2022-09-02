@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
   21:Core/Src/NOS_ModBus.c **** 0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,
   22:Core/Src/NOS_ModBus.c **** 0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,
   23:Core/Src/NOS_ModBus.c **** 0X2200, 0XE2C1, 0XE381, 0X2340, 0XE101, 0X21C0, 0X2080, 0XE041,
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 2
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 2
 
 
   24:Core/Src/NOS_ModBus.c **** 0XA001, 0X60C0, 0X6180, 0XA141, 0X6300, 0XA3C1, 0XA281, 0X6240,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
   47:Core/Src/NOS_ModBus.c ****       wCRCWord >>= 8;
   65              		.loc 1 47 7 is_stmt 1 view .LVU15
   48:Core/Src/NOS_ModBus.c ****       wCRCWord ^= wCRCTable[nTemp];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 3
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 3
 
 
   66              		.loc 1 48 7 view .LVU16
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
   53:Core/Src/NOS_ModBus.c **** 
   54:Core/Src/NOS_ModBus.c **** void NOS_ModBus_ParseMasterCommand(ModBus_Master_Command* master,uint8_t* buff,uint8_t offset)
   55:Core/Src/NOS_ModBus.c **** {
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 4
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 4
 
 
  113              		.loc 1 55 1 is_stmt 1 view -0
@@ -238,15 +238,15 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
   84:Core/Src/NOS_ModBus.c ****         master->Reg_Addr = com.data;
   85:Core/Src/NOS_ModBus.c ****         com.bytes[1] = buff[offset + 5];
   86:Core/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 5
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 5
 
 
   87:Core/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
   88:Core/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
-  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
-  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
-  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
-  92:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 8];
+  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 9];
+  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 10];
+  92:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 11];
   93:Core/Src/NOS_ModBus.c ****         master->type = 1;
   94:Core/Src/NOS_ModBus.c ****         break;
   95:Core/Src/NOS_ModBus.c ****     
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
   66:Core/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 5];
  167              		.loc 1 66 22 view .LVU49
  168 002e 62F30F23 		bfi	r3, r2, #8, #8
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 6
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 6
 
 
   67:Core/Src/NOS_ModBus.c ****         master->Reg_Count = com.data;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  204              		.loc 1 75 22 view .LVU68
  205 0052 62F30F23 		bfi	r3, r2, #8, #8
   76:Core/Src/NOS_ModBus.c ****         master->ShortValue.data = com.data;
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 7
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 7
 
 
  206              		.loc 1 76 9 is_stmt 1 view .LVU69
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  242              		.loc 1 84 26 is_stmt 0 view .LVU87
  243 0076 8380     		strh	r3, [r0, #4]	@ movhi
   85:Core/Src/NOS_ModBus.c ****         com.bytes[0] = buff[offset + 6];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 8
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 8
 
 
  244              		.loc 1 85 9 is_stmt 1 view .LVU88
@@ -441,50 +441,50 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
   87:Core/Src/NOS_ModBus.c ****         master->Byte_Count = buff[offset + 7];
  255              		.loc 1 87 27 is_stmt 0 view .LVU95
  256 0084 C380     		strh	r3, [r0, #6]	@ movhi
-  88:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+  88:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 8];
  257              		.loc 1 88 9 is_stmt 1 view .LVU96
-  88:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+  88:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 8];
  258              		.loc 1 88 34 is_stmt 0 view .LVU97
  259 0086 CB79     		ldrb	r3, [r1, #7]	@ zero_extendqisi2
  260              	.LVL27:
-  88:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 8];
+  88:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 8];
  261              		.loc 1 88 28 view .LVU98
  262 0088 C370     		strb	r3, [r0, #3]
-  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
+  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 9];
  263              		.loc 1 89 9 is_stmt 1 view .LVU99
-  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
+  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 9];
  264              		.loc 1 89 43 is_stmt 0 view .LVU100
  265 008a 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
-  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 9];
+  89:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 9];
  266              		.loc 1 89 37 view .LVU101
- 267 008c C373     		strb	r3, [r0, #15]
-  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+ 267 008c 0373     		strb	r3, [r0, #12]
+  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 10];
  268              		.loc 1 90 9 is_stmt 1 view .LVU102
-  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 10];
  269              		.loc 1 90 43 is_stmt 0 view .LVU103
  270 008e 4B7A     		ldrb	r3, [r1, #9]	@ zero_extendqisi2
-  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[1] = buff[offset + 10];
+  90:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[2] = buff[offset + 10];
  271              		.loc 1 90 37 view .LVU104
- 272 0090 8373     		strb	r3, [r0, #14]
-  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+ 272 0090 4373     		strb	r3, [r0, #13]
+  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 11];
  273              		.loc 1 91 9 is_stmt 1 view .LVU105
-  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 11];
  274              		.loc 1 91 43 is_stmt 0 view .LVU106
  275 0092 8B7A     		ldrb	r3, [r1, #10]	@ zero_extendqisi2
-  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[0] = buff[offset + 11];
+  91:Core/Src/NOS_ModBus.c ****         master->FloatValue.bytes[3] = buff[offset + 11];
  276              		.loc 1 91 37 view .LVU107
- 277 0094 4373     		strb	r3, [r0, #13]
+ 277 0094 8373     		strb	r3, [r0, #14]
   92:Core/Src/NOS_ModBus.c ****         master->type = 1;
  278              		.loc 1 92 9 is_stmt 1 view .LVU108
   92:Core/Src/NOS_ModBus.c ****         master->type = 1;
  279              		.loc 1 92 43 is_stmt 0 view .LVU109
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 9
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 9
 
 
  280 0096 CB7A     		ldrb	r3, [r1, #11]	@ zero_extendqisi2
   92:Core/Src/NOS_ModBus.c ****         master->type = 1;
  281              		.loc 1 92 37 view .LVU110
- 282 0098 0373     		strb	r3, [r0, #12]
+ 282 0098 C373     		strb	r3, [r0, #15]
   93:Core/Src/NOS_ModBus.c ****         break;
  283              		.loc 1 93 9 is_stmt 1 view .LVU111
   93:Core/Src/NOS_ModBus.c ****         break;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  108:Core/Src/NOS_ModBus.c ****    switch(slave->Command)
  325              		.loc 1 108 4 is_stmt 1 view .LVU125
  326 0016 032B     		cmp	r3, #3
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 10
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 10
 
 
  327 0018 00D0     		beq	.L19
@@ -554,10 +554,10 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  116:Core/Src/NOS_ModBus.c ****        }
  117:Core/Src/NOS_ModBus.c ****        else
  118:Core/Src/NOS_ModBus.c ****        {
- 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 3];
- 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
- 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
- 122:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 3];
+ 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 4];
+ 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 5];
+ 122:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 6];
  123:Core/Src/NOS_ModBus.c ****           slave->type = 1;
  124:Core/Src/NOS_ModBus.c ****        }
  125:Core/Src/NOS_ModBus.c ****        break;
@@ -577,37 +577,37 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  335              		.loc 1 111 10 is_stmt 0 view .LVU128
  336 001c BCF1020F 		cmp	ip, #2
  337 0020 0BD0     		beq	.L20
- 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 4];
  338              		.loc 1 119 11 is_stmt 1 view .LVU129
- 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 4];
  339              		.loc 1 119 44 is_stmt 0 view .LVU130
  340 0022 1144     		add	r1, r1, r2
  341              	.LVL31:
- 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 4];
  342              		.loc 1 119 44 view .LVU131
  343 0024 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
- 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 4];
+ 119:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 4];
  344              		.loc 1 119 38 view .LVU132
- 345 0026 C372     		strb	r3, [r0, #11]
- 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 345 0026 0372     		strb	r3, [r0, #8]
+ 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 5];
  346              		.loc 1 120 11 is_stmt 1 view .LVU133
- 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 5];
  347              		.loc 1 120 44 is_stmt 0 view .LVU134
  348 0028 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
- 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[1] = buff[offset + 5];
+ 120:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[2] = buff[offset + 5];
  349              		.loc 1 120 38 view .LVU135
- 350 002a 8372     		strb	r3, [r0, #10]
- 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 11
+ 350 002a 4372     		strb	r3, [r0, #9]
+ 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 6];
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 11
 
 
  351              		.loc 1 121 11 is_stmt 1 view .LVU136
- 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 6];
  352              		.loc 1 121 44 is_stmt 0 view .LVU137
  353 002c 4B79     		ldrb	r3, [r1, #5]	@ zero_extendqisi2
- 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[0] = buff[offset + 6];
+ 121:Core/Src/NOS_ModBus.c ****           slave->FloatValue.bytes[3] = buff[offset + 6];
  354              		.loc 1 121 38 view .LVU138
- 355 002e 4372     		strb	r3, [r0, #9]
+ 355 002e 8372     		strb	r3, [r0, #10]
  122:Core/Src/NOS_ModBus.c ****           slave->type = 1;
  356              		.loc 1 122 11 is_stmt 1 view .LVU139
  122:Core/Src/NOS_ModBus.c ****           slave->type = 1;
@@ -615,7 +615,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  358 0030 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
  122:Core/Src/NOS_ModBus.c ****           slave->type = 1;
  359              		.loc 1 122 38 view .LVU141
- 360 0032 0372     		strb	r3, [r0, #8]
+ 360 0032 C372     		strb	r3, [r0, #11]
  123:Core/Src/NOS_ModBus.c ****        }
  361              		.loc 1 123 11 is_stmt 1 view .LVU142
  123:Core/Src/NOS_ModBus.c ****        }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  390              		.section	.text.NOS_ModBus_SetMasterCommand,"ax",%progbits
  391              		.align	1
  392              		.global	NOS_ModBus_SetMasterCommand
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 12
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 12
 
 
  393              		.syntax unified
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  438 0008 8380     		strh	r3, [r0, #4]	@ movhi
  144:Core/Src/NOS_ModBus.c **** }
  439              		.loc 1 144 1 view .LVU164
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 13
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 13
 
 
  440 000a 7047     		bx	lr
@@ -746,382 +746,384 @@ ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 1
  460              		.loc 1 148 4 view .LVU166
  149:Core/Src/NOS_ModBus.c ****    curr.data = value;
  461              		.loc 1 149 4 view .LVU167
- 150:Core/Src/NOS_ModBus.c ****    buff[startpos] = curr.bytes[1];
+ 150:Core/Src/NOS_ModBus.c ****    buff[startpos] = curr.bytes[0];
  462              		.loc 1 150 4 view .LVU168
  463              		.loc 1 150 19 is_stmt 0 view .LVU169
- 464 0000 C1F30723 		ubfx	r3, r1, #8, #8
- 465 0004 8354     		strb	r3, [r0, r2]
- 151:Core/Src/NOS_ModBus.c ****    buff[startpos + 1] = curr.bytes[0];
- 466              		.loc 1 151 4 is_stmt 1 view .LVU170
- 467              		.loc 1 151 8 is_stmt 0 view .LVU171
- 468 0006 0132     		adds	r2, r2, #1
- 469              	.LVL38:
- 470              		.loc 1 151 23 view .LVU172
- 471 0008 8154     		strb	r1, [r0, r2]
+ 464 0000 8154     		strb	r1, [r0, r2]
+ 151:Core/Src/NOS_ModBus.c ****    buff[startpos + 1] = curr.bytes[1];
+ 465              		.loc 1 151 4 is_stmt 1 view .LVU170
+ 466              		.loc 1 151 8 is_stmt 0 view .LVU171
+ 467 0002 0132     		adds	r2, r2, #1
+ 468              	.LVL38:
+ 469              		.loc 1 151 23 view .LVU172
+ 470 0004 C1F30721 		ubfx	r1, r1, #8, #8
+ 471              	.LVL39:
+ 472              		.loc 1 151 23 view .LVU173
+ 473 0008 8154     		strb	r1, [r0, r2]
  152:Core/Src/NOS_ModBus.c **** }
- 472              		.loc 1 152 1 view .LVU173
- 473 000a 7047     		bx	lr
- 474              		.cfi_endproc
- 475              	.LFE73:
- 477              		.section	.text.NOS_ModBus_AddFloatToBuff,"ax",%progbits
- 478              		.align	1
- 479              		.global	NOS_ModBus_AddFloatToBuff
- 480              		.syntax unified
- 481              		.thumb
- 482              		.thumb_func
- 483              		.fpu softvfp
- 485              	NOS_ModBus_AddFloatToBuff:
- 486              	.LVL39:
- 487              	.LFB74:
+ 474              		.loc 1 152 1 view .LVU174
+ 475 000a 7047     		bx	lr
+ 476              		.cfi_endproc
+ 477              	.LFE73:
+ 479              		.section	.text.NOS_ModBus_AddFloatToBuff,"ax",%progbits
+ 480              		.align	1
+ 481              		.global	NOS_ModBus_AddFloatToBuff
+ 482              		.syntax unified
+ 483              		.thumb
+ 484              		.thumb_func
+ 485              		.fpu softvfp
+ 487              	NOS_ModBus_AddFloatToBuff:
+ 488              	.LVL40:
+ 489              	.LFB74:
  153:Core/Src/NOS_ModBus.c **** 
  154:Core/Src/NOS_ModBus.c **** void NOS_ModBus_AddFloatToBuff(uint8_t* buff,float value,uint16_t startpos)
  155:Core/Src/NOS_ModBus.c **** {
- 488              		.loc 1 155 1 is_stmt 1 view -0
- 489              		.cfi_startproc
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 14
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 14
 
 
- 490              		@ args = 0, pretend = 0, frame = 0
- 491              		@ frame_needed = 0, uses_anonymous_args = 0
- 492              		@ link register save eliminated.
+ 490              		.loc 1 155 1 is_stmt 1 view -0
+ 491              		.cfi_startproc
+ 492              		@ args = 0, pretend = 0, frame = 0
+ 493              		@ frame_needed = 0, uses_anonymous_args = 0
+ 494              		@ link register save eliminated.
  156:Core/Src/NOS_ModBus.c ****    NOS_Float curr;
- 493              		.loc 1 156 4 view .LVU175
+ 495              		.loc 1 156 4 view .LVU176
  157:Core/Src/NOS_ModBus.c ****    curr.data = value;
- 494              		.loc 1 157 4 view .LVU176
+ 496              		.loc 1 157 4 view .LVU177
  158:Core/Src/NOS_ModBus.c ****    buff[startpos] = curr.bytes[0];
- 495              		.loc 1 158 4 view .LVU177
- 496              		.loc 1 158 19 is_stmt 0 view .LVU178
- 497 0000 8154     		strb	r1, [r0, r2]
+ 497              		.loc 1 158 4 view .LVU178
+ 498              		.loc 1 158 19 is_stmt 0 view .LVU179
+ 499 0000 8154     		strb	r1, [r0, r2]
  159:Core/Src/NOS_ModBus.c ****    buff[startpos + 1] = curr.bytes[1];
- 498              		.loc 1 159 4 is_stmt 1 view .LVU179
- 499              		.loc 1 159 8 is_stmt 0 view .LVU180
- 500 0002 531C     		adds	r3, r2, #1
- 501              		.loc 1 159 23 view .LVU181
- 502 0004 C1F3072C 		ubfx	ip, r1, #8, #8
- 503 0008 00F803C0 		strb	ip, [r0, r3]
+ 500              		.loc 1 159 4 is_stmt 1 view .LVU180
+ 501              		.loc 1 159 8 is_stmt 0 view .LVU181
+ 502 0002 531C     		adds	r3, r2, #1
+ 503              		.loc 1 159 23 view .LVU182
+ 504 0004 C1F3072C 		ubfx	ip, r1, #8, #8
+ 505 0008 00F803C0 		strb	ip, [r0, r3]
  160:Core/Src/NOS_ModBus.c ****    buff[startpos + 2] = curr.bytes[2];
- 504              		.loc 1 160 4 is_stmt 1 view .LVU182
- 505              		.loc 1 160 8 is_stmt 0 view .LVU183
- 506 000c 931C     		adds	r3, r2, #2
- 507              		.loc 1 160 23 view .LVU184
- 508 000e C1F3074C 		ubfx	ip, r1, #16, #8
- 509 0012 00F803C0 		strb	ip, [r0, r3]
+ 506              		.loc 1 160 4 is_stmt 1 view .LVU183
+ 507              		.loc 1 160 8 is_stmt 0 view .LVU184
+ 508 000c 931C     		adds	r3, r2, #2
+ 509              		.loc 1 160 23 view .LVU185
+ 510 000e C1F3074C 		ubfx	ip, r1, #16, #8
+ 511 0012 00F803C0 		strb	ip, [r0, r3]
  161:Core/Src/NOS_ModBus.c ****    buff[startpos + 3] = curr.bytes[3];
- 510              		.loc 1 161 4 is_stmt 1 view .LVU185
- 511              		.loc 1 161 8 is_stmt 0 view .LVU186
- 512 0016 0332     		adds	r2, r2, #3
- 513              	.LVL40:
- 514              		.loc 1 161 23 view .LVU187
- 515 0018 C1F30761 		ubfx	r1, r1, #24, #8
- 516              	.LVL41:
- 517              		.loc 1 161 23 view .LVU188
- 518 001c 8154     		strb	r1, [r0, r2]
+ 512              		.loc 1 161 4 is_stmt 1 view .LVU186
+ 513              		.loc 1 161 8 is_stmt 0 view .LVU187
+ 514 0016 0332     		adds	r2, r2, #3
+ 515              	.LVL41:
+ 516              		.loc 1 161 23 view .LVU188
+ 517 0018 C1F30761 		ubfx	r1, r1, #24, #8
+ 518              	.LVL42:
+ 519              		.loc 1 161 23 view .LVU189
+ 520 001c 8154     		strb	r1, [r0, r2]
  162:Core/Src/NOS_ModBus.c **** }
- 519              		.loc 1 162 1 view .LVU189
- 520 001e 7047     		bx	lr
- 521              		.cfi_endproc
- 522              	.LFE74:
- 524              		.section	.rodata.wCRCTable.0,"a"
- 525              		.align	2
- 526              		.set	.LANCHOR0,. + 0
- 529              	wCRCTable.0:
- 530 0000 0000     		.short	0
- 531 0002 C1C0     		.short	-16191
- 532 0004 81C1     		.short	-15999
- 533 0006 4001     		.short	320
- 534 0008 01C3     		.short	-15615
- 535 000a C003     		.short	960
- 536 000c 8002     		.short	640
- 537 000e 41C2     		.short	-15807
- 538 0010 01C6     		.short	-14847
- 539 0012 C006     		.short	1728
- 540 0014 8007     		.short	1920
- 541 0016 41C7     		.short	-14527
- 542 0018 0005     		.short	1280
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 15
+ 521              		.loc 1 162 1 view .LVU190
+ 522 001e 7047     		bx	lr
+ 523              		.cfi_endproc
+ 524              	.LFE74:
+ 526              		.section	.rodata.wCRCTable.0,"a"
+ 527              		.align	2
+ 528              		.set	.LANCHOR0,. + 0
+ 531              	wCRCTable.0:
+ 532 0000 0000     		.short	0
+ 533 0002 C1C0     		.short	-16191
+ 534 0004 81C1     		.short	-15999
+ 535 0006 4001     		.short	320
+ 536 0008 01C3     		.short	-15615
+ 537 000a C003     		.short	960
+ 538 000c 8002     		.short	640
+ 539 000e 41C2     		.short	-15807
+ 540 0010 01C6     		.short	-14847
+ 541 0012 C006     		.short	1728
+ 542 0014 8007     		.short	1920
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 15
 
 
- 543 001a C1C5     		.short	-14911
- 544 001c 81C4     		.short	-15231
- 545 001e 4004     		.short	1088
- 546 0020 01CC     		.short	-13311
- 547 0022 C00C     		.short	3264
- 548 0024 800D     		.short	3456
- 549 0026 41CD     		.short	-12991
- 550 0028 000F     		.short	3840
- 551 002a C1CF     		.short	-12351
- 552 002c 81CE     		.short	-12671
- 553 002e 400E     		.short	3648
- 554 0030 000A     		.short	2560
- 555 0032 C1CA     		.short	-13631
- 556 0034 81CB     		.short	-13439
- 557 0036 400B     		.short	2880
- 558 0038 01C9     		.short	-14079
- 559 003a C009     		.short	2496
- 560 003c 8008     		.short	2176
- 561 003e 41C8     		.short	-14271
- 562 0040 01D8     		.short	-10239
- 563 0042 C018     		.short	6336
- 564 0044 8019     		.short	6528
- 565 0046 41D9     		.short	-9919
- 566 0048 001B     		.short	6912
- 567 004a C1DB     		.short	-9279
- 568 004c 81DA     		.short	-9599
- 569 004e 401A     		.short	6720
- 570 0050 001E     		.short	7680
- 571 0052 C1DE     		.short	-8511
- 572 0054 81DF     		.short	-8319
- 573 0056 401F     		.short	8000
- 574 0058 01DD     		.short	-8959
- 575 005a C01D     		.short	7616
- 576 005c 801C     		.short	7296
- 577 005e 41DC     		.short	-9151
- 578 0060 0014     		.short	5120
- 579 0062 C1D4     		.short	-11071
- 580 0064 81D5     		.short	-10879
- 581 0066 4015     		.short	5440
- 582 0068 01D7     		.short	-10495
- 583 006a C017     		.short	6080
- 584 006c 8016     		.short	5760
- 585 006e 41D6     		.short	-10687
- 586 0070 01D2     		.short	-11775
- 587 0072 C012     		.short	4800
- 588 0074 8013     		.short	4992
- 589 0076 41D3     		.short	-11455
- 590 0078 0011     		.short	4352
- 591 007a C1D1     		.short	-11839
- 592 007c 81D0     		.short	-12159
- 593 007e 4010     		.short	4160
- 594 0080 01F0     		.short	-4095
- 595 0082 C030     		.short	12480
- 596 0084 8031     		.short	12672
- 597 0086 41F1     		.short	-3775
- 598 0088 0033     		.short	13056
- 599 008a C1F3     		.short	-3135
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 16
+ 543 0016 41C7     		.short	-14527
+ 544 0018 0005     		.short	1280
+ 545 001a C1C5     		.short	-14911
+ 546 001c 81C4     		.short	-15231
+ 547 001e 4004     		.short	1088
+ 548 0020 01CC     		.short	-13311
+ 549 0022 C00C     		.short	3264
+ 550 0024 800D     		.short	3456
+ 551 0026 41CD     		.short	-12991
+ 552 0028 000F     		.short	3840
+ 553 002a C1CF     		.short	-12351
+ 554 002c 81CE     		.short	-12671
+ 555 002e 400E     		.short	3648
+ 556 0030 000A     		.short	2560
+ 557 0032 C1CA     		.short	-13631
+ 558 0034 81CB     		.short	-13439
+ 559 0036 400B     		.short	2880
+ 560 0038 01C9     		.short	-14079
+ 561 003a C009     		.short	2496
+ 562 003c 8008     		.short	2176
+ 563 003e 41C8     		.short	-14271
+ 564 0040 01D8     		.short	-10239
+ 565 0042 C018     		.short	6336
+ 566 0044 8019     		.short	6528
+ 567 0046 41D9     		.short	-9919
+ 568 0048 001B     		.short	6912
+ 569 004a C1DB     		.short	-9279
+ 570 004c 81DA     		.short	-9599
+ 571 004e 401A     		.short	6720
+ 572 0050 001E     		.short	7680
+ 573 0052 C1DE     		.short	-8511
+ 574 0054 81DF     		.short	-8319
+ 575 0056 401F     		.short	8000
+ 576 0058 01DD     		.short	-8959
+ 577 005a C01D     		.short	7616
+ 578 005c 801C     		.short	7296
+ 579 005e 41DC     		.short	-9151
+ 580 0060 0014     		.short	5120
+ 581 0062 C1D4     		.short	-11071
+ 582 0064 81D5     		.short	-10879
+ 583 0066 4015     		.short	5440
+ 584 0068 01D7     		.short	-10495
+ 585 006a C017     		.short	6080
+ 586 006c 8016     		.short	5760
+ 587 006e 41D6     		.short	-10687
+ 588 0070 01D2     		.short	-11775
+ 589 0072 C012     		.short	4800
+ 590 0074 8013     		.short	4992
+ 591 0076 41D3     		.short	-11455
+ 592 0078 0011     		.short	4352
+ 593 007a C1D1     		.short	-11839
+ 594 007c 81D0     		.short	-12159
+ 595 007e 4010     		.short	4160
+ 596 0080 01F0     		.short	-4095
+ 597 0082 C030     		.short	12480
+ 598 0084 8031     		.short	12672
+ 599 0086 41F1     		.short	-3775
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 16
 
 
- 600 008c 81F2     		.short	-3455
- 601 008e 4032     		.short	12864
- 602 0090 0036     		.short	13824
- 603 0092 C1F6     		.short	-2367
- 604 0094 81F7     		.short	-2175
- 605 0096 4037     		.short	14144
- 606 0098 01F5     		.short	-2815
- 607 009a C035     		.short	13760
- 608 009c 8034     		.short	13440
- 609 009e 41F4     		.short	-3007
- 610 00a0 003C     		.short	15360
- 611 00a2 C1FC     		.short	-831
- 612 00a4 81FD     		.short	-639
- 613 00a6 403D     		.short	15680
- 614 00a8 01FF     		.short	-255
- 615 00aa C03F     		.short	16320
- 616 00ac 803E     		.short	16000
- 617 00ae 41FE     		.short	-447
- 618 00b0 01FA     		.short	-1535
- 619 00b2 C03A     		.short	15040
- 620 00b4 803B     		.short	15232
- 621 00b6 41FB     		.short	-1215
- 622 00b8 0039     		.short	14592
- 623 00ba C1F9     		.short	-1599
- 624 00bc 81F8     		.short	-1919
- 625 00be 4038     		.short	14400
- 626 00c0 0028     		.short	10240
- 627 00c2 C1E8     		.short	-5951
- 628 00c4 81E9     		.short	-5759
- 629 00c6 4029     		.short	10560
- 630 00c8 01EB     		.short	-5375
- 631 00ca C02B     		.short	11200
- 632 00cc 802A     		.short	10880
- 633 00ce 41EA     		.short	-5567
- 634 00d0 01EE     		.short	-4607
- 635 00d2 C02E     		.short	11968
- 636 00d4 802F     		.short	12160
- 637 00d6 41EF     		.short	-4287
- 638 00d8 002D     		.short	11520
- 639 00da C1ED     		.short	-4671
- 640 00dc 81EC     		.short	-4991
- 641 00de 402C     		.short	11328
- 642 00e0 01E4     		.short	-7167
- 643 00e2 C024     		.short	9408
- 644 00e4 8025     		.short	9600
- 645 00e6 41E5     		.short	-6847
- 646 00e8 0027     		.short	9984
- 647 00ea C1E7     		.short	-6207
- 648 00ec 81E6     		.short	-6527
- 649 00ee 4026     		.short	9792
- 650 00f0 0022     		.short	8704
- 651 00f2 C1E2     		.short	-7487
- 652 00f4 81E3     		.short	-7295
- 653 00f6 4023     		.short	9024
- 654 00f8 01E1     		.short	-7935
- 655 00fa C021     		.short	8640
- 656 00fc 8020     		.short	8320
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 17
+ 600 0088 0033     		.short	13056
+ 601 008a C1F3     		.short	-3135
+ 602 008c 81F2     		.short	-3455
+ 603 008e 4032     		.short	12864
+ 604 0090 0036     		.short	13824
+ 605 0092 C1F6     		.short	-2367
+ 606 0094 81F7     		.short	-2175
+ 607 0096 4037     		.short	14144
+ 608 0098 01F5     		.short	-2815
+ 609 009a C035     		.short	13760
+ 610 009c 8034     		.short	13440
+ 611 009e 41F4     		.short	-3007
+ 612 00a0 003C     		.short	15360
+ 613 00a2 C1FC     		.short	-831
+ 614 00a4 81FD     		.short	-639
+ 615 00a6 403D     		.short	15680
+ 616 00a8 01FF     		.short	-255
+ 617 00aa C03F     		.short	16320
+ 618 00ac 803E     		.short	16000
+ 619 00ae 41FE     		.short	-447
+ 620 00b0 01FA     		.short	-1535
+ 621 00b2 C03A     		.short	15040
+ 622 00b4 803B     		.short	15232
+ 623 00b6 41FB     		.short	-1215
+ 624 00b8 0039     		.short	14592
+ 625 00ba C1F9     		.short	-1599
+ 626 00bc 81F8     		.short	-1919
+ 627 00be 4038     		.short	14400
+ 628 00c0 0028     		.short	10240
+ 629 00c2 C1E8     		.short	-5951
+ 630 00c4 81E9     		.short	-5759
+ 631 00c6 4029     		.short	10560
+ 632 00c8 01EB     		.short	-5375
+ 633 00ca C02B     		.short	11200
+ 634 00cc 802A     		.short	10880
+ 635 00ce 41EA     		.short	-5567
+ 636 00d0 01EE     		.short	-4607
+ 637 00d2 C02E     		.short	11968
+ 638 00d4 802F     		.short	12160
+ 639 00d6 41EF     		.short	-4287
+ 640 00d8 002D     		.short	11520
+ 641 00da C1ED     		.short	-4671
+ 642 00dc 81EC     		.short	-4991
+ 643 00de 402C     		.short	11328
+ 644 00e0 01E4     		.short	-7167
+ 645 00e2 C024     		.short	9408
+ 646 00e4 8025     		.short	9600
+ 647 00e6 41E5     		.short	-6847
+ 648 00e8 0027     		.short	9984
+ 649 00ea C1E7     		.short	-6207
+ 650 00ec 81E6     		.short	-6527
+ 651 00ee 4026     		.short	9792
+ 652 00f0 0022     		.short	8704
+ 653 00f2 C1E2     		.short	-7487
+ 654 00f4 81E3     		.short	-7295
+ 655 00f6 4023     		.short	9024
+ 656 00f8 01E1     		.short	-7935
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 17
 
 
- 657 00fe 41E0     		.short	-8127
- 658 0100 01A0     		.short	-24575
- 659 0102 C060     		.short	24768
- 660 0104 8061     		.short	24960
- 661 0106 41A1     		.short	-24255
- 662 0108 0063     		.short	25344
- 663 010a C1A3     		.short	-23615
- 664 010c 81A2     		.short	-23935
- 665 010e 4062     		.short	25152
- 666 0110 0066     		.short	26112
- 667 0112 C1A6     		.short	-22847
- 668 0114 81A7     		.short	-22655
- 669 0116 4067     		.short	26432
- 670 0118 01A5     		.short	-23295
- 671 011a C065     		.short	26048
- 672 011c 8064     		.short	25728
- 673 011e 41A4     		.short	-23487
- 674 0120 006C     		.short	27648
- 675 0122 C1AC     		.short	-21311
- 676 0124 81AD     		.short	-21119
- 677 0126 406D     		.short	27968
- 678 0128 01AF     		.short	-20735
- 679 012a C06F     		.short	28608
- 680 012c 806E     		.short	28288
- 681 012e 41AE     		.short	-20927
- 682 0130 01AA     		.short	-22015
- 683 0132 C06A     		.short	27328
- 684 0134 806B     		.short	27520
- 685 0136 41AB     		.short	-21695
- 686 0138 0069     		.short	26880
- 687 013a C1A9     		.short	-22079
- 688 013c 81A8     		.short	-22399
- 689 013e 4068     		.short	26688
- 690 0140 0078     		.short	30720
- 691 0142 C1B8     		.short	-18239
- 692 0144 81B9     		.short	-18047
- 693 0146 4079     		.short	31040
- 694 0148 01BB     		.short	-17663
- 695 014a C07B     		.short	31680
- 696 014c 807A     		.short	31360
- 697 014e 41BA     		.short	-17855
- 698 0150 01BE     		.short	-16895
- 699 0152 C07E     		.short	32448
- 700 0154 807F     		.short	32640
- 701 0156 41BF     		.short	-16575
- 702 0158 007D     		.short	32000
- 703 015a C1BD     		.short	-16959
- 704 015c 81BC     		.short	-17279
- 705 015e 407C     		.short	31808
- 706 0160 01B4     		.short	-19455
- 707 0162 C074     		.short	29888
- 708 0164 8075     		.short	30080
- 709 0166 41B5     		.short	-19135
- 710 0168 0077     		.short	30464
- 711 016a C1B7     		.short	-18495
- 712 016c 81B6     		.short	-18815
- 713 016e 4076     		.short	30272
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 18
+ 657 00fa C021     		.short	8640
+ 658 00fc 8020     		.short	8320
+ 659 00fe 41E0     		.short	-8127
+ 660 0100 01A0     		.short	-24575
+ 661 0102 C060     		.short	24768
+ 662 0104 8061     		.short	24960
+ 663 0106 41A1     		.short	-24255
+ 664 0108 0063     		.short	25344
+ 665 010a C1A3     		.short	-23615
+ 666 010c 81A2     		.short	-23935
+ 667 010e 4062     		.short	25152
+ 668 0110 0066     		.short	26112
+ 669 0112 C1A6     		.short	-22847
+ 670 0114 81A7     		.short	-22655
+ 671 0116 4067     		.short	26432
+ 672 0118 01A5     		.short	-23295
+ 673 011a C065     		.short	26048
+ 674 011c 8064     		.short	25728
+ 675 011e 41A4     		.short	-23487
+ 676 0120 006C     		.short	27648
+ 677 0122 C1AC     		.short	-21311
+ 678 0124 81AD     		.short	-21119
+ 679 0126 406D     		.short	27968
+ 680 0128 01AF     		.short	-20735
+ 681 012a C06F     		.short	28608
+ 682 012c 806E     		.short	28288
+ 683 012e 41AE     		.short	-20927
+ 684 0130 01AA     		.short	-22015
+ 685 0132 C06A     		.short	27328
+ 686 0134 806B     		.short	27520
+ 687 0136 41AB     		.short	-21695
+ 688 0138 0069     		.short	26880
+ 689 013a C1A9     		.short	-22079
+ 690 013c 81A8     		.short	-22399
+ 691 013e 4068     		.short	26688
+ 692 0140 0078     		.short	30720
+ 693 0142 C1B8     		.short	-18239
+ 694 0144 81B9     		.short	-18047
+ 695 0146 4079     		.short	31040
+ 696 0148 01BB     		.short	-17663
+ 697 014a C07B     		.short	31680
+ 698 014c 807A     		.short	31360
+ 699 014e 41BA     		.short	-17855
+ 700 0150 01BE     		.short	-16895
+ 701 0152 C07E     		.short	32448
+ 702 0154 807F     		.short	32640
+ 703 0156 41BF     		.short	-16575
+ 704 0158 007D     		.short	32000
+ 705 015a C1BD     		.short	-16959
+ 706 015c 81BC     		.short	-17279
+ 707 015e 407C     		.short	31808
+ 708 0160 01B4     		.short	-19455
+ 709 0162 C074     		.short	29888
+ 710 0164 8075     		.short	30080
+ 711 0166 41B5     		.short	-19135
+ 712 0168 0077     		.short	30464
+ 713 016a C1B7     		.short	-18495
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 18
 
 
- 714 0170 0072     		.short	29184
- 715 0172 C1B2     		.short	-19775
- 716 0174 81B3     		.short	-19583
- 717 0176 4073     		.short	29504
- 718 0178 01B1     		.short	-20223
- 719 017a C071     		.short	29120
- 720 017c 8070     		.short	28800
- 721 017e 41B0     		.short	-20415
- 722 0180 0050     		.short	20480
- 723 0182 C190     		.short	-28479
- 724 0184 8191     		.short	-28287
- 725 0186 4051     		.short	20800
- 726 0188 0193     		.short	-27903
- 727 018a C053     		.short	21440
- 728 018c 8052     		.short	21120
- 729 018e 4192     		.short	-28095
- 730 0190 0196     		.short	-27135
- 731 0192 C056     		.short	22208
- 732 0194 8057     		.short	22400
- 733 0196 4197     		.short	-26815
- 734 0198 0055     		.short	21760
- 735 019a C195     		.short	-27199
- 736 019c 8194     		.short	-27519
- 737 019e 4054     		.short	21568
- 738 01a0 019C     		.short	-25599
- 739 01a2 C05C     		.short	23744
- 740 01a4 805D     		.short	23936
- 741 01a6 419D     		.short	-25279
- 742 01a8 005F     		.short	24320
- 743 01aa C19F     		.short	-24639
- 744 01ac 819E     		.short	-24959
- 745 01ae 405E     		.short	24128
- 746 01b0 005A     		.short	23040
- 747 01b2 C19A     		.short	-25919
- 748 01b4 819B     		.short	-25727
- 749 01b6 405B     		.short	23360
- 750 01b8 0199     		.short	-26367
- 751 01ba C059     		.short	22976
- 752 01bc 8058     		.short	22656
- 753 01be 4198     		.short	-26559
- 754 01c0 0188     		.short	-30719
- 755 01c2 C048     		.short	18624
- 756 01c4 8049     		.short	18816
- 757 01c6 4189     		.short	-30399
- 758 01c8 004B     		.short	19200
- 759 01ca C18B     		.short	-29759
- 760 01cc 818A     		.short	-30079
- 761 01ce 404A     		.short	19008
- 762 01d0 004E     		.short	19968
- 763 01d2 C18E     		.short	-28991
- 764 01d4 818F     		.short	-28799
- 765 01d6 404F     		.short	20288
- 766 01d8 018D     		.short	-29439
- 767 01da C04D     		.short	19904
- 768 01dc 804C     		.short	19584
- 769 01de 418C     		.short	-29631
- 770 01e0 0044     		.short	17408
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 19
+ 714 016c 81B6     		.short	-18815
+ 715 016e 4076     		.short	30272
+ 716 0170 0072     		.short	29184
+ 717 0172 C1B2     		.short	-19775
+ 718 0174 81B3     		.short	-19583
+ 719 0176 4073     		.short	29504
+ 720 0178 01B1     		.short	-20223
+ 721 017a C071     		.short	29120
+ 722 017c 8070     		.short	28800
+ 723 017e 41B0     		.short	-20415
+ 724 0180 0050     		.short	20480
+ 725 0182 C190     		.short	-28479
+ 726 0184 8191     		.short	-28287
+ 727 0186 4051     		.short	20800
+ 728 0188 0193     		.short	-27903
+ 729 018a C053     		.short	21440
+ 730 018c 8052     		.short	21120
+ 731 018e 4192     		.short	-28095
+ 732 0190 0196     		.short	-27135
+ 733 0192 C056     		.short	22208
+ 734 0194 8057     		.short	22400
+ 735 0196 4197     		.short	-26815
+ 736 0198 0055     		.short	21760
+ 737 019a C195     		.short	-27199
+ 738 019c 8194     		.short	-27519
+ 739 019e 4054     		.short	21568
+ 740 01a0 019C     		.short	-25599
+ 741 01a2 C05C     		.short	23744
+ 742 01a4 805D     		.short	23936
+ 743 01a6 419D     		.short	-25279
+ 744 01a8 005F     		.short	24320
+ 745 01aa C19F     		.short	-24639
+ 746 01ac 819E     		.short	-24959
+ 747 01ae 405E     		.short	24128
+ 748 01b0 005A     		.short	23040
+ 749 01b2 C19A     		.short	-25919
+ 750 01b4 819B     		.short	-25727
+ 751 01b6 405B     		.short	23360
+ 752 01b8 0199     		.short	-26367
+ 753 01ba C059     		.short	22976
+ 754 01bc 8058     		.short	22656
+ 755 01be 4198     		.short	-26559
+ 756 01c0 0188     		.short	-30719
+ 757 01c2 C048     		.short	18624
+ 758 01c4 8049     		.short	18816
+ 759 01c6 4189     		.short	-30399
+ 760 01c8 004B     		.short	19200
+ 761 01ca C18B     		.short	-29759
+ 762 01cc 818A     		.short	-30079
+ 763 01ce 404A     		.short	19008
+ 764 01d0 004E     		.short	19968
+ 765 01d2 C18E     		.short	-28991
+ 766 01d4 818F     		.short	-28799
+ 767 01d6 404F     		.short	20288
+ 768 01d8 018D     		.short	-29439
+ 769 01da C04D     		.short	19904
+ 770 01dc 804C     		.short	19584
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 19
 
 
- 771 01e2 C184     		.short	-31551
- 772 01e4 8185     		.short	-31359
- 773 01e6 4045     		.short	17728
- 774 01e8 0187     		.short	-30975
- 775 01ea C047     		.short	18368
- 776 01ec 8046     		.short	18048
- 777 01ee 4186     		.short	-31167
- 778 01f0 0182     		.short	-32255
- 779 01f2 C042     		.short	17088
- 780 01f4 8043     		.short	17280
- 781 01f6 4183     		.short	-31935
- 782 01f8 0041     		.short	16640
- 783 01fa C181     		.short	-32319
- 784 01fc 8180     		.short	-32639
- 785 01fe 4040     		.short	16448
- 786              		.text
- 787              	.Letext0:
- 788              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 789              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
- 790              		.file 4 "Core/Src/NOS_Typedefs.h"
-ARM GAS  C:\Users\user\AppData\Local\Temp\ccSJ5042.s 			page 20
+ 771 01de 418C     		.short	-29631
+ 772 01e0 0044     		.short	17408
+ 773 01e2 C184     		.short	-31551
+ 774 01e4 8185     		.short	-31359
+ 775 01e6 4045     		.short	17728
+ 776 01e8 0187     		.short	-30975
+ 777 01ea C047     		.short	18368
+ 778 01ec 8046     		.short	18048
+ 779 01ee 4186     		.short	-31167
+ 780 01f0 0182     		.short	-32255
+ 781 01f2 C042     		.short	17088
+ 782 01f4 8043     		.short	17280
+ 783 01f6 4183     		.short	-31935
+ 784 01f8 0041     		.short	16640
+ 785 01fa C181     		.short	-32319
+ 786 01fc 8180     		.short	-32639
+ 787 01fe 4040     		.short	16448
+ 788              		.text
+ 789              	.Letext0:
+ 790              		.file 2 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 791              		.file 3 "c:\\users\\user\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpac
+ 792              		.file 4 "Core/Src/NOS_Typedefs.h"
+ARM GAS  C:\Users\user\AppData\Local\Temp\ccRhr5qW.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 NOS_ModBus.c
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:16     .text.GetCRC16:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:24     .text.GetCRC16:0000000000000000 GetCRC16
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:98     .text.GetCRC16:0000000000000030 $d
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:103    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:110    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:294    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:301    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:391    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:398    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:412    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:419    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:445    .text.NOS_ModBus_AddUint16ToBuff:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:452    .text.NOS_ModBus_AddUint16ToBuff:0000000000000000 NOS_ModBus_AddUint16ToBuff
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:478    .text.NOS_ModBus_AddFloatToBuff:0000000000000000 $t
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:485    .text.NOS_ModBus_AddFloatToBuff:0000000000000000 NOS_ModBus_AddFloatToBuff
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:525    .rodata.wCRCTable.0:0000000000000000 $d
-C:\Users\user\AppData\Local\Temp\ccSJ5042.s:529    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:16     .text.GetCRC16:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:24     .text.GetCRC16:0000000000000000 GetCRC16
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:98     .text.GetCRC16:0000000000000030 $d
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:103    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:110    .text.NOS_ModBus_ParseMasterCommand:0000000000000000 NOS_ModBus_ParseMasterCommand
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:294    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:301    .text.NOS_ModBus_ParseSlaveCommand:0000000000000000 NOS_ModBus_ParseSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:391    .text.NOS_ModBus_SetMasterCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:398    .text.NOS_ModBus_SetMasterCommand:0000000000000000 NOS_ModBus_SetMasterCommand
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:412    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:419    .text.NOS_ModBus_SetSlaveCommand:0000000000000000 NOS_ModBus_SetSlaveCommand
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:445    .text.NOS_ModBus_AddUint16ToBuff:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:452    .text.NOS_ModBus_AddUint16ToBuff:0000000000000000 NOS_ModBus_AddUint16ToBuff
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:480    .text.NOS_ModBus_AddFloatToBuff:0000000000000000 $t
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:487    .text.NOS_ModBus_AddFloatToBuff:0000000000000000 NOS_ModBus_AddFloatToBuff
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:527    .rodata.wCRCTable.0:0000000000000000 $d
+C:\Users\user\AppData\Local\Temp\ccRhr5qW.s:531    .rodata.wCRCTable.0:0000000000000000 wCRCTable.0
 
 NO UNDEFINED SYMBOLS

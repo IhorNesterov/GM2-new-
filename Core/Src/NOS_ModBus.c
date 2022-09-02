@@ -86,10 +86,10 @@ void NOS_ModBus_ParseMasterCommand(ModBus_Master_Command* master,uint8_t* buff,u
         com.bytes[0] = buff[offset + 6];
         master->Reg_Count = com.data;
         master->Byte_Count = buff[offset + 7];
-        master->FloatValue.bytes[3] = buff[offset + 8];
-        master->FloatValue.bytes[2] = buff[offset + 9];
-        master->FloatValue.bytes[1] = buff[offset + 10];
-        master->FloatValue.bytes[0] = buff[offset + 11];
+        master->FloatValue.bytes[0] = buff[offset + 8];
+        master->FloatValue.bytes[1] = buff[offset + 9];
+        master->FloatValue.bytes[2] = buff[offset + 10];
+        master->FloatValue.bytes[3] = buff[offset + 11];
         master->type = 1;
         break;
     
@@ -116,10 +116,10 @@ void NOS_ModBus_ParseSlaveCommand(ModBus_Slave_Command* slave,uint8_t* buff,uint
        }
        else
        {
-          slave->FloatValue.bytes[3] = buff[offset + 3];
-          slave->FloatValue.bytes[2] = buff[offset + 4];
-          slave->FloatValue.bytes[1] = buff[offset + 5];
-          slave->FloatValue.bytes[0] = buff[offset + 6];
+          slave->FloatValue.bytes[0] = buff[offset + 3];
+          slave->FloatValue.bytes[1] = buff[offset + 4];
+          slave->FloatValue.bytes[2] = buff[offset + 5];
+          slave->FloatValue.bytes[3] = buff[offset + 6];
           slave->type = 1;
        }
        break;
@@ -147,8 +147,8 @@ void NOS_ModBus_AddUint16ToBuff(uint8_t* buff,uint16_t value,uint16_t startpos)
 {
    NOS_Short curr;
    curr.data = value;
-   buff[startpos] = curr.bytes[1];
-   buff[startpos + 1] = curr.bytes[0];
+   buff[startpos] = curr.bytes[0];
+   buff[startpos + 1] = curr.bytes[1];
 }
 
 void NOS_ModBus_AddFloatToBuff(uint8_t* buff,float value,uint16_t startpos)
